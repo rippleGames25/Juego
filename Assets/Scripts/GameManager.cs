@@ -1,6 +1,13 @@
 using UnityEngine;
 using System;
 
+public enum ToolType
+{
+    None,
+    WateringCan,
+    FertilizerBag
+}
+
 public class GameManager : MonoBehaviour
 {
     //Variables
@@ -11,8 +18,9 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnWaterChanged;
     public event Action<int> OnFertilizerChanged;
     public event Action<int> OnDayChanged;
+    public event Action<ToolType> OnToolChanged;
 
-
+    private ToolType currentTool;
     private int currentDay = 1;
 
     // Resources
@@ -21,6 +29,9 @@ public class GameManager : MonoBehaviour
     private int currentFertilizer = 10;
 
     [SerializeField] private PlotsManager plotsManager;
+    [SerializeField] private Texture2D normalCursor;
+    [SerializeField] private Texture2D wateringCanCursor;
+    [SerializeField] private Texture2D fertilizerBagCursor;
 
     // Garden State
     // Lista de parcelas
@@ -83,6 +94,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public ToolType CurrentTool
+    {
+        get { return currentTool; }
+        set
+        {
+            if (currentTool != value)
+            {
+                currentTool = value;
+                OnToolChanged?.Invoke(currentTool);
+                Debug.Log("Herramienta cambiada a: " + currentTool);
+            }
+        }
+    }
+
+    
+
     #endregion
 
 
@@ -102,6 +129,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentTool = ToolType.None; // No tiene cogida ninguna herramienta
 
         // Generar nivel
         plotsManager.CreatePlots(); // Inicializar parcelas

@@ -16,9 +16,11 @@ public class Plot : MonoBehaviour
     public Vector2Int gridCoordinates { get; set; }
     public Plant plantedPlant { get; set; }
 
+    private const int PLOT_LIMIT = 10;
+
     // Estado
-    [Range(0, 10)] [SerializeField] private int currentWater;
-    [Range(0, 10)] [SerializeField] private int currentFertility;
+    [Range(0, PLOT_LIMIT)] [SerializeField] private int currentWater;
+    [Range(0, PLOT_LIMIT)] [SerializeField] private int currentFertility;
     [SerializeField] private SolarExposure currentSolarExposure;
     [SerializeField] private bool isPlanted;
     
@@ -33,6 +35,59 @@ public class Plot : MonoBehaviour
         this.isPlanted = isPlanted;
     }
 
+    // Metodos privados
+    public void OnMouseDown()
+    {
+        if (GameManager.Instance == null) return;
+
+        switch (GameManager.Instance.CurrentTool) 
+        {
+            case ToolType.None:
+                // Seleccionar parcela...
+                Debug.Log($"Parcela {this.gridCoordinates} seleccionada.");
+                break;
+
+            case ToolType.WateringCan:
+                //Seleccionar parcela...
+
+                if (GameManager.Instance.CurrentWater > 0 && currentWater < PLOT_LIMIT) // Tiene agua y la parcela no esta llena
+                {
+                    GameManager.Instance.CurrentWater--; // Cosume agua del deposito
+                    this.currentWater++;
+                    Debug.Log($"Parcela {this.gridCoordinates} regada -> {currentWater} de agua");
+                } else if(GameManager.Instance.CurrentWater > 0 && currentWater >= PLOT_LIMIT) // Tiene agua pero la parcela etá llena
+                {
+                    Debug.Log($"No se puede regar, la parcela {gridCoordinates} está al máximo de agua.");
+                } else // No queda agua
+                {
+                    Debug.Log("No te queda agua.");
+                }
+                break;
+
+            case ToolType.FertilizerBag:
+                //Seleccionar parcela...
+
+                if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility < PLOT_LIMIT)
+                {
+                    GameManager.Instance.CurrentFertilizer--; // Consume abono del deposito
+                    this.currentFertility++;
+                    Debug.Log($"Parcela {this.gridCoordinates} abonada -> {currentFertility} de abono");
+
+                } else if(GameManager.Instance.CurrentFertilizer > 0 && currentFertility > PLOT_LIMIT)
+                {
+                    Debug.Log($"No se puede abonar, la parcela {gridCoordinates} está al máximo de abono.");
+                } else
+                {
+                    Debug.Log("No te queda abono");
+                }
+
+                break;
+        }
+    }
+
+
+
+    // Public methods
     public void InitializePlot(int x, int y)
     {
         gridCoordinates= new Vector2Int(x, y);
@@ -44,9 +99,6 @@ public class Plot : MonoBehaviour
         Debug.Log(this.ToString());
     }
 
-
-
-    // Public methods
     public void ChangeWater (int newCurrentWater)
     {
         this.currentWater  += newCurrentWater;

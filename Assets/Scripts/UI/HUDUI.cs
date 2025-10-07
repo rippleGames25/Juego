@@ -11,6 +11,11 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject PauseMenuPanel;
     [SerializeField] private GameObject HUDPanel;
 
+    [Header("Cursores")]
+    [SerializeField] private Texture2D normalCursor;
+    [SerializeField] private Texture2D wateringCanCursor;
+    [SerializeField] private Texture2D fertilizerBagCursor;
+
     [Header("Clima")]
     public TextMeshProUGUI currentWeatherText;
     public List<TextMeshProUGUI> forecastDayTexts;
@@ -39,6 +44,8 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnWaterChanged += UpdateWaterText;
             GameManager.Instance.OnFertilizerChanged += UpdateFertilizerText;
             GameManager.Instance.OnDayChanged += UpdateDayText;
+            GameManager.Instance.OnToolChanged += UpdateCursor;
+
         }
 
         if (WeatherManager.Instance != null)
@@ -110,6 +117,26 @@ public class HUDUI : MonoBehaviour
         if (dayText != null)
         {
             dayText.text = "Dia: " + value.ToString();
+        }
+    }
+
+    private void UpdateCursor(ToolType _type)
+    {
+        Cursor.SetCursor(ChooseCursor(), default, default);
+    }
+
+    private Texture2D ChooseCursor()
+    {
+        switch (GameManager.Instance.CurrentTool)
+        {
+            case ToolType.WateringCan:
+                return wateringCanCursor;
+
+            case ToolType.FertilizerBag:
+                return fertilizerBagCursor;
+
+            default:
+                return normalCursor;
         }
     }
 
