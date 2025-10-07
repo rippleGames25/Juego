@@ -7,7 +7,6 @@ public enum WeatherType
     Sunny,
     PartlySunny,
     Rainy,
-    Stormy,
     Hailing
 }
 
@@ -16,11 +15,11 @@ public class DailyWeather
     public WeatherType type;
     public int intensity;
     public int waterChange;
-    public int deathProbability;
+    public float deathProbability;
 
     public override string ToString()
     {
-        return $"{type} (Intensidad: {intensity}";
+        return $"{type} (Intensidad: {intensity})";
     }
 }
 
@@ -56,7 +55,7 @@ public class WeatherManager : MonoBehaviour
         OnForecastChanged?.Invoke(forecast);
     }
 
-    public void PassDay()
+    public DailyWeather PassDay()
     {
         // Actualizamos el clima actual
         currentWeather = forecast[0];
@@ -75,19 +74,42 @@ public class WeatherManager : MonoBehaviour
         OnForecastChanged?.Invoke(forecast);
 
         Debug.Log($"Clima de HOY: {currentWeather.type}. Previsión actualizada.");
+        return currentWeather;
     }
 
     public DailyWeather GenerateWeather()
     {
         Array values = Enum.GetValues(typeof(WeatherType));
         WeatherType randomType = (WeatherType)values.GetValue(UnityEngine.Random.Range(0, values.Length));
+        int randomIntensity = UnityEngine.Random.Range(1, 3);
+        int waterChangeAux = 0;
+        float deathProbabilityAux = 0;
+
+        switch (randomType)
+        {
+            case WeatherType.Sunny:
+                waterChangeAux = -randomIntensity; // Resta agua: -1, -2 o -3
+                break;
+            case WeatherType.PartlySunny:
+                // No resta agua
+                break;
+            case WeatherType.Rainy:
+                waterChangeAux = randomIntensity*2; // Suma agua: 2, 4 o 6
+                break;
+            case WeatherType.Hailing:
+                waterChangeAux = randomIntensity;   // Suma agua: 1, 2 o 3
+                deathProbabilityAux = randomIntensity/5f; // Probablidad de muerte de plantas pequeñas y con salud baja: 1/5, 2/5, 3/5
+                break;
+        }
+
+
 
         DailyWeather weather = new DailyWeather
         {
             type = randomType,
-            intensity = UnityEngine.Random.Range(1, 4),
-            waterChange = (randomType == WeatherType.Rainy) ? 2 : -2,
-            deathProbability = (randomType == WeatherType.Hailing) ? 10 : 0
+            intensity = randomIntensity,
+            waterChange = waterChangeAux,
+            deathProbability = deathProbabilityAux
         };
 
         return weather;

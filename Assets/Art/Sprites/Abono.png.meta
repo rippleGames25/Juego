@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: 98d9aa85dc84ca74593f33d46f6ab648
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1313518774242953668
+    second: Abono_0
+  - first:
+      213: 3745907852765597325
+    second: Abono_1
+  - first:
+      213: -3459435996631503616
+    second: Abono_2
+  - first:
+      213: -8910075225034293665
+    second: Abono_3
+  - first:
+      213: -8199044918338271144
+    second: Abono_4
+  - first:
+      213: -4982556513109719790
+    second: Abono_5
+  - first:
+      213: -7520587227449264912
+    second: Abono_6
+  - first:
+      213: -743770816001786324
+    second: Abono_7
+  - first:
+      213: 8445884789566832778
+    second: Abono_8
+  - first:
+      213: -3074264899727905815
+    second: Abono_9
+  - first:
+      213: -7627710105593680424
+    second: Abono_10
+  - first:
+      213: 3490575936596128115
+    second: Abono_11
+  - first:
+      213: 4844892511691606378
+    second: Abono_12
+  - first:
+      213: -2030154989118045902
+    second: Abono_13
+  - first:
+      213: -314789964391933355
+    second: Abono_14
+  - first:
+      213: 7967572389100551572
+    second: Abono_15
+  - first:
+      213: 2169904337440465939
+    second: Abono_16
+  - first:
+      213: 8620064145619359354
+    second: Abono_17
+  - first:
+      213: -3043303370917754143
+    second: Abono_18
+  - first:
+      213: -8429349591049502635
+    second: Abono_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Abono_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2487
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c9ce88ad5e8a3210800000000000000
+      internalID: 1313518774242953668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 2246
+        width: 248
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8e807d68532cf330800000000000000
+      internalID: 3745907852765597325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_2
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 111
+        width: 2412
+        height: 2382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d64993a4d9dffc0800000000000000
+      internalID: -3459435996631503616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_3
+      rect:
+        serializedVersion: 2
+        x: 2410
+        y: 2397
+        width: 90
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e72d95acd095480800000000000000
+      internalID: -8910075225034293665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_4
+      rect:
+        serializedVersion: 2
+        x: 2473
+        y: 1969
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 858c9f05614273e80800000000000000
+      internalID: -8199044918338271144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_5
+      rect:
+        serializedVersion: 2
+        x: 2410
+        y: 1796
+        width: 90
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21549c200476adab0800000000000000
+      internalID: -4982556513109719790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_6
+      rect:
+        serializedVersion: 2
+        x: 2473
+        y: 1368
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f4fb8d23c181a790800000000000000
+      internalID: -7520587227449264912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_7
+      rect:
+        serializedVersion: 2
+        x: 2410
+        y: 1195
+        width: 90
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2e39ed22689da5f0800000000000000
+      internalID: -743770816001786324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_8
+      rect:
+        serializedVersion: 2
+        x: 2473
+        y: 767
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a808108c77fc53570800000000000000
+      internalID: 8445884789566832778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_9
+      rect:
+        serializedVersion: 2
+        x: 2410
+        y: 594
+        width: 90
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eb2442ac540655d0800000000000000
+      internalID: -3074264899727905815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_10
+      rect:
+        serializedVersion: 2
+        x: 2473
+        y: 166
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dd6e62821ee42690800000000000000
+      internalID: -7627710105593680424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_11
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 101
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 371b65a0254017030800000000000000
+      internalID: 3490575936596128115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_12
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 0
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a69045ee1148c3340800000000000000
+      internalID: 4844892511691606378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_13
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 0
+        width: 96
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 231c1aa2bc073d3e0800000000000000
+      internalID: -2030154989118045902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_14
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 0
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55a9f89f134a1abf0800000000000000
+      internalID: -314789964391933355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_15
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 0
+        width: 96
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d7c86bfd0829e60800000000000000
+      internalID: 7967572389100551572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_16
+      rect:
+        serializedVersion: 2
+        x: 1687
+        y: 0
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 314e7bd8f7c0d1e10800000000000000
+      internalID: 2169904337440465939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_17
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 0
+        width: 96
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7619bc5bae90a770800000000000000
+      internalID: 8620064145619359354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_18
+      rect:
+        serializedVersion: 2
+        x: 2288
+        y: 0
+        width: 35
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eac2b055b304c5d0800000000000000
+      internalID: -3043303370917754143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Abono_19
+      rect:
+        serializedVersion: 2
+        x: 2410
+        y: 0
+        width: 90
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55009e1253fe40b80800000000000000
+      internalID: -8429349591049502635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Abono_0: 1313518774242953668
+      Abono_1: 3745907852765597325
+      Abono_10: -7627710105593680424
+      Abono_11: 3490575936596128115
+      Abono_12: 4844892511691606378
+      Abono_13: -2030154989118045902
+      Abono_14: -314789964391933355
+      Abono_15: 7967572389100551572
+      Abono_16: 2169904337440465939
+      Abono_17: 8620064145619359354
+      Abono_18: -3043303370917754143
+      Abono_19: -8429349591049502635
+      Abono_2: -3459435996631503616
+      Abono_3: -8910075225034293665
+      Abono_4: -8199044918338271144
+      Abono_5: -4982556513109719790
+      Abono_6: -7520587227449264912
+      Abono_7: -743770816001786324
+      Abono_8: 8445884789566832778
+      Abono_9: -3074264899727905815
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

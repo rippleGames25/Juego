@@ -20,13 +20,14 @@ public class GameManager : MonoBehaviour
     private int currentWater = 10;
     private int currentFertilizer = 10;
 
+    [SerializeField] private PlotsManager plotsManager;
 
     // Garden State
     // Lista de parcelas
     // Lista de plantas
 
     // Weather
-    private int currentWeather;
+    private DailyWeather currentWeather;
 
     #region Propiedades
     // Propiedades
@@ -101,7 +102,10 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         // Generar nivel
+        plotsManager.CreatePlots(); // Inicializar parcelas
+        
         // Generar planta inicial
         // Generar proximos eventos meteorologicos
         // Generar objetivo
@@ -118,11 +122,14 @@ public class GameManager : MonoBehaviour
     // Public Methods
     public void PassDay()
     {
+        // Actualizar plantas
+        UpdatePlants();
+
         CurrentDay++; // Pasar al dia siguiente
         Debug.Log("Dia " + currentDay);
 
         HandleWeatherEvent(); // Evento meteorológico
-        UpdatePlotAndPlants();// Actualizar estado de las plantas y parcelas
+        UpdatePlots();// Actualizar estado de las parcelas
         DistributeDailyResources();// Sumar recursos
         CheckWinCondition();// Condición de victoria
 
@@ -133,18 +140,20 @@ public class GameManager : MonoBehaviour
     private void HandleWeatherEvent()
     {
         // Pasar al evento meteorológico siguiente y generar uno nuevo
-        WeatherManager.Instance.PassDay();
+        currentWeather = WeatherManager.Instance.PassDay();
     }
 
-    private void UpdatePlotAndPlants()
+    private void UpdatePlants()
     {
-        // Evento meteorológico
-        // Actualizar parcelas
-
         // Actualizar plantas
         // Comprobar muertes
-
     }
+
+    private void UpdatePlots()
+    {
+        plotsManager.UpdatePlotsWater(currentWeather.waterChange); // Evento meteorológico
+    }
+
 
     private void DistributeDailyResources()
     {

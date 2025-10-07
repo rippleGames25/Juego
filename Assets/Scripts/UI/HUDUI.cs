@@ -57,7 +57,7 @@ public class HUDUI : MonoBehaviour
         for (int i = 0; i < forecastArray.Length && i < forecastDayTexts.Count; i++)
         {
             // Actualiza cada slot de la UI
-            forecastDayTexts[i].text = $"Día {i + 1}: {forecastArray[i].type}";
+            forecastDayTexts[i].text = $"Día {i + 1}: {forecastArray[i].ToString()}";
         }
     }
 
@@ -65,7 +65,7 @@ public class HUDUI : MonoBehaviour
     {
         if (currentWeatherText != null)
         {
-            currentWeatherText.text = $"HOY HACE: {weather.type}";
+            currentWeatherText.text = $"HOY HACE: {weather.ToString()}";
             // Efectos visuales
         }
     }
