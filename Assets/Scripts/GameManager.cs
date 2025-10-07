@@ -1,11 +1,13 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public enum ToolType
 {
     None,
     WateringCan,
-    FertilizerBag
+    FertilizerBag,
+    Plant
 }
 
 public class GameManager : MonoBehaviour
@@ -20,6 +22,15 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnDayChanged;
     public event Action<ToolType> OnToolChanged;
 
+    // Tipos de planta (ScriptableObjects)
+    [SerializeField] private PlantType plantTest;
+    //...
+
+
+    // Prefabs
+    [SerializeField] private GameObject plantTestPrefab;
+
+
     private ToolType currentTool;
     private int currentDay = 1;
 
@@ -32,10 +43,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture2D normalCursor;
     [SerializeField] private Texture2D wateringCanCursor;
     [SerializeField] private Texture2D fertilizerBagCursor;
+    [SerializeField] private Texture2D plantTestCursor;
 
     // Garden State
     // Lista de parcelas
-    // Lista de plantas
+    private List<Plant> plantedPlants = new List<Plant>(); // Lista de plantas
 
     // Weather
     private DailyWeather currentWeather;
@@ -139,13 +151,6 @@ public class GameManager : MonoBehaviour
         // Generar objetivo
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
 
     // Public Methods
     public void PassDay()
@@ -157,10 +162,29 @@ public class GameManager : MonoBehaviour
         Debug.Log("Dia " + currentDay);
 
         HandleWeatherEvent(); // Evento meteorológico
-        UpdatePlots();// Actualizar estado de las parcelas
+        DailyUpdatePlots();// Actualizar estado de las parcelas
         DistributeDailyResources();// Sumar recursos
         CheckWinCondition();// Condición de victoria
 
+    }
+
+    public void PlantSeed(Plot plot)
+    {
+        // Provisional con 1 tipo de planta
+        PlantType plantData = plantTest;
+        GameObject plantPrefab = plantTestPrefab;
+        ////////////////////////////////////
+
+        GameObject newPlantGO = Instantiate(plantPrefab, (plot.transform.position + new Vector3(0, 0, -1)), Quaternion.identity);
+
+        Plant newPlant = newPlantGO.GetComponent<Plant>(); // Referencia al Plant del GO
+        newPlant.InitializePlant(plot.gridCoordinates, plantData);
+
+        plot.currentPlant= newPlant; // Asociamos la planta a la parcela
+        plot.isPlanted = true;
+
+        plantedPlants.Add(newPlant); // Añadimos a la lista de plantas
+        Debug.Log($"Semilla de {plantData.name} plantada en la parcela {plot.gridCoordinates}");
     }
 
 
@@ -177,9 +201,10 @@ public class GameManager : MonoBehaviour
         // Comprobar muertes
     }
 
-    private void UpdatePlots()
+    private void DailyUpdatePlots()
     {
-        plotsManager.UpdatePlotsWater(currentWeather.waterChange); // Evento meteorológico
+        plotsManager.DailyUpdatePlotsWater(currentWeather.waterChange); 
+        plotsManager.DailyUpdatePlotsFertilizer();
     }
 
 

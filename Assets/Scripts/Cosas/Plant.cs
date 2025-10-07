@@ -18,18 +18,19 @@ enum Health
 public class Plant : MonoBehaviour
 {
     // Variables
-    private Plot plot;
-    private PlantType plantType;
+    [SerializeField] public PlantType plantData;
+
+    private Vector2 plotCoordinates;
     private GrowthState currentGrowth;
     private Health currentHealth;
     private int lifeDays;
     
 
     //Constructor
-    public Plant (Plot _plot, PlantType _plantType)
+    public Plant (Vector2 _plot, PlantType _plantData)
     {
-        this.plot = _plot;
-        this.plantType = _plantType;
+        this.plotCoordinates = _plot;
+        this.plantData = _plantData;
         
         this.currentHealth= Health.good; // good
         this.currentGrowth = GrowthState.seed; // seed
@@ -42,17 +43,23 @@ public class Plant : MonoBehaviour
 
     }
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void InitializePlant(Vector2 _plotCoordinates, PlantType _type)
     {
-        
+        plotCoordinates = _plotCoordinates;
+        plantData = _type;
+        lifeDays = 0;
+        currentGrowth = GrowthState.seed; // Comienza como semilla
+        currentHealth = Health.good; // Comienza con salud perfecta
     }
 
-    // Update is called once per frame
-    void Update()
+    public int ConsumeWater()
     {
-        
+        return plantData.waterDemand;
     }
+
+    public int ConsumeFertilizer()
+    {
+        return plantData.fertilizerDemand;
+    }
+
 }

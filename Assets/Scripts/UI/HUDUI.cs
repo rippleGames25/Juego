@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
-using System.Security.Cryptography;
 
 public class HUDUI : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private Texture2D normalCursor;
     [SerializeField] private Texture2D wateringCanCursor;
     [SerializeField] private Texture2D fertilizerBagCursor;
+    [SerializeField] private Texture2D plantTestCursor;
 
     [Header("Clima")]
     public TextMeshProUGUI currentWeatherText;
@@ -55,8 +55,7 @@ public class HUDUI : MonoBehaviour
 
             UpdateCurrentWeatherDisplay(WeatherManager.Instance.currentWeather); 
             UpdateForecastDisplay(WeatherManager.Instance.forecast); 
-        }
-        
+        } 
     }
 
     private void UpdateForecastDisplay(DailyWeather[] forecastArray)
@@ -134,6 +133,9 @@ public class HUDUI : MonoBehaviour
 
             case ToolType.FertilizerBag:
                 return fertilizerBagCursor;
+
+            case ToolType.Plant:
+                return plantTestCursor;
 
             default:
                 return normalCursor;

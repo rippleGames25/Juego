@@ -42,12 +42,33 @@ public class PlotsManager : MonoBehaviour
         }
     }
 
-    public void UpdatePlotsWater(int _waterChange)
+    public void DailyUpdatePlotsWater(int _waterChange)
     {
         foreach (Plot plot in plotGrid) 
         {
-            plot.ChangeWater(_waterChange);
+            plot.ChangeWater(_waterChange); // Agua segun evento meteorologico
+
+            if (plot.isPlanted)
+            {
+                plot.ChangeWater(plot.currentPlant.ConsumeWater()); // Agua que consume la planta
+            }
+            
+            plot.UpdatePlotVisuals();
         }
+        Debug.Log("Consumo de agua diario hecho + cambio de agua por evento meteorologico.");
+    }
+
+    public void DailyUpdatePlotsFertilizer()
+    {
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot.isPlanted)
+            {
+                plot.ChangeFertility(-plot.currentPlant.ConsumeFertilizer()); // Agua que consume la planta
+                Debug.Log("—am—am");
+            }
+        }
+        Debug.Log("Consumo de fertilizante diario hecho.");
     }
 
 
