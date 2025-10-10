@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
 
@@ -30,9 +31,10 @@ public class GameManager : MonoBehaviour
     // Prefabs
     [SerializeField] private GameObject plantTestPrefab;
 
-
+    private int winCondition;
     private ToolType currentTool;
     private int currentDay = 1;
+    private int biodiversity = 0;
 
     // Resources
     private int currentMoney = 100;
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
             if (currentMoney != value)
             {
                 currentMoney = value;
+                Debug.Log("El dinero ha cambiado a " + currentMoney);
                 OnMoneyChanged?.Invoke(currentMoney);
             }
         }
@@ -145,26 +148,28 @@ public class GameManager : MonoBehaviour
 
         // Generar nivel
         plotsManager.CreatePlots(); // Inicializar parcelas
-        
+
         // Generar planta inicial
         // Generar proximos eventos meteorologicos
         // Generar objetivo
+        GenerateWinCondition();
+
     }
 
 
     // Public Methods
     public void PassDay()
     {
-        // Actualizar plantas
-        UpdatePlants();
+        CheckWinCondition(); // Condición de victoria
 
         CurrentDay++; // Pasar al dia siguiente
         Debug.Log("Dia " + currentDay);
 
+
         HandleWeatherEvent(); // Evento meteorológico
-        DailyUpdatePlots();// Actualizar estado de las parcelas
+        DailyUpdatePlotsAndPlants();// Actualizar estado de las parcelas
         DistributeDailyResources();// Sumar recursos
-        CheckWinCondition();// Condición de victoria
+
 
     }
 
@@ -174,11 +179,20 @@ public class GameManager : MonoBehaviour
         PlantType plantData = plantTest;
         GameObject plantPrefab = plantTestPrefab;
         ////////////////////////////////////
+        
+
+        if(plantData.price > currentMoney) // No tiene suficiente dinero
+        {
+            Debug.Log("No tienes dinero suficiente para comprar la planta");
+            return;
+        }
+
+        EarnMoney(-plantData.price); // Restar el dinero que cuesta la planta
 
         GameObject newPlantGO = Instantiate(plantPrefab, (plot.transform.position + new Vector3(0, 0, -1)), Quaternion.identity);
 
         Plant newPlant = newPlantGO.GetComponent<Plant>(); // Referencia al Plant del GO
-        newPlant.InitializePlant(plot.gridCoordinates, plantData);
+        newPlant.InitializePlant(plantData);
 
         plot.currentPlant= newPlant; // Asociamos la planta a la parcela
         plot.isPlanted = true;
@@ -195,16 +209,10 @@ public class GameManager : MonoBehaviour
         currentWeather = WeatherManager.Instance.PassDay();
     }
 
-    private void UpdatePlants()
-    {
-        // Actualizar plantas
-        // Comprobar muertes
-    }
 
-    private void DailyUpdatePlots()
+    private void DailyUpdatePlotsAndPlants()
     {
-        plotsManager.DailyUpdatePlotsWater(currentWeather.waterChange); 
-        plotsManager.DailyUpdatePlotsFertilizer();
+        plotsManager.DailyUpdate(currentWeather);
     }
 
 
@@ -217,9 +225,21 @@ public class GameManager : MonoBehaviour
         EarnFertilizer(amount*5); // Sumar dinero
     }
 
+    private void GenerateWinCondition()
+    {
+        // De momento fija
+        winCondition = 5;
+    }
+
     private void CheckWinCondition()
     {
         // Comparar el objetivo con el estado actual
+        if (biodiversity == winCondition)
+        {
+            Debug.Log("Has llegado al objetivo de biodiversidad. Enhorabuena");
+            SceneManager.LoadScene("GameOver");
+        }
+
     }
 
     private int CalculateResourcesAmount()

@@ -3,7 +3,8 @@ using UnityEngine;
 enum GrowthState
 {
     seed,
-    sprouted,
+    sprout,
+    young,
     mature,
     death
 }
@@ -20,36 +21,51 @@ public class Plant : MonoBehaviour
     // Variables
     [SerializeField] public PlantType plantData;
 
-    private Vector2 plotCoordinates;
+    //private Vector2 plotCoordinates;
     private GrowthState currentGrowth;
     private Health currentHealth;
     private int lifeDays;
+
+    //Visuals
+    private SpriteRenderer spriteRenderer;
+
+
     
 
     //Constructor
-    public Plant (Vector2 _plot, PlantType _plantData)
+    public Plant (PlantType _plantData)
     {
-        this.plotCoordinates = _plot;
         this.plantData = _plantData;
-        
         this.currentHealth= Health.good; // good
         this.currentGrowth = GrowthState.seed; // seed
         lifeDays= 0;
     }
 
-    // Public methods
-    public void CalculateHealth()
+    void Awake()
     {
+        spriteRenderer= GetComponent<SpriteRenderer>();
 
+        if(spriteRenderer == null )
+        {
+            Debug.LogError("Plant: no se encontro el spriterenderer");
+        }
     }
 
-    public void InitializePlant(Vector2 _plotCoordinates, PlantType _type)
+    // Private methods
+    private void UpdateGrowth()
     {
-        plotCoordinates = _plotCoordinates;
+ 
+    }
+
+    // Public methods
+    public void InitializePlant(PlantType _type)
+    {
         plantData = _type;
         lifeDays = 0;
         currentGrowth = GrowthState.seed; // Comienza como semilla
         currentHealth = Health.good; // Comienza con salud perfecta
+
+        spriteRenderer.sprite = plantData.plantSprites[0];
     }
 
     public int ConsumeWater()
@@ -60,6 +76,45 @@ public class Plant : MonoBehaviour
     public int ConsumeFertilizer()
     {
         return plantData.fertilizerDemand;
+    }
+
+    public void CalculateHealth()
+    {
+
+    }
+
+    public void UpdateLifeDays()
+    {
+        lifeDays++;
+
+        if(currentGrowth == GrowthState.mature)
+        {
+            return;
+        } 
+        else if (currentGrowth == GrowthState.seed && lifeDays >= plantData.timeToSprout) 
+        {
+            currentGrowth++; // Brotar
+            UpdatePlantVisuals((int) currentGrowth);
+            Debug.Log($"La planta {plantData.name} ha brotado.");
+        } 
+        else if (currentGrowth == GrowthState.sprout && lifeDays >= plantData.timeToGrow)
+        {
+            currentGrowth++; // Crecer hasta Joven
+            UpdatePlantVisuals((int)currentGrowth);
+            Debug.Log($"La planta {plantData.name} ha crecido.");
+        }
+        else if (currentGrowth == GrowthState.young && lifeDays >= plantData.timeToMature)
+        {
+            currentGrowth++; // Crecer hasta madura
+            UpdatePlantVisuals((int)currentGrowth);
+            Debug.Log($"La planta {plantData.name} ha madurado.");
+        }
+    }
+
+    // Metodos de visualización
+    private void UpdatePlantVisuals(int state)
+    {
+        spriteRenderer.sprite = plantData.plantSprites[state];
     }
 
 }
