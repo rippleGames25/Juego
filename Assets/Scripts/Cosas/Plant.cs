@@ -21,6 +21,7 @@ public class Plant : MonoBehaviour
     // Variables
     [SerializeField] public PlantType plantData;
 
+
     //private Vector2 plotCoordinates;
     private GrowthState currentGrowth;
     private Health currentHealth;
@@ -28,9 +29,6 @@ public class Plant : MonoBehaviour
 
     //Visuals
     private SpriteRenderer spriteRenderer;
-
-
-    
 
     //Constructor
     public Plant (PlantType _plantData)
@@ -49,12 +47,6 @@ public class Plant : MonoBehaviour
         {
             Debug.LogError("Plant: no se encontro el spriterenderer");
         }
-    }
-
-    // Private methods
-    private void UpdateGrowth()
-    {
- 
     }
 
     // Public methods
@@ -78,9 +70,36 @@ public class Plant : MonoBehaviour
         return plantData.fertilizerDemand;
     }
 
-    public void CalculateHealth()
+    public bool LowerHealth()
     {
+        if(currentHealth== Health.good)
+        {
+            currentHealth= Health.moderate;
+        } else if(currentHealth== Health.moderate) 
+        {
+            currentHealth= Health.bad;
+        } else
+        {
+            return true; // La planta ha muerto
+        }
 
+        return false;
+    }
+
+    public void IncreaseHealth()
+    {
+        if (currentHealth == Health.bad)
+        {
+            currentHealth = Health.moderate;
+        }
+        else if (currentHealth == Health.moderate)
+        {
+            currentHealth = Health.good;
+        }
+        else
+        {
+            Debug.Log($"Planta sana");
+        }
     }
 
     public void UpdateLifeDays()

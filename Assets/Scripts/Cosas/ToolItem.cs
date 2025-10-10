@@ -3,8 +3,9 @@ using UnityEngine;
 public class ToolItem : MonoBehaviour
 {
     [SerializeField] private ToolType type;
+    [SerializeField] private GameObject selectionOn;
 
-    public void Start()
+    void Start()
     {
         if(GameManager.Instance!= null)
         {
@@ -29,8 +30,8 @@ public class ToolItem : MonoBehaviour
 
     private void UpdateTool(ToolType _type)
     {
-        if (this.type == _type) { this.GetComponent<SpriteRenderer>().enabled = false; } // Desactivar Imagen
-        else { this.GetComponent<SpriteRenderer>().enabled = true; }
+        if (this.type == _type) { selectionOn.SetActive(true); } // Activar fondo de seleccion
+        else { selectionOn.SetActive(false); }
     }
 
 

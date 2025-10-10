@@ -46,8 +46,15 @@ public class PlotsManager : MonoBehaviour
     public void DailyUpdate(DailyWeather _currentWeather)
     {
         UpdatePlants();
-        DailyUpdatePlotsWater(_currentWeather.waterChange);
+        DailyUpdatePlants();
         DailyUpdatePlotsFertilizer();
+
+        DailyUpdateWeatherWater(_currentWeather.waterChange);
+    }
+
+    public void PlantsDeath(Plant plantToDeath)
+    {
+        GameManager.Instance.PlantsDeath(plantToDeath);
     }
 
     // Metodos privados
@@ -63,22 +70,57 @@ public class PlotsManager : MonoBehaviour
             
         }
     }
-    private void DailyUpdatePlotsWater(int _waterChange)
+
+    private void DailyUpdatePlants()
+    {
+        int waterDemand;
+        int fertilizerDemand;
+
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot.isPlanted) // Si esta plantada
+            {
+                waterDemand = plot.currentPlant.ConsumeWater();
+                fertilizerDemand = plot.currentPlant.ConsumeFertilizer();
+
+                if (waterDemand > plot.currentWater || fertilizerDemand > plot.currentFertility)
+                {
+                    Debug.Log($"La parcela {plot.gridCoordinates} no puede cubrir las necesidades de su planta");
+                    if (plot.currentPlant.LowerHealth()) // true si la planta ha muerto
+                    {
+                        PlantsDeath(plot.currentPlant);
+                        plot.currentPlant = null;
+                        plot.isPlanted= false;
+                    }
+
+                } else
+                {
+                    plot.currentPlant.IncreaseHealth();
+                }
+
+                plot.ChangeWater(waterDemand); // Agua que consume la planta
+                plot.ChangeFertility(fertilizerDemand); // Abono que consume la planta
+
+                plot.UpdatePlotWaterVisuals();
+                plot.UpdatePlotFertilizerVisuals();
+            }
+
+        }
+        Debug.Log("Consumo de agua y abono diario de plantas hecho.");
+    }
+
+    private void DailyUpdateWeatherWater(int _waterChange)
     {
         foreach (Plot plot in plotGrid) 
         {
             plot.ChangeWater(_waterChange); // Agua segun evento meteorologico
-
-            if (plot.isPlanted)
-            {
-                plot.ChangeWater(plot.currentPlant.ConsumeWater()); // Agua que consume la planta
-            }
             
             plot.UpdatePlotWaterVisuals();
         }
-        Debug.Log("Consumo de agua diario hecho + cambio de agua por evento meteorologico.");
+        Debug.Log("Cambio de agua por evento meteorologico.");
     }
 
+    
     private void DailyUpdatePlotsFertilizer()
     {
         foreach (Plot plot in plotGrid)

@@ -20,8 +20,8 @@ public class Plot : MonoBehaviour
     private const int PLOT_LIMIT = 10;
 
     // Estado
-    [Range(0, PLOT_LIMIT)] [SerializeField] private int currentWater;
-    [Range(0, PLOT_LIMIT)] [SerializeField] private int currentFertility;
+    [Range(0, PLOT_LIMIT)] [SerializeField] public int currentWater;
+    [Range(0, PLOT_LIMIT)] [SerializeField] public int currentFertility;
     [SerializeField] private SolarExposure currentSolarExposure;
     [SerializeField] public bool isPlanted;
 
@@ -83,12 +83,15 @@ public class Plot : MonoBehaviour
         }
 
         this.currentWater  += waterChange; // Agua aportada por evento meteorologico
-        
+
+        this.currentWater = Mathf.Clamp(this.currentWater, 0, PLOT_LIMIT);
+
     }
 
     public void ChangeFertility(int newCurrentFertility)
     {
         this.currentFertility += newCurrentFertility;
+        this.currentFertility = Mathf.Clamp(this.currentFertility, 0, PLOT_LIMIT);
     }
 
     public void ChangeSolarExposure(int newSolarExposure)

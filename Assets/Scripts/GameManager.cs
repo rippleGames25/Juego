@@ -201,6 +201,12 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Semilla de {plantData.name} plantada en la parcela {plot.gridCoordinates}");
     }
 
+    public void PlantsDeath(Plant plantToDeath)
+    {
+        Debug.Log($"La planta {plantToDeath.plantData.name} ha muerto porque no has cubierto sus necesidades");
+        Destroy(plantToDeath.gameObject);
+    }
+
 
     // Private Methods
     private void HandleWeatherEvent()
