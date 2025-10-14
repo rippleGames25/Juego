@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ToolItem : MonoBehaviour
 {
-    [SerializeField] private ToolType type;
+    [SerializeField] public ToolType type;
     [SerializeField] private GameObject selectionOn;
 
     void Start()
@@ -10,21 +10,6 @@ public class ToolItem : MonoBehaviour
         if(GameManager.Instance!= null)
         {
             GameManager.Instance.OnToolChanged += UpdateTool;
-        }
-    }
-
-    public void OnMouseDown()
-    {
-        if(GameManager.Instance != null)
-        {
-            if(GameManager.Instance.CurrentTool == type)
-            {
-                GameManager.Instance.CurrentTool = ToolType.None; // Si ya la tiene, la desactiva
-            }
-            else
-            {
-                GameManager.Instance.CurrentTool = type; // Si no la tiene la equipa
-            }
         }
     }
 

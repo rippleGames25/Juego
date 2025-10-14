@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-
 
 public enum SolarExposure
 {
@@ -16,6 +16,8 @@ public class Plot : MonoBehaviour
     public Vector2Int gridCoordinates { get; set; }
     public Plant currentPlant { get; set; }
 
+    public GameObject selectionBorder;
+
 
     private const int PLOT_LIMIT = 10;
 
@@ -26,6 +28,7 @@ public class Plot : MonoBehaviour
     [SerializeField] public bool isPlanted;
 
     private SpriteRenderer sr;
+
 
     // Constructor
     public Plot(int _currentWater, int _currentFertility, int _currentSolarExposure, bool isPlanted)
@@ -43,6 +46,8 @@ public class Plot : MonoBehaviour
 
     void Start()
     {
+        selectionBorder = this.transform.GetChild(0).gameObject; // Obtenemos el contorno de seleccion
+
         UpdatePlotWaterVisuals();
         UpdatePlotFertilizerVisuals();
     }
@@ -56,8 +61,8 @@ public class Plot : MonoBehaviour
     public void InitializePlot(int x, int y)
     {
         gridCoordinates= new Vector2Int(x, y);
-        currentFertility = Random.Range(5, 8);
-        currentWater = Random.Range(5, 8);
+        currentFertility = UnityEngine.Random.Range(5, 8);
+        currentWater = UnityEngine.Random.Range(5, 8);
         currentSolarExposure = SolarExposure.Fullsun; // Temporalmente todas sol
         isPlanted = false; // Se inicializa vacia
         currentPlant = null; // No hay planta
@@ -106,15 +111,15 @@ public class Plot : MonoBehaviour
     }
 
 
-    public void OnMouseDown()
+    public void SelectPlot()
     {
-        if (GameManager.Instance == null) return;
 
         switch (GameManager.Instance.CurrentTool)
         {
             case ToolType.None:
-                // Seleccionar parcela...
+                
                 Debug.Log($"Parcela {this.gridCoordinates} seleccionada.");
+                PlotsManager.Instance.PlotSelected(this);
                 break;
 
             case ToolType.WateringCan:
@@ -148,7 +153,7 @@ public class Plot : MonoBehaviour
                     Debug.Log($"Parcela {this.gridCoordinates} abonada -> {currentFertility} de abono");
 
                 }
-                else if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility > PLOT_LIMIT)
+                else if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility >= PLOT_LIMIT)
                 {
                     Debug.Log($"No se puede abonar, la parcela {gridCoordinates} está al máximo de abono.");
                 }
@@ -162,7 +167,8 @@ public class Plot : MonoBehaviour
             case ToolType.Plant:
                 if (!this.isPlanted)
                 {
-                    GameManager.Instance.PlantSeed(this);
+                    int plantType = ShopManager.Instance.selectedPlantType.idx;
+                    GameManager.Instance.PlantSeed(this, plantType);
 
                 }
                 else

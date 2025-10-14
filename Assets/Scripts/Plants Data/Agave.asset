@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b1ffcf7d5a5e54492c212ffca2bc33, type: 3}
+  m_Name: Agave
+  m_EditorClassIdentifier: 
+  idx: 1
+  name: Plantita
+  description: Lorem Ipsun
+  waterDemand: 1
+  fertilizerDemand: 3
+  solarExposureDemand: 0
+  timeToSprout: 3
+  timeToGrow: 6
+  timeToMature: 9
+  category: 2
+  price: 50
+  plantSprites:
+  - {fileID: 6810703857275554091, guid: 3f0e198b972223144a950e0f52b855e4, type: 3}
+  - {fileID: -4969008426354808582, guid: d19e8b2581f05c845948af8c1690cf9f, type: 3}
+  - {fileID: 9215005283880035983, guid: 9f25f350f03019a44899251b40fca8d3, type: 3}
+  - {fileID: -6658723539197221182, guid: 9376b803ce1cd5e4480f9ba3c6c421f9, type: 3}
+  seedPrefab: {fileID: 0}

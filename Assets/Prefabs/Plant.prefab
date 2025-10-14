@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2152942651546854053}
   - component: {fileID: 9088483296999519272}
   m_Layer: 0
-  m_Name: PlantTest
+  m_Name: Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 6143464200247259328, guid: fbb2bd1f30d52a647a0769004a4417cf, type: 3}
+  m_Sprite: {fileID: 1413505114078196444, guid: fccd2bb0bae78254cbb7bf0fc925d269, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,3 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantData: {fileID: 0}
+  currentGrowth: 0
+  currentHealth: 2
+  lifeDays: 0

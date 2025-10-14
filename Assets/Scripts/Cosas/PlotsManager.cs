@@ -1,9 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.EventSystems;
 
 public class PlotsManager : MonoBehaviour
 {
+    public static PlotsManager Instance;
+
     [SerializeField] private GameObject plotPrefab;
 
     [SerializeField] private int rows = 6;
@@ -12,10 +15,31 @@ public class PlotsManager : MonoBehaviour
 
     private Plot[,] plotGrid;
 
+    public Plot currentSelectedPlot;
+
+    // Events
+    public event Action<Plot> OnPlotSelected;
+    public event Action OnPlotUnselected;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
     void Start()
     {
         plotGrid = new Plot[rows, columns];
     }
+
+
 
     // Metodos publicos
     public void CreatePlots()
@@ -55,6 +79,33 @@ public class PlotsManager : MonoBehaviour
     public void PlantsDeath(Plant plantToDeath)
     {
         GameManager.Instance.PlantsDeath(plantToDeath);
+    }
+
+    public void PlotSelected(Plot _plot)
+    {
+        // Si hace click en la parcela ya seleccionada
+        if(currentSelectedPlot!= null && currentSelectedPlot == _plot)
+        {
+            PlotUnselected(currentSelectedPlot);
+            return;
+        }
+
+        // Si hace click en una parcela que no esta seleccionada
+        if(currentSelectedPlot!=null) PlotUnselected(currentSelectedPlot); // Deselecciona la que haya seleccionada
+        currentSelectedPlot = _plot;
+        currentSelectedPlot.selectionBorder.SetActive(true);
+
+        OnPlotSelected?.Invoke(currentSelectedPlot); // Invocar evento 
+    }
+
+    public void PlotUnselected(Plot plot)
+    {
+        if(currentSelectedPlot!= null && currentSelectedPlot==plot) {
+            currentSelectedPlot.selectionBorder.SetActive(false);
+            currentSelectedPlot = null;
+            OnPlotUnselected?.Invoke(); // Invocar evento
+        }
+
     }
 
     // Metodos privados
@@ -98,8 +149,8 @@ public class PlotsManager : MonoBehaviour
                     plot.currentPlant.IncreaseHealth();
                 }
 
-                plot.ChangeWater(waterDemand); // Agua que consume la planta
-                plot.ChangeFertility(fertilizerDemand); // Abono que consume la planta
+                plot.ChangeWater(-waterDemand); // Agua que consume la planta
+                plot.ChangeFertility(-fertilizerDemand); // Abono que consume la planta
 
                 plot.UpdatePlotWaterVisuals();
                 plot.UpdatePlotFertilizerVisuals();
@@ -128,7 +179,7 @@ public class PlotsManager : MonoBehaviour
             if (plot.isPlanted)
             {
                 plot.ChangeFertility(-plot.currentPlant.ConsumeFertilizer()); // Agua que consume la planta
-                Debug.Log("—am—am");
+                plot.UpdatePlotFertilizerVisuals() ;
             }
         }
         Debug.Log("Consumo de fertilizante diario hecho.");

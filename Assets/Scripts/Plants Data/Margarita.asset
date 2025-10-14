@@ -10,20 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16b1ffcf7d5a5e54492c212ffca2bc33, type: 3}
-  m_Name: PlantTest
+  m_Name: Margarita
   m_EditorClassIdentifier: 
-  name: Planta Test
-  seedPrefab: {fileID: 6885785951640609389, guid: c7850ad3d49f85f479e19b2fe79023e7, type: 3}
-  price: 50
+  idx: 0
+  name: Margarita
+  description: Lorem Ipsun
   waterDemand: 2
   fertilizerDemand: 2
   solarExposureDemand: 0
-  isTall: 0
   timeToSprout: 3
   timeToGrow: 6
-  timeToMature: 3
+  timeToMature: 9
+  category: 1
+  price: 50
   plantSprites:
   - {fileID: 6810703857275554091, guid: 3f0e198b972223144a950e0f52b855e4, type: 3}
   - {fileID: -4969008426354808582, guid: d19e8b2581f05c845948af8c1690cf9f, type: 3}
-  - {fileID: 5593258439479220149, guid: 7bc54fd85a116294e84efcdfec564f4f, type: 3}
+  - {fileID: 9215005283880035983, guid: 9f25f350f03019a44899251b40fca8d3, type: 3}
   - {fileID: 1413505114078196444, guid: fccd2bb0bae78254cbb7bf0fc925d269, type: 3}
+  seedPrefab: {fileID: 6885785951640609389, guid: c7850ad3d49f85f479e19b2fe79023e7, type: 3}

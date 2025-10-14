@@ -14,7 +14,8 @@ public enum PlantCategory
 public class PlantType : ScriptableObject
 {
     // Variables
-    public string name = "Plantita";
+    public int idx = 0;
+    public new string name = "Plantita";
     public string description = "Lorem Ipsun";
 
     [Header("Características")]

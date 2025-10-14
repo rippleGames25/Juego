@@ -1,6 +1,6 @@
 using UnityEngine;
 
-enum GrowthState
+public enum GrowthState
 {
     seed,
     sprout,
@@ -9,7 +9,7 @@ enum GrowthState
     death
 }
 
-enum Health
+public enum Health
 {
     bad,
     moderate, 
@@ -23,9 +23,9 @@ public class Plant : MonoBehaviour
 
 
     //private Vector2 plotCoordinates;
-    private GrowthState currentGrowth;
-    private Health currentHealth;
-    private int lifeDays;
+    public GrowthState currentGrowth;
+    public Health currentHealth;
+    public int lifeDays;
 
     //Visuals
     private SpriteRenderer spriteRenderer;
@@ -48,6 +48,7 @@ public class Plant : MonoBehaviour
             Debug.LogError("Plant: no se encontro el spriterenderer");
         }
     }
+
 
     // Public methods
     public void InitializePlant(PlantType _type)

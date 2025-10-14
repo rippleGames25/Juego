@@ -24,12 +24,12 @@ public class GameManager : MonoBehaviour
     public event Action<ToolType> OnToolChanged;
 
     // Tipos de planta (ScriptableObjects)
-    [SerializeField] private PlantType plantTest;
+    [SerializeField] private List<PlantType> plantsSO;
     //...
 
 
     // Prefabs
-    [SerializeField] private GameObject plantTestPrefab;
+    [SerializeField] private GameObject plantPrefab;
 
     private int winCondition;
     private ToolType currentTool;
@@ -156,9 +156,18 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            HandleInput();
+        }
+    }
+  
 
-    // Public Methods
-    public void PassDay()
+
+// Public Methods
+public void PassDay()
     {
         CheckWinCondition(); // Condición de victoria
 
@@ -173,13 +182,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void PlantSeed(Plot plot)
+    public void PlantSeed(Plot plot, int idx)
     {
-        // Provisional con 1 tipo de planta
-        PlantType plantData = plantTest;
-        GameObject plantPrefab = plantTestPrefab;
-        ////////////////////////////////////
-        
+        PlantType plantData = plantsSO[idx];        
 
         if(plantData.price > currentMoney) // No tiene suficiente dinero
         {
@@ -198,6 +203,9 @@ public class GameManager : MonoBehaviour
         plot.isPlanted = true;
 
         plantedPlants.Add(newPlant); // Añadimos a la lista de plantas
+
+        CurrentTool = ToolType.None; // Desequipamos la semilla
+        
         Debug.Log($"Semilla de {plantData.name} plantada en la parcela {plot.gridCoordinates}");
     }
 
@@ -209,6 +217,51 @@ public class GameManager : MonoBehaviour
 
 
     // Private Methods
+
+    private void HandleInput()
+    {
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Convertir mouse a posicion del mundo
+        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero); // Lanzar rayo
+
+        if (hit.collider != null) // Si colisiona
+        {
+            GameObject hitObject = hit.collider.gameObject;
+
+            if (hitObject.CompareTag("Tool")) // Herramienta
+            {
+                ToolItem tool = hitObject.GetComponent<ToolItem>();
+
+                if (CurrentTool == tool.type)
+                {
+                    CurrentTool = ToolType.None; // Si ya la tiene, la desactiva
+                }
+                else
+                {
+                    CurrentTool = tool.type; // Si no la tiene la equipa
+                }
+            }
+            else if (hitObject.CompareTag("Plot"))
+            {
+                Plot plot = hitObject.GetComponent<Plot>(); // Parcela
+
+                plot.SelectPlot();
+
+            }
+        } else
+        {
+            // Si no ha colisionado con nada
+            Plot _currentSelectedPlot = PlotsManager.Instance.currentSelectedPlot;
+            this.CurrentTool = ToolType.None;
+
+            if (_currentSelectedPlot != null)
+            {
+                PlotsManager.Instance.PlotUnselected(_currentSelectedPlot); // Deseleccionar Parcela
+
+            }
+        }
+
+    }
+
     private void HandleWeatherEvent()
     {
         // Pasar al evento meteorológico siguiente y generar uno nuevo

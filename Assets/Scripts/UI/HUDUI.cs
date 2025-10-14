@@ -9,6 +9,8 @@ public class HUDUI : MonoBehaviour
     [Header("Paneles")]
     [SerializeField] private GameObject PauseMenuPanel;
     [SerializeField] private GameObject HUDPanel;
+    [SerializeField] private GameObject plantInfoPanel;
+    [SerializeField] private GameObject plotInfoPanel;
 
     [Header("Cursores")]
     [SerializeField] private Texture2D normalCursor;
@@ -28,8 +30,23 @@ public class HUDUI : MonoBehaviour
     [Header("Progreso")]
     [SerializeField] private TextMeshProUGUI dayText;
 
+    [Header("Panel Info")]
+    [SerializeField] private Image plantPhoto;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI growthState;
+    [SerializeField] private TextMeshProUGUI health;
+    [SerializeField] private TextMeshProUGUI resourcesDemand;
+    [SerializeField] private TextMeshProUGUI plotInfo;
+
+
+
     private void Start()
     {
+        // Ocultar paneles
+        plantInfoPanel.SetActive(false);
+        plotInfoPanel.SetActive(false);
+
+
         // Actualizar UI
         UpdateMoneyText(GameManager.Instance.CurrentMoney);
         UpdateWaterText(GameManager.Instance.CurrentWater);
@@ -45,6 +62,8 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnFertilizerChanged += UpdateFertilizerText;
             GameManager.Instance.OnDayChanged += UpdateDayText;
             GameManager.Instance.OnToolChanged += UpdateCursor;
+            PlotsManager.Instance.OnPlotSelected += ShowInfoPanel;
+            PlotsManager.Instance.OnPlotUnselected += UnShowInfoPanel;
 
         }
 
@@ -56,6 +75,49 @@ public class HUDUI : MonoBehaviour
             UpdateCurrentWeatherDisplay(WeatherManager.Instance.currentWeather); 
             UpdateForecastDisplay(WeatherManager.Instance.forecast); 
         } 
+    }
+
+    private void ShowInfoPanel(Plot plot)
+    {
+        ShowPlotInfoPanel(plot);
+
+        if (plot.isPlanted)
+        {
+            ShowPlantInfoPanel(plot.currentPlant);
+        } else
+        {
+            plantInfoPanel.SetActive(false);
+        }
+    }
+
+    private void ShowPlotInfoPanel(Plot plot)
+    {
+        plotInfo.text = $"Parcela {plot.gridCoordinates}\n" +
+            $"Agua: {plot.currentWater}\n" +
+            $"Abono: {plot.currentFertility}\n";
+
+        plotInfoPanel.SetActive(true);
+    }
+
+    private void ShowPlantInfoPanel(Plant plant)
+    {
+        nameText.text= plant.plantData.name;
+        plantPhoto.sprite = plant.plantData.plantSprites[3];
+
+        growthState.text = $"Estado: {plant.currentGrowth}";
+        health.text = $"Salud: {plant.currentHealth}";
+        resourcesDemand.text = $"NECESIDADES\n" +
+            $"Agua: {plant.plantData.waterDemand}\n" +
+            $"Abono: {plant.plantData.fertilizerDemand} \n" +
+            $"Exposición Solar: {plant.plantData.solarExposureDemand} \n";
+
+        plantInfoPanel.SetActive(true);
+    }
+
+    private void UnShowInfoPanel()
+    {
+        plotInfoPanel.SetActive(false);
+        plantInfoPanel.SetActive(false);
     }
 
     private void UpdateForecastDisplay(DailyWeather[] forecastArray)
@@ -142,6 +204,7 @@ public class HUDUI : MonoBehaviour
         }
     }
 
+
     // Desuscribirse al destuir el objeto
     private void OnDestroy()
     {
@@ -151,6 +214,7 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnWaterChanged -= UpdateWaterText;
             GameManager.Instance.OnFertilizerChanged -= UpdateFertilizerText;
             GameManager.Instance.OnDayChanged -= UpdateDayText;
+            PlotsManager.Instance.OnPlotSelected -= ShowInfoPanel;
         }
 
         if (WeatherManager.Instance != null)
