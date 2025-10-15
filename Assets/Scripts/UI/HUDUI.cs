@@ -6,6 +6,7 @@ using System;
 
 public class HUDUI : MonoBehaviour
 {
+    #region Propierties
     [Header("Paneles")]
     [SerializeField] private GameObject PauseMenuPanel;
     [SerializeField] private GameObject HUDPanel;
@@ -19,8 +20,8 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private Texture2D plantTestCursor;
 
     [Header("Clima")]
-    public TextMeshProUGUI currentWeatherText;
-    public List<TextMeshProUGUI> forecastDayTexts;
+    [SerializeField] private TextMeshProUGUI currentWeatherText;
+    [SerializeField] private List<TextMeshProUGUI> forecastDayTexts = new List<TextMeshProUGUI>();
 
     [Header("Recursos")]
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -38,14 +39,13 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resourcesDemand;
     [SerializeField] private TextMeshProUGUI plotInfo;
 
-
+    #endregion
 
     private void Start()
     {
         // Ocultar paneles
         plantInfoPanel.SetActive(false);
         plotInfoPanel.SetActive(false);
-
 
         // Actualizar UI
         UpdateMoneyText(GameManager.Instance.CurrentMoney);
@@ -54,7 +54,6 @@ public class HUDUI : MonoBehaviour
         UpdateDayText(GameManager.Instance.CurrentDay);
 
         // Subscripción a eventos
-
         if(GameManager.Instance!= null)
         {
             GameManager.Instance.OnMoneyChanged += UpdateMoneyText;
@@ -77,6 +76,24 @@ public class HUDUI : MonoBehaviour
         } 
     }
 
+
+    #region Metodos para botones
+    public void PauseButton()
+    {
+        HUDPanel.SetActive(false);
+        PauseMenuPanel.SetActive(true);
+    }
+
+    public void PassDayButton()
+    {
+        GameManager.Instance.PassDay();
+    }
+
+    #endregion
+
+    #region Metodos para Paneles de Info Parcelas
+
+    // Metodo que muestra panel de información
     private void ShowInfoPanel(Plot plot)
     {
         ShowPlotInfoPanel(plot);
@@ -90,6 +107,14 @@ public class HUDUI : MonoBehaviour
         }
     }
 
+    // Metodo que esconde el panel de información
+    private void UnShowInfoPanel()
+    {
+        plotInfoPanel.SetActive(false);
+        plantInfoPanel.SetActive(false);
+    }
+
+    // Metodo que muestra panel de información de la parcela
     private void ShowPlotInfoPanel(Plot plot)
     {
         plotInfo.text = $"Parcela {plot.gridCoordinates}\n" +
@@ -99,10 +124,11 @@ public class HUDUI : MonoBehaviour
         plotInfoPanel.SetActive(true);
     }
 
+    // Metodo que muestra panel de información de la planta
     private void ShowPlantInfoPanel(Plant plant)
     {
-        nameText.text= plant.plantData.name;
-        plantPhoto.sprite = plant.plantData.plantSprites[3];
+        nameText.text= plant.plantData.plantName;
+        plantPhoto.sprite = plant.plantData.plantSprites[3]; // Sprite de la planta estado: madura
 
         growthState.text = $"Estado: {plant.currentGrowth}";
         health.text = $"Salud: {plant.currentHealth}";
@@ -114,12 +140,10 @@ public class HUDUI : MonoBehaviour
         plantInfoPanel.SetActive(true);
     }
 
-    private void UnShowInfoPanel()
-    {
-        plotInfoPanel.SetActive(false);
-        plantInfoPanel.SetActive(false);
-    }
+    #endregion
 
+    #region Actualización UI
+    // Metodo que actualiza el panel de la prevision del tiempo
     private void UpdateForecastDisplay(DailyWeather[] forecastArray)
     {
         for (int i = 0; i < forecastArray.Length && i < forecastDayTexts.Count; i++)
@@ -129,6 +153,7 @@ public class HUDUI : MonoBehaviour
         }
     }
 
+    // Metodo que actualiza el Texto de la meteorología actual
     private void UpdateCurrentWeatherDisplay(DailyWeather weather)
     {
         if (currentWeatherText != null)
@@ -136,17 +161,6 @@ public class HUDUI : MonoBehaviour
             currentWeatherText.text = $"HOY HACE: {weather.ToString()}";
             // Efectos visuales
         }
-    }
-
-    public void PauseButton()
-    {
-        HUDPanel.SetActive(false);
-        PauseMenuPanel.SetActive(true);
-    }
-
-    public void PassDayButton()
-    {
-        GameManager.Instance.PassDay();
     }
 
     private void UpdateMoneyText(int value)
@@ -181,6 +195,9 @@ public class HUDUI : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Cursor
     private void UpdateCursor(ToolType _type)
     {
         Cursor.SetCursor(ChooseCursor(), default, default);
@@ -204,8 +221,10 @@ public class HUDUI : MonoBehaviour
         }
     }
 
+    #endregion
 
-    // Desuscribirse al destuir el objeto
+
+    // Desuscribirse a los metodos al destuir el objeto
     private void OnDestroy()
     {
         if(GameManager.Instance != null)
@@ -222,7 +241,5 @@ public class HUDUI : MonoBehaviour
             WeatherManager.Instance.OnCurrentWeatherChanged -= UpdateCurrentWeatherDisplay;
             WeatherManager.Instance.OnForecastChanged -= UpdateForecastDisplay;
         }
-
     }
-
 }

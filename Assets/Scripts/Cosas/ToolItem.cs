@@ -18,6 +18,4 @@ public class ToolItem : MonoBehaviour
         if (this.type == _type) { selectionOn.SetActive(true); } // Activar fondo de seleccion
         else { selectionOn.SetActive(false); }
     }
-
-
 }

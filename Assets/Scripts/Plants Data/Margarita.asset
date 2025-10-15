@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Margarita
   m_EditorClassIdentifier: 
   idx: 0
-  name: Margarita
+  plantName: Margarita
   description: Lorem Ipsun
   waterDemand: 2
   fertilizerDemand: 2

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fresa
   m_EditorClassIdentifier: 
   idx: 3
-  name: Plantita
+  plantName: Fresa
   description: Lorem Ipsun
   waterDemand: 2
   fertilizerDemand: 2

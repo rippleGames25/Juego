@@ -3671,8 +3671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a715b24a4333c67418a478da740996dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedPlantType: {fileID: 0}
-  isPlantingMode: 0
 --- !u!4 &985745210
 Transform:
   m_ObjectHideFlags: 0
@@ -5317,7 +5315,7 @@ MonoBehaviour:
   normalCursor: {fileID: 2800000, guid: 0afe862348b778c4b9ae5ff60a2c39f8, type: 3}
   wateringCanCursor: {fileID: 2800000, guid: 9e9c39e9556850544adfab0d9113e6db, type: 3}
   fertilizerBagCursor: {fileID: 2800000, guid: 44c3f07f17594094b817b10ca0eb5070, type: 3}
-  plantTestCursor: {fileID: 2800000, guid: dea43ba4d30b5c24bb4e392efc53e15b, type: 3}
+  plantTestCursor: {fileID: 2800000, guid: 4263d60dbfe000b418d30634448e14f7, type: 3}
   currentWeatherText: {fileID: 1336006280}
   forecastDayTexts:
   - {fileID: 260282602}
@@ -7953,17 +7951,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed2e16a4c3050640a219ebad34c8846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantsSO:
+  plantPrefab: {fileID: 8749424176873088592, guid: 9db5c5411358b9b4ba2f6f5ff82a8d60, type: 3}
+  plantsList:
   - {fileID: 11400000, guid: 01c6a9cdb63c2da4b9e9e5f727e67b7d, type: 2}
   - {fileID: 11400000, guid: cd708f7f9f1669e4d8decd42abce184e, type: 2}
   - {fileID: 11400000, guid: 274df10a6bd66714a87be9cff75a8053, type: 2}
   - {fileID: 11400000, guid: 65fe9909f3f324e4b9fab5d59d810c47, type: 2}
-  plantPrefab: {fileID: 8749424176873088592, guid: 9db5c5411358b9b4ba2f6f5ff82a8d60, type: 3}
-  plotsManager: {fileID: 1907678812}
-  normalCursor: {fileID: 2800000, guid: 0afe862348b778c4b9ae5ff60a2c39f8, type: 3}
-  wateringCanCursor: {fileID: 2800000, guid: 9e9c39e9556850544adfab0d9113e6db, type: 3}
-  fertilizerBagCursor: {fileID: 2800000, guid: 44c3f07f17594094b817b10ca0eb5070, type: 3}
-  plantTestCursor: {fileID: 2800000, guid: dea43ba4d30b5c24bb4e392efc53e15b, type: 3}
 --- !u!4 &2074705701
 Transform:
   m_ObjectHideFlags: 0

@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager Instance; //Singleton
 
-    public PlantType selectedPlantType = null;
-    public bool isPlantingMode = false;
+    [NonSerialized] public PlantType selectedPlantType = null;
 
     void Awake()
     {
@@ -17,17 +17,12 @@ public class ShopManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
+    // Metodo para equipar el tipo de planta
     public void SelectPlantToBuy(PlantType plant) 
     {
-        if (GameManager.Instance.CurrentMoney < plant.price) return;
-
         selectedPlantType = plant;
-        isPlantingMode= true;
         GameManager.Instance.CurrentTool = ToolType.Plant;
     }
-
-
 }

@@ -5,10 +5,9 @@ using UnityEngine.EventSystems;
 
 public class PlotsManager : MonoBehaviour
 {
-    public static PlotsManager Instance;
+    public static PlotsManager Instance; // Singleton
 
     [SerializeField] private GameObject plotPrefab;
-
     [SerializeField] private int rows = 6;
     [SerializeField] private int columns = 5;
     [SerializeField] private float spacing = 1.5f; // Espacio entre parcelas
@@ -31,17 +30,16 @@ public class PlotsManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     void Start()
     {
-        plotGrid = new Plot[rows, columns];
+        plotGrid = new Plot[rows, columns]; // Inicializar Array
     }
 
+    #region Métodos publicos
 
-
-    // Metodos publicos
+    // Metodo que crea e instancia las parcelas
     public void CreatePlots()
     {
         Vector3 startPos = transform.position;
@@ -66,7 +64,6 @@ public class PlotsManager : MonoBehaviour
         }
     }
 
-    // Metodos publicos
     public void DailyUpdate(DailyWeather _currentWeather)
     {
         UpdatePlants();
@@ -105,11 +102,11 @@ public class PlotsManager : MonoBehaviour
             currentSelectedPlot = null;
             OnPlotUnselected?.Invoke(); // Invocar evento
         }
-
     }
 
-    // Metodos privados
+    #endregion
 
+    #region Métodos privados
     private void UpdatePlants()
     {
         foreach (Plot plot in plotGrid)
@@ -118,7 +115,6 @@ public class PlotsManager : MonoBehaviour
             {
                 plot.UpdatePlant();
             }
-            
         }
     }
 
@@ -131,13 +127,13 @@ public class PlotsManager : MonoBehaviour
         {
             if (plot.isPlanted) // Si esta plantada
             {
-                waterDemand = plot.currentPlant.ConsumeWater();
-                fertilizerDemand = plot.currentPlant.ConsumeFertilizer();
+                waterDemand = plot.currentPlant.GetWaterDemand();
+                fertilizerDemand = plot.currentPlant.GetFertilizerDemand();
 
                 if (waterDemand > plot.currentWater || fertilizerDemand > plot.currentFertility)
                 {
                     Debug.Log($"La parcela {plot.gridCoordinates} no puede cubrir las necesidades de su planta");
-                    if (plot.currentPlant.LowerHealth()) // true si la planta ha muerto
+                    if (plot.currentPlant.DecreaseHealth()) // true si la planta ha muerto
                     {
                         PlantsDeath(plot.currentPlant);
                         plot.currentPlant = null;
@@ -155,8 +151,8 @@ public class PlotsManager : MonoBehaviour
                 plot.UpdatePlotWaterVisuals();
                 plot.UpdatePlotFertilizerVisuals();
             }
-
         }
+
         Debug.Log("Consumo de agua y abono diario de plantas hecho.");
     }
 
@@ -168,22 +164,22 @@ public class PlotsManager : MonoBehaviour
             
             plot.UpdatePlotWaterVisuals();
         }
+
         Debug.Log("Cambio de agua por evento meteorologico.");
     }
 
-    
     private void DailyUpdatePlotsFertilizer()
     {
         foreach (Plot plot in plotGrid)
         {
             if (plot.isPlanted)
             {
-                plot.ChangeFertility(-plot.currentPlant.ConsumeFertilizer()); // Agua que consume la planta
+                plot.ChangeFertility(-plot.currentPlant.GetFertilizerDemand()); // Agua que consume la planta
                 plot.UpdatePlotFertilizerVisuals() ;
             }
         }
         Debug.Log("Consumo de fertilizante diario hecho.");
     }
 
-
+    #endregion
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Agave
   m_EditorClassIdentifier: 
   idx: 1
-  name: Plantita
+  plantName: Agave
   description: Lorem Ipsun
   waterDemand: 1
   fertilizerDemand: 3

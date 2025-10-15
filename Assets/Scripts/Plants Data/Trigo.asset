@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Trigo
   m_EditorClassIdentifier: 
   idx: 2
-  name: Trigo
+  plantName: Trigo
   description: Lorem Ipsun
   waterDemand: 1
   fertilizerDemand: 2

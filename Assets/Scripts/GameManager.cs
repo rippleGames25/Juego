@@ -13,7 +13,8 @@ public enum ToolType
 
 public class GameManager : MonoBehaviour
 {
-    //Variables
+    #region Propiedades
+    
     public static GameManager Instance; // Singleton
 
     // Events
@@ -23,39 +24,25 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnDayChanged;
     public event Action<ToolType> OnToolChanged;
 
-    // Tipos de planta (ScriptableObjects)
-    [SerializeField] private List<PlantType> plantsSO;
-    //...
-
-
-    // Prefabs
-    [SerializeField] private GameObject plantPrefab;
-
+    // Variables
     private int winCondition;
     private ToolType currentTool;
     private int currentDay = 1;
     private int biodiversity = 0;
+    private DailyWeather currentWeather;
 
     // Resources
     private int currentMoney = 100;
     private int currentWater = 10;
     private int currentFertilizer = 10;
 
-    [SerializeField] private PlotsManager plotsManager;
-    [SerializeField] private Texture2D normalCursor;
-    [SerializeField] private Texture2D wateringCanCursor;
-    [SerializeField] private Texture2D fertilizerBagCursor;
-    [SerializeField] private Texture2D plantTestCursor;
+    [Header("Plantas")]
+    [SerializeField] private GameObject plantPrefab;
+    [SerializeField] private List<PlantType> plantsList; // Lista de Tipos de planta (ScriptableObjects)
 
-    // Garden State
-    // Lista de parcelas
-    private List<Plant> plantedPlants = new List<Plant>(); // Lista de plantas
+    #endregion
 
-    // Weather
-    private DailyWeather currentWeather;
-
-    #region Propiedades
-    // Propiedades
+    #region Getters y Setters
     public int CurrentMoney
     {
         get { return currentMoney; }
@@ -123,10 +110,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-
     #endregion
-
 
     void Awake()
     {
@@ -138,22 +122,19 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-  
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentTool = ToolType.None; // No tiene cogida ninguna herramienta
 
         // Generar nivel
-        plotsManager.CreatePlots(); // Inicializar parcelas
+        PlotsManager.Instance.CreatePlots(); // Inicializar parcelas
 
         // Generar planta inicial
         // Generar proximos eventos meteorologicos
         // Generar objetivo
         GenerateWinCondition();
-
     }
 
     void Update()
@@ -163,28 +144,23 @@ public class GameManager : MonoBehaviour
             HandleInput();
         }
     }
-  
 
-
-// Public Methods
-public void PassDay()
+    // Public Methods
+    public void PassDay()
     {
         CheckWinCondition(); // Condición de victoria
 
         CurrentDay++; // Pasar al dia siguiente
         Debug.Log("Dia " + currentDay);
 
-
         HandleWeatherEvent(); // Evento meteorológico
         DailyUpdatePlotsAndPlants();// Actualizar estado de las parcelas
         DistributeDailyResources();// Sumar recursos
-
-
     }
 
     public void PlantSeed(Plot plot, int idx)
     {
-        PlantType plantData = plantsSO[idx];        
+        PlantType plantData = plantsList[idx];        
 
         if(plantData.price > currentMoney) // No tiene suficiente dinero
         {
@@ -192,7 +168,7 @@ public void PassDay()
             return;
         }
 
-        EarnMoney(-plantData.price); // Restar el dinero que cuesta la planta
+        CurrentMoney -=plantData.price; // Restar el dinero que cuesta la planta
 
         GameObject newPlantGO = Instantiate(plantPrefab, (plot.transform.position + new Vector3(0, 0, -1)), Quaternion.identity);
 
@@ -202,21 +178,23 @@ public void PassDay()
         plot.currentPlant= newPlant; // Asociamos la planta a la parcela
         plot.isPlanted = true;
 
-        plantedPlants.Add(newPlant); // Añadimos a la lista de plantas
-
         CurrentTool = ToolType.None; // Desequipamos la semilla
         
-        Debug.Log($"Semilla de {plantData.name} plantada en la parcela {plot.gridCoordinates}");
+        Debug.Log($"Semilla de {plantData.plantName} plantada en la parcela {plot.gridCoordinates}");
     }
 
     public void PlantsDeath(Plant plantToDeath)
     {
-        Debug.Log($"La planta {plantToDeath.plantData.name} ha muerto porque no has cubierto sus necesidades");
+        Debug.Log($"La planta {plantToDeath.plantData.plantName} ha muerto porque no has cubierto sus necesidades");
         Destroy(plantToDeath.gameObject);
     }
 
-
     // Private Methods
+    private void GenerateWinCondition()
+    {
+        // De momento fija
+        winCondition = 5;
+    }
 
     private void HandleInput()
     {
@@ -262,63 +240,42 @@ public void PassDay()
 
     }
 
+    // Metodo para calcular que cantidad de recursos se distribuyen según la biodiversidad
+    private int CalculateResourcesAmount()
+    {
+        // Implementar calculo...
+        return 10;
+    }
+
+    #region Métodos de actualización diaria
     private void HandleWeatherEvent()
     {
         // Pasar al evento meteorológico siguiente y generar uno nuevo
         currentWeather = WeatherManager.Instance.PassDay();
     }
 
-
     private void DailyUpdatePlotsAndPlants()
     {
-        plotsManager.DailyUpdate(currentWeather);
+        PlotsManager.Instance.DailyUpdate(currentWeather);
     }
-
 
     private void DistributeDailyResources()
     {
         int amount = CalculateResourcesAmount();    // Calcular la cantidad que le tienen que dar
 
-        EarnMoney(amount);  // Sumar abono
-        EarnWater(amount);  // Sumar agua
-        EarnFertilizer(amount*5); // Sumar dinero
-    }
-
-    private void GenerateWinCondition()
-    {
-        // De momento fija
-        winCondition = 5;
+        CurrentMoney +=amount;  // Sumar dinero
+        CurrentWater += amount;  // Sumar agua
+        CurrentFertilizer += amount; // Sumar abono
     }
 
     private void CheckWinCondition()
     {
-        // Comparar el objetivo con el estado actual
-        if (biodiversity == winCondition)
+        if (biodiversity == winCondition) // Comparar el objetivo con el estado actual
         {
             Debug.Log("Has llegado al objetivo de biodiversidad. Enhorabuena");
             SceneManager.LoadScene("GameOver");
         }
-
     }
 
-    private int CalculateResourcesAmount()
-    {
-        // Calcular según la biodiversidad y la salud del jardin
-        return 10;
-    }
-    private void EarnMoney(int amount)
-    {
-        CurrentMoney += amount;
-    }
-
-    private void EarnWater(int amount)
-    {
-        CurrentWater+= amount;
-    }
-
-    private void EarnFertilizer(int amount)
-    {
-        CurrentFertilizer += amount;
-    }
-
+    #endregion
 }

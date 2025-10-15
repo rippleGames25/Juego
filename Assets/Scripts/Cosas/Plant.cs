@@ -21,8 +21,6 @@ public class Plant : MonoBehaviour
     // Variables
     [SerializeField] public PlantType plantData;
 
-
-    //private Vector2 plotCoordinates;
     public GrowthState currentGrowth;
     public Health currentHealth;
     public int lifeDays;
@@ -41,7 +39,7 @@ public class Plant : MonoBehaviour
 
     void Awake()
     {
-        spriteRenderer= GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if(spriteRenderer == null )
         {
@@ -49,8 +47,18 @@ public class Plant : MonoBehaviour
         }
     }
 
+    #region Public methods
+    public int GetWaterDemand()
+    {
+        return plantData.waterDemand;
+    }
 
-    // Public methods
+    public int GetFertilizerDemand()
+    {
+        return plantData.fertilizerDemand;
+    }
+
+    // Metodo para inicializar una planta
     public void InitializePlant(PlantType _type)
     {
         plantData = _type;
@@ -61,32 +69,7 @@ public class Plant : MonoBehaviour
         spriteRenderer.sprite = plantData.plantSprites[0];
     }
 
-    public int ConsumeWater()
-    {
-        return plantData.waterDemand;
-    }
-
-    public int ConsumeFertilizer()
-    {
-        return plantData.fertilizerDemand;
-    }
-
-    public bool LowerHealth()
-    {
-        if(currentHealth== Health.good)
-        {
-            currentHealth= Health.moderate;
-        } else if(currentHealth== Health.moderate) 
-        {
-            currentHealth= Health.bad;
-        } else
-        {
-            return true; // La planta ha muerto
-        }
-
-        return false;
-    }
-
+    // Metodo que Incrementa el estado de salud
     public void IncreaseHealth()
     {
         if (currentHealth == Health.bad)
@@ -103,6 +86,24 @@ public class Plant : MonoBehaviour
         }
     }
 
+    // Metodo que Decrementa el estado de salud
+    public bool DecreaseHealth()
+    {
+        if(currentHealth== Health.good)
+        {
+            currentHealth= Health.moderate;
+        } else if(currentHealth== Health.moderate) 
+        {
+            currentHealth= Health.bad;
+        } else
+        {
+            return true; // La planta ha muerto
+        }
+
+        return false;
+    }
+
+    // Metodo que actualiza la vida y el estado de crecimiento de la planta
     public void UpdateLifeDays()
     {
         lifeDays++;
@@ -115,21 +116,22 @@ public class Plant : MonoBehaviour
         {
             currentGrowth++; // Brotar
             UpdatePlantVisuals((int) currentGrowth);
-            Debug.Log($"La planta {plantData.name} ha brotado.");
+            Debug.Log($"La planta {plantData.plantName} ha brotado.");
         } 
         else if (currentGrowth == GrowthState.sprout && lifeDays >= plantData.timeToGrow)
         {
             currentGrowth++; // Crecer hasta Joven
             UpdatePlantVisuals((int)currentGrowth);
-            Debug.Log($"La planta {plantData.name} ha crecido.");
+            Debug.Log($"La planta {plantData.plantName} ha crecido.");
         }
         else if (currentGrowth == GrowthState.young && lifeDays >= plantData.timeToMature)
         {
             currentGrowth++; // Crecer hasta madura
             UpdatePlantVisuals((int)currentGrowth);
-            Debug.Log($"La planta {plantData.name} ha madurado.");
+            Debug.Log($"La planta {plantData.plantName} ha madurado.");
         }
     }
+    #endregion
 
     // Metodos de visualización
     private void UpdatePlantVisuals(int state)

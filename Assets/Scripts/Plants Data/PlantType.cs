@@ -9,13 +9,12 @@ public enum PlantCategory
     WildlifeRefuge
 }
 
-
 [CreateAssetMenu(fileName = "NewPlantType", menuName = "Plant/Plant Type Config", order = 1)]
 public class PlantType : ScriptableObject
 {
-    // Variables
+    [Header("Info")]
     public int idx = 0;
-    public new string name = "Plantita";
+    public string plantName = "Plantita";
     public string description = "Lorem Ipsun";
 
     [Header("Características")]
@@ -36,12 +35,5 @@ public class PlantType : ScriptableObject
 
     [Header("Sprites")]
     [SerializeField] public Sprite[] plantSprites;
-
-    public GameObject seedPrefab;
-
-
-
-    // Sensibilidad..
-    // Característica
 
 }
