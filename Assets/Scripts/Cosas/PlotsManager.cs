@@ -104,6 +104,11 @@ public class PlotsManager : MonoBehaviour
         }
     }
 
+    public void GenerateShade(Vector2Int _plantCoordinates)
+    {
+
+    }
+
     #endregion
 
     #region Métodos privados

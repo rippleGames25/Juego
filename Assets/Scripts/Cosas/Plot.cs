@@ -83,6 +83,11 @@ public class Plot : MonoBehaviour
         // Calcular muertes
 
         currentPlant.UpdateLifeDays(); // Actualizar dias de vida
+
+        if (currentPlant.currentGrowth == GrowthState.mature)
+        {
+            UpdateEnviroment(currentPlant.plantData.category);
+        }
     }
 
     public void ChangeWater (int weatherWater)
@@ -188,6 +193,29 @@ public class Plot : MonoBehaviour
         }
     }
 
+    public void UpdateEnviroment(PlantCategory plantType)
+    {
+        switch (plantType)
+        {
+            case PlantCategory.PollinatorAttractor:
+                // Atraer polinizadores
+
+                break;
+            case PlantCategory.ProvidesShade:
+                // Cambiar la exposicion solar de las parcelas adyacentes
+                PlotsManager.Instance.GenerateShade(this.gridCoordinates);
+                break;
+            case PlantCategory.Producer:
+                // Empezar el ciclo de produccion
+
+                break;
+            case PlantCategory.WildlifeRefuge:
+                // Instanciar fauna
+
+                break;
+        }
+    }
+
     private void TextAnimation(string _text, int type, Color textColor)
     {
         Debug.Log("Plot: Empezando Animacion");
@@ -241,7 +269,7 @@ public class Plot : MonoBehaviour
 
     #endregion
 
-        #region Métodos para visualización
+    #region Métodos para visualización
     public void UpdatePlotWaterVisuals()
     {
         Color newColor = sr.color;

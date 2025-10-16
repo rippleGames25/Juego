@@ -131,6 +131,9 @@ public class Plant : MonoBehaviour
             Debug.Log($"La planta {plantData.plantName} ha madurado.");
         }
     }
+
+
+
     #endregion
 
     // Metodos de visualización
