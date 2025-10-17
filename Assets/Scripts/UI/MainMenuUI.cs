@@ -7,6 +7,7 @@ public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject MainMenuPanel;
     [SerializeField] private GameObject CreditsPanel;
+    private const string TUTORIAL_SCENE_NAME = "TutorialScene";
 
     public void NewGame()
     {
@@ -22,6 +23,11 @@ public class MainMenuUI : MonoBehaviour
     {
         MainMenuPanel.SetActive(false);
         CreditsPanel.SetActive(true);
+    }
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene(TUTORIAL_SCENE_NAME);
     }
 
     public void Quit()
