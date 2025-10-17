@@ -2,7 +2,6 @@ using UnityEngine;
 
 public enum PlantCategory
 {
-    None,
     PollinatorAttractor,
     ProvidesShade,
     Producer,
