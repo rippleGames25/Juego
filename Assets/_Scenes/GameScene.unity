@@ -5308,7 +5308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c196fe408d351a4fa5cc292a60448a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuPanel: {fileID: 1035957009}
+  PauseMenuPanel: {fileID: 211440522}
   HUDPanel: {fileID: 2035979451}
   plantInfoPanel: {fileID: 1865266222}
   plotInfoPanel: {fileID: 680945583}
