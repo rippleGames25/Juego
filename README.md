@@ -4,6 +4,7 @@ author: Ripple Games
 date: 19 de octubre de 2025
 ---
 
+![Logo](Recursos/Imágenes/Logo.PNG)
 
 # Game Design Document (GDD) - The Living Garden
 Versión Alpha - 19 de octubre 2025
@@ -16,7 +17,7 @@ Versión Alpha - 19 de octubre 2025
 [5. Trasfondo](#5-trasfondo)   
 [6. Arte](#6-arte)   
 [7. Interfaz](#7-interfaz)   
-[8. Hoja de ruta del desarrollo](#8-hoja-de-ruta-de-desarrollo)   
+[8. Hoja de ruta de desarrollo](#8-hoja-de-ruta-de-desarrollo)   
 
 
 # 1. Introducción
@@ -49,19 +50,24 @@ The Living Garden será un juego Free-to-Play (F2P) con microtransacciones centr
 El objetivo es mantener una experiencia relajada, coherente con la filosofía del juego, evitando modelos invasivos o de pago obligatorio. Los pagos se orientan a la personalización, la estética y la mejora de la experiencia, sin ofrecer ventajas competitivas de pay-to-win que afecten el equilibrio ecológico.
 
 ### 2.1.1. Estructura del modelo
-**Moneda principal: Pétalos**
+**Moneda principal: Pétalos.**
+
 Se obtienen por juego normal (logros, hitos), por ver anuncios recompensados y mediante compra directa (IAP).
+
 Sirven para comprar packs de recursos (agua/abono/semillas) y “comodines” de conveniencia (ej. aceleradores de crecimiento).
 
 **Anuncios/estrategia:**
+
 El juego incluirá una fuente de ingresos limitada a los **Vídeos Recompensados**. Estos anuncios son una opción siempre voluntaria que el jugador activa para recibir un beneficio inmediato, sin interrumpir la jugabilidad principal. Las recompensas consisten en pequeñas cantidades de **néctar** (la divisa premium para cosméticos) o recursos básicos. Estratégicamente se ofrecerán en puntos de bajo estrés (como al iniciar sesión o después de haber jugado un periodo), o para ayudar a paliar una pérdida importante. Este formato es el más valioso (alto eCPM) y aumenta la retención, siempre manteniendo el diseño no forzado y coherente con la filosofía _cozy_ del juego. 
 
 **Microtransacciones (IAP):**
+
 - Packs de Néctar (ver tabla).
 - Packs de recursos (pétalos/bolsas de abono/agua extra), para jugadores que quieran acelerar el progreso. 
 - Cosméticos y DLC tipo "Libro de arte" para público nicho y merchandising.
 
 **Política anti pay-to-win:**
+
 Ningún objeto que afecte de forma permanente la competencia o desbloquee especies raras de forma instantánea estará detrás de un paywall. Estos recursos comprables aceleran o facilitan, pero siempre es posible lograr con todo con tiempo y buena gestión.
 
 
@@ -78,6 +84,7 @@ Ningún objeto que afecte de forma permanente la competencia o desbloquee especi
 
 **Tienda de cosméticos:**
 - Cosméticos escenario:
+  
 | Escenario | Néctar |
 |-----------|-----------|
 | Escenario rústico | 55 de néctar |
@@ -85,6 +92,7 @@ Ningún objeto que afecte de forma permanente la competencia o desbloquee especi
 | Escenario naturalista | 70 de néctar |
 
 - Sombreros para Leo:
+  
 | Sombrero | Néctar |
 |-----------|-----------|
 | Sombrero de copa | 20 de néctar |
@@ -92,6 +100,7 @@ Ningún objeto que afecte de forma permanente la competencia o desbloquee especi
 | Gorra | 20 de néctar |
 
 - Interfaz:
+  
 | Interfaz | Néctar |
 |-----------|-----------|
 | Interfaz rústica | 15 de néctar |
@@ -99,6 +108,7 @@ Ningún objeto que afecte de forma permanente la competencia o desbloquee especi
 | Interfaz naturalista | 25 de néctar |
 
 - Bundles (oferta):
+  
 | Bundle | Néctar |
 |-----------|-----------|
 | Bundle “Inicio” (Interfaz rústica + Gorra + 20 de néctar) | 45 de néctar (pequeño descuento) |
@@ -106,6 +116,7 @@ Ningún objeto que afecte de forma permanente la competencia o desbloquee especi
 
 **Tienda de recursos (consumibles, comprables con néctar o pétalos):**
 - Pétalos (in-game currency usada para semillas básicas, ventas menores):
+  
 | Pétalos | Néctar |
 |-----------|-----------|
 | 500 pétalos | 5 de néctar |
@@ -113,6 +124,7 @@ Ningún objeto que afecte de forma permanente la competencia o desbloquee especi
 | 4.000 pétalos | 30 de néctar |
 
 - Packs de recursos (para partidas rápidas):
+  
 | Pack | Néctar |
 |-----------|-----------|
 | Kit Riego (rellena regadera + 1 día extra de riego automático) | 10 de néctar |
@@ -215,278 +227,483 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
 
 ## 4.5. Objetos
 - **Plantas:**
-| Planta | Descripción | Categoría | Necesidades | Crecimiento | Precio |
-|-----------|-----------|-----------|-----------|-----------|-----------|
-| 
-**Nombre:** Abelia
-**Nombre científico:** Abelia chinensis
-![Abelia](Recursos/Imágenes/Abelia.jpeg){ width=100px } | 
-No aguanta muy bien las heladas. Resistente. Flores durante el verano y principios de otoño. | Atractor de Polinizadores / Refugio para fauna |
-**Necesidad de agua:** 2
-**Necesidad de abono:** Suelo fértil (3)
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
+  
+<table>
+    <thead>
+        <tr>
+            <th style="width: 25%; text-align: center;">Planta</th>
+            <th style="width: 30%; text-align: center;">Descripción</th>
+            <th style="width: 15%; text-align: center;">Categoría</th>
+            <th style="width: 15%; text-align: center;">Necesidades</th>
+            <th style="width: 7.5%; text-align: center;">Crecimiento</th>
+            <th style="width: 7.5%; text-align: center;">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <b>Nombre:</b> Abelia<br>
+                <b>Nombre científico:</b> <i>Abelia chinensis</i><br>
+                <img src="Recursos/Imágenes/Abelia.jpeg" alt="Abelia" width="100">
+            </td>
+            <td>No aguanta muy bien las heladas. Resistente. Flores durante el verano y principios de otoño.</td>
+            <td>Atractor de Polinizadores / Refugio para fauna</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> Suelo fértil (3)<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Gerbera<br>
+                <b>Nombre científico:</b> <i>Asteraceae gerbera</i><br>
+                <img src="Recursos/Imágenes/Gerbera.png" alt="Gerbera" width="100">
+            </td>
+            <td>Flor colorida y ornamental que aporta alegría al jardín. Su alto consumo de agua la hace ideal para zonas húmedas o bien regadas.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 3<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Margarita<br>
+                <b>Nombre científico:</b> <i>Bellis perennis</i><br>
+                <img src="Recursos/Imágenes/Margarita.png" alt="Margarita" width="100">
+            </td>
+            <td>Planta simple y común, de rápido crecimiento. Perfecta para principiantes y para estabilizar suelos secos.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 1<br>
+                <b>Necesidad de abono:</b> 1<br>
+                <b>Exposición solar:</b> Sol parcial
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 1<br>
+                <b>Días hasta madurar:</b> 2
+            </td>
+            <td>1 pétalo</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Flor de Pascua<br>
+                <b>Nombre científico:</b> <i>Euphorbia pulcherrima</i><br>
+                <img src="Recursos/Imágenes/Flor_de_pascua.png" alt="Flor de Pascua" width="100">
+            </td>
+            <td>Planta ornamental delicada con hojas rojas características. Necesita suelos fértiles y ambientes estables.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 3<br>
+                <b>Exposición solar:</b> Semisombra
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 4
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Hibisco<br>
+                <b>Nombre científico:</b> <i>Hibiscus rosa-sinensis</i><br>
+                <img src="Recursos/Imágenes/Hibisco.png" alt="Hibisco" width="100">
+            </td>
+            <td>Flor tropical de gran tamaño y color intenso. Su alto consumo de agua se compensa con su capacidad para atraer fauna variada.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 3<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Lavanda<br>
+                <b>Nombre científico:</b> <i>Lamiaceae lavandula</i><br>
+                <img src="Recursos/Imágenes/Lavanda.png" alt="Lavanda" width="100">
+            </td>
+            <td>Planta aromática resistente a la sequía. Mejora la salud del suelo y atrae abejas incluso en climas secos.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 1<br>
+                <b>Necesidad de abono:</b> 1<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Lirio<br>
+                <b>Nombre científico:</b> <i>Lilium candidum</i><br>
+                <img src="Recursos/Imágenes/Lirio.png" alt="Lirio" width="100">
+            </td>
+            <td>Planta elegante de crecimiento equilibrado. Sus flores blancas mejoran la biodiversidad del jardín.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol parcial
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Adelfa<br>
+                <b>Nombre científico:</b> <i>Nerium oleander</i><br>
+                <img src="Recursos/Imágenes/Adelfa.png" alt="Adelfa" width="100">
+            </td>
+            <td>Arbusto muy resistente al calor y suelos pobres. Florece incluso en condiciones difíciles, aunque es tóxica si se manipula mal.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 1<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Orquídea<br>
+                <b>Nombre científico:</b> <i>Orchidaceae</i><br>
+                <img src="Recursos/Imágenes/Orquidea.png" alt="Orquídea" width="100">
+            </td>
+            <td>Planta exótica que florece lentamente. Necesita humedad constante y suelos ricos.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 3<br>
+                <b>Exposición solar:</b> Sombra
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 2<br>
+                <b>Días hasta crecer:</b> 3<br>
+                <b>Días hasta madurar:</b> 4
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Guayabo<br>
+                <b>Nombre científico:</b> <i>Psidium guajava</i><br>
+                <img src="Recursos/Imágenes/Guayabo.png" alt="Guayabo" width="100">
+            </td>
+            <td>Árbol frutal tropical que atrae fauna y mejora la fertilidad del suelo. Su mantenimiento es alto, pero sus frutos generan beneficios.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 3<br>
+                <b>Necesidad de abono:</b> 3<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 3<br>
+                <b>Días hasta madurar:</b> 4
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Rosa<br>
+                <b>Nombre científico:</b> <i>Rosa chinensis</i><br>
+                <img src="Recursos/Imágenes/Rosa.png" alt="Rosa" width="100">
+            </td>
+            <td>Flor clásica, de crecimiento medio y sensible a plagas. Su presencia incrementa la polinización general del jardín.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol parcial
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Tulipán<br>
+                <b>Nombre científico:</b> <i>Tulipa</i><br>
+                <img src="Recursos/Imágenes/Tulipan.png" alt="Tulipán" width="100">
+            </td>
+            <td>Planta de temporada con floración intensa y breve. Ideal para marcar el ciclo natural del jardín y dar color temporal.</td>
+            <td>Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Agave<br>
+                <b>Nombre científico:</b> <i>Agave americana</i><br>
+                <img src="Recursos/Imágenes/Agabe.webp" alt="Agave" width="100">
+            </td>
+            <td>Planta suculenta resistente a la sequía. Genera sombra densa a su alrededor, reduciendo la evaporación del suelo y protegiendo especies sensibles al sol.</td>
+            <td>Sombra</td>
+            <td>
+                <b>Necesidad de agua:</b> 1<br>
+                <b>Necesidad de abono:</b> 1<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 4
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Bambú<br>
+                <b>Nombre científico:</b> <i>Bambusoideae</i><br>
+                <img src="Recursos/Imágenes/Bambu.webp" alt="Bambú" width="100">
+            </td>
+            <td>Planta de rápido crecimiento vertical. Su sombra amplia y su capacidad para retener humedad lo convierten en una pieza clave para equilibrar zonas áridas del jardín.</td>
+            <td>Sombra</td>
+            <td>
+                <b>Necesidad de agua:</b> 3<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Semisombra
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 3<br>
+                <b>Días hasta madurar:</b> 4
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Garambullo<br>
+                <b>Nombre científico:</b> <i>Myrtillocactus geometrizans</i><br>
+                <img src="Recursos/Imágenes/Garambullo.png" alt="Garambullo" width="100">
+            </td>
+            <td>Cactus arborescente que genera sombra ligera y florece con pequeñas flores que atraen polinizadores. Su fruto comestible añade valor ecológico y económico.</td>
+            <td>Sombra / Atractor de Polinizadores</td>
+            <td>
+                <b>Necesidad de agua:</b> 1<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Flor de papel<br>
+                <b>Nombre científico:</b> <i>Bougainvillea glabra</i><br>
+                <img src="Recursos/Imágenes/Flor_de_papel.webp" alt="Flor de papel" width="100">
+            </td>
+            <td>Planta trepadora de colores vivos. Su floración abundante aporta belleza y atrae insectos, además de poder usarse como materia prima decorativa o cosmética.</td>
+            <td>Productora</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Trompetilla<br>
+                <b>Nombre científico:</b> <i>Bouvardia ternifolia</i><br>
+                <img src="Recursos/Imágenes/Trompetilla.jpeg" alt="Trompetilla" width="100">
+            </td>
+            <td>Arbusto de flores tubulares y racimos de intenso color rojo. Planta muy vistosa y compacta, apreciada en la jardinería por su floración duradera y su capacidad para atraer colibríes.</td>
+            <td>Productora</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 3<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Tomatera<br>
+                <b>Nombre científico:</b> <i>Solanum lycopersicum</i><br>
+                <img src="Recursos/Imágenes/Tomatera.png" alt="Tomatera" width="100">
+            </td>
+            <td>Planta de fruto comestible. Requiere riego constante y suelos ricos. Al madurar, produce tomates que pueden venderse o usarse como recurso alimenticio.</td>
+            <td>Productora</td>
+            <td>
+                <b>Necesidad de agua:</b> 3<br>
+                <b>Necesidad de abono:</b> 3<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Fresa<br>
+                <b>Nombre científico:</b> <i>Fragaria vesca</i><br>
+                <img src="Recursos/Imágenes/Fresa.png" alt="Fresa" width="100">
+            </td>
+            <td>Planta pequeña y frutal que crece en zonas húmedas. Produce frutos dulces que atraen fauna y aportan ingresos moderados.</td>
+            <td>Productora / Atractor de fauna</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol parcial
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Cafeto arábico<br>
+                <b>Nombre científico:</b> <i>Coffea arabica</i><br>
+                <img src="Recursos/Imágenes/Cafeto_arabico.png" alt="Cafeto arábico" width="100">
+            </td>
+            <td>Arbusto tropical de gran valor económico. Sus granos sirven como recurso avanzado. Exige condiciones estables de humedad y fertilidad.</td>
+            <td>Productora</td>
+            <td>
+                <b>Necesidad de agua:</b> 3<br>
+                <b>Necesidad de abono:</b> 3<br>
+                <b>Exposición solar:</b> Semisombra
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 3<br>
+                <b>Días hasta madurar:</b> 4
+            </td>
+            <td>3 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Trigo<br>
+                <b>Nombre científico:</b> <i>Triticum aestivum</i><br>
+                <img src="Recursos/Imágenes/Trigo.png" alt="Trigo" width="100">
+            </td>
+            <td>Cereal básico de bajo mantenimiento. Aporta alimento, semillas y refugio para pequeños animales e insectos. Favorece la fauna y la estabilidad del suelo.</td>
+            <td>Productora / Refugio para fauna</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol directo
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 3
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+        <tr>
+            <td>
+                <b>Nombre:</b> Cheflera<br>
+                <b>Nombre científico:</b> <i>Schefflera arboricola</i><br>
+                <img src="Recursos/Imágenes/Cheflera.png" alt="Cheflera" width="100">
+            </td>
+            <td>Arbusto de hojas grandes y brillantes que crea un microclima fresco bajo su copa. Sirve como refugio para insectos y aves pequeñas, estabilizando la humedad del entorno y mejorando la salud general del jardín.</td>
+            <td>Refugio para fauna</td>
+            <td>
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 2<br>
+                <b>Exposición solar:</b> Sol parcial
+            </td>
+            <td>
+                <b>Días hasta brotar:</b> 1<br>
+                <b>Días hasta crecer:</b> 2<br>
+                <b>Días hasta madurar:</b> 4
+            </td>
+            <td>2 pétalos</td>
+        </tr>
+    </tbody>
+</table>
 
-| 
-**Nombre:** Gerbera
-**Nombre científico:** Asteraceae gerbera
-![Gerbera](Recursos/Imágenes/Gerbera.png){ width=100px } | 
-Flor colorida y ornamental que aporta alegría al jardín. Su alto consumo de agua la hace ideal para zonas húmedas o bien regadas. | Atractor de Polinizadores |
-**Necesidad de agua:** 3
-**Necesidad de abono:** 2
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 3 pétalos |
 
-| 
-**Nombre:** Margarita
-**Nombre científico:** Bellis perennis
-![Margarita](Recursos/Imágenes/Margarita.png){ width=100px } | 
-Planta simple y común, de rápido crecimiento. Perfecta para principiantes y para estabilizar suelos secos. | Atractor de Polinizadores |
-**Necesidad de agua:** 1
-**Necesidad de abono:** 1
-**Exposición solar:** Sol parcial | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 1
-**Días hasta madurar:** 2 | 1 pétalo |
-
-| 
-**Nombre:** Flor de Pascua
-**Nombre científico:** Euphorbia pulcherrima
-![Flor de Pascua](Recursos/Imágenes/Flor_de_pascua.png){ width=100px } | 
-Planta ornamental delicada con hojas rojas características. Necesita suelos fértiles y ambientes estables. | Atractor de Polinizadores |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 3
-**Exposición solar:** Semisombra | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 4 | 3 pétalos |
-
-| 
-**Nombre:** Hibisco
-**Nombre científico:** Hibiscus rosa-sinensis
-![Hibisco](Recursos/Imágenes/Hibisco.png){ width=100px } | 
-Flor tropical de gran tamaño y color intenso. Su alto consumo de agua se compensa con su capacidad para atraer fauna variada. | Atractor de Polinizadores |
-**Necesidad de agua:** 3
-**Necesidad de abono:** 2
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 3 pétalos |
-
-| 
-**Nombre:** Lavanda
-**Nombre científico:** Lamiaceae lavandula
-![Lavanda](Recursos/Imágenes/Lavanda.png){ width=100px } | 
-Planta aromática resistente a la sequía. Mejora la salud del suelo y atrae abejas incluso en climas secos. | Atractor de Polinizadores |
-**Necesidad de agua:** 1
-**Necesidad de abono:** 1
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Lirio
-**Nombre científico:** Lilium candidum
-![Lirio](Recursos/Imágenes/Lirio.png){ width=100px } | 
-Planta elegante de crecimiento equilibrado. Sus flores blancas mejoran la biodiversidad del jardín. | Atractor de Polinizadores |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 2
-**Exposición solar:** Sol parcial | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Adelfa
-**Nombre científico:** Nerium oleander
-![Adelfa](Recursos/Imágenes/Adelfa.png){ width=100px } | 
-Arbusto muy resistente al calor y suelos pobres. Florece incluso en condiciones difíciles, aunque es tóxica si se manipula mal. | Atractor de Polinizadores |
-**Necesidad de agua:** 1
-**Necesidad de abono:** 2
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Orquídea
-**Nombre científico:** Orchidaceae
-![Orquidea](Recursos/Imágenes/Orquidea.png){ width=100px } | 
-Planta exótica que florece lentamente. Necesita humedad constante y suelos ricos. | Atractor de Polinizadores |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 3
-**Exposición solar:** Sombra | 
-**Días hasta brotar:** 2
-**Días hasta crecer:** 3
-**Días hasta madurar:** 4 | 3 pétalos |
-
-| 
-**Nombre:** Guayabo
-**Nombre científico:** Psidium guajava
-![Guayabo](Recursos/Imágenes/Guayabo.png){ width=100px } | 
-Árbol frutal tropical que atrae fauna y mejora la fertilidad del suelo. Su mantenimiento es alto, pero sus frutos generan beneficios. | Atractor de Polinizadores |
-**Necesidad de agua:** 3
-**Necesidad de abono:** 3
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 3
-**Días hasta madurar:** 4 | 3 pétalos |
-
-| 
-**Nombre:** Rosa
-**Nombre científico:** Rosa chinensis
-![Rosa](Recursos/Imágenes/Rosa.png){ width=100px } | 
-Flor clásica, de crecimiento medio y sensible a plagas. Su presencia incrementa la polinización general del jardín. | Atractor de Polinizadores |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 2
-**Exposición solar:** Sol parcial | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Tulipán
-**Nombre científico:** Tulipa
-![Tulipán](Recursos/Imágenes/Tulipan.png){ width=100px } | 
-Planta de temporada con floración intensa y breve. Ideal para marcar el ciclo natural del jardín y dar color temporal. | Atractor de Polinizadores |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 2
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Agabe
-**Nombre científico:** Agave americana
-![Agabe](Recursos/Imágenes/Agabe.webp){ width=100px } | 
-Planta suculenta resistente a la sequía. Genera sombra densa a su alrededor, reduciendo la evaporación del suelo y protegiendo especies sensibles al sol. | Sombra |
-**Necesidad de agua:** 1
-**Necesidad de abono:** 1
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 4 | 2 pétalos |
-
-| 
-**Nombre:** Bambú
-**Nombre científico:** Bambusoideae
-![Bambú](Recursos/Imágenes/Bambu.webp){ width=100px } | 
-Planta de rápido crecimiento vertical. Su sombra amplia y su capacidad para retener humedad lo convierten en una pieza clave para equilibrar zonas áridas del jardín. | Sombra |
-**Necesidad de agua:** 3
-**Necesidad de abono:** 2
-**Exposición solar:** Semisombra | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 3
-**Días hasta madurar:** 4 | 3 pétalos |
-
-| 
-**Nombre:** Garambullo
-**Nombre científico:** Myrtillocactus geometrizans
-![Garambullo](Recursos/Imágenes/Garambullo.png){ width=100px } | 
-Cactus arborescente que genera sombra ligera y florece con pequeñas flores que atraen polinizadores. Su fruto comestible añade valor ecológico y económico. | Sombra / Atractor de Polinizadores |
-**Necesidad de agua:** 1
-**Necesidad de abono:** 2
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 3 pétalos |
-
-| 
-**Nombre:** Flor de papel
-**Nombre científico:** Bougainvillea glabra
-![Flor de papel](Recursos/Imágenes/Flor_de_papel.webp){ width=100px } | 
-Planta trepadora de colores vivos. Su floración abundante aporta belleza y atrae insectos, además de poder usarse como materia prima decorativa o cosmética. | Productora |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 2
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Trompetilla
-**Nombre científico:** Bouvardia ternifolia
-![Trompetilla](Recursos/Imágenes/Trompetilla.jpeg){ width=100px } | 
-Arbusto de flores tubulares y racimos de intenso color rojo. Planta muy vistosa y compacta, apreciada en la jardinería por su floración duradera y su capacidad para atraer colibríes. | Productora |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 3
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Tomatera
-**Nombre científico:** Solanum lycopersicum
-![Tomatera](Recursos/Imágenes/Tomatera.png){ width=100px } | 
-Planta de fruto comestible. Requiere riego constante y suelos ricos. Al madurar, produce tomates que pueden venderse o usarse como recurso alimenticio. | Productora |
-**Necesidad de agua:** 3
-**Necesidad de abono:** 3
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 3 pétalos |
-
-| 
-**Nombre:** Fresa
-**Nombre científico:** Fragaria vesca
-![Fresa](Recursos/Imágenes/Fresa.png){ width=100px } | 
-Planta pequeña y frutal que crece en zonas húmedas. Produce frutos dulces que atraen fauna y aportan ingresos moderados. | Productora / Atractor de fauna |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 2
-**Exposición solar:** Sol parcial | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Cafeto arábico
-**Nombre científico:** Coffea arabica
-![Cafeto arábico](Recursos/Imágenes/Cafeto_arabico.png){ width=100px } | 
-Arbusto tropical de gran valor económico. Sus granos sirven como recurso avanzado. Exige condiciones estables de humedad y fertilidad. | Productora |
-**Necesidad de agua:** 3
-**Necesidad de abono:** 3
-**Exposición solar:** Semisombra | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 3
-**Días hasta madurar:** 4 | 3 pétalos |
-
-| 
-**Nombre:** Trigo
-**Nombre científico:** Triticum aestivum
-![Trigo](Recursos/Imágenes/Trigo.png){ width=100px } | 
-Cereal básico de bajo mantenimiento. Aporta alimento, semillas y refugio para pequeños animales e insectos. Favorece la fauna y la estabilidad del suelo. | Productora / Refugio para fauna |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 2
-**Exposición solar:** Sol directo | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 3 | 2 pétalos |
-
-| 
-**Nombre:** Cheflera
-**Nombre científico:** Schefflera arboricola
-![Cheflera](Recursos/Imágenes/Cheflera.png){ width=100px } | 
-Arbusto de hojas grandes y brillantes que crea un microclima fresco bajo su copa. Sirve como refugio para insectos y aves pequeñas, estabilizando la humedad del entorno y mejorando la salud general del jardín. | Refugio para fauna |
-**Necesidad de agua:** 2
-**Necesidad de abono:** 2
-**Exposición solar:** Sol parcial | 
-**Días hasta brotar:** 1
-**Días hasta crecer:** 2
-**Días hasta madurar:** 4 | 2 pétalos |
-
-
-- **Regadera:** La regadera es la herramienta utilizada para regar cada casilla de la cuadrícula. La regadera tiene un depósito que podrás usar en cada una de las parcelas. Cada día, el depósito de agua se rellena.
-![Regadera](Recursos/Imágenes/Regadera.PNG){ width=100px }
-
-- **Saco de abono:** El saco de abono es la herramienta utilizada para abonar cada casilla de la cuadrícula. El saco de abono tiene un depósito que podrás usar en cada una de las parcelas. Cada día, el saco de abono se rellena.
-![Saco de abono](Recursos/Imágenes/Saco_abono.PNG){ width=100px }
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <b>Regadera:</b> La regadera es la herramienta utilizada para regar cada casilla de la cuadrícula. La regadera tiene un depósito que podrás usar en cada una de las parcelas. Cada día, el depósito de agua se rellena.
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Regadera.PNG" alt="Regadera" width="200">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Saco de abono:</b> El saco de abono es la herramienta utilizada para abonar cada casilla de la cuadrícula. El saco de abono tiene un depósito que podrás usar en cada una de las parcelas. Cada día, el saco de abono se rellena.
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Saco_abono.PNG" alt="Saco de abono" width="200">
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 # 5. Trasfondo
@@ -698,23 +915,43 @@ Empezando por la semilla, continuando con un brote pequeño, uno un poco más gr
 
 Una planta se puede encontrar en tres niveles de salud en cualquiera de sus etapas: bueno, regular y malo. Esto se visualiza con la pérdida de color y el decaimiento de las hojas, de las flores y la putrefacción de los frutos.
 
-![Diseño margarita](Recursos/Imágenes/Diseño_margarita.png){ width=300px }
+![Diseño margarita](Recursos/Imágenes/Diseño_margarita.png)
 
 ### 6.2.2. Fauna
 
 ### 6.2.3. Recursos y objetos
-| ![Regadera](Recursos/Imágenes/Regadera.PNG){ width=100px } | ![Saco de abono](Recursos/Imágenes/Saco_abono.PNG){ width=100px } |
-| Regadera | Saco de abono |
-| ![Néctar](Recursos/Imágenes/Nectar.PNG){ width=100px } | ![Pétalo](Recursos/Imágenes/Petalo.PNG){ width=300px } |
-| Néctar | Pétalo |
+<table>
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Regadera.PNG" alt="Regadera" width="200"><br>
+                Regadera
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Saco_abono.PNG" alt="Saco de abono" width="200"><br>
+                Saco de abono
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Nectar.PNG" alt="Néctar" width="200"><br>
+                Néctar
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Petalo.PNG" alt="Pétalo" width="200"><br>
+                Pétalo
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ### 6.2.4. Escenario
 El escenario consiste en una vista cenital inclinada del Jardín santuario, que combina la claridad de la cuadrícula con la calidez del estilo cozy. El espacio jugable se centra en una cuadrícula central de parcelas de tierra rodeada de césped de textura suave. En el borde superior, la Casa de campo y un árbol perenne proyectan sombras suaves sobre las parcelas, un factor de diseño clave. Los tonos son armónicos, enfatizando que este espacio es un refugio de vida y calma frente al mundo exterior. 
 
 El color de las parcelas de tierra cambia visualmente en función de si están fértiles, abonados o secos, es decir, en función del agua y el abono que tengan. 
 
-![Escenario](Recursos/Imágenes/Escenario.png){ width=300px }
-![Ejemplo de crecimiento](Recursos/Imágenes/Ejemplo_crecimiento.png){ width=300px }
+![Escenario](Recursos/Imágenes/Escenario.png)
+![Ejemplo de crecimiento](Recursos/Imágenes/Ejemplo_crecimiento.png)
 
 
 ## 6.3. Música
@@ -738,7 +975,21 @@ El diseño sonoro refuerza la idea de un ecosistema íntimo, respirando y respon
 ## 6.5. Referencias
 Los principales videojuegos que se han tomado de referencia para _The Living Garden_ son el “Animal Crossing” y el “Stardew Valley”, que comparten esa estética cozy, la gestión de cultivos y el ciclo temporal.
 Estas son algunas de las referencias visuales para el diseño del juego:
-| ![Referencia 1](Recursos/Imágenes/Referencia1.jpg){ width=100px } | ![Referencia 2](Recursos/Imágenes/Referencia2.jpg){ width=100px } | ![Referencia 3](Recursos/Imágenes/Referencia3.jpg){ width=100px } |
+<table>
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Referencia1.jpg" alt="Referencia 1" width="300">
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Referencia2.jpg" alt="Referencia 2" width="300">
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Referencia3.jpg" alt="Referencia 3" width="300">
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 # 7. Interfaz
@@ -746,28 +997,32 @@ En esta sección se detallarán las pantallas clave que componen la experiencia 
 
 ## 7.1. Diagrama de flujo
 El siguiente diagrama de flujo muestra las pantallas a lo largo del juego y las transiciones entre ellas:
-![Diagrama de flujo](Recursos/Imágenes/Diagrama_de_flujo.png){ width=300px }
+![Diagrama de flujo](Recursos/Imágenes/Diagrama_de_flujo.png)
 
 ## 7.2. Diseños básicos de los menús
 A continuación, se muestran unos bocetos de cómo serían las diferentes pantallas a lo largo del juego y sus botones.
 
 **Menú principal:**
-![Pantalla de menú principal](Recursos/Imágenes/Menu_principal.png){ width=300px }
+![Pantalla de menú principal](Recursos/Imágenes/Menu_principal.png)
 
 **Tienda:**
-![Pantalla de tienda](Recursos/Imágenes/Tienda.png){ width=300px }
+
+![Pantalla de tienda](Recursos/Imágenes/Tienda.png)
 
 **Ajustes:**
-![Pantalla de ajustes](Recursos/Imágenes/Ajustes.png){ width=300px }
+
+![Pantalla de ajustes](Recursos/Imágenes/Ajustes.png)
 
 **Pantalla de juego:**
-![Pantalla de juego](Recursos/Imágenes/Pantalla_juego.jpeg){ width=300px }
+
+![Pantalla de juego](Recursos/Imágenes/Pantalla_juego.jpeg)
 
 **Menú de pausa:**
-![Pantalla de menú de pausa](Recursos/Imágenes/Menu_pausa.png){ width=300px }
+
+![Pantalla de menú de pausa](Recursos/Imágenes/Menu_pausa.png)
 
 
-# 8. Hoja de ruta del desarrollo
+# 8. Hoja de ruta de desarrollo
 | Hito | Descripción | Fecha |
 |-----------|-----------|-----------|
 | 1 | GDD | 19/10/25 |
