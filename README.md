@@ -1,13 +1,11 @@
----
-title: "GDD del videojuego The Living Garden"
-author: Ripple Games
-date: 19 de octubre de 2025
----
-
-![Logo](Recursos/Imágenes/Logo.PNG)
+<img src="Recursos/Imágenes/Logo.PNG" alt="Logo" width="200">
 
 # Game Design Document (GDD) - The Living Garden
-Versión Alpha - 19 de octubre 2025
+Versión Alpha
+
+**Autor:** Ripple Games
+
+**Fecha:** 19 de octubre de 2025
 
 # Índice
 [1. Introducción](#1-introducción)   
@@ -691,7 +689,7 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
                 <b>Regadera:</b> La regadera es la herramienta utilizada para regar cada casilla de la cuadrícula. La regadera tiene un depósito que podrás usar en cada una de las parcelas. Cada día, el depósito de agua se rellena.
             </td>
             <td style="text-align: center;">
-                <img src="Recursos/Imágenes/Regadera.PNG" alt="Regadera" width="200">
+                <img src="Recursos/Imágenes/Regadera.PNG" alt="Regadera" width="300">
             </td>
         </tr>
         <tr>
@@ -699,7 +697,7 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
                 <b>Saco de abono:</b> El saco de abono es la herramienta utilizada para abonar cada casilla de la cuadrícula. El saco de abono tiene un depósito que podrás usar en cada una de las parcelas. Cada día, el saco de abono se rellena.
             </td>
             <td style="text-align: center;">
-                <img src="Recursos/Imágenes/Saco_abono.PNG" alt="Saco de abono" width="200">
+                <img src="Recursos/Imágenes/Saco_abono.PNG" alt="Saco de abono" width="300">
             </td>
         </tr>
     </tbody>
@@ -918,6 +916,27 @@ Una planta se puede encontrar en tres niveles de salud en cualquiera de sus etap
 ![Diseño margarita](Recursos/Imágenes/Diseño_margarita.png)
 
 ### 6.2.2. Fauna
+La fauna se diseñará para ser expresiva, adorable y funcionalmente clara, manteniendo el estilo de ilustración 2D y la paleta de colores suaves. 
+
+- **El guía y mascota Leo:** Como personaje constante y guía del jugador, Leo requiere un diseño que equilibre adorabilidad con claridad funcional en la UI. Utiliza colores primarios y brillantes pero suavizados, para que destaque sin romper la armonía general. 
+
+  Contará con poses y expresiones para:
+    * Alerta/Advertencia
+    * Éxito/Celebración
+    * Ocio
+
+  A continuación se muestran algunos bocetos del personaje:
+
+  ![Diseño Leo](Recursos/Imágenes/Boceto_Leo.png)
+
+- **Fauna jugable:** Todos los animales tendrán una clara diferenciación visual que dirija la atención del jugador de manera sutil, coherente con el principio de Armonía Visual.
+
+| Tipo de fauna | Objetivo del diseño | Ejemplos |
+| --- | --- | --- |
+| Polinizadores (fauna beneficiosa) | Deben evocar movimiento fluido, pureza y brillo. | Abejas, mariposas, colibríes, etc. |
+| Plagas y amenazas | Deben ser fácilmente legibles, pero su diseño debe ser más aburrido o apagado, no agresivo. | Pulgón, caracoles, etc. |
+| Fauna | Se aplica la estética beneficiosa pero con un diseño más complejo. | Conejos, mariquitas, ranas, etc. |
+
 
 ### 6.2.3. Recursos y objetos
 <table>
@@ -1003,23 +1022,24 @@ El siguiente diagrama de flujo muestra las pantallas a lo largo del juego y las 
 A continuación, se muestran unos bocetos de cómo serían las diferentes pantallas a lo largo del juego y sus botones.
 
 **Menú principal:**
-![Pantalla de menú principal](Recursos/Imágenes/Menu_principal.png)
+
+<img src="Recursos/Imágenes/Menu_principal.png" alt="Pantalla de menú principal" width="500">
 
 **Tienda:**
 
-![Pantalla de tienda](Recursos/Imágenes/Tienda.png)
+<img src="Recursos/Imágenes/Tienda.png" alt="Pantalla de tienda" width="500">
 
 **Ajustes:**
 
-![Pantalla de ajustes](Recursos/Imágenes/Ajustes.png)
+<img src="Recursos/Imágenes/Ajustes.png" alt="Pantalla de ajustes" width="500">
 
 **Pantalla de juego:**
 
-![Pantalla de juego](Recursos/Imágenes/Pantalla_juego.jpeg)
+<img src="Recursos/Imágenes/Pantalla_juego.jpeg" alt="Pantalla de juego" width="500">
 
 **Menú de pausa:**
 
-![Pantalla de menú de pausa](Recursos/Imágenes/Menu_pausa.png)
+<img src="Recursos/Imágenes/Menu_pausa.png" alt="Pantalla de pausa" width="500">
 
 
 # 8. Hoja de ruta de desarrollo
