@@ -1,19 +1,20 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public enum GrowthState
 {
-    seed,
-    sprout,
-    young,
-    mature,
-    death
+    semilla,
+    brote,
+    joven,
+    madura,
+    muerta
 }
 
 public enum Health
 {
-    bad,
-    moderate, 
-    good
+    mala,
+    moderada, 
+    buena
 }
 
 public class Plant : MonoBehaviour
@@ -32,8 +33,8 @@ public class Plant : MonoBehaviour
     public Plant (PlantType _plantData)
     {
         this.plantData = _plantData;
-        this.currentHealth= Health.good; // good
-        this.currentGrowth = GrowthState.seed; // seed
+        this.currentHealth= Health.buena; // good
+        this.currentGrowth = GrowthState.semilla; // seed
         lifeDays= 0;
     }
 
@@ -63,8 +64,8 @@ public class Plant : MonoBehaviour
     {
         plantData = _type;
         lifeDays = 0;
-        currentGrowth = GrowthState.seed; // Comienza como semilla
-        currentHealth = Health.good; // Comienza con salud perfecta
+        currentGrowth = GrowthState.semilla; // Comienza como semilla
+        currentHealth = Health.buena; // Comienza con salud perfecta
 
         spriteRenderer.sprite = plantData.plantSprites[0];
     }
@@ -72,34 +73,37 @@ public class Plant : MonoBehaviour
     // Metodo que Incrementa el estado de salud
     public void IncreaseHealth()
     {
-        if (currentHealth == Health.bad)
+        if (currentHealth == Health.mala)
         {
-            currentHealth = Health.moderate;
+            currentHealth = Health.moderada;
         }
-        else if (currentHealth == Health.moderate)
+        else if (currentHealth == Health.moderada)
         {
-            currentHealth = Health.good;
+            currentHealth = Health.buena;
         }
         else
         {
             Debug.Log($"Planta sana");
         }
+
+        UpdatePlantHealthVisuals(currentHealth);
     }
 
     // Metodo que Decrementa el estado de salud
     public bool DecreaseHealth()
     {
-        if(currentHealth== Health.good)
+        if(currentHealth== Health.buena)
         {
-            currentHealth= Health.moderate;
-        } else if(currentHealth== Health.moderate) 
+            currentHealth= Health.moderada;
+        } else if(currentHealth== Health.moderada) 
         {
-            currentHealth= Health.bad;
+            currentHealth= Health.mala;
         } else
         {
             return true; // La planta ha muerto
         }
 
+        UpdatePlantHealthVisuals(currentHealth);
         return false;
     }
 
@@ -108,26 +112,26 @@ public class Plant : MonoBehaviour
     {
         lifeDays++;
 
-        if(currentGrowth == GrowthState.mature)
+        if(currentGrowth == GrowthState.madura)
         {
             return;
         } 
-        else if (currentGrowth == GrowthState.seed && lifeDays >= plantData.timeToSprout) 
+        else if (currentGrowth == GrowthState.semilla && lifeDays >= plantData.timeToSprout) 
         {
             currentGrowth++; // Brotar
-            UpdatePlantVisuals((int) currentGrowth);
+            UpdatePlantGrowthVisuals((int) currentGrowth);
             Debug.Log($"La planta {plantData.plantName} ha brotado.");
         } 
-        else if (currentGrowth == GrowthState.sprout && lifeDays >= plantData.timeToGrow)
+        else if (currentGrowth == GrowthState.brote && lifeDays >= plantData.timeToGrow)
         {
             currentGrowth++; // Crecer hasta Joven
-            UpdatePlantVisuals((int)currentGrowth);
+            UpdatePlantGrowthVisuals((int)currentGrowth);
             Debug.Log($"La planta {plantData.plantName} ha crecido.");
         }
-        else if (currentGrowth == GrowthState.young && lifeDays >= plantData.timeToMature)
+        else if (currentGrowth == GrowthState.joven && lifeDays >= plantData.timeToMature)
         {
             currentGrowth++; // Crecer hasta madura
-            UpdatePlantVisuals((int)currentGrowth);
+            UpdatePlantGrowthVisuals((int)currentGrowth);
             Debug.Log($"La planta {plantData.plantName} ha madurado.");
         }
     }
@@ -137,9 +141,25 @@ public class Plant : MonoBehaviour
     #endregion
 
     // Metodos de visualización
-    private void UpdatePlantVisuals(int state)
+    private void UpdatePlantGrowthVisuals(int state)
     {
         spriteRenderer.sprite = plantData.plantSprites[state];
+    }
+
+    private void UpdatePlantHealthVisuals(Health _currentHealth)
+    {
+        switch (_currentHealth)
+        {
+            case Health.mala:
+                spriteRenderer.color = Color.red;
+                break;
+            case Health.moderada:
+                spriteRenderer.color = Color.yellow;
+                break;
+            case Health.buena:
+                spriteRenderer.color = Color.white;
+                break;
+        }
     }
 
 }

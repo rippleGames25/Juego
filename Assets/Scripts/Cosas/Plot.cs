@@ -84,7 +84,7 @@ public class Plot : MonoBehaviour
 
         currentPlant.UpdateLifeDays(); // Actualizar dias de vida
 
-        if (currentPlant.currentGrowth == GrowthState.mature)
+        if (currentPlant.currentGrowth == GrowthState.madura)
         {
             UpdateEnviroment(currentPlant.plantData.category);
         }

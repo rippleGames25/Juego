@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
     private DailyWeather currentWeather;
 
     // Resources
-    private int currentMoney = 100;
-    private int currentWater = 10;
-    private int currentFertilizer = 10;
+    private int currentMoney = 3;
+    private int currentWater = 8;
+    private int currentFertilizer = 8;
 
     [Header("Plantas")]
     [SerializeField] private GameObject plantPrefab;
@@ -244,7 +244,7 @@ public class GameManager : MonoBehaviour
     private int CalculateResourcesAmount()
     {
         // Implementar calculo...
-        return 10;
+        return 8;
     }
 
     #region Métodos de actualización diaria
@@ -263,7 +263,7 @@ public class GameManager : MonoBehaviour
     {
         int amount = CalculateResourcesAmount();    // Calcular la cantidad que le tienen que dar
 
-        CurrentMoney +=amount;  // Sumar dinero
+        CurrentMoney +=1;  // Sumar dinero
         CurrentWater += amount;  // Sumar agua
         CurrentFertilizer += amount; // Sumar abono
     }

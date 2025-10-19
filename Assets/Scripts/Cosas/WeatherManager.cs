@@ -4,10 +4,10 @@ using System.Linq;
 
 public enum WeatherType
 {
-    Sunny,
-    PartlySunny,
-    Rainy,
-    Hailing
+    Soleado,
+    Nublado,
+    Lluvia,
+    Granizo
 }
 
 public class DailyWeather
@@ -87,16 +87,16 @@ public class WeatherManager : MonoBehaviour
 
         switch (randomType)
         {
-            case WeatherType.Sunny:
+            case WeatherType.Soleado:
                 waterChangeAux = -randomIntensity; // Resta agua: -1, -2 o -3
                 break;
-            case WeatherType.PartlySunny:
+            case WeatherType.Nublado:
                 // No resta agua
                 break;
-            case WeatherType.Rainy:
+            case WeatherType.Lluvia:
                 waterChangeAux = randomIntensity*2; // Suma agua: 2, 4 o 6
                 break;
-            case WeatherType.Hailing:
+            case WeatherType.Granizo:
                 waterChangeAux = randomIntensity;   // Suma agua: 1, 2 o 3
                 deathProbabilityAux = randomIntensity/5f; // Probablidad de muerte de plantas pequeñas y con salud baja: 1/5, 2/5, 3/5
                 break;
