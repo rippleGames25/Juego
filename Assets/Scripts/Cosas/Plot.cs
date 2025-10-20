@@ -6,9 +6,9 @@ using System.Collections;
 
 public enum SolarExposure
 {
-    Fullsun,
-    PartShade,
-    Shade
+    Soleado,
+    Semisombra,
+    Sombra
 }
 
 // This class represent a Plot in the game
@@ -71,7 +71,7 @@ public class Plot : MonoBehaviour
         gridCoordinates= new Vector2Int(x, y);
         currentFertility = UnityEngine.Random.Range(5, 8);
         currentWater = UnityEngine.Random.Range(5, 8);
-        currentSolarExposure = SolarExposure.Fullsun; // Temporalmente todas sol
+        currentSolarExposure = SolarExposure.Soleado; // Temporalmente todas sol
         isPlanted = false; // Se inicializa vacia
         currentPlant = null; // No hay planta
 
@@ -188,6 +188,20 @@ public class Plot : MonoBehaviour
                 else
                 {
                     Debug.Log($"Parcela {gridCoordinates} ocupada.");
+                }
+                break;
+            case ToolType.Shovel:
+                if (this.isPlanted)
+                {
+                    GameManager.Instance.CurrentMoney+=this.currentPlant.plantData.price; // Dinero que gana
+
+                    PlotsManager.Instance.PlantsDeath(this.currentPlant);
+                    this.currentPlant = null;
+                    this.isPlanted = false;                    
+                }
+                else
+                {
+                    Debug.Log($"En la parcela {gridCoordinates} no hay ninguna planta.");
                 }
                 break;
         }

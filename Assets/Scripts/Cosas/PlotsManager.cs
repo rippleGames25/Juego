@@ -11,6 +11,7 @@ public class PlotsManager : MonoBehaviour
     [SerializeField] private int rows = 6;
     [SerializeField] private int columns = 5;
     [SerializeField] private float spacing = 1.5f; // Espacio entre parcelas
+    
 
     private Plot[,] plotGrid;
 

@@ -120,6 +120,7 @@ public class Plant : MonoBehaviour
         {
             currentGrowth++; // Brotar
             UpdatePlantGrowthVisuals((int) currentGrowth);
+            GameManager.Instance.CurrentBiodiversity++; // Sumamos uno a la biodiversidad
             Debug.Log($"La planta {plantData.plantName} ha brotado.");
         } 
         else if (currentGrowth == GrowthState.brote && lifeDays >= plantData.timeToGrow)

@@ -5,11 +5,11 @@ using TMPro;
 
 public class ShopItemUI : MonoBehaviour
 {
+    public GameObject UIManager;
     
     public PlantType plantData;
     public TextMeshProUGUI nameText;
     public Image plantImage;
-    private Image itemBackground;
     public TextMeshProUGUI priceText;
 
     [SerializeField] private Button buyButton;
@@ -17,12 +17,11 @@ public class ShopItemUI : MonoBehaviour
     void Start()
     {
         GameManager.Instance.OnMoneyChanged += UpdateItemAvailability;
-        itemBackground = GetComponent<Image>();
 
         if (plantData != null)
         {
             nameText.text = plantData.plantName;
-            priceText.text = plantData.price.ToString() + "€";
+            priceText.text = plantData.price.ToString();
             plantImage.sprite = plantData.plantSprites[3];
         }
     }
@@ -33,12 +32,10 @@ public class ShopItemUI : MonoBehaviour
         if(_currentmoney < plantData.price)
         {
             buyButton.interactable = false;
-            itemBackground.color = new Color32(90, 90, 90, 100);
 
         } else
         {
             buyButton.interactable = true;
-            itemBackground.color = new Color32(255, 255, 255, 100);
         }
     }
 
@@ -50,5 +47,10 @@ public class ShopItemUI : MonoBehaviour
             Debug.Log($"Planta seleccionada {plantData.plantName}");
             ShopManager.Instance.SelectPlantToBuy(plantData);   
         }
+    }
+
+    public void ShowInfoPanel()
+    {
+        GameManager.Instance.ShowPlantTypePanel(plantData);
     }
 }

@@ -12,12 +12,14 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject HUDPanel;
     [SerializeField] private GameObject plantInfoPanel;
     [SerializeField] private GameObject plotInfoPanel;
+    
 
     [Header("Cursores")]
     [SerializeField] private Texture2D normalCursor;
     [SerializeField] private Texture2D wateringCanCursor;
     [SerializeField] private Texture2D fertilizerBagCursor;
-    [SerializeField] private Texture2D plantTestCursor;
+    [SerializeField] private Texture2D seedCursor;
+    [SerializeField] private Texture2D shovelCursor;
 
     [Header("Clima")]
     [SerializeField] private TextMeshProUGUI currentWeatherText;
@@ -30,6 +32,7 @@ public class HUDUI : MonoBehaviour
 
     [Header("Progreso")]
     [SerializeField] private TextMeshProUGUI dayText;
+    [SerializeField] private TextMeshProUGUI biodiversityText;
 
     [Header("Panel Info")]
     [SerializeField] private Image plantPhoto;
@@ -38,6 +41,11 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI health;
     [SerializeField] private TextMeshProUGUI resourcesDemand;
     [SerializeField] private TextMeshProUGUI plotInfo;
+
+    [Header("Panel Tipo de planta")]
+    [SerializeField] private GameObject plantTypeInfoPanel;
+    [SerializeField] private TextMeshProUGUI plantTypeName;
+
 
     #endregion
 
@@ -52,6 +60,7 @@ public class HUDUI : MonoBehaviour
         UpdateWaterText(GameManager.Instance.CurrentWater);
         UpdateFertilizerText(GameManager.Instance.CurrentFertilizer);
         UpdateDayText(GameManager.Instance.CurrentDay);
+        UpdateBiodiversityText(GameManager.Instance.CurrentBiodiversity);
 
         // Subscripción a eventos
         if(GameManager.Instance!= null)
@@ -61,6 +70,8 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnFertilizerChanged += UpdateFertilizerText;
             GameManager.Instance.OnDayChanged += UpdateDayText;
             GameManager.Instance.OnToolChanged += UpdateCursor;
+            GameManager.Instance.OnBiodiversityChanged += UpdateBiodiversityText;
+            GameManager.Instance.OnPlantInfoClick += ShownPlantTypeInfoPanel;
             PlotsManager.Instance.OnPlotSelected += ShowInfoPanel;
             PlotsManager.Instance.OnPlotUnselected += UnShowInfoPanel;
 
@@ -87,6 +98,19 @@ public class HUDUI : MonoBehaviour
     public void PassDayButton()
     {
         GameManager.Instance.PassDay();
+    }
+
+    public void ShownPlantTypeInfoPanel(PlantType plantType)
+    {
+        // Poner info planta
+        plantTypeName.text = plantType.plantName;
+
+        plantTypeInfoPanel.SetActive(true);
+    }
+
+    public void UnShowPlantTypeInfoPanel()
+    {
+        plantTypeInfoPanel.SetActive(false);
     }
 
     #endregion
@@ -158,7 +182,7 @@ public class HUDUI : MonoBehaviour
     {
         if (currentWeatherText != null)
         {
-            currentWeatherText.text = $"HOY HACE: {weather.ToString()}";
+            currentWeatherText.text = $"HOY: {weather.ToString()}";
             // Efectos visuales
         }
     }
@@ -167,7 +191,7 @@ public class HUDUI : MonoBehaviour
     {
         if (moneyText != null)
         {
-            moneyText.text = "Dinero: " + value.ToString() + "€";
+            moneyText.text = value.ToString();
         }
     }
 
@@ -175,7 +199,7 @@ public class HUDUI : MonoBehaviour
     {
         if (waterText != null)
         {
-            waterText.text = "Agua: " + value.ToString();
+            waterText.text = value.ToString();
         }
     }
 
@@ -183,7 +207,7 @@ public class HUDUI : MonoBehaviour
     {
         if (fertilizerText != null)
         {
-            fertilizerText.text = "Abono: " + value.ToString();
+            fertilizerText.text = value.ToString();
         }
     }
 
@@ -192,6 +216,14 @@ public class HUDUI : MonoBehaviour
         if (dayText != null)
         {
             dayText.text = "Dia: " + value.ToString();
+        }
+    }
+
+    private void UpdateBiodiversityText(int value)
+    {
+        if(biodiversityText != null)
+        {
+            biodiversityText.text = "Biodiversidad: " + value.ToString();
         }
     }
 
@@ -214,7 +246,10 @@ public class HUDUI : MonoBehaviour
                 return fertilizerBagCursor;
 
             case ToolType.Plant:
-                return plantTestCursor;
+                return seedCursor;
+
+            case ToolType.Shovel:
+                return shovelCursor;
 
             default:
                 return normalCursor;
@@ -233,7 +268,11 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnWaterChanged -= UpdateWaterText;
             GameManager.Instance.OnFertilizerChanged -= UpdateFertilizerText;
             GameManager.Instance.OnDayChanged -= UpdateDayText;
+            GameManager.Instance.OnToolChanged -= UpdateCursor;
+            GameManager.Instance.OnBiodiversityChanged -= UpdateBiodiversityText;
+            GameManager.Instance.OnPlantInfoClick -= ShownPlantTypeInfoPanel;
             PlotsManager.Instance.OnPlotSelected -= ShowInfoPanel;
+            PlotsManager.Instance.OnPlotUnselected -= UnShowInfoPanel;
         }
 
         if (WeatherManager.Instance != null)

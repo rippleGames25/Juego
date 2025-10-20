@@ -8,7 +8,8 @@ public enum ToolType
     None,
     WateringCan,
     FertilizerBag,
-    Plant
+    Plant,
+    Shovel
 }
 
 public class GameManager : MonoBehaviour
@@ -22,13 +23,15 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnWaterChanged;
     public event Action<int> OnFertilizerChanged;
     public event Action<int> OnDayChanged;
+    public event Action<int> OnBiodiversityChanged;
     public event Action<ToolType> OnToolChanged;
+    public event Action<PlantType> OnPlantInfoClick;
 
     // Variables
     private int winCondition;
     private ToolType currentTool;
     private int currentDay = 1;
-    private int biodiversity = 0;
+    private int currentBiodiversity = 0;
     private DailyWeather currentWeather;
 
     // Resources
@@ -110,6 +113,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public int CurrentBiodiversity
+    {
+        get { return currentBiodiversity; }
+        set
+        {
+            if (currentBiodiversity != value)
+            {
+                currentBiodiversity = value;
+                Debug.Log("La biodiversidad ha cambiado a " + currentBiodiversity);
+                OnBiodiversityChanged?.Invoke(currentBiodiversity);
+            }
+        }
+    }
+
     #endregion
 
     void Awake()
@@ -168,7 +185,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        CurrentMoney -=plantData.price; // Restar el dinero que cuesta la planta
+        CurrentMoney -= plantData.price; // Restar el dinero que cuesta la planta
 
         GameObject newPlantGO = Instantiate(plantPrefab, (plot.transform.position + new Vector3(0, 0, -1)), Quaternion.identity);
 
@@ -187,6 +204,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"La planta {plantToDeath.plantData.plantName} ha muerto porque no has cubierto sus necesidades");
         Destroy(plantToDeath.gameObject);
+        CurrentBiodiversity--;
+    }
+
+    public void ShowPlantTypePanel(PlantType plantType)
+    {
+        OnPlantInfoClick?.Invoke(plantType);
     }
 
     // Private Methods
@@ -270,7 +293,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckWinCondition()
     {
-        if (biodiversity == winCondition) // Comparar el objetivo con el estado actual
+        if (currentBiodiversity == winCondition) // Comparar el objetivo con el estado actual
         {
             Debug.Log("Has llegado al objetivo de biodiversidad. Enhorabuena");
             SceneManager.LoadScene("GameOver");

@@ -19,7 +19,7 @@ public class PlantType : ScriptableObject
     [Header("Características")]
     public int waterDemand = 2;
     public int fertilizerDemand = 2;
-    public SolarExposure solarExposureDemand = SolarExposure.Fullsun;
+    public SolarExposure solarExposureDemand = SolarExposure.Soleado;
 
     [Header("Tiempos de crecimiento (días)")]
     public int timeToSprout = 3;
