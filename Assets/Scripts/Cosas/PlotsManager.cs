@@ -76,6 +76,8 @@ public class PlotsManager : MonoBehaviour
 
     public void PlantsDeath(Plot plotToDeath)
     {
+        if (plotToDeath.currentPlant.plantData.category == PlantCategory.ProvidesShade) RemoveShade(plotToDeath.gridCoordinates);
+
         GameManager.Instance.PlantsDeath(plotToDeath.currentPlant);
         plotToDeath.currentPlant = null;
         plotToDeath.isPlanted = false;
@@ -106,6 +108,14 @@ public class PlotsManager : MonoBehaviour
             OnPlotUnselected?.Invoke(); // Invocar evento
         }
     }
+
+    #endregion
+
+    #region Producers Methods
+
+    #endregion
+
+    #region Provides Shade Methods
 
     public void GenerateShade(Vector2Int _plantCoordinates)
     {
@@ -188,7 +198,6 @@ public class PlotsManager : MonoBehaviour
                     if (plot.currentPlant.DecreaseHealth()) // true si la planta ha muerto
                     {
                         PlantsDeath(plot);
-                        RemoveShade(plot.gridCoordinates);
                     }
 
                 } else

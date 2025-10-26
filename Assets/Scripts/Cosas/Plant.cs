@@ -1,4 +1,5 @@
 using NUnit.Framework.Constraints;
+using System.Linq;
 using UnityEngine;
 
 public enum GrowthState
@@ -27,8 +28,13 @@ public class Plant : MonoBehaviour
     public int lifeDays;
     public bool hasAppliedEnvironmentEffect = false;
 
+    // Producer Type
+    [SerializeField] private int produceDays = 0;
+    [SerializeField] public bool hasProduct = false;
+
     // Visuals
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer productSR;
 
     //Constructor
     public Plant (PlantType _plantData)
@@ -143,10 +149,47 @@ public class Plant : MonoBehaviour
 
     #endregion
 
+    #region Producers Methods
+    public void ProduceCycle()
+    {
+        if (hasProduct == true) return;
+
+        produceDays++;
+
+        if(produceDays == plantData.timeToProduce)
+        {
+            hasProduct = true;
+            produceDays = 0;
+            UpdateProductVisuals();
+        } 
+    }
+
+    public void CollectProduct()
+    {
+        GameManager.Instance.CurrentMoney++; // De momento suma 1 petalo
+        hasProduct = false;
+        UpdateProductVisuals();
+    }
+
+
+    #endregion
+
     // Metodos de visualización
     private void UpdatePlantGrowthVisuals(int state)
     {
         spriteRenderer.sprite = plantData.plantSprites[state];
+    }
+
+    private void UpdateProductVisuals()
+    {
+        if (plantData.category == PlantCategory.Producer && hasProduct)
+        {
+            spriteRenderer.sprite = plantData.plantSprites.Last();
+        }
+        else if(plantData.category == PlantCategory.Producer && !hasProduct)
+        {
+            spriteRenderer.sprite = plantData.plantSprites[3];
+        }
     }
 
     private void UpdatePlantHealthVisuals(Health _currentHealth)

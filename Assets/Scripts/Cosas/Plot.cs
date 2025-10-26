@@ -105,7 +105,18 @@ public class Plot : MonoBehaviour
         {
             UpdateEnviroment(currentPlant.plantData.category);
             currentPlant.hasAppliedEnvironmentEffect = true;
+        } 
+        else if (currentPlant.hasAppliedEnvironmentEffect)
+        {
+            switch (currentPlant.plantData.category)
+            {
+                case PlantCategory.Producer:
+                    currentPlant.ProduceCycle();
+                    break;
+            }
         }
+
+
     }
 
     public void ChangeWater (int weatherWater)
@@ -182,9 +193,15 @@ public class Plot : MonoBehaviour
         switch (GameManager.Instance.CurrentTool)
         {
             case ToolType.None:
-                
-                PlotsManager.Instance.PlotSelected(this);
-                Debug.Log($"Parcela {this.gridCoordinates} seleccionada.");
+                if (currentPlant!=null && currentPlant.hasProduct)
+                {
+                    currentPlant.CollectProduct();
+                }
+                else
+                {
+                    PlotsManager.Instance.PlotSelected(this);
+                    Debug.Log($"Parcela {this.gridCoordinates} seleccionada.");
+                }
                 break;
 
             case ToolType.WateringCan:
@@ -253,7 +270,6 @@ public class Plot : MonoBehaviour
                     GameManager.Instance.CurrentMoney+=this.currentPlant.plantData.price; // Dinero que gana
 
                     PlotsManager.Instance.PlantsDeath(this);
-                    PlotsManager.Instance.RemoveShade(this.gridCoordinates);
                 }
                 else
                 {
@@ -271,14 +287,17 @@ public class Plot : MonoBehaviour
                 // Atraer polinizadores
 
                 break;
+
             case PlantCategory.ProvidesShade:
                 // Cambiar la exposicion solar de las parcelas adyacentes
                 PlotsManager.Instance.GenerateShade(this.gridCoordinates);
                 break;
+
             case PlantCategory.Producer:
                 // Empezar el ciclo de produccion
-
+  
                 break;
+
             case PlantCategory.WildlifeRefuge:
                 // Instanciar fauna
 
@@ -364,7 +383,6 @@ public class Plot : MonoBehaviour
     {
         int max = solarExposurePlot.Count;
         sr.sprite = solarExposurePlot[Math.Min((int)this.currentSolarExposure, max)];
-        Debug.Log("Sprite de Exposicionsolaractualizada");
     }
 
     public override string ToString()

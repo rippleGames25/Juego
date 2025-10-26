@@ -248,8 +248,8 @@ public class GameManager : MonoBehaviour
                 Plot plot = hitObject.GetComponent<Plot>(); // Parcela
 
                 plot.SelectPlot();
-
             }
+
         } else
         {
             // Si no ha colisionado con nada

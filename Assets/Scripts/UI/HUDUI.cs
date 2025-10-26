@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class HUDUI : MonoBehaviour
 {
@@ -153,7 +154,7 @@ public class HUDUI : MonoBehaviour
     private void ShowPlantInfoPanel(Plant plant)
     {
         nameText.text= plant.plantData.plantName;
-        plantPhoto.sprite = plant.plantData.plantSprites[3]; // Sprite de la planta estado: madura
+        plantPhoto.sprite = plant.plantData.plantSprites.Last(); // Sprite de la planta estado: madura
 
         growthState.text = $"Estado: {plant.currentGrowth}";
         health.text = $"Salud: {plant.currentHealth}";

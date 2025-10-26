@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 
 public class ShopItemUI : MonoBehaviour
@@ -22,7 +23,7 @@ public class ShopItemUI : MonoBehaviour
         {
             nameText.text = plantData.plantName;
             priceText.text = plantData.price.ToString();
-            plantImage.sprite = plantData.plantSprites[3];
+            plantImage.sprite = plantData.plantSprites.Last();
         }
     }
 
