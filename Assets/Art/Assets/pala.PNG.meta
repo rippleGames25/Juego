@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fccd2bb0bae78254cbb7bf0fc925d269
+guid: 61e8fedb7da05e648a4efcadbeead105
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1413505114078196444
-    second: IMG_5034_0
+      213: 1874746224519145964
+    second: pala_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_5034_0
+      name: pala_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 42
-        width: 685
-        height: 839
+        x: 177
+        y: 60
+        width: 146
+        height: 353
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd234d48967cd9310800000000000000
-      internalID: 1413505114078196444
+      spriteID: ce9e77422cf640a10800000000000000
+      internalID: 1874746224519145964
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_5034_0: 1413505114078196444
+      pala_0: 1874746224519145964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

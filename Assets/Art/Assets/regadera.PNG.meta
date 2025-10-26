@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fccd2bb0bae78254cbb7bf0fc925d269
+guid: fe2fa49e9f9e7bb499aec1300f240f05
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1413505114078196444
-    second: IMG_5034_0
+      213: -3592870961793364727
+    second: regadera_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_5034_0
+      name: regadera_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 42
-        width: 685
-        height: 839
+        x: 15
+        y: 65
+        width: 471
+        height: 335
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd234d48967cd9310800000000000000
-      internalID: 1413505114078196444
+      spriteID: 90d8d7665ee832ec0800000000000000
+      internalID: -3592870961793364727
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_5034_0: 1413505114078196444
+      regadera_0: -3592870961793364727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

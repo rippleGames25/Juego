@@ -27,15 +27,17 @@ public class WeatherManager : MonoBehaviour
 {
     public static WeatherManager Instance; // Singleton
     private const int FORECAST_LENGTH = 3;
+    
 
     // Events
     public event Action<DailyWeather> OnCurrentWeatherChanged;
     public event Action<DailyWeather[]> OnForecastChanged;
 
 
-    // Variables (CAMBIAR A PRIVATE)
+    // Variables 
     public DailyWeather currentWeather = new DailyWeather();
     public DailyWeather[] forecast = new DailyWeather[FORECAST_LENGTH];
+    public int maxIntensity = 3;
 
     void Awake()
     {
@@ -81,7 +83,7 @@ public class WeatherManager : MonoBehaviour
     {
         Array values = Enum.GetValues(typeof(WeatherType));
         WeatherType randomType = (WeatherType)values.GetValue(UnityEngine.Random.Range(0, values.Length));
-        int randomIntensity = UnityEngine.Random.Range(1, 3);
+        int randomIntensity = UnityEngine.Random.Range(1, maxIntensity);
         int waterChangeAux = 0;
         float deathProbabilityAux = 0;
 

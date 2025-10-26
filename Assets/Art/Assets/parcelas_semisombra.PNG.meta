@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: 7ff39df955ac284478db06f4dc8e65cd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5970549082769176476
+    second: parcelas_semisombra_0
+  - first:
+      213: 6207648108536837569
+    second: parcelas_semisombra_1
+  - first:
+      213: -5561229164622574392
+    second: parcelas_semisombra_2
+  - first:
+      213: -551688092077675247
+    second: parcelas_semisombra_3
+  - first:
+      213: -8571057200806593286
+    second: parcelas_semisombra_4
+  - first:
+      213: 9076564924122154917
+    second: parcelas_semisombra_5
+  - first:
+      213: -4869221588153674865
+    second: parcelas_semisombra_6
+  - first:
+      213: 251201957326799659
+    second: parcelas_semisombra_7
+  - first:
+      213: -2200747802282059788
+    second: parcelas_semisombra_8
+  - first:
+      213: -599757133572668596
+    second: parcelas_semisombra_9
+  - first:
+      213: -1235644781749215812
+    second: parcelas_semisombra_10
+  - first:
+      213: -3009024953195709084
+    second: parcelas_semisombra_11
+  - first:
+      213: -663463102395180930
+    second: parcelas_semisombra_12
+  - first:
+      213: 6422502952567821786
+    second: parcelas_semisombra_13
+  - first:
+      213: -8737038547821110855
+    second: parcelas_semisombra_14
+  - first:
+      213: 1453816918752325209
+    second: parcelas_semisombra_15
+  - first:
+      213: 4375986164122588536
+    second: parcelas_semisombra_16
+  - first:
+      213: -1845477409611732069
+    second: parcelas_semisombra_17
+  - first:
+      213: 7405484989494815323
+    second: parcelas_semisombra_18
+  - first:
+      213: 8091068737746121196
+    second: parcelas_semisombra_19
+  - first:
+      213: 4080738302605956182
+    second: parcelas_semisombra_20
+  - first:
+      213: 5476750392490653350
+    second: parcelas_semisombra_21
+  - first:
+      213: 4837494491996529433
+    second: parcelas_semisombra_22
+  - first:
+      213: -2944708787270730002
+    second: parcelas_semisombra_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: parcelas_semisombra_0
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 810
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46842871e39542da0800000000000000
+      internalID: -5970549082769176476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_1
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 808
+        width: 24
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c5b6ffa01ff52650800000000000000
+      internalID: 6207648108536837569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_2
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 811
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cc01281a8b82d2b0800000000000000
+      internalID: -5561229164622574392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_3
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 837
+        width: 27
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11da5ec6a920858f0800000000000000
+      internalID: -551688092077675247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_4
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 827
+        width: 25
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc7e5423ec7d0980800000000000000
+      internalID: -8571057200806593286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_5
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 838
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7421375bf66fd70800000000000000
+      internalID: 9076564924122154917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_6
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 841
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f83df6983cc0d6cb0800000000000000
+      internalID: -4869221588153674865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_7
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 809
+        width: 21
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b23c85969d27c7300800000000000000
+      internalID: 251201957326799659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_8
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 809
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f791cca88f5571e0800000000000000
+      internalID: -2200747802282059788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_9
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 809
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305ed801c3da7f0800000000000000
+      internalID: -599757133572668596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_10
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 808
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbdd5432e9b1adee0800000000000000
+      internalID: -1235644781749215812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_11
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 806
+        width: 44
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46dbb706fbbcd36d0800000000000000
+      internalID: -3009024953195709084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_12
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 727
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e781824d2d7eac6f0800000000000000
+      internalID: -663463102395180930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_13
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 722
+        width: 52
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad5d3b05860512950800000000000000
+      internalID: 6422502952567821786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_14
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 763
+        width: 588
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b95a384bbdcfb680800000000000000
+      internalID: -8737038547821110855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 725
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95e6fa2f8cefc2410800000000000000
+      internalID: 1453816918752325209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_16
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 720
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8751d863b30aabc30800000000000000
+      internalID: 4375986164122588536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_17
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 139
+        width: 36
+        height: 621
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9ba51fd21c8366e0800000000000000
+      internalID: -1845477409611732069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_18
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 129
+        width: 624
+        height: 612
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5a635cac5195c660800000000000000
+      internalID: 7405484989494815323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_19
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 437
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce130ae0620494070800000000000000
+      internalID: 8091068737746121196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_20
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 434
+        width: 53
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65498249dd1b1a830800000000000000
+      internalID: 4080738302605956182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_21
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 432
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a6f2e30773510c40800000000000000
+      internalID: 5476750392490653350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_22
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 436
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 913ac5e3c9b322340800000000000000
+      internalID: 4837494491996529433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_semisombra_23
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 117
+        width: 85
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeeb1cfa5fa4227d0800000000000000
+      internalID: -2944708787270730002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      parcelas_semisombra_0: -5970549082769176476
+      parcelas_semisombra_1: 6207648108536837569
+      parcelas_semisombra_10: -1235644781749215812
+      parcelas_semisombra_11: -3009024953195709084
+      parcelas_semisombra_12: -663463102395180930
+      parcelas_semisombra_13: 6422502952567821786
+      parcelas_semisombra_14: -8737038547821110855
+      parcelas_semisombra_15: 1453816918752325209
+      parcelas_semisombra_16: 4375986164122588536
+      parcelas_semisombra_17: -1845477409611732069
+      parcelas_semisombra_18: 7405484989494815323
+      parcelas_semisombra_19: 8091068737746121196
+      parcelas_semisombra_2: -5561229164622574392
+      parcelas_semisombra_20: 4080738302605956182
+      parcelas_semisombra_21: 5476750392490653350
+      parcelas_semisombra_22: 4837494491996529433
+      parcelas_semisombra_23: -2944708787270730002
+      parcelas_semisombra_3: -551688092077675247
+      parcelas_semisombra_4: -8571057200806593286
+      parcelas_semisombra_5: 9076564924122154917
+      parcelas_semisombra_6: -4869221588153674865
+      parcelas_semisombra_7: 251201957326799659
+      parcelas_semisombra_8: -2200747802282059788
+      parcelas_semisombra_9: -599757133572668596
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

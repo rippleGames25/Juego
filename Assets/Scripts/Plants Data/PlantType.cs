@@ -14,7 +14,8 @@ public class PlantType : ScriptableObject
     [Header("Info")]
     public int idx = 0;
     public string plantName = "Plantita";
-    public string description = "Lorem Ipsun";
+    public string scientificName = "Lorem Ipsum";
+    public string description = "Lorem Ipsum";
 
     [Header("Características")]
     public int waterDemand = 2;
@@ -29,8 +30,22 @@ public class PlantType : ScriptableObject
     [Header("Categoria")]
     public PlantCategory category = PlantCategory.PollinatorAttractor;
 
+    [Header("Características")]
+    // Atractores de polinizadores
+    // Tipo de polinizador
+
+    // Proporcionan sombra
+    public int shadeSize = 0;
+
+    // Productores
+    public int timeToProduce = 0;
+
+    // Refugio de fauna
+    // Tipo de fauna
+    
+
     [Header("Precio")]
-    public int price = 50; // Precio en la tienda
+    public int price = 1; // Precio en la tienda
 
     [Header("Sprites")]
     [SerializeField] public Sprite[] plantSprites;

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum SolarExposure
 {
@@ -22,21 +23,30 @@ public class Plot : MonoBehaviour
     [Header("Estado parcela")]
     [Range(0, PLOT_LIMIT)] [SerializeField] public int currentWater;
     [Range(0, PLOT_LIMIT)] [SerializeField] public int currentFertility;
-    [SerializeField] private SolarExposure currentSolarExposure;
+    [SerializeField] public SolarExposure currentSolarExposure;
     [SerializeField] public bool isPlanted;
 
     private SpriteRenderer sr; // SpriteRenderer ded la Parcela
     private const int PLOT_LIMIT = 10; // Limite de agua y abono
     private RectTransform rectTransform;
     private Vector3 initialPosition;
+    private int gColorDiference;
+    private int rColorDiference;
+
+    [Header("Gestion de la sombra")]
+    [SerializeField] private SolarExposure initialSolarExposure; 
+    [SerializeField] private int shadeSourceCount = 0; // Contador de plantas que dan sombra a esta parcela
 
     [Header("Visual")]
-    public GameObject selectionBorder;
+    [SerializeField] private List<Sprite> solarExposurePlot = new List<Sprite> ();
+    [SerializeField] public GameObject selectionBorder;
     [SerializeField] private GameObject changeCanvas;
     [SerializeField] private TextMeshProUGUI changeText;
     [SerializeField] private Image changeImage;
     [SerializeField] private Sprite waterIcon;
     [SerializeField] private Sprite fertilizerIcon;
+    [SerializeField] private Color color1;
+    [SerializeField] private Color color2;
 
 
     // Constructor
@@ -58,11 +68,17 @@ public class Plot : MonoBehaviour
         selectionBorder = this.transform.GetChild(0).gameObject; // Obtenemos el contorno de seleccion
         changeCanvas.SetActive(false); // Ocultamos el canvas del texto
 
+        
+        CalculateColor(); // Calculo de diferencia de color
+
         rectTransform = changeCanvas.GetComponent<RectTransform>();
+
         initialPosition = rectTransform.localPosition;
+        initialSolarExposure = currentSolarExposure;
 
         UpdatePlotWaterVisuals();
         UpdatePlotFertilizerVisuals();
+        UpdatePlotSolarExposureVisuals();
     }
 
     #region Public methods
@@ -71,7 +87,8 @@ public class Plot : MonoBehaviour
         gridCoordinates= new Vector2Int(x, y);
         currentFertility = UnityEngine.Random.Range(5, 8);
         currentWater = UnityEngine.Random.Range(5, 8);
-        currentSolarExposure = SolarExposure.Soleado; // Temporalmente todas sol
+        currentSolarExposure = (SolarExposure)UnityEngine.Random.Range(0, 1); //Exposicion solar random
+        initialSolarExposure = currentSolarExposure;
         isPlanted = false; // Se inicializa vacia
         currentPlant = null; // No hay planta
 
@@ -84,9 +101,10 @@ public class Plot : MonoBehaviour
 
         currentPlant.UpdateLifeDays(); // Actualizar dias de vida
 
-        if (currentPlant.currentGrowth == GrowthState.madura)
+        if (currentPlant.currentGrowth == GrowthState.madura && !currentPlant.hasAppliedEnvironmentEffect)
         {
             UpdateEnviroment(currentPlant.plantData.category);
+            currentPlant.hasAppliedEnvironmentEffect = true;
         }
     }
 
@@ -117,6 +135,45 @@ public class Plot : MonoBehaviour
     public void ChangePlantState(bool newIsPlanted)
     {
         this.isPlanted = newIsPlanted;
+    }
+
+    public void AddShadeSource()
+    {
+        shadeSourceCount++;
+
+        if(shadeSourceCount == 1)
+        {
+            currentSolarExposure = SolarExposure.Semisombra;
+
+        } else if(shadeSourceCount >= 2)
+        {
+            currentSolarExposure = SolarExposure.Sombra;
+        }
+
+        UpdatePlotSolarExposureVisuals();
+    }
+
+    public void RemoveShadeSource()
+    {
+        if(shadeSourceCount > 0)
+        {
+            shadeSourceCount--;
+        }
+
+        if (shadeSourceCount == 0)
+        {
+            this.currentSolarExposure= SolarExposure.Soleado;
+        } 
+        else if(shadeSourceCount == 1)
+        {
+            this.currentSolarExposure = SolarExposure.Semisombra;
+        }
+        else // shadeSourceCount >= 2
+        {
+            this.currentSolarExposure = SolarExposure.Sombra;
+        }
+
+        UpdatePlotSolarExposureVisuals();
     }
 
     // Metodo que define que accion se realiza sobre la parcela según la herramienta equipada
@@ -195,9 +252,8 @@ public class Plot : MonoBehaviour
                 {
                     GameManager.Instance.CurrentMoney+=this.currentPlant.plantData.price; // Dinero que gana
 
-                    PlotsManager.Instance.PlantsDeath(this.currentPlant);
-                    this.currentPlant = null;
-                    this.isPlanted = false;                    
+                    PlotsManager.Instance.PlantsDeath(this);
+                    PlotsManager.Instance.RemoveShade(this.gridCoordinates);
                 }
                 else
                 {
@@ -230,9 +286,13 @@ public class Plot : MonoBehaviour
         }
     }
 
+    private void CalculateColor()
+    {
+
+    }
+
     private void TextAnimation(string _text, int type, Color textColor)
     {
-        Debug.Log("Plot: Empezando Animacion");
         // Icono
         if (type == 0)
         {
@@ -275,7 +335,7 @@ public class Plot : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        Debug.Log("Plot: Aniamcion Hecha");
+
         rectTransform.localPosition = initialPosition;
         changeCanvas.SetActive(false);
     }
@@ -298,6 +358,13 @@ public class Plot : MonoBehaviour
         newColor.g = 1f - Mathf.Clamp01((float)this.currentFertility / (PLOT_LIMIT * 2));
 
         sr.color = newColor;
+    }
+
+    public void UpdatePlotSolarExposureVisuals()
+    {
+        int max = solarExposurePlot.Count;
+        sr.sprite = solarExposurePlot[Math.Min((int)this.currentSolarExposure, max)];
+        Debug.Log("Sprite de Exposicionsolaractualizada");
     }
 
     public override string ToString()

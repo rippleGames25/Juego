@@ -129,8 +129,8 @@ Transform:
   m_GameObject: {fileID: 4951766284379348396}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.05, y: 1.05, z: 0.6666667}
+  m_LocalPosition: {x: -0.0058, y: 0.0012, z: 0}
+  m_LocalScale: {x: 1.1668545, y: 1.1484874, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6127948769129576610}
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.18010676, g: 0.7018868, b: 0.24006107, a: 1}
+  m_Color: {r: 0.80754715, g: 0.725775, b: 0.54547524, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -219,7 +219,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -441, y: 272, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 462669893666153043}
@@ -270,8 +270,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.9056604, g: 0.68507075, b: 0.42036316, a: 1}
+  m_Sprite: {fileID: -5258524063300221356, guid: 0750026efbd202141ba0e96b7e1982cf, type: 3}
+  m_Color: {r: 0.3921569, g: 0.34901962, b: 0.13725491, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -299,12 +299,20 @@ MonoBehaviour:
   currentFertility: 0
   currentSolarExposure: 0
   isPlanted: 0
+  initialSolarExposure: 0
+  shadeSourceCount: 0
+  solarExposurePlot:
+  - {fileID: -5258524063300221356, guid: 0750026efbd202141ba0e96b7e1982cf, type: 3}
+  - {fileID: -7342669920469189202, guid: 42f7c713b094f9b4887c782dd29c437b, type: 3}
+  - {fileID: 21300000, guid: 703368a5e3c9386439140fcfb75973fa, type: 3}
   selectionBorder: {fileID: 4951766284379348396}
   changeCanvas: {fileID: 4278675605497567003}
   changeText: {fileID: 4123743199027656920}
   changeImage: {fileID: 8568513719800348703}
-  waterIcon: {fileID: -3730317744956221475, guid: 1089a2745bfa7b74a94c17b67635c4c2, type: 3}
-  fertilizerIcon: {fileID: 8347616499253376832, guid: d4bff906984a2744d9301364c936be21, type: 3}
+  waterIcon: {fileID: 21300000, guid: fd50f405766497445ab8edadc2147bcc, type: 3}
+  fertilizerIcon: {fileID: 21300000, guid: d876bde82d4d10f4a864c882f6f08367, type: 3}
+  color1: {r: 0.3921569, g: 0.34509805, b: 0.13725491, a: 1}
+  color2: {r: 0.16470589, g: 0.1254902, b: 0.050980397, a: 0}
 --- !u!61 &1269398612439380240
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -343,7 +351,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.2, y: 1.17}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -522,7 +530,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.248, y: 0.007}
-  m_SizeDelta: {x: 0.4597, y: 0.514}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &803175699108175724
 CanvasRenderer:

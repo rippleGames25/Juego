@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 44c3f07f17594094b817b10ca0eb5070
+guid: 4c86d05a88124d54e839c42559879791
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5226476438118564876
-    second: abonos-especiales-soaga_0
+      213: 2252806571786325623
+    second: sombras_escenario_0
+  - first:
+      213: 7729392593309954905
+    second: sombras_escenario_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +27,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -57,7 +60,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 7
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: abonos-especiales-soaga_0
+      name: sombras_escenario_0
       rect:
         serializedVersion: 2
-        x: 248
-        y: 32
-        width: 541
-        height: 933
+        x: 0
+        y: 0
+        width: 1732
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c04810121ac288840800000000000000
-      internalID: 5226476438118564876
+      spriteID: 77e4df224a3934f10800000000000000
+      internalID: 2252806571786325623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sombras_escenario_1
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 49
+        width: 867
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95376cd8c91544b60800000000000000
+      internalID: 7729392593309954905
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      abonos-especiales-soaga_0: 5226476438118564876
+      sombras_escenario_0: 2252806571786325623
+      sombras_escenario_1: 7729392593309954905
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

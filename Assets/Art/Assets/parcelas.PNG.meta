@@ -1,0 +1,777 @@
+fileFormatVersion: 2
+guid: 67e7c41de2fa22749922788f9c9910db
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6744269014642258182
+    second: parcelas_0
+  - first:
+      213: 1935804165225454472
+    second: parcelas_1
+  - first:
+      213: -4156134351633779605
+    second: parcelas_2
+  - first:
+      213: 3445893045578256982
+    second: parcelas_3
+  - first:
+      213: 3712468364937293969
+    second: parcelas_4
+  - first:
+      213: 1688497187804017954
+    second: parcelas_5
+  - first:
+      213: -4670619678125558374
+    second: parcelas_6
+  - first:
+      213: 2142988597666052602
+    second: parcelas_7
+  - first:
+      213: -5480741762903517889
+    second: parcelas_8
+  - first:
+      213: 5513990981410407327
+    second: parcelas_9
+  - first:
+      213: -32494343045554779
+    second: parcelas_10
+  - first:
+      213: 1401353748236265966
+    second: parcelas_11
+  - first:
+      213: -2042502499600703641
+    second: parcelas_12
+  - first:
+      213: -1673158634622608895
+    second: parcelas_13
+  - first:
+      213: -6005525097598516354
+    second: parcelas_14
+  - first:
+      213: -5333174679960348944
+    second: parcelas_15
+  - first:
+      213: 7960705232742820938
+    second: parcelas_16
+  - first:
+      213: -4033937779613438140
+    second: parcelas_17
+  - first:
+      213: 1596358479343173251
+    second: parcelas_18
+  - first:
+      213: -4868684470136444801
+    second: parcelas_19
+  - first:
+      213: -2581859268879054297
+    second: parcelas_20
+  - first:
+      213: -5661607485342037092
+    second: parcelas_21
+  - first:
+      213: 8053387824455619969
+    second: parcelas_22
+  - first:
+      213: -2994045968848254721
+    second: parcelas_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: parcelas_16
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 120
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4caa374b3b1a7e60800000000000000
+      internalID: 7960705232742820938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_17
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 120
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44fec1056f29408c0800000000000000
+      internalID: -4033937779613438140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_18
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 120
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38ebe6f3497672610800000000000000
+      internalID: 1596358479343173251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_19
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 120
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f786e021545fe6cb0800000000000000
+      internalID: -4868684470136444801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72a0a6a9ca46b2cd0800000000000000
+      internalID: -2581859268879054297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_21
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 2
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9bce721dfded61b0800000000000000
+      internalID: -5661607485342037092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_22
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 2
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1851223ce8163cf60800000000000000
+      internalID: 8053387824455619969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_23
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 2
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff80c91fd030376d0800000000000000
+      internalID: -2994045968848254721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 474
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e0fe1b55a6d23b4ca76ba237a278848
+      internalID: -6744269014642258182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 474
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af0d34375ff0ed24ebc9b98058c6a61b
+      internalID: 1935804165225454472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_2
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 474
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7290b6554e6bfe447844fd5c056cef01
+      internalID: -4156134351633779605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_3
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 474
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 122da15a6674dfb428a3dc6492903266
+      internalID: 3445893045578256982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_4
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 474
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86d3268f26da0fc47ac78449e33316f3
+      internalID: 3712468364937293969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 356
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49c378b9e1b79ea49aeff3adcbda1f46
+      internalID: 1688497187804017954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_6
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 356
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a66c6287228cd394085f91676e7d6d2d
+      internalID: -4670619678125558374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_7
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 356
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47e0794476fc69458cf39006c6478f3
+      internalID: 2142988597666052602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_8
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 356
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc25b6d945dc6224c8c928643465a4ed
+      internalID: -5480741762903517889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_9
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 356
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da79ac2967bfe04685edea6425d7d7e
+      internalID: 5513990981410407327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 238
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a2d38bf55a56a24983b5f1cb22653ee
+      internalID: -32494343045554779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_11
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 238
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05485e8582ee12c48a5c5f18d8cb941c
+      internalID: 1401353748236265966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_12
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 238
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86dc39e1bab737447ab4abcbefa1efdd
+      internalID: -2042502499600703641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_13
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 238
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eee68b35346d9540aa842145c686942
+      internalID: -1673158634622608895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_14
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 238
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c26b6aeaf40a28d4a85fa9fedd0e3a9a
+      internalID: -6005525097598516354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f214b68b6f1647747a0497d0f3d399af
+      internalID: -5333174679960348944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: parcelas_24
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 2
+        width: 121
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45150f41677c31243b26dee0ef893e04
+      internalID: -1398912101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8c654401f44534442ab7a93871bd9274
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      parcelas_0: -6744269014642258182
+      parcelas_1: 1935804165225454472
+      parcelas_10: -32494343045554779
+      parcelas_11: 1401353748236265966
+      parcelas_12: -2042502499600703641
+      parcelas_13: -1673158634622608895
+      parcelas_14: -6005525097598516354
+      parcelas_15: -5333174679960348944
+      parcelas_16: 7960705232742820938
+      parcelas_17: -4033937779613438140
+      parcelas_18: 1596358479343173251
+      parcelas_19: -4868684470136444801
+      parcelas_2: -4156134351633779605
+      parcelas_20: -2581859268879054297
+      parcelas_21: -5661607485342037092
+      parcelas_22: 8053387824455619969
+      parcelas_23: -2994045968848254721
+      parcelas_24: -1398912101
+      parcelas_3: 3445893045578256982
+      parcelas_4: 3712468364937293969
+      parcelas_5: 1688497187804017954
+      parcelas_6: -4670619678125558374
+      parcelas_7: 2142988597666052602
+      parcelas_8: -5480741762903517889
+      parcelas_9: 5513990981410407327
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

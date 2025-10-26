@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     private int currentMoney = 3;
     private int currentWater = 8;
     private int currentFertilizer = 8;
+    private const int INITIAL_AMOUNT = 2;
+    private const int AMOUNT_PER_PLANT = 3;
 
     [Header("Plantas")]
     [SerializeField] private GameObject plantPrefab;
@@ -266,8 +268,16 @@ public class GameManager : MonoBehaviour
     // Metodo para calcular que cantidad de recursos se distribuyen según la biodiversidad
     private int CalculateResourcesAmount()
     {
-        // Implementar calculo...
-        return 8;
+        int amount = CurrentBiodiversity * AMOUNT_PER_PLANT;
+
+        if (amount == 0)
+        {
+            return INITIAL_AMOUNT;
+        }
+        else
+        {
+            return amount;
+        }
     }
 
     #region Métodos de actualización diaria
@@ -286,7 +296,7 @@ public class GameManager : MonoBehaviour
     {
         int amount = CalculateResourcesAmount();    // Calcular la cantidad que le tienen que dar
 
-        CurrentMoney +=1;  // Sumar dinero
+        CurrentMoney += CurrentBiodiversity;  // Sumar dinero
         CurrentWater += amount;  // Sumar agua
         CurrentFertilizer += amount; // Sumar abono
     }

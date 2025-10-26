@@ -25,8 +25,9 @@ public class Plant : MonoBehaviour
     public GrowthState currentGrowth;
     public Health currentHealth;
     public int lifeDays;
+    public bool hasAppliedEnvironmentEffect = false;
 
-    //Visuals
+    // Visuals
     private SpriteRenderer spriteRenderer;
 
     //Constructor
@@ -134,6 +135,7 @@ public class Plant : MonoBehaviour
             currentGrowth++; // Crecer hasta madura
             UpdatePlantGrowthVisuals((int)currentGrowth);
             Debug.Log($"La planta {plantData.plantName} ha madurado.");
+
         }
     }
 

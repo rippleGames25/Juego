@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3975493b51cbba547820ac15f27585ca
+guid: 42f7c713b094f9b4887c782dd29c437b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7238937521465992201
-    second: Regadera_0
+      213: -7342669920469189202
+    second: parcela_semisombra_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Regadera_0
+      name: parcela_semisombra_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 30
-        width: 274
-        height: 297
+        x: 0
+        y: 0
+        width: 118
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7fbd5c18da02a8b90800000000000000
-      internalID: -7238937521465992201
+      spriteID: eadfc774c98991a90800000000000000
+      internalID: -7342669920469189202
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Regadera_0: -7238937521465992201
+      parcela_semisombra_0: -7342669920469189202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,688 @@
+fileFormatVersion: 2
+guid: e90350047370e014dae14e497710b967
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3447264806381016828
+    second: meteorologia_0
+  - first:
+      213: 4682858058818136089
+    second: meteorologia_1
+  - first:
+      213: 6615433368457392266
+    second: meteorologia_2
+  - first:
+      213: 8658553292034399961
+    second: meteorologia_3
+  - first:
+      213: 201807173005038031
+    second: meteorologia_4
+  - first:
+      213: 2981225360221143828
+    second: meteorologia_5
+  - first:
+      213: 1299364016633698145
+    second: meteorologia_6
+  - first:
+      213: 9072160403953676994
+    second: meteorologia_7
+  - first:
+      213: 748837986604766173
+    second: meteorologia_8
+  - first:
+      213: -6665912543193660918
+    second: meteorologia_9
+  - first:
+      213: -3195011936900714193
+    second: meteorologia_10
+  - first:
+      213: 6308489273046124961
+    second: meteorologia_11
+  - first:
+      213: 3513860779804605189
+    second: meteorologia_12
+  - first:
+      213: 8731309319683121348
+    second: meteorologia_13
+  - first:
+      213: 1807800259340315455
+    second: meteorologia_14
+  - first:
+      213: 5759828789085477602
+    second: meteorologia_15
+  - first:
+      213: 5472861293517174097
+    second: meteorologia_16
+  - first:
+      213: -2929510085999299173
+    second: meteorologia_17
+  - first:
+      213: -6162186877609740992
+    second: meteorologia_18
+  - first:
+      213: -1478028777581992649
+    second: meteorologia_19
+  - first:
+      213: -6044024709846904721
+    second: meteorologia_20
+  - first:
+      213: 4382832003728697347
+    second: meteorologia_21
+  - first:
+      213: -4757152748532984137
+    second: meteorologia_22
+  - first:
+      213: 1889011726494246819
+    second: meteorologia_23
+  - first:
+      213: 9108072296006806136
+    second: meteorologia_24
+  - first:
+      213: -956061753747296662
+    second: meteorologia_25
+  - first:
+      213: -8347243998459875616
+    second: meteorologia_26
+  - first:
+      213: -3032414869920397656
+    second: meteorologia_27
+  - first:
+      213: 7706547924381931046
+    second: meteorologia_28
+  - first:
+      213: 11333354111316111
+    second: meteorologia_29
+  - first:
+      213: -1021953486328408098
+    second: meteorologia_30
+  - first:
+      213: -6667399125193115058
+    second: meteorologia_31
+  - first:
+      213: 7290888302370453810
+    second: meteorologia_32
+  - first:
+      213: 5556076988233550200
+    second: meteorologia_33
+  - first:
+      213: 5212821622403356220
+    second: meteorologia_34
+  - first:
+      213: -3801667112957352263
+    second: meteorologia_35
+  - first:
+      213: 3811792831678650424
+    second: meteorologia_36
+  - first:
+      213: -2772415688942545728
+    second: meteorologia_37
+  - first:
+      213: -4275759993672277167
+    second: meteorologia_38
+  - first:
+      213: -5872255221519466532
+    second: meteorologia_39
+  - first:
+      213: -2602590135041698553
+    second: meteorologia_40
+  - first:
+      213: -559146640701326750
+    second: meteorologia_41
+  - first:
+      213: 6977264851546857032
+    second: meteorologia_42
+  - first:
+      213: -1981043500751772095
+    second: meteorologia_43
+  - first:
+      213: -6215811860407091262
+    second: meteorologia_44
+  - first:
+      213: -939398330827203740
+    second: meteorologia_45
+  - first:
+      213: 808926683050349453
+    second: meteorologia_46
+  - first:
+      213: -4261047232390290335
+    second: meteorologia_47
+  - first:
+      213: 7062599009729564740
+    second: meteorologia_48
+  - first:
+      213: 871442045466616669
+    second: meteorologia_49
+  - first:
+      213: -1435087408643504713
+    second: meteorologia_50
+  - first:
+      213: 6350341613332556188
+    second: meteorologia_51
+  - first:
+      213: -7518065854686032816
+    second: meteorologia_52
+  - first:
+      213: 2243825375273209673
+    second: meteorologia_53
+  - first:
+      213: 78716246793108659
+    second: meteorologia_54
+  - first:
+      213: -5496879226383485133
+    second: meteorologia_55
+  - first:
+      213: 394482370748382775
+    second: meteorologia_56
+  - first:
+      213: 6858541945625563391
+    second: meteorologia_57
+  - first:
+      213: 4687927911243383305
+    second: meteorologia_58
+  - first:
+      213: -5430013839049905110
+    second: meteorologia_59
+  - first:
+      213: -7191318675514183950
+    second: meteorologia_60
+  - first:
+      213: -7420601618690306087
+    second: meteorologia_61
+  - first:
+      213: 796027250944294045
+    second: meteorologia_62
+  - first:
+      213: -6968568797331136600
+    second: meteorologia_63
+  - first:
+      213: 9026390294468040752
+    second: meteorologia_64
+  - first:
+      213: 3215929391511761257
+    second: meteorologia_65
+  - first:
+      213: 5684095370498467724
+    second: meteorologia_66
+  - first:
+      213: -7222996223360917983
+    second: meteorologia_67
+  - first:
+      213: 3775371036483296958
+    second: meteorologia_68
+  - first:
+      213: -3760264939311926112
+    second: meteorologia_69
+  - first:
+      213: -643418047520539817
+    second: meteorologia_70
+  - first:
+      213: -3959586409580325277
+    second: meteorologia_71
+  - first:
+      213: 4549728827257942767
+    second: meteorologia_72
+  - first:
+      213: -8016328849730473165
+    second: meteorologia_73
+  - first:
+      213: 4902307597026144546
+    second: meteorologia_74
+  - first:
+      213: 2575168411353041478
+    second: meteorologia_75
+  - first:
+      213: 7451281940423397145
+    second: meteorologia_76
+  - first:
+      213: 7600716318750883338
+    second: meteorologia_77
+  - first:
+      213: 2651456713835445323
+    second: meteorologia_78
+  - first:
+      213: 4934446465662586411
+    second: meteorologia_79
+  - first:
+      213: 4071015269773969369
+    second: meteorologia_80
+  - first:
+      213: -4009381931659104573
+    second: meteorologia_81
+  - first:
+      213: 978427117424857950
+    second: meteorologia_82
+  - first:
+      213: 1435151943908186890
+    second: meteorologia_83
+  - first:
+      213: 5635182219846189844
+    second: meteorologia_84
+  - first:
+      213: -6338667111951496375
+    second: meteorologia_85
+  - first:
+      213: 7280624604021935786
+    second: meteorologia_86
+  - first:
+      213: -3256540333666783883
+    second: meteorologia_87
+  - first:
+      213: 4603429102175911394
+    second: meteorologia_88
+  - first:
+      213: 7717301398232967147
+    second: meteorologia_89
+  - first:
+      213: 2690322239352858696
+    second: meteorologia_90
+  - first:
+      213: -6807032126337647087
+    second: meteorologia_91
+  - first:
+      213: 5692134021657587280
+    second: meteorologia_92
+  - first:
+      213: -4809278117973525192
+    second: meteorologia_93
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: meteorologia_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 648
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40924f84cead820d0800000000000000
+      internalID: -3447264806381016828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_1
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 648
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9182e69f79adcf040800000000000000
+      internalID: 4682858058818136089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_2
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 648
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a803b2a399dbecb50800000000000000
+      internalID: 6615433368457392266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 433
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dedf78185c592870800000000000000
+      internalID: 8658553292034399961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_4
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 433
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc1571cfd86fcc200800000000000000
+      internalID: 201807173005038031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_5
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 433
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4130e5f7ba07f5920800000000000000
+      internalID: 2981225360221143828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 218
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 167506550b4480210800000000000000
+      internalID: 1299364016633698145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_7
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 218
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c2f50f22d9c6ed70800000000000000
+      internalID: 9072160403953676994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_8
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 218
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd355e96e28646a00800000000000000
+      internalID: 748837986604766173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a020f170cdbed73a0800000000000000
+      internalID: -6665912543193660918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_10
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 3
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2176ef329909a3d0800000000000000
+      internalID: -3195011936900714193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: meteorologia_11
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 3
+        width: 216
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a9c64de1914c8750800000000000000
+      internalID: 6308489273046124961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c291a1ea841f1cd458b5ddb083137d5f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      meteorologia_0: -3447264806381016828
+      meteorologia_1: 4682858058818136089
+      meteorologia_10: -3195011936900714193
+      meteorologia_11: 6308489273046124961
+      meteorologia_2: 6615433368457392266
+      meteorologia_3: 8658553292034399961
+      meteorologia_4: 201807173005038031
+      meteorologia_5: 2981225360221143828
+      meteorologia_6: 1299364016633698145
+      meteorologia_7: 9072160403953676994
+      meteorologia_8: 748837986604766173
+      meteorologia_9: -6665912543193660918
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

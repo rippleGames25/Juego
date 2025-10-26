@@ -1,13 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ToolItem : MonoBehaviour
 {
     [SerializeField] public ToolType type;
-    [SerializeField] private GameObject selectionOn;
+    [SerializeField] private List<Sprite> itemSprites;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        if(GameManager.Instance!= null)
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (GameManager.Instance!= null)
         {
             GameManager.Instance.OnToolChanged += UpdateTool;
         }
@@ -15,7 +19,7 @@ public class ToolItem : MonoBehaviour
 
     private void UpdateTool(ToolType _type)
     {
-        if (this.type == _type) { selectionOn.SetActive(true); } // Activar fondo de seleccion
-        else { selectionOn.SetActive(false); }
+        if (this.type == _type) { spriteRenderer.sprite = itemSprites[1]; } // Activar seleccion
+        else { spriteRenderer.sprite = itemSprites[0]; }
     }
 }

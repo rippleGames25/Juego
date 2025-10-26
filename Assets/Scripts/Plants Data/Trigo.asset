@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 2
   plantName: Trigo
+  scientificName: Lorem Ipsum
   description: Lorem Ipsun
   waterDemand: 2
   fertilizerDemand: 2
@@ -22,9 +23,11 @@ MonoBehaviour:
   timeToGrow: 3
   timeToMature: 6
   category: 3
+  shadeSize: 0
+  timeToProduce: 0
   price: 2
   plantSprites:
-  - {fileID: 6810703857275554091, guid: 3f0e198b972223144a950e0f52b855e4, type: 3}
+  - {fileID: 21300000, guid: df286694905120f47aa9a277bd3de1e1, type: 3}
   - {fileID: -4969008426354808582, guid: d19e8b2581f05c845948af8c1690cf9f, type: 3}
   - {fileID: -6483928666068204206, guid: 81146a65200afd64484d13ccab605fa2, type: 3}
   - {fileID: -8872200077480915516, guid: 3104e230b7ef69847b2081151d710c15, type: 3}

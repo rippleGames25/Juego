@@ -10,7 +10,7 @@ public class PlotsManager : MonoBehaviour
     [SerializeField] private GameObject plotPrefab;
     [SerializeField] private int rows = 6;
     [SerializeField] private int columns = 5;
-    [SerializeField] private float spacing = 1.5f; // Espacio entre parcelas
+    [SerializeField] private float spacing = 0.5f; // Espacio entre parcelas
     
 
     private Plot[,] plotGrid;
@@ -74,9 +74,11 @@ public class PlotsManager : MonoBehaviour
         DailyUpdateWeatherWater(_currentWeather.waterChange);
     }
 
-    public void PlantsDeath(Plant plantToDeath)
+    public void PlantsDeath(Plot plotToDeath)
     {
-        GameManager.Instance.PlantsDeath(plantToDeath);
+        GameManager.Instance.PlantsDeath(plotToDeath.currentPlant);
+        plotToDeath.currentPlant = null;
+        plotToDeath.isPlanted = false;
     }
 
     public void PlotSelected(Plot _plot)
@@ -107,7 +109,51 @@ public class PlotsManager : MonoBehaviour
 
     public void GenerateShade(Vector2Int _plantCoordinates)
     {
+        int x = _plantCoordinates.x;
+        int y = _plantCoordinates.y;
+        int sizeX = plotGrid.GetLength(0);
+        int sizeY = plotGrid.GetLength(1);
 
+        List<Vector2Int> neighbors = new List<Vector2Int>
+        {
+            new Vector2Int(x - 1, y), // Izquierda
+            new Vector2Int(x + 1, y), // Derecha
+            new Vector2Int(x, y - 1), // Abajo
+            new Vector2Int(x, y + 1)  // Arriba
+        };
+
+        foreach (var coord in neighbors)
+        {
+            if (coord.x >= 0 && coord.x < sizeX && coord.y >= 0 && coord.y < sizeY)
+            {
+                plotGrid[coord.x, coord.y].AddShadeSource(); 
+            }
+        }
+
+    }
+
+    public void RemoveShade(Vector2Int _plantCoordinates)
+    {
+        int x = _plantCoordinates.x;
+        int y = _plantCoordinates.y;
+        int sizeX = plotGrid.GetLength(0);
+        int sizeY = plotGrid.GetLength(1);
+
+        List<Vector2Int> neighbors = new List<Vector2Int>
+        {
+            new Vector2Int(x - 1, y), // Izquierda
+            new Vector2Int(x + 1, y), // Derecha
+            new Vector2Int(x, y - 1), // Abajo
+            new Vector2Int(x, y + 1)  // Arriba
+        };
+
+        foreach (var coord in neighbors)
+        {
+            if (coord.x >= 0 && coord.x < sizeX && coord.y >= 0 && coord.y < sizeY)
+            {
+                plotGrid[coord.x, coord.y].RemoveShadeSource(); 
+            }
+        }
     }
 
     #endregion
@@ -141,9 +187,8 @@ public class PlotsManager : MonoBehaviour
                     Debug.Log($"La parcela {plot.gridCoordinates} no puede cubrir las necesidades de su planta");
                     if (plot.currentPlant.DecreaseHealth()) // true si la planta ha muerto
                     {
-                        PlantsDeath(plot.currentPlant);
-                        plot.currentPlant = null;
-                        plot.isPlanted= false;
+                        PlantsDeath(plot);
+                        RemoveShade(plot.gridCoordinates);
                     }
 
                 } else
@@ -154,9 +199,11 @@ public class PlotsManager : MonoBehaviour
                 plot.ChangeWater(-waterDemand); // Agua que consume la planta
                 plot.ChangeFertility(-fertilizerDemand); // Abono que consume la planta
 
-                plot.UpdatePlotWaterVisuals();
-                plot.UpdatePlotFertilizerVisuals();
             }
+
+            plot.UpdatePlotWaterVisuals();
+            plot.UpdatePlotFertilizerVisuals();
+            plot.UpdatePlotSolarExposureVisuals();
         }
 
         Debug.Log("Consumo de agua y abono diario de plantas hecho.");
