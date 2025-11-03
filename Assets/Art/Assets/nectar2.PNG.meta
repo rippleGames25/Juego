@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9ed1d5eddeb08624a8b3327d5de872ca
+guid: 23384cab42ff3a847b57d0763fbc9e76
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1272874641584863308
-    second: nombre_0
+      213: -7346996623430827185
+    second: nectar2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: nombre_0
+      name: nectar2_0
       rect:
         serializedVersion: 2
-        x: 380
-        y: 0
-        width: 1147
-        height: 1080
+        x: 167
+        y: 176
+        width: 169
+        height: 151
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b74bb8e147d55ee0800000000000000
-      internalID: -1272874641584863308
+      spriteID: f43496e3f793a0a90800000000000000
+      internalID: -7346996623430827185
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      nombre_0: -1272874641584863308
+      nectar2_0: -7346996623430827185
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
