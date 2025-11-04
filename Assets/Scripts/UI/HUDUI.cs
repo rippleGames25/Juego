@@ -13,7 +13,8 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject HUDPanel;
     [SerializeField] private GameObject plantInfoPanel;
     [SerializeField] private GameObject plotInfoPanel;
-    
+    [SerializeField] private GameObject summaryPanel;
+
 
     [Header("Cursores")]
     [SerializeField] private Texture2D normalCursor;
@@ -56,6 +57,7 @@ public class HUDUI : MonoBehaviour
         // Ocultar paneles
         plantInfoPanel.SetActive(false);
         plotInfoPanel.SetActive(false);
+        summaryPanel.SetActive(false);
 
         // Actualizar UI
         UpdateMoneyText(GameManager.Instance.CurrentMoney);
@@ -74,6 +76,7 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnToolChanged += UpdateCursor;
             GameManager.Instance.OnBiodiversityChanged += UpdateBiodiversityText;
             GameManager.Instance.OnPlantInfoClick += ShownPlantTypeInfoPanel;
+            GameManager.Instance.OnDayEnd += ShowDaySummaryPanel;
             PlotsManager.Instance.OnPlotSelected += ShowInfoPanel;
             PlotsManager.Instance.OnPlotUnselected += UnShowInfoPanel;
 
@@ -99,7 +102,19 @@ public class HUDUI : MonoBehaviour
 
     public void PassDayButton()
     {
-        GameManager.Instance.PassDay();
+        GameManager.Instance.EndDay();
+    }
+
+    public void NextButton()
+    {
+        
+        GameManager.Instance.StartNewDay();
+        summaryPanel.SetActive(false);
+    }
+
+    public void ShowDaySummaryPanel()
+    {
+        summaryPanel.SetActive(true);
     }
 
     public void ShownPlantTypeInfoPanel(PlantType plantType)
@@ -275,6 +290,7 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnToolChanged -= UpdateCursor;
             GameManager.Instance.OnBiodiversityChanged -= UpdateBiodiversityText;
             GameManager.Instance.OnPlantInfoClick -= ShownPlantTypeInfoPanel;
+            GameManager.Instance.OnDayEnd -= ShowDaySummaryPanel;
             PlotsManager.Instance.OnPlotSelected -= ShowInfoPanel;
             PlotsManager.Instance.OnPlotUnselected -= UnShowInfoPanel;
         }

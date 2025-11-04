@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 public enum ToolType
 {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnBiodiversityChanged;
     public event Action<ToolType> OnToolChanged;
     public event Action<PlantType> OnPlantInfoClick;
+    public event Action OnDayEnd;
 
     // Variables
     private int winCondition;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     private int currentDay = 1;
     private int currentBiodiversity = 0;
     private DailyWeather currentWeather;
+    private bool isDayTransitioning = false;
 
     // Resources
     private int currentMoney = 3;
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
     private const int AMOUNT_PER_PLANT = 3;
 
     [Header("Plantas")]
+    [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.1f, -0.1f);
     [SerializeField] private GameObject plantPrefab;
     [SerializeField] private List<PlantType> plantsList; // Lista de Tipos de planta (ScriptableObjects)
 
@@ -165,16 +169,57 @@ public class GameManager : MonoBehaviour
     }
 
     // Public Methods
-    public void PassDay()
+    public void EndDay()
     {
-        CheckWinCondition(); // Condición de victoria
+        if (isDayTransitioning)
+        {
+            Debug.Log("Transición de día en curso, espera un momento.");
+            return;
+        }
 
-        CurrentDay++; // Pasar al dia siguiente
-        Debug.Log("Dia " + currentDay);
+        StartCoroutine(EndDayCoroutine());
 
-        HandleWeatherEvent(); // Evento meteorológico
-        DailyUpdatePlotsAndPlants();// Actualizar estado de las parcelas
-        DistributeDailyResources();// Sumar recursos
+    }
+
+    private IEnumerator EndDayCoroutine()
+    {
+        isDayTransitioning = true;
+
+        Debug.Log("Fin de día");
+
+        // 1. Animación de consumo de recursos
+        yield return PlotsManager.Instance.AnimateDailyConsumptionAndConsume(); ;
+
+        // 2. Actualizar estado de salud
+        PlotsManager.Instance.DailyUpdatePlantsHealth();
+
+        // 3. Condición de victoria
+        CheckWinCondition(); 
+
+        OnDayEnd?.Invoke();
+
+        isDayTransitioning = false;
+    }
+
+    public void StartNewDay()
+    {
+        // 1. **Incrementar Día**
+        CurrentDay++;
+        Debug.Log("INICIO DE DÍA: Día " + CurrentDay);
+
+        // 2. **Evento Meteorológico y Aplicación en Parcelas**
+        HandleWeatherEvent();
+        // Aplicamos el agua del clima (lluvia/sequía) y actualizamos el visual del agua de la parcela
+        PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather.waterChange);
+
+        // 3. **Actualizar Crecimiento y Efectos Ambientales (Sombra/Producción)**
+        // Se actualizan días de vida, se cambia el sprite de crecimiento, y se aplican efectos.
+        PlotsManager.Instance.DailyUpdatePlantsGrowthAndEffects();
+
+        // 4. **Reparto de Recursos**
+        DistributeDailyResources();
+
+        Debug.Log("Inicio de día completado.");
     }
 
     public void PlantSeed(Plot plot, int idx)
@@ -189,7 +234,7 @@ public class GameManager : MonoBehaviour
 
         CurrentMoney -= plantData.price; // Restar el dinero que cuesta la planta
 
-        GameObject newPlantGO = Instantiate(plantPrefab, (plot.transform.position + new Vector3(0, 0, -1)), Quaternion.identity);
+        GameObject newPlantGO = Instantiate(plantPrefab, (plot.transform.position + plantPosition), Quaternion.identity);
 
         Plant newPlant = newPlantGO.GetComponent<Plant>(); // Referencia al Plant del GO
         newPlant.InitializePlant(plantData);
@@ -287,10 +332,6 @@ public class GameManager : MonoBehaviour
         currentWeather = WeatherManager.Instance.PassDay();
     }
 
-    private void DailyUpdatePlotsAndPlants()
-    {
-        PlotsManager.Instance.DailyUpdate(currentWeather);
-    }
 
     private void DistributeDailyResources()
     {
