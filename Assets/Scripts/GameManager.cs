@@ -203,20 +203,14 @@ public class GameManager : MonoBehaviour
 
     public void StartNewDay()
     {
-        // 1. **Incrementar Día**
         CurrentDay++;
         Debug.Log("INICIO DE DÍA: Día " + CurrentDay);
 
-        // 2. **Evento Meteorológico y Aplicación en Parcelas**
         HandleWeatherEvent();
-        // Aplicamos el agua del clima (lluvia/sequía) y actualizamos el visual del agua de la parcela
         PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather.waterChange);
 
-        // 3. **Actualizar Crecimiento y Efectos Ambientales (Sombra/Producción)**
-        // Se actualizan días de vida, se cambia el sprite de crecimiento, y se aplican efectos.
         PlotsManager.Instance.DailyUpdatePlantsGrowthAndEffects();
 
-        // 4. **Reparto de Recursos**
         DistributeDailyResources();
 
         Debug.Log("Inicio de día completado.");

@@ -105,6 +105,8 @@ public class HUDUI : MonoBehaviour
         GameManager.Instance.EndDay();
     }
 
+
+
     public void NextButton()
     {
         
