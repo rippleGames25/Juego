@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class PlotsManager : MonoBehaviour
 {
@@ -65,14 +66,7 @@ public class PlotsManager : MonoBehaviour
         }
     }
 
-    public void DailyUpdate(DailyWeather _currentWeather)
-    {
-        UpdatePlants();
-        DailyUpdatePlants();
-        DailyUpdatePlotsFertilizer();
-
-        DailyUpdateWeatherWater(_currentWeather.waterChange);
-    }
+    
 
     public void PlantsDeath(Plot plotToDeath)
     {
@@ -218,7 +212,103 @@ public class PlotsManager : MonoBehaviour
         Debug.Log("Consumo de agua y abono diario de plantas hecho.");
     }
 
-    private void DailyUpdateWeatherWater(int _waterChange)
+    public IEnumerator AnimateDailyConsumptionAndConsume()
+    {
+        List<Coroutine> consumptionAnimations = new List<Coroutine>();
+
+        // 1. Iterar e INICIAR la Coroutine de animación y consumo en cada parcela plantada
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot.isPlanted && plot.currentPlant != null)
+            {
+                // Iniciamos la Coroutine y la guardamos para esperar
+                Coroutine animation = StartCoroutine(plot.AnimateDailyConsumptionAndChange());
+                consumptionAnimations.Add(animation);
+            }
+        }
+
+        // 2. Esperar a que TODAS las Coroutines terminen (animación simultánea)
+        foreach (Coroutine anim in consumptionAnimations)
+        {
+            yield return anim;
+        }
+
+        // 3. Actualizar Visuales de Parcela (Agua/Abono) después del consumo
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot.isPlanted)
+            {
+                plot.UpdatePlotWaterVisuals();
+                plot.UpdatePlotFertilizerVisuals();
+                plot.UpdatePlotSolarExposureVisuals();
+            }
+        }
+
+        // El consumo ha terminado, pero aún falta la actualización de salud y crecimiento.
+        Debug.Log("Consumo de agua y abono diario de plantas y animaciones hecho.");
+    }
+
+    public void DailyUpdatePlantsGrowthAndEffects()
+    {
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot.isPlanted && plot.currentPlant != null)
+            {
+                // 1. Actualizar vida y crecimiento (llama a UpdatePlantGrowthVisuals en Plant.cs)
+                plot.currentPlant.UpdateLifeDays();
+
+                // 2. Lógica de Productores/Sombra (Efectos Ambientales)
+                if (plot.currentPlant.currentGrowth == GrowthState.madura && !plot.currentPlant.hasAppliedEnvironmentEffect)
+                {
+                    plot.UpdateEnviroment(plot.currentPlant.plantData.category);
+                    plot.currentPlant.hasAppliedEnvironmentEffect = true;
+                }
+                else if (plot.currentPlant.hasAppliedEnvironmentEffect)
+                {
+                    switch (plot.currentPlant.plantData.category)
+                    {
+                        case PlantCategory.Producer:
+                            plot.currentPlant.ProduceCycle();
+                            break;
+                    }
+                }
+            }
+        }
+        Debug.Log("Actualización de crecimiento y efectos (Inicio de día) hecha.");
+    }
+
+    public void DailyUpdatePlantsHealth()
+    {
+        int waterDemand;
+        int fertilizerDemand;
+
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot.isPlanted && plot.currentPlant != null)
+            {
+                waterDemand = plot.currentPlant.GetWaterDemand();
+                fertilizerDemand = plot.currentPlant.GetFertilizerDemand();
+
+                // Lógica de SALUD: Comprobar si la parcela puede cubrir las necesidades
+                if (waterDemand > plot.currentWater || fertilizerDemand > plot.currentFertility)
+                {
+                    Debug.Log($"La parcela {plot.gridCoordinates} no puede cubrir las necesidades de su planta");
+                    if (plot.currentPlant.DecreaseHealth()) // true si la planta ha muerto
+                    {
+                        PlantsDeath(plot); // Llama a la muerte
+                    }
+                }
+                else
+                {
+                    plot.currentPlant.IncreaseHealth();
+                }
+            }
+        }
+
+        Debug.Log("Actualización de salud de plantas (Fin de día) hecha.");
+    }
+
+    public void DailyUpdateWeatherWater(int _waterChange)
     {
         foreach (Plot plot in plotGrid) 
         {

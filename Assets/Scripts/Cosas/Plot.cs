@@ -27,11 +27,9 @@ public class Plot : MonoBehaviour
     [SerializeField] public bool isPlanted;
 
     private SpriteRenderer sr; // SpriteRenderer ded la Parcela
-    private const int PLOT_LIMIT = 10; // Limite de agua y abono
+    private const int PLOT_LIMIT = 5; // Limite de agua y abono
     private RectTransform rectTransform;
     private Vector3 initialPosition;
-    private int gColorDiference;
-    private int rColorDiference;
 
     [Header("Gestion de la sombra")]
     [SerializeField] private SolarExposure initialSolarExposure; 
@@ -45,8 +43,12 @@ public class Plot : MonoBehaviour
     [SerializeField] private Image changeImage;
     [SerializeField] private Sprite waterIcon;
     [SerializeField] private Sprite fertilizerIcon;
-    [SerializeField] private Color color1;
-    [SerializeField] private Color color2;
+
+    // Colores
+    private Color colorFullWaterFullFertility;
+    private Color colorNoWaterNoFertility;
+    private Color colorNoWaterFullFertility;
+    private Color colorFullWaterNoFertility;
 
 
     // Constructor
@@ -61,13 +63,17 @@ public class Plot : MonoBehaviour
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+
+        ColorUtility.TryParseHtmlString("#2A200D", out colorFullWaterFullFertility);
+        ColorUtility.TryParseHtmlString("#645923", out colorNoWaterNoFertility);
+        ColorUtility.TryParseHtmlString("#663D26", out colorNoWaterFullFertility);
+        ColorUtility.TryParseHtmlString("#483C03", out colorFullWaterNoFertility);
     }
 
     void Start()
     {
         selectionBorder = this.transform.GetChild(0).gameObject; // Obtenemos el contorno de seleccion
         changeCanvas.SetActive(false); // Ocultamos el canvas del texto
-
         
         CalculateColor(); // Calculo de diferencia de color
 
@@ -85,8 +91,8 @@ public class Plot : MonoBehaviour
     public void InitializePlot(int x, int y)
     {
         gridCoordinates= new Vector2Int(x, y);
-        currentFertility = UnityEngine.Random.Range(5, 8);
-        currentWater = UnityEngine.Random.Range(5, 8);
+        currentFertility = UnityEngine.Random.Range(0, PLOT_LIMIT);
+        currentWater = UnityEngine.Random.Range(0, PLOT_LIMIT);
         currentSolarExposure = (SolarExposure)UnityEngine.Random.Range(0, 1); //Exposicion solar random
         initialSolarExposure = currentSolarExposure;
         isPlanted = false; // Se inicializa vacia
@@ -211,14 +217,14 @@ public class Plot : MonoBehaviour
                     GameManager.Instance.CurrentWater--; // Cosume agua del deposito
                     this.currentWater++;
 
-                    TextAnimation("+1", 0, Color.green); 
+                    StartCoroutine(AnimateSingleTextChange("+1", 0, Color.green));
                     this.UpdatePlotWaterVisuals();
 
                     Debug.Log($"Parcela {this.gridCoordinates} regada -> {currentWater} de agua");
                 }
                 else if (GameManager.Instance.CurrentWater > 0 && currentWater >= PLOT_LIMIT) // Tiene agua pero la parcela está llena
                 {
-                    TextAnimation("Lleno", 0, Color.green);
+                    StartCoroutine(AnimateSingleTextChange("Lleno", 0, Color.green));
                     Debug.Log($"No se puede regar, la parcela {gridCoordinates} está al máximo de agua.");
                 }
                 else // No queda agua
@@ -234,7 +240,7 @@ public class Plot : MonoBehaviour
                     GameManager.Instance.CurrentFertilizer--; // Consume abono del deposito
                     this.currentFertility++;
 
-                    TextAnimation("+1", 1, Color.green);
+                    StartCoroutine(AnimateSingleTextChange("+1", 1, Color.green));
                     this.UpdatePlotFertilizerVisuals();
 
 
@@ -243,7 +249,7 @@ public class Plot : MonoBehaviour
                 }
                 else if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility >= PLOT_LIMIT) // Tiene abono pero la parcela está llena
                 {
-                    TextAnimation("Lleno", 1, Color.green);
+                    StartCoroutine(AnimateSingleTextChange("Lleno", 1, Color.green));
                     Debug.Log($"No se puede abonar, la parcela {gridCoordinates} está al máximo de abono.");
                 }
                 else // No queda abono
@@ -307,56 +313,127 @@ public class Plot : MonoBehaviour
 
     private void CalculateColor()
     {
+        float waterFactor = (float)currentWater / PLOT_LIMIT;
+        float fertilityFactor = (float)currentFertility / PLOT_LIMIT;
 
+    
+        Color colorLerpedByWater_NoFertility = Color.Lerp(
+            colorNoWaterNoFertility,
+            colorFullWaterNoFertility,
+            waterFactor);
+
+        Color colorLerpedByWater_FullFertility = Color.Lerp(
+            colorNoWaterFullFertility,
+            colorFullWaterFullFertility,
+            waterFactor);
+
+        Color finalColor = Color.Lerp(
+            colorLerpedByWater_NoFertility,
+            colorLerpedByWater_FullFertility,
+            fertilityFactor);
+
+        // Aplicar el color final
+        sr.color = finalColor;
     }
 
-    private void TextAnimation(string _text, int type, Color textColor)
+    public IEnumerator AnimateDailyConsumptionAndChange()
     {
-        // Icono
+        if (!isPlanted || currentPlant == null)
+        {
+            yield break;
+        }
+
+        int waterDemand = currentPlant.GetWaterDemand();
+        int fertilizerDemand = currentPlant.GetFertilizerDemand();
+
+        // 1. Animación de agua
+        if (waterDemand > 0)
+        {
+            string text = $"-{waterDemand}";
+            // INICIAR Y ESPERAR la animación del agua antes de pasar al siguiente
+            yield return StartCoroutine(AnimateSingleTextChange(text, 0, Color.blue));
+        }
+
+        // 2. Animación de abono 
+        if (fertilizerDemand > 0)
+        {
+            string text = $"-{fertilizerDemand}";
+            // INICIAR Y ESPERAR la animación del abono
+            yield return StartCoroutine(AnimateSingleTextChange(text, 1, new Color(0.2f, 0.8f, 0.2f))); // Color verde oscuro para abono
+        }
+
+
+        // 3. Consumo real de recursos
+        ChangeWaterFromConsumption(-waterDemand);
+        ChangeFertility(-fertilizerDemand);
+    }
+
+    public void ChangeWaterFromConsumption(int waterChange)
+    {
+        // Solo aplica el consumo de la planta, no el clima
+        this.currentWater += waterChange;
+        this.currentWater = Mathf.Clamp(this.currentWater, 0, PLOT_LIMIT); // Mantener el limite
+    }
+
+    private IEnumerator AnimateSingleTextChange(string _text, int type, Color textColor)
+    {
+        // Lógica para mostrar icono/texto
         if (type == 0)
-        {
             changeImage.sprite = waterIcon;
-        }
         else if (type == 1)
-        {
             changeImage.sprite = fertilizerIcon;
-        }
         else
-        {
-            Debug.Log("Plot: Tipo de icono incorrecto");
-            return;
-        }
+            yield break;
 
         changeText.text = _text;
         changeText.color = textColor;
 
         changeCanvas.SetActive(true);
 
-        StartCoroutine(AnimateTextChange());
-    }
+        // Lógica de movimiento 
+        float duration = 1f; 
+        float distance = 0.6f;
 
-    private IEnumerator AnimateTextChange()
-    {
-        float duration = 0.5f; // Duracion en segundos
-        float distance = 0.4f;
-
-        rectTransform.localPosition = initialPosition; // Posicion inicial
+        rectTransform.localPosition = initialPosition;
 
         float elapsed = 0f;
         while (elapsed < duration)
         {
             float t = elapsed / duration;
-
-            // Mover hacia arriba
             Vector3 targetPosition = initialPosition + Vector3.up * distance;
             rectTransform.localPosition = Vector3.Lerp(initialPosition, targetPosition, t);
-
             elapsed += Time.deltaTime;
             yield return null;
         }
 
+        // Ocultar el texto 
         rectTransform.localPosition = initialPosition;
         changeCanvas.SetActive(false);
+    }
+
+    public void UpdatePlantDaily(PlotsManager plotsManager)
+    {
+        // Lógica de si la planta muere por falta de recursos
+        int waterDemand = currentPlant.GetWaterDemand();
+        int fertilizerDemand = currentPlant.GetFertilizerDemand();
+
+        if (waterDemand > currentWater || fertilizerDemand > currentFertility)
+        {
+            Debug.Log($"La parcela {gridCoordinates} no puede cubrir las necesidades de su planta");
+            if (currentPlant.DecreaseHealth()) // true si la planta ha muerto
+            {
+                plotsManager.PlantsDeath(this); // Llama a la muerte
+                return; // Salir si la planta murió
+            }
+        }
+        else
+        {
+            currentPlant.IncreaseHealth();
+        }
+
+        // Lógica de crecimiento y producción (si no murió)
+        currentPlant.UpdateLifeDays(); // Actualizar días de vida y crecimiento 
+
     }
 
 
@@ -365,18 +442,12 @@ public class Plot : MonoBehaviour
     #region Métodos para visualización
     public void UpdatePlotWaterVisuals()
     {
-        Color newColor = sr.color;
-        newColor.r = 1f - Mathf.Clamp01((float)this.currentWater / (PLOT_LIMIT * 2));
-
-        sr.color = newColor;
+        CalculateColor();
     }
 
     public void UpdatePlotFertilizerVisuals()
     {
-        Color newColor = sr.color;
-        newColor.g = 1f - Mathf.Clamp01((float)this.currentFertility / (PLOT_LIMIT * 2));
-
-        sr.color = newColor;
+        CalculateColor();
     }
 
     public void UpdatePlotSolarExposureVisuals()
