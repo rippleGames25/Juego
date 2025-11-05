@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: d876bde82d4d10f4a864c882f6f08367
+guid: 678d9af5cc9aa7f488a72b1b2f372f94
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -210060462438596183
-    second: abono_0
+      213: 818764077102228473
+    second: margarita_0
   - first:
-      213: -2731069626352819687
-    second: abono_1
+      213: 3099998601655886881
+    second: margarita_1
   - first:
-      213: -3507784824910313475
-    second: abono_2
+      213: -3106765223704731922
+    second: margarita_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,12 +52,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: abono_0
+      name: margarita_0
       rect:
         serializedVersion: 2
-        x: 134
-        y: 204
-        width: 216
-        height: 108
+        x: 0
+        y: 0
+        width: 133
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a14ef25f17b51df0800000000000000
-      internalID: -210060462438596183
+      spriteID: 9f367821795dc5b00800000000000000
+      internalID: 818764077102228473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abono_1
+      name: margarita_1
       rect:
         serializedVersion: 2
-        x: 189
-        y: 195
-        width: 31
-        height: 24
+        x: 133
+        y: 0
+        width: 133
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 912a16805aa491ad0800000000000000
-      internalID: -2731069626352819687
+      spriteID: 12428efbd48650b20800000000000000
+      internalID: 3099998601655886881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abono_2
+      name: margarita_2
       rect:
         serializedVersion: 2
-        x: 334
-        y: 199
-        width: 45
-        height: 34
+        x: 266
+        y: 0
+        width: 133
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df707ba6948d15fc0800000000000000
-      internalID: -3507784824910313475
+      spriteID: eeeda884d7d82e4d0800000000000000
+      internalID: -3106765223704731922
       vertices: []
       indices: 
       edges: []
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 5ab54cac47eddc74484831354a50d0f5
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      abono_0: -210060462438596183
-      abono_1: -2731069626352819687
-      abono_2: -3507784824910313475
+      margarita_0: 818764077102228473
+      margarita_1: 3099998601655886881
+      margarita_2: -3106765223704731922
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

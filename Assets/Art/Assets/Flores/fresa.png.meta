@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: d876bde82d4d10f4a864c882f6f08367
+guid: 363399d80ed8ae9458abf3bcc4964593
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -210060462438596183
-    second: abono_0
+      213: -2714682497457683847
+    second: fresa_0
   - first:
-      213: -2731069626352819687
-    second: abono_1
+      213: 3721667842242787717
+    second: fresa_1
   - first:
-      213: -3507784824910313475
-    second: abono_2
+      213: 9126222123331204447
+    second: fresa_2
+  - first:
+      213: -3065193834084163684
+    second: fresa_3
+  - first:
+      213: 8347759781963605301
+    second: fresa_4
+  - first:
+      213: 4207253497888249200
+    second: fresa_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,12 +61,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: abono_0
+      name: fresa_0
       rect:
         serializedVersion: 2
-        x: 134
-        y: 204
-        width: 216
-        height: 108
+        x: 0
+        y: 150
+        width: 133
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a14ef25f17b51df0800000000000000
-      internalID: -210060462438596183
+      spriteID: 972801dc6a2835ad0800000000000000
+      internalID: -2714682497457683847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abono_1
+      name: fresa_1
       rect:
         serializedVersion: 2
-        x: 189
-        y: 195
-        width: 31
-        height: 24
+        x: 133
+        y: 150
+        width: 133
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 912a16805aa491ad0800000000000000
-      internalID: -2731069626352819687
+      spriteID: 58930ec2f2506a330800000000000000
+      internalID: 3721667842242787717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: abono_2
+      name: fresa_2
       rect:
         serializedVersion: 2
-        x: 334
-        y: 199
-        width: 45
-        height: 34
+        x: 266
+        y: 150
+        width: 133
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +187,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df707ba6948d15fc0800000000000000
-      internalID: -3507784824910313475
+      spriteID: f55b77a1baad6ae70800000000000000
+      internalID: 9126222123331204447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 133
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9f12bfa27e3675d0800000000000000
+      internalID: -3065193834084163684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 133
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 535ab3a1b4339d370800000000000000
+      internalID: 8347759781963605301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa_5
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 0
+        width: 133
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07516ade3ca236a30800000000000000
+      internalID: 4207253497888249200
       vertices: []
       indices: 
       edges: []
@@ -188,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 8e6e0c4c1e1070a49b06f33364337eaa
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +273,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      abono_0: -210060462438596183
-      abono_1: -2731069626352819687
-      abono_2: -3507784824910313475
+      fresa_0: -2714682497457683847
+      fresa_1: 3721667842242787717
+      fresa_2: 9126222123331204447
+      fresa_3: -3065193834084163684
+      fresa_4: 8347759781963605301
+      fresa_5: 4207253497888249200
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

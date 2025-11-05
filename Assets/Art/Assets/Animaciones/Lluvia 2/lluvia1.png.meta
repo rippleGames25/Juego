@@ -1,0 +1,1066 @@
+fileFormatVersion: 2
+guid: 9871928072bd31d4bab34df696784b8b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3263590103291985241
+    second: lluvia1_0
+  - first:
+      213: 8398609446742902015
+    second: lluvia1_1
+  - first:
+      213: 7691834813293041631
+    second: lluvia1_2
+  - first:
+      213: -6161019390781890074
+    second: lluvia1_3
+  - first:
+      213: 2145084321500733826
+    second: lluvia1_4
+  - first:
+      213: -398665174474788942
+    second: lluvia1_5
+  - first:
+      213: -2963155410684199961
+    second: lluvia1_6
+  - first:
+      213: 5972613603224204636
+    second: lluvia1_7
+  - first:
+      213: 5664265839377232202
+    second: lluvia1_8
+  - first:
+      213: -4216135694022398802
+    second: lluvia1_9
+  - first:
+      213: -1286122919244603907
+    second: lluvia1_10
+  - first:
+      213: 3044148002243361196
+    second: lluvia1_11
+  - first:
+      213: -4610391354383160093
+    second: lluvia1_12
+  - first:
+      213: 6248154637995661769
+    second: lluvia1_13
+  - first:
+      213: -5493090849170308329
+    second: lluvia1_14
+  - first:
+      213: -370161671551037594
+    second: lluvia1_15
+  - first:
+      213: -6037948505709844556
+    second: lluvia1_16
+  - first:
+      213: -4619710201662417079
+    second: lluvia1_17
+  - first:
+      213: -7574228899187126136
+    second: lluvia1_18
+  - first:
+      213: -3447932631487381779
+    second: lluvia1_19
+  - first:
+      213: -8504432949027223132
+    second: lluvia1_20
+  - first:
+      213: -416910120813934409
+    second: lluvia1_21
+  - first:
+      213: -1946845714501100006
+    second: lluvia1_22
+  - first:
+      213: 630321049297194370
+    second: lluvia1_23
+  - first:
+      213: -8629891779504428924
+    second: lluvia1_24
+  - first:
+      213: -8759230737862517641
+    second: lluvia1_25
+  - first:
+      213: 3627739190517467711
+    second: lluvia1_26
+  - first:
+      213: 6048663561366610575
+    second: lluvia1_27
+  - first:
+      213: 7460220906324155031
+    second: lluvia1_28
+  - first:
+      213: 9072347300036399415
+    second: lluvia1_29
+  - first:
+      213: -4684378887255221649
+    second: lluvia1_30
+  - first:
+      213: 650268687602287408
+    second: lluvia1_31
+  - first:
+      213: 3913386261498446222
+    second: lluvia1_32
+  - first:
+      213: 5854449269959513201
+    second: lluvia1_33
+  - first:
+      213: -989528067666103506
+    second: lluvia1_34
+  - first:
+      213: 9187058230200523227
+    second: lluvia1_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lluvia1_0
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 699
+        width: 201
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a20dc0a71665b2d0800000000000000
+      internalID: -3263590103291985241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_1
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 744
+        width: 32
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff4c9584bcadd8470800000000000000
+      internalID: 8398609446742902015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_2
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 625
+        width: 6
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd790557203eeba60800000000000000
+      internalID: 7691834813293041631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_3
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 825
+        width: 12
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e1e62ea189af7aa0800000000000000
+      internalID: -6161019390781890074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_4
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 814
+        width: 117
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 281af4443ded4cd10800000000000000
+      internalID: 2145084321500733826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_5
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 28
+        width: 693
+        height: 1026
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bf6c13d228a77af0800000000000000
+      internalID: -398665174474788942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_6
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 569
+        width: 6
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eb34eb7ad1c0e6d0800000000000000
+      internalID: -2963155410684199961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_7
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 238
+        width: 510
+        height: 842
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5538d88d6cf2e250800000000000000
+      internalID: 5972613603224204636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_8
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 536
+        width: 6
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a41b57535c38b9e40800000000000000
+      internalID: 5664265839377232202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_9
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 48
+        width: 108
+        height: 602
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eac23f0ace64d75c0800000000000000
+      internalID: -4216135694022398802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_10
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 411
+        width: 88
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfddfe4e406c62ee0800000000000000
+      internalID: -1286122919244603907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_11
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 397
+        width: 60
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca93e6dba7cfe3a20800000000000000
+      internalID: 3044148002243361196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_12
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 563
+        width: 6
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eca5767d799400c0800000000000000
+      internalID: -4610391354383160093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_13
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 608
+        width: 6
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c9d0730a87e5b650800000000000000
+      internalID: 6248154637995661769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_14
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 518
+        width: 6
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7134140f9fe94c3b0800000000000000
+      internalID: -5493090849170308329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_15
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 447
+        width: 6
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66f4cb1cbebecdaf0800000000000000
+      internalID: -370161671551037594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_16
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 249
+        width: 6
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b7601113d5e43ca0800000000000000
+      internalID: -6037948505709844556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_17
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 285
+        width: 80
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 947d9a04c0e73efb0800000000000000
+      internalID: -4619710201662417079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_18
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 193
+        width: 6
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 880147832fee2e690800000000000000
+      internalID: -7574228899187126136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_19
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 297
+        width: 6
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dee77b22a8b7620d0800000000000000
+      internalID: -3447932631487381779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_20
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 196
+        width: 6
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a9ca119a4f2af980800000000000000
+      internalID: -8504432949027223132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_21
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 251
+        width: 11
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b8ce993476d63af0800000000000000
+      internalID: -416910120813934409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_22
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 299
+        width: 6
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1e9ba2332a6bf4e0800000000000000
+      internalID: -1946845714501100006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_23
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 259
+        width: 6
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d8fcd97a95fb800800000000000000
+      internalID: 630321049297194370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_24
+      rect:
+        serializedVersion: 2
+        x: 1770
+        y: 157
+        width: 28
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 488239056277c3880800000000000000
+      internalID: -8629891779504428924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_25
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 79
+        width: 6
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c95046d06f07680800000000000000
+      internalID: -8759230737862517641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_26
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 118
+        width: 7
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3a8e8cb291585230800000000000000
+      internalID: 3627739190517467711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 119
+        width: 6
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f822b1d367b21f350800000000000000
+      internalID: 6048663561366610575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_28
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 119
+        width: 6
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79ad46b6367088760800000000000000
+      internalID: 7460220906324155031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_29
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 183
+        width: 6
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731d4a15dc377ed70800000000000000
+      internalID: 9072347300036399415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_30
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 116
+        width: 6
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6a10df883ebdfeb0800000000000000
+      internalID: -4684378887255221649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_31
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 45
+        width: 20
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03308151de7360900800000000000000
+      internalID: 650268687602287408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_32
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 64
+        width: 6
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e81428122142f4630800000000000000
+      internalID: 3913386261498446222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_33
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 59
+        width: 6
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1745b73c79e2f3150800000000000000
+      internalID: 5854449269959513201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_34
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 38
+        width: 6
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e23bb77177d7442f0800000000000000
+      internalID: -989528067666103506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia1_35
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 94
+        width: 6
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd95ee509ccfe7f70800000000000000
+      internalID: 9187058230200523227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      lluvia1_0: -3263590103291985241
+      lluvia1_1: 8398609446742902015
+      lluvia1_10: -1286122919244603907
+      lluvia1_11: 3044148002243361196
+      lluvia1_12: -4610391354383160093
+      lluvia1_13: 6248154637995661769
+      lluvia1_14: -5493090849170308329
+      lluvia1_15: -370161671551037594
+      lluvia1_16: -6037948505709844556
+      lluvia1_17: -4619710201662417079
+      lluvia1_18: -7574228899187126136
+      lluvia1_19: -3447932631487381779
+      lluvia1_2: 7691834813293041631
+      lluvia1_20: -8504432949027223132
+      lluvia1_21: -416910120813934409
+      lluvia1_22: -1946845714501100006
+      lluvia1_23: 630321049297194370
+      lluvia1_24: -8629891779504428924
+      lluvia1_25: -8759230737862517641
+      lluvia1_26: 3627739190517467711
+      lluvia1_27: 6048663561366610575
+      lluvia1_28: 7460220906324155031
+      lluvia1_29: 9072347300036399415
+      lluvia1_3: -6161019390781890074
+      lluvia1_30: -4684378887255221649
+      lluvia1_31: 650268687602287408
+      lluvia1_32: 3913386261498446222
+      lluvia1_33: 5854449269959513201
+      lluvia1_34: -989528067666103506
+      lluvia1_35: 9187058230200523227
+      lluvia1_4: 2145084321500733826
+      lluvia1_5: -398665174474788942
+      lluvia1_6: -2963155410684199961
+      lluvia1_7: 5972613603224204636
+      lluvia1_8: 5664265839377232202
+      lluvia1_9: -4216135694022398802
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

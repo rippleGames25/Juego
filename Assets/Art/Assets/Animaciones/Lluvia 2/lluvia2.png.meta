@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: ef518f0f5399c9645ab1e5ccab615038
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4950438386616606737
+    second: lluvia2_0
+  - first:
+      213: -3513671236403367257
+    second: lluvia2_1
+  - first:
+      213: -8741474058036825659
+    second: lluvia2_2
+  - first:
+      213: 1067856297600155402
+    second: lluvia2_3
+  - first:
+      213: -6520749505981175436
+    second: lluvia2_4
+  - first:
+      213: 1565347878916676343
+    second: lluvia2_5
+  - first:
+      213: 959813915088105046
+    second: lluvia2_6
+  - first:
+      213: 4628502305691274326
+    second: lluvia2_7
+  - first:
+      213: 8205179948426765825
+    second: lluvia2_8
+  - first:
+      213: 7994775980699188179
+    second: lluvia2_9
+  - first:
+      213: 6478582961117899699
+    second: lluvia2_10
+  - first:
+      213: -3638820180909618666
+    second: lluvia2_11
+  - first:
+      213: -9193739985899705241
+    second: lluvia2_12
+  - first:
+      213: -18741693287086784
+    second: lluvia2_13
+  - first:
+      213: -5861928268218698321
+    second: lluvia2_14
+  - first:
+      213: -4673551601300266526
+    second: lluvia2_15
+  - first:
+      213: 210309288990538227
+    second: lluvia2_16
+  - first:
+      213: -4422965676382746574
+    second: lluvia2_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lluvia2_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 40
+        width: 289
+        height: 1028
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 110adbceb7d73b440800000000000000
+      internalID: 4950438386616606737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_1
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 714
+        width: 48
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a27ba070aeec3fc0800000000000000
+      internalID: -3513671236403367257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_2
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 11
+        width: 327
+        height: 1032
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c13c6598ab00b680800000000000000
+      internalID: -8741474058036825659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_3
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 341
+        width: 7
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0ffe9915a9c1de00800000000000000
+      internalID: 1067856297600155402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_4
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 454
+        width: 280
+        height: 598
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47920ba6fd4a185a0800000000000000
+      internalID: -6520749505981175436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_5
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 224
+        width: 15
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fa5db03a9b39b510800000000000000
+      internalID: 1565347878916676343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_6
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 13
+        width: 568
+        height: 1051
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ead43aba1f15d00800000000000000
+      internalID: 959813915088105046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_7
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 540
+        width: 6
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65c0eccf25ebb3040800000000000000
+      internalID: 4628502305691274326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_8
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 962
+        width: 7
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 106a220b0b7aed170800000000000000
+      internalID: 8205179948426765825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_9
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 471
+        width: 6
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3db7664756623fe60800000000000000
+      internalID: 7994775980699188179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_10
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 769
+        width: 6
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bba45dc0ec88e950800000000000000
+      internalID: 6478582961117899699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_11
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 643
+        width: 6
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a0c532350508dc0800000000000000
+      internalID: -3638820180909618666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_12
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 588
+        width: 6
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76ca42f7136496080800000000000000
+      internalID: -9193739985899705241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_13
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 228
+        width: 6
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 045422d778a6dbff0800000000000000
+      internalID: -18741693287086784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_14
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 7
+        width: 413
+        height: 1066
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa5f0024c4f36aea0800000000000000
+      internalID: -5861928268218698321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_15
+      rect:
+        serializedVersion: 2
+        x: 1564
+        y: 655
+        width: 6
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e12a058495342fb0800000000000000
+      internalID: -4673551601300266526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_16
+      rect:
+        serializedVersion: 2
+        x: 1767
+        y: 221
+        width: 6
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f9fe3f1f2b2be200800000000000000
+      internalID: 210309288990538227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lluvia2_17
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 16
+        width: 6
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2380675b6287e92c0800000000000000
+      internalID: -4422965676382746574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      lluvia2_0: 4950438386616606737
+      lluvia2_1: -3513671236403367257
+      lluvia2_10: 6478582961117899699
+      lluvia2_11: -3638820180909618666
+      lluvia2_12: -9193739985899705241
+      lluvia2_13: -18741693287086784
+      lluvia2_14: -5861928268218698321
+      lluvia2_15: -4673551601300266526
+      lluvia2_16: 210309288990538227
+      lluvia2_17: -4422965676382746574
+      lluvia2_2: -8741474058036825659
+      lluvia2_3: 1067856297600155402
+      lluvia2_4: -6520749505981175436
+      lluvia2_5: 1565347878916676343
+      lluvia2_6: 959813915088105046
+      lluvia2_7: 4628502305691274326
+      lluvia2_8: 8205179948426765825
+      lluvia2_9: 7994775980699188179
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
