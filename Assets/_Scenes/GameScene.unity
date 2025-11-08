@@ -6988,7 +6988,7 @@ MonoBehaviour:
   plantInfoPanel: {fileID: 1865266222}
   plotInfoPanel: {fileID: 680945583}
   summaryPanel: {fileID: 214855454}
-  normalCursor: {fileID: 2800000, guid: d528c93db25dc4246ae343a14f3428b4, type: 3}
+  normalCursor: {fileID: 2800000, guid: 5e39ff31ae4dfbe43a5d0cbec2f190e4, type: 3}
   wateringCanCursor: {fileID: 2800000, guid: 50a13b4ec9dae444d8be704e7ae8e63b, type: 3}
   fertilizerBagCursor: {fileID: 2800000, guid: bbf6fd5d01ef76a4bb879f1a362671a8, type: 3}
   seedCursor: {fileID: 2800000, guid: 4263d60dbfe000b418d30634448e14f7, type: 3}

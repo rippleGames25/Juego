@@ -41,8 +41,9 @@ public class GameManager : MonoBehaviour
     private int currentMoney = 3;
     private int currentWater = 8;
     private int currentFertilizer = 8;
-    private const int INITIAL_AMOUNT = 2;
-    private const int AMOUNT_PER_PLANT = 3;
+    private const int INITIAL_AMOUNT = 1;
+    private const int AMOUNT_PER_PLANT = 2;
+    public const int IDX_PLANT_SPRITE = 7; // Indice de la imagen principal de la planta en el plantSprites
 
     [Header("Plantas")]
     [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.1f, -0.1f);
@@ -230,8 +231,31 @@ public class GameManager : MonoBehaviour
 
         GameObject newPlantGO = Instantiate(plantPrefab, (plot.transform.position + plantPosition), Quaternion.identity);
 
-        Plant newPlant = newPlantGO.GetComponent<Plant>(); // Referencia al Plant del GO
-        newPlant.InitializePlant(plantData);
+        newPlantGO.transform.SetParent(plot.transform); // Establecemos la parcela como padre
+
+        Plant newPlant;
+
+        switch (plantData.category)
+        {
+            case PlantCategory.Producer:
+                newPlant = newPlantGO.AddComponent<ProducerPlant>();
+                break;
+            case PlantCategory.ProvidesShade:
+                newPlant = newPlantGO.AddComponent<ShaderProviderPlant>();
+                break;
+            case PlantCategory.PollinatorAttractor:
+                newPlant = newPlantGO.AddComponent<PollinatorAttractorPlant>();
+                break;
+            case PlantCategory.WildlifeRefuge:
+                newPlant = newPlantGO.AddComponent<WildlifeRefugePlant>();
+                break;
+            default:
+                newPlant = newPlantGO.AddComponent<Plant>(); // O una clase base Plant simple, o PollinatorAttractorPlant
+                break;
+        }
+
+
+        newPlant.InitializePlant(plantData, plot);
 
         plot.currentPlant= newPlant; // Asociamos la planta a la parcela
         plot.isPlanted = true;
@@ -257,7 +281,7 @@ public class GameManager : MonoBehaviour
     private void GenerateWinCondition()
     {
         // De momento fija
-        winCondition = 5;
+        winCondition = 10;
     }
 
     private void HandleInput()
@@ -341,7 +365,7 @@ public class GameManager : MonoBehaviour
         if (currentBiodiversity == winCondition) // Comparar el objetivo con el estado actual
         {
             Debug.Log("Has llegado al objetivo de biodiversidad. Enhorabuena");
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 

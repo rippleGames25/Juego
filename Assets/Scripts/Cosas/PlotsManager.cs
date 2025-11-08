@@ -163,54 +163,6 @@ public class PlotsManager : MonoBehaviour
     #endregion
 
     #region Métodos privados
-    private void UpdatePlants()
-    {
-        foreach (Plot plot in plotGrid)
-        {
-            if (plot.isPlanted) // Solo actualizar las parcelas con planta
-            {
-                plot.UpdatePlant();
-            }
-        }
-    }
-
-    private void DailyUpdatePlants()
-    {
-        int waterDemand;
-        int fertilizerDemand;
-
-        foreach (Plot plot in plotGrid)
-        {
-            if (plot.isPlanted) // Si esta plantada
-            {
-                waterDemand = plot.currentPlant.GetWaterDemand();
-                fertilizerDemand = plot.currentPlant.GetFertilizerDemand();
-
-                if (waterDemand > plot.currentWater || fertilizerDemand > plot.currentFertility)
-                {
-                    Debug.Log($"La parcela {plot.gridCoordinates} no puede cubrir las necesidades de su planta");
-                    if (plot.currentPlant.DecreaseHealth()) // true si la planta ha muerto
-                    {
-                        PlantsDeath(plot);
-                    }
-
-                } else
-                {
-                    plot.currentPlant.IncreaseHealth();
-                }
-
-                plot.ChangeWater(-waterDemand); // Agua que consume la planta
-                plot.ChangeFertility(-fertilizerDemand); // Abono que consume la planta
-
-            }
-
-            plot.UpdatePlotWaterVisuals();
-            plot.UpdatePlotFertilizerVisuals();
-            plot.UpdatePlotSolarExposureVisuals();
-        }
-
-        Debug.Log("Consumo de agua y abono diario de plantas hecho.");
-    }
 
     public IEnumerator AnimateDailyConsumptionAndConsume()
     {
@@ -254,24 +206,8 @@ public class PlotsManager : MonoBehaviour
         {
             if (plot.isPlanted && plot.currentPlant != null)
             {
-                // 1. Actualizar vida y crecimiento (llama a UpdatePlantGrowthVisuals en Plant.cs)
                 plot.currentPlant.UpdateLifeDays();
-
-                // 2. Lógica de Productores/Sombra (Efectos Ambientales)
-                if (plot.currentPlant.currentGrowth == GrowthState.madura && !plot.currentPlant.hasAppliedEnvironmentEffect)
-                {
-                    plot.UpdateEnviroment(plot.currentPlant.plantData.category);
-                    plot.currentPlant.hasAppliedEnvironmentEffect = true;
-                }
-                else if (plot.currentPlant.hasAppliedEnvironmentEffect)
-                {
-                    switch (plot.currentPlant.plantData.category)
-                    {
-                        case PlantCategory.Producer:
-                            plot.currentPlant.ProduceCycle();
-                            break;
-                    }
-                }
+                plot.currentPlant.ApplyDailyEffect();
             }
         }
         Debug.Log("Actualización de crecimiento y efectos (Inicio de día) hecha.");

@@ -23,7 +23,7 @@ public class ShopItemUI : MonoBehaviour
         {
             nameText.text = plantData.plantName;
             priceText.text = plantData.price.ToString();
-            plantImage.sprite = plantData.plantSprites.Last();
+            plantImage.sprite = plantData.plantSprites[GameManager.IDX_PLANT_SPRITE];
         }
     }
 

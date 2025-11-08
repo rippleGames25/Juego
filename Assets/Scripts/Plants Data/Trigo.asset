@@ -27,7 +27,13 @@ MonoBehaviour:
   timeToProduce: 0
   price: 2
   plantSprites:
-  - {fileID: 21300000, guid: df286694905120f47aa9a277bd3de1e1, type: 3}
+  - {fileID: 21300000, guid: d876bde82d4d10f4a864c882f6f08367, type: 3}
   - {fileID: -3966044189379602213, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: 5214576322002826026, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: 2755769633323637719, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
   - {fileID: -5255372173975147240, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: 1692280188772239226, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: -1808941308251631867, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: -8872200077480915516, guid: 3104e230b7ef69847b2081151d710c15, type: 3}
+  - {fileID: -8872200077480915516, guid: 3104e230b7ef69847b2081151d710c15, type: 3}
   - {fileID: -8872200077480915516, guid: 3104e230b7ef69847b2081151d710c15, type: 3}

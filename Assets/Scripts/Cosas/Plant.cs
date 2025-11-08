@@ -13,9 +13,9 @@ public enum GrowthState
 
 public enum Health
 {
-    mala,
-    moderada, 
-    buena
+    buena,
+    moderada,
+    mala
 }
 
 public class Plant : MonoBehaviour
@@ -28,28 +28,22 @@ public class Plant : MonoBehaviour
     public int lifeDays;
     public bool hasAppliedEnvironmentEffect = false;
 
+    protected Plot parentPlot;
+
     // Producer Type
-    [SerializeField] private int produceDays = 0;
+    [SerializeField] protected int produceDays = 0;
     [SerializeField] public bool hasProduct = false;
 
     // Visuals
-    private SpriteRenderer spriteRenderer;
-    [SerializeField] private SpriteRenderer productSR;
+    protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected SpriteRenderer productSR;
 
-    //Constructor
-    public Plant (PlantType _plantData)
-    {
-        this.plantData = _plantData;
-        this.currentHealth= Health.buena; // good
-        this.currentGrowth = GrowthState.semilla; // seed
-        lifeDays= 0;
-    }
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if(spriteRenderer == null )
+        if (spriteRenderer == null )
         {
             Debug.LogError("Plant: no se encontro el spriterenderer");
         }
@@ -67,12 +61,13 @@ public class Plant : MonoBehaviour
     }
 
     // Metodo para inicializar una planta
-    public void InitializePlant(PlantType _type)
+    public void InitializePlant(PlantType _type, Plot _parentPlot)
     {
         plantData = _type;
         lifeDays = 0;
         currentGrowth = GrowthState.semilla; // Comienza como semilla
-        currentHealth = Health.buena; // Comienza con salud perfecta
+        parentPlot = _parentPlot;
+        currentHealth = Health.buena;
 
         spriteRenderer.sprite = plantData.plantSprites[0];
     }
@@ -86,14 +81,32 @@ public class Plant : MonoBehaviour
         }
         else if (currentHealth == Health.moderada)
         {
-            currentHealth = Health.buena;
+            if (CheckSolarExposure()) 
+            {
+                currentHealth = Health.buena;
+            }
+            else
+            {
+                // Salud moderada porque la exposición no es la ideal
+                Debug.Log($"La planta {plantData.plantName} tiene salud moderada por la exposición solar.");
+            }
         }
         else
         {
-            Debug.Log($"Planta sana");
+            if (!CheckSolarExposure())
+            {
+                Debug.Log($"Planta sana");
+            }
+            else
+            {
+                currentHealth = Health.moderada;
+                // Salud moderada porque la exposición no es la ideal
+                Debug.Log($"La planta {plantData.plantName} tiene salud moderada por la exposición solar.");
+            }
+            
         }
 
-        UpdatePlantHealthVisuals(currentHealth);
+        UpdatePlantSprite();
     }
 
     // Metodo que Decrementa el estado de salud
@@ -110,7 +123,7 @@ public class Plant : MonoBehaviour
             return true; // La planta ha muerto
         }
 
-        UpdatePlantHealthVisuals(currentHealth);
+        UpdatePlantSprite();
         return false;
     }
 
@@ -126,86 +139,85 @@ public class Plant : MonoBehaviour
         else if (currentGrowth == GrowthState.semilla && lifeDays >= plantData.timeToSprout) 
         {
             currentGrowth++; // Brotar
-            UpdatePlantGrowthVisuals((int) currentGrowth);
             GameManager.Instance.CurrentBiodiversity++; // Sumamos uno a la biodiversidad
             Debug.Log($"La planta {plantData.plantName} ha brotado.");
         } 
         else if (currentGrowth == GrowthState.brote && lifeDays >= plantData.timeToGrow)
         {
             currentGrowth++; // Crecer hasta Joven
-            UpdatePlantGrowthVisuals((int)currentGrowth);
             Debug.Log($"La planta {plantData.plantName} ha crecido.");
         }
         else if (currentGrowth == GrowthState.joven && lifeDays >= plantData.timeToMature)
         {
             currentGrowth++; // Crecer hasta madura
-            UpdatePlantGrowthVisuals((int)currentGrowth);
             Debug.Log($"La planta {plantData.plantName} ha madurado.");
 
         }
+
+        UpdatePlantSprite();
     }
 
+    private bool CheckSolarExposure()
+    {
+        SolarExposure required = plantData.solarExposureDemand;
+        SolarExposure current = parentPlot.GetCurrentSolarExposure();
 
+        return current == required;
+    }
+
+    public virtual void ApplyDailyEffect()
+    {
+
+    }
 
     #endregion
 
-    #region Producers Methods
-    public void ProduceCycle()
-    {
-        if (hasProduct == true) return;
 
-        produceDays++;
-
-        if(produceDays == plantData.timeToProduce)
-        {
-            hasProduct = true;
-            produceDays = 0;
-            UpdateProductVisuals();
-        } 
-    }
-
-    public void CollectProduct()
-    {
-        GameManager.Instance.CurrentMoney++; // De momento suma 1 petalo
-        hasProduct = false;
-        UpdateProductVisuals();
-    }
-
-
-    #endregion
 
     // Metodos de visualización
-    private void UpdatePlantGrowthVisuals(int state)
+
+    protected void UpdatePlantSprite()
     {
-        spriteRenderer.sprite = plantData.plantSprites[state];
+        if (currentGrowth == GrowthState.semilla)
+        {
+            spriteRenderer.sprite = plantData.plantSprites[0];
+            return;
+        }
+
+        int growthBaseIndex = 0;
+        int growthInt = (int)currentGrowth; //Crecimiento
+
+        if (currentGrowth == GrowthState.brote)
+        {
+            growthBaseIndex = 1;
+        }
+        else if (currentGrowth == GrowthState.joven)
+        {
+            growthBaseIndex = 4;
+        }
+        else if (currentGrowth == GrowthState.madura)
+        {
+            growthBaseIndex = 7;
+        }
+        else // Muerta o semilla (ya cubierta)
+        {
+            return;
+        }
+
+        int healthOffset = (int) currentHealth; //Salud
+
+        int finalIndex = growthBaseIndex + healthOffset;
+
+        if (finalIndex < plantData.plantSprites.Length)
+        {
+            spriteRenderer.sprite = plantData.plantSprites[finalIndex];
+        }
+        else
+        {
+            Debug.LogError($"Plant: Índice de sprite calculado fuera de límites: {finalIndex}.");
+        }
     }
 
-    private void UpdateProductVisuals()
-    {
-        if (plantData.category == PlantCategory.Producer && hasProduct)
-        {
-            spriteRenderer.sprite = plantData.plantSprites.Last();
-        }
-        else if(plantData.category == PlantCategory.Producer && !hasProduct)
-        {
-            spriteRenderer.sprite = plantData.plantSprites[3];
-        }
-    }
 
-    private void UpdatePlantHealthVisuals(Health _currentHealth)
-    {
-        switch (_currentHealth)
-        {
-            case Health.mala:
-                spriteRenderer.color = Color.red;
-                break;
-            case Health.moderada:
-                spriteRenderer.color = Color.yellow;
-                break;
-            case Health.buena:
-                spriteRenderer.color = Color.white;
-                break;
-        }
-    }
 
 }

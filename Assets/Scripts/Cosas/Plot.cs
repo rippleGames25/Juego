@@ -101,28 +101,9 @@ public class Plot : MonoBehaviour
         Debug.Log(this.ToString());
     }
 
-    public void UpdatePlant()
+    public SolarExposure GetCurrentSolarExposure()
     {
-        // Calcular muertes
-
-        currentPlant.UpdateLifeDays(); // Actualizar dias de vida
-
-        if (currentPlant.currentGrowth == GrowthState.madura && !currentPlant.hasAppliedEnvironmentEffect)
-        {
-            UpdateEnviroment(currentPlant.plantData.category);
-            currentPlant.hasAppliedEnvironmentEffect = true;
-        } 
-        else if (currentPlant.hasAppliedEnvironmentEffect)
-        {
-            switch (currentPlant.plantData.category)
-            {
-                case PlantCategory.Producer:
-                    currentPlant.ProduceCycle();
-                    break;
-            }
-        }
-
-
+        return currentSolarExposure;
     }
 
     public void ChangeWater (int weatherWater)
@@ -199,9 +180,9 @@ public class Plot : MonoBehaviour
         switch (GameManager.Instance.CurrentTool)
         {
             case ToolType.None:
-                if (currentPlant!=null && currentPlant.hasProduct)
+                if (currentPlant!=null && currentPlant.hasProduct && currentPlant is ProducerPlant producerPlant)
                 {
-                    currentPlant.CollectProduct();
+                    producerPlant.CollectProduct();
                 }
                 else
                 {

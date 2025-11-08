@@ -171,7 +171,7 @@ public class HUDUI : MonoBehaviour
     private void ShowPlantInfoPanel(Plant plant)
     {
         nameText.text= plant.plantData.plantName;
-        plantPhoto.sprite = plant.plantData.plantSprites.Last(); // Sprite de la planta estado: madura
+        plantPhoto.sprite = plant.plantData.plantSprites[GameManager.IDX_PLANT_SPRITE]; // Sprite de la planta estado: madura
 
         growthState.text = $"Estado: {plant.currentGrowth}";
         health.text = $"Salud: {plant.currentHealth}";
