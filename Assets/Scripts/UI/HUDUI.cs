@@ -15,14 +15,6 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject plotInfoPanel;
     [SerializeField] private GameObject summaryPanel;
 
-
-    [Header("Cursores")]
-    [SerializeField] private Texture2D normalCursor;
-    [SerializeField] private Texture2D wateringCanCursor;
-    [SerializeField] private Texture2D fertilizerBagCursor;
-    [SerializeField] private Texture2D seedCursor;
-    [SerializeField] private Texture2D shovelCursor;
-
     [Header("Clima")]
     [SerializeField] private TextMeshProUGUI currentWeatherText;
     [SerializeField] private List<Image> forecastImages = new List<Image>();
@@ -58,6 +50,7 @@ public class HUDUI : MonoBehaviour
         plantInfoPanel.SetActive(false);
         plotInfoPanel.SetActive(false);
         summaryPanel.SetActive(false);
+        Cursor.visible = false;
 
         // Actualizar UI
         UpdateMoneyText(GameManager.Instance.CurrentMoney);
@@ -251,31 +244,18 @@ public class HUDUI : MonoBehaviour
     #endregion
 
     #region Cursor
+
+    // Dentro de HUDUI.cs
+
     private void UpdateCursor(ToolType _type)
     {
-        Cursor.SetCursor(ChooseCursor(), default, default);
-    }
-
-    private Texture2D ChooseCursor()
-    {
-        switch (GameManager.Instance.CurrentTool)
+        // Le decimos al manager qué herramienta hemos seleccionado
+        if (SoftwareCursorManager.Instance != null)
         {
-            case ToolType.WateringCan:
-                return wateringCanCursor;
-
-            case ToolType.FertilizerBag:
-                return fertilizerBagCursor;
-
-            case ToolType.Plant:
-                return seedCursor;
-
-            case ToolType.Shovel:
-                return shovelCursor;
-
-            default:
-                return normalCursor;
+            SoftwareCursorManager.Instance.SetTool(_type);
         }
     }
+
 
     #endregion
 
