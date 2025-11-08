@@ -122,10 +122,10 @@ TextureImporter:
       name: boton2_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 208
-        width: 402
-        height: 82
+        x: 0
+        y: 200
+        width: 430
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: boton2_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 106
-        width: 408
-        height: 88
+        x: 0
+        y: 100
+        width: 430
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: boton2_2
       rect:
         serializedVersion: 2
-        x: 11
-        y: 7
-        width: 408
-        height: 88
+        x: 0
+        y: 0
+        width: 430
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2c6ba8320fffcf74fabc2003ce931e19
     internalID: 0
     vertices: []
     indices: 
