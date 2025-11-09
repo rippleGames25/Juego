@@ -183,10 +183,12 @@ public class Plot : MonoBehaviour
                 if (currentPlant!=null && currentPlant.hasProduct && currentPlant is ProducerPlant producerPlant)
                 {
                     producerPlant.CollectProduct();
+                    SFXManager.Instance?.PlayComprar();
                 }
                 else
                 {
                     PlotsManager.Instance.PlotSelected(this);
+                    SFXManager.Instance?.PlayClick();
                     Debug.Log($"Parcela {this.gridCoordinates} seleccionada.");
                 }
                 break;
@@ -201,15 +203,19 @@ public class Plot : MonoBehaviour
                     StartCoroutine(AnimateSingleTextChange("+1", 0, Color.green));
                     this.UpdatePlotWaterVisuals();
 
+                    SFXManager.Instance?.PlayRegar();
+
                     Debug.Log($"Parcela {this.gridCoordinates} regada -> {currentWater} de agua");
                 }
                 else if (GameManager.Instance.CurrentWater > 0 && currentWater >= PLOT_LIMIT) // Tiene agua pero la parcela está llena
                 {
                     StartCoroutine(AnimateSingleTextChange("Lleno", 0, Color.green));
+                    SFXManager.Instance?.PlayDenegar();
                     Debug.Log($"No se puede regar, la parcela {gridCoordinates} está al máximo de agua.");
                 }
                 else // No queda agua
                 {
+                    SFXManager.Instance?.PlayDenegar();
                     Debug.Log("No te queda agua.");
                 }
                 break;
@@ -224,6 +230,7 @@ public class Plot : MonoBehaviour
                     StartCoroutine(AnimateSingleTextChange("+1", 1, Color.green));
                     this.UpdatePlotFertilizerVisuals();
 
+                    SFXManager.Instance?.PlayAbonar();
 
                     Debug.Log($"Parcela {this.gridCoordinates} abonada -> {currentFertility} de abono");
 
@@ -231,10 +238,12 @@ public class Plot : MonoBehaviour
                 else if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility >= PLOT_LIMIT) // Tiene abono pero la parcela está llena
                 {
                     StartCoroutine(AnimateSingleTextChange("Lleno", 1, Color.green));
+                    SFXManager.Instance?.PlayDenegar();
                     Debug.Log($"No se puede abonar, la parcela {gridCoordinates} está al máximo de abono.");
                 }
                 else // No queda abono
                 {
+                    SFXManager.Instance?.PlayDenegar();
                     Debug.Log("No te queda abono");
                 }
                 break;
@@ -255,11 +264,12 @@ public class Plot : MonoBehaviour
                 if (this.isPlanted)
                 {
                     GameManager.Instance.CurrentMoney+=this.currentPlant.plantData.price; // Dinero que gana
-
+                    SFXManager.Instance?.PlayDesplantar();
                     PlotsManager.Instance.PlantsDeath(this);
                 }
                 else
                 {
+                    SFXManager.Instance?.PlayDenegar();
                     Debug.Log($"En la parcela {gridCoordinates} no hay ninguna planta.");
                 }
                 break;

@@ -54,6 +54,7 @@ public class WeatherManager : MonoBehaviour
         }
 
         OnCurrentWeatherChanged?.Invoke(currentWeather);
+        PlayWeatherSFX(currentWeather);
         OnForecastChanged?.Invoke(forecast);
     }
 
@@ -73,6 +74,7 @@ public class WeatherManager : MonoBehaviour
 
         // Notifica cambios
         OnCurrentWeatherChanged?.Invoke(currentWeather);
+        PlayWeatherSFX(currentWeather);
         OnForecastChanged?.Invoke(forecast);
 
         Debug.Log($"Clima de HOY: {currentWeather.type}. Previsión actualizada.");
@@ -116,7 +118,28 @@ public class WeatherManager : MonoBehaviour
 
         return weather;
     }
-    
+
+    private void PlayWeatherSFX(DailyWeather w)
+    {
+    // Detiene cualquier sonido anterior primero
+    SFXManager.Instance?.StopAmbient();
+
+    switch (w.type)
+    {
+        case WeatherType.Soleado:
+            SFXManager.Instance?.PlaySoleado();
+            break;
+        case WeatherType.Lluvia:
+            SFXManager.Instance?.PlayLluvia();
+            break;
+        case WeatherType.Granizo:
+            SFXManager.Instance?.PlayNieve();
+            break;
+        case WeatherType.Nublado:
+            break;
+    }
+    }
+
 
 
 }

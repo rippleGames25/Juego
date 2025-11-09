@@ -57,6 +57,7 @@ public class TutorialUI : MonoBehaviour
 
     public void NextPage()
     {
+        SFXManager.Instance?.PlayClick();
         if (currentPageIndex == tutorialPages.Count - 1)
         {
             CloseTutorial();
@@ -71,6 +72,7 @@ public class TutorialUI : MonoBehaviour
 
     public void CloseTutorial()
     {
+        SFXManager.Instance?.PlayClick();
         SceneManager.LoadScene(MAIN_MENU_SCENE_NAME);
     }
 }

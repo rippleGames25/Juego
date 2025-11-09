@@ -8,19 +8,22 @@ public class PauseMenuUI : MonoBehaviour
 
     public void Return()
     {
+        SFXManager.Instance?.PlayClick();
         PauseMenuPanel.SetActive(false);
         HUDPanel.SetActive(true);
-
-        // Reanudar el tiempo
+        GameManager.Instance.SetInputLocked(false); 
     }
 
     public void Settings()
     {
+        SFXManager.Instance?.PlayClick();
+        PauseMenuPanel.SetActive(false);
         Debug.Log("Abriendo ajustes...");
     }
 
     public void Quit()
     {
+        SFXManager.Instance?.PlayClick();
         SceneManager.LoadScene("GameOverScene");
     }
 }

@@ -55,6 +55,7 @@ public class ShopItemUI : MonoBehaviour
     {
         if (plantData != null)
         {
+            SFXManager.Instance?.PlayClick();
             Debug.Log($"Planta seleccionada {plantData.plantName}");
             ShopManager.Instance.SelectPlantToBuy(plantData);
         }
@@ -64,6 +65,7 @@ public class ShopItemUI : MonoBehaviour
     {
         if (plantData != null)
         {
+            SFXManager.Instance?.PlayInfoPlanta();
             GameManager.Instance.ShowPlantTypePanel(plantData);
         }
     }

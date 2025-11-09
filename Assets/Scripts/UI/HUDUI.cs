@@ -93,12 +93,14 @@ public class HUDUI : MonoBehaviour
     #region Metodos para botones
     public void PauseButton()
     {
+        SFXManager.Instance?.PlayClick();
         HUDPanel.SetActive(false);
         settingsPanel.SetActive(true);
     }
 
     public void SettingsButton()
     {
+        SFXManager.Instance?.PlayClick();
         HUDPanel.SetActive(false);
         if (toolsRoot) toolsRoot.SetActive(false);
         if (plotsGrid) plotsGrid.SetActive(false);
@@ -108,6 +110,7 @@ public class HUDUI : MonoBehaviour
 
     public void GoBackFromSettingsButton()
     {
+        SFXManager.Instance?.PlayClick();
         settingsPanel.SetActive(false);
         if (toolsRoot) toolsRoot.SetActive(true);
         if (plotsGrid) plotsGrid.SetActive(true);
@@ -117,24 +120,27 @@ public class HUDUI : MonoBehaviour
 
     public void PassDayButton()
     {
+        SFXManager.Instance?.PlayClick();
         GameManager.Instance.EndDay();
     }
 
 
     public void NextButton()
     {
-        
+        SFXManager.Instance?.PlayClick();
         GameManager.Instance.StartNewDay();
         summaryPanel.SetActive(false);
     }
 
     public void ShowDaySummaryPanel()
     {
+        SFXManager.Instance?.PlayClick();
         summaryPanel.SetActive(true);
     }
 
     public void ShownPlantTypeInfoPanel(PlantType plantType)
     {
+        SFXManager.Instance?.PlayClick();
         // Poner info planta
         plantTypeName.text = plantType.plantName;
 
@@ -143,6 +149,7 @@ public class HUDUI : MonoBehaviour
 
     public void UnShowPlantTypeInfoPanel()
     {
+        SFXManager.Instance?.PlayClick();
         plantTypeInfoPanel.SetActive(false);
     }
 

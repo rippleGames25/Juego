@@ -123,6 +123,7 @@ public class Plant : MonoBehaviour
             return true; // La planta ha muerto
         }
 
+        SFXManager.Instance?.PlayMarchita();
         UpdatePlantSprite();
         return false;
     }
@@ -140,16 +141,19 @@ public class Plant : MonoBehaviour
         {
             currentGrowth++; // Brotar
             GameManager.Instance.CurrentBiodiversity++; // Sumamos uno a la biodiversidad
+            SFXManager.Instance?.PlayCrece();
             Debug.Log($"La planta {plantData.plantName} ha brotado.");
         } 
         else if (currentGrowth == GrowthState.brote && lifeDays >= plantData.timeToGrow)
         {
             currentGrowth++; // Crecer hasta Joven
+            SFXManager.Instance?.PlayCrece();
             Debug.Log($"La planta {plantData.plantName} ha crecido.");
         }
         else if (currentGrowth == GrowthState.joven && lifeDays >= plantData.timeToMature)
         {
             currentGrowth++; // Crecer hasta madura
+            SFXManager.Instance?.PlayCrece();
             Debug.Log($"La planta {plantData.plantName} ha madurado.");
 
         }

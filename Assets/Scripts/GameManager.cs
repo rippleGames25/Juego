@@ -174,12 +174,14 @@ public class GameManager : MonoBehaviour
     // Public Methods
     public void EndDay()
     {
-        if (inputLocked) return;               
+        if (inputLocked) return;
+        SFXManager.Instance?.PlayPasarDia();
         if (isDayTransitioning)
         {
             Debug.Log("Transición de día en curso, espera un momento.");
             return;
         }
+        SFXManager.Instance?.StopAmbient();
         StartCoroutine(EndDayCoroutine());
 
     }
@@ -225,6 +227,7 @@ public class GameManager : MonoBehaviour
 
         if(plantData.price > currentMoney) // No tiene suficiente dinero
         {
+            SFXManager.Instance?.PlayDenegar();
             Debug.Log("No tienes dinero suficiente para comprar la planta");
             return;
         }
@@ -263,12 +266,14 @@ public class GameManager : MonoBehaviour
         plot.isPlanted = true;
 
         CurrentTool = ToolType.None; // Desequipamos la semilla
-        
+        SFXManager.Instance?.PlayPlantar();
+
         Debug.Log($"Semilla de {plantData.plantName} plantada en la parcela {plot.gridCoordinates}");
     }
 
     public void PlantsDeath(Plant plantToDeath)
     {
+        SFXManager.Instance?.PlayMuerte();
         Debug.Log($"La planta {plantToDeath.plantData.plantName} ha muerto porque no has cubierto sus necesidades");
         Destroy(plantToDeath.gameObject);
         CurrentBiodiversity--;
@@ -307,6 +312,8 @@ public class GameManager : MonoBehaviour
                 {
                     CurrentTool = tool.type; // Si no la tiene la equipa
                 }
+
+                SFXManager.Instance?.PlayClick();
             }
             else if (hitObject.CompareTag("Plot"))
             {

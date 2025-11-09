@@ -38,6 +38,7 @@ public class ProducerPlant : Plant
         GameManager.Instance.CurrentMoney++; // De momento suma 1 petalo
         hasProduct = false;
         UpdateProductVisuals();
+        SFXManager.Instance?.PlayComprar();
     }
 
     protected void UpdateProductVisuals()
