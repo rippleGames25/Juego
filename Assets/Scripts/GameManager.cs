@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     [Header("Plantas")]
     [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.1f, -0.1f);
     [SerializeField] private GameObject plantPrefab;
-    [SerializeField] private List<PlantType> plantsList; // Lista de Tipos de planta (ScriptableObjects)
+    [SerializeField] public List<PlantType> plantsList; // Lista de Tipos de planta (ScriptableObjects)
 
     #endregion
 

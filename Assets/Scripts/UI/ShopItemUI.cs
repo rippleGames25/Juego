@@ -3,55 +3,68 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-
 public class ShopItemUI : MonoBehaviour
 {
-    public GameObject UIManager;
-    
-    public PlantType plantData;
-    public TextMeshProUGUI nameText;
-    public Image plantImage;
-    public TextMeshProUGUI priceText;
 
+    [Header("Referencias Internas")]
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private Image plantImage;
+    [SerializeField] private TextMeshProUGUI priceText;
     [SerializeField] private Button buyButton;
 
-    void Start()
+    private PlantType plantData;
+
+    public void Setup(PlantType dataToSetup)
     {
+        plantData = dataToSetup;
+
+        if (plantData == null) return;
+
+        nameText.text = plantData.plantName;
+        priceText.text = plantData.price.ToString();
+
+        if (plantData.plantSprites != null && plantData.plantSprites.Length > 0)
+        {
+            int spriteIndex = Mathf.Min(GameManager.IDX_PLANT_SPRITE, plantData.plantSprites.Length - 1);
+            plantImage.sprite = plantData.plantSprites[spriteIndex];
+        }
+
         GameManager.Instance.OnMoneyChanged += UpdateItemAvailability;
 
-        if (plantData != null)
+        UpdateItemAvailability(GameManager.Instance.CurrentMoney);
+
+        buyButton.onClick.AddListener(SelectItem);
+    }
+
+    void OnDestroy()
+    {
+        if (GameManager.Instance != null)
         {
-            nameText.text = plantData.plantName;
-            priceText.text = plantData.price.ToString();
-            plantImage.sprite = plantData.plantSprites[GameManager.IDX_PLANT_SPRITE];
+            GameManager.Instance.OnMoneyChanged -= UpdateItemAvailability;
         }
     }
 
-    // Metodo para Actualizar la disponibilidad del Item en la tienda
     private void UpdateItemAvailability(int _currentmoney)
     {
-        if(_currentmoney < plantData.price)
-        {
-            buyButton.interactable = false;
+        if (plantData == null) return;
 
-        } else
-        {
-            buyButton.interactable = true;
-        }
+        buyButton.interactable = (_currentmoney >= plantData.price);
     }
 
-    // Metodo paar seleccionar un tipo de planta en la tienda
     public void SelectItem()
     {
-        if(plantData != null)
+        if (plantData != null)
         {
             Debug.Log($"Planta seleccionada {plantData.plantName}");
-            ShopManager.Instance.SelectPlantToBuy(plantData);   
+            ShopManager.Instance.SelectPlantToBuy(plantData);
         }
     }
 
     public void ShowInfoPanel()
     {
-        GameManager.Instance.ShowPlantTypePanel(plantData);
+        if (plantData != null)
+        {
+            GameManager.Instance.ShowPlantTypePanel(plantData);
+        }
     }
 }
