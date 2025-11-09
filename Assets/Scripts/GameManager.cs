@@ -1,4 +1,4 @@
-using UnityEngine;
+锘縰sing UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.1f, -0.1f);
     [SerializeField] private GameObject plantPrefab;
     [SerializeField] public List<PlantType> plantsList; // Lista de Tipos de planta (ScriptableObjects)
+
+    private bool inputLocked = false;
+    public bool InputLocked => inputLocked;
 
     #endregion
 
@@ -163,21 +166,20 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (inputLocked) return;                 
         if (Input.GetMouseButtonDown(0))
-        {
             HandleInput();
-        }
     }
 
     // Public Methods
     public void EndDay()
     {
+        if (inputLocked) return;               
         if (isDayTransitioning)
         {
-            Debug.Log("Transici髇 de d韆 en curso, espera un momento.");
+            Debug.Log("Transici贸n de d铆a en curso, espera un momento.");
             return;
         }
-
         StartCoroutine(EndDayCoroutine());
 
     }
@@ -186,15 +188,15 @@ public class GameManager : MonoBehaviour
     {
         isDayTransitioning = true;
 
-        Debug.Log("Fin de d韆");
+        Debug.Log("Fin de d铆a");
 
-        // 1. Animaci髇 de consumo de recursos
+        // 1. Animaci贸n de consumo de recursos
         yield return PlotsManager.Instance.AnimateDailyConsumptionAndConsume(); ;
 
         // 2. Actualizar estado de salud
         PlotsManager.Instance.DailyUpdatePlantsHealth();
 
-        // 3. Condici髇 de victoria
+        // 3. Condici贸n de victoria
         CheckWinCondition(); 
 
         OnDayEnd?.Invoke();
@@ -205,7 +207,7 @@ public class GameManager : MonoBehaviour
     public void StartNewDay()
     {
         CurrentDay++;
-        Debug.Log("INICIO DE D虯: D韆 " + CurrentDay);
+        Debug.Log("INICIO DE D脥A: D铆a " + CurrentDay);
 
         HandleWeatherEvent();
         PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather.waterChange);
@@ -214,7 +216,7 @@ public class GameManager : MonoBehaviour
 
         DistributeDailyResources();
 
-        Debug.Log("Inicio de d韆 completado.");
+        Debug.Log("Inicio de d铆a completado.");
     }
 
     public void PlantSeed(Plot plot, int idx)
@@ -328,7 +330,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Metodo para calcular que cantidad de recursos se distribuyen seg鷑 la biodiversidad
+    // Metodo para calcular que cantidad de recursos se distribuyen seg煤n la biodiversidad
     private int CalculateResourcesAmount()
     {
         int amount = CurrentBiodiversity * AMOUNT_PER_PLANT;
@@ -343,10 +345,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #region M閠odos de actualizaci髇 diaria
+    #region M茅todos de actualizaci贸n diaria
     private void HandleWeatherEvent()
     {
-        // Pasar al evento meteorol骻ico siguiente y generar uno nuevo
+        // Pasar al evento meteorol贸gico siguiente y generar uno nuevo
         currentWeather = WeatherManager.Instance.PassDay();
     }
 
@@ -370,4 +372,10 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    public void SetInputLocked(bool locked)
+    {
+        inputLocked = locked;
+        Time.timeScale = locked ? 0f : 1f; // pausa simulaci贸n tambi茅n
+    }
 }

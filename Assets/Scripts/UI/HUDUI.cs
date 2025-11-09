@@ -14,6 +14,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject plantInfoPanel;
     [SerializeField] private GameObject plotInfoPanel;
     [SerializeField] private GameObject summaryPanel;
+    [SerializeField] private GameObject settingsPanel;
 
     [Header("Clima")]
     [SerializeField] private TextMeshProUGUI currentWeatherText;
@@ -40,6 +41,9 @@ public class HUDUI : MonoBehaviour
     [Header("Panel Tipo de planta")]
     [SerializeField] private GameObject plantTypeInfoPanel;
     [SerializeField] private TextMeshProUGUI plantTypeName;
+
+    [SerializeField] GameObject toolsRoot;
+    [SerializeField] GameObject plotsGrid;
 
 
     #endregion
@@ -90,14 +94,31 @@ public class HUDUI : MonoBehaviour
     public void PauseButton()
     {
         HUDPanel.SetActive(false);
-        PauseMenuPanel.SetActive(true);
+        settingsPanel.SetActive(true);
+    }
+
+    public void SettingsButton()
+    {
+        HUDPanel.SetActive(false);
+        if (toolsRoot) toolsRoot.SetActive(false);
+        if (plotsGrid) plotsGrid.SetActive(false);
+        settingsPanel.SetActive(true);
+        GameManager.Instance.SetInputLocked(true);
+    }
+
+    public void GoBackFromSettingsButton()
+    {
+        settingsPanel.SetActive(false);
+        if (toolsRoot) toolsRoot.SetActive(true);
+        if (plotsGrid) plotsGrid.SetActive(true);
+        HUDPanel.SetActive(true);
+        GameManager.Instance.SetInputLocked(false);
     }
 
     public void PassDayButton()
     {
         GameManager.Instance.EndDay();
     }
-
 
 
     public void NextButton()

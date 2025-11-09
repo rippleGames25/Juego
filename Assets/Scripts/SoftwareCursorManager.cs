@@ -36,7 +36,9 @@ public class SoftwareCursorManager : MonoBehaviour
             cursorImage = GetComponent<Image>();
         }
 
-        
+        if (cursorImage != null)
+            cursorImage.raycastTarget = false;
+
         Cursor.visible = false;
 
     

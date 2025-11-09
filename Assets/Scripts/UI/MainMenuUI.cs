@@ -6,6 +6,7 @@ using TMPro;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject MainMenuPanel;
+    [SerializeField] private GameObject SettingsPanel;
     [SerializeField] private GameObject CreditsPanel;
     private const string TUTORIAL_SCENE_NAME = "TutorialScene";
 
@@ -14,15 +15,16 @@ public class MainMenuUI : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-    public void Settings()
-    {
-        Debug.Log("Abriendo ajustes...");
-    }
-
     public void Credits()
     {
         MainMenuPanel.SetActive(false);
         CreditsPanel.SetActive(true);
+    }
+
+    public void Settings()
+    {
+        MainMenuPanel.SetActive(false);
+        SettingsPanel.SetActive(true);
     }
 
     public void Tutorial()
@@ -42,6 +44,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        SettingsPanel.SetActive(false);
         CreditsPanel.SetActive(false);
         MainMenuPanel.SetActive(true);
     }
