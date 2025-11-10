@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b1ffcf7d5a5e54492c212ffca2bc33, type: 3}
+  m_Name: Trompetilla
+  m_EditorClassIdentifier: 
+  idx: 7
+  plantName: Trompetilla
+  scientificName: Bouvardia ternifolia
+  description: "Arbusto de flores tubulares y racimos de intenso color rojo. Planta
+    muy vistosa y compacta, apreciada en la jardiner\xEDa por su floraci\xF3n duradera
+    y su capacidad para atraer colibr\xEDes."
+  waterDemand: 2
+  fertilizerDemand: 3
+  solarExposureDemand: 0
+  timeToSprout: 1
+  timeToGrow: 2
+  timeToMature: 3
+  category: 2
+  shadeSize: 0
+  timeToProduce: 0
+  price: 2
+  plantSprites:
+  - {fileID: 21300000, guid: d876bde82d4d10f4a864c882f6f08367, type: 3}
+  - {fileID: -3966044189379602213, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: 5214576322002826026, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: 2755769633323637719, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: -5255372173975147240, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: 1692280188772239226, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: -1808941308251631867, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
+  - {fileID: 2338059179142634528, guid: e874f197d5bfa8e4db663bcfbdbaa885, type: 3}
+  - {fileID: -3480671536944431918, guid: e874f197d5bfa8e4db663bcfbdbaa885, type: 3}
+  - {fileID: 3362337706752813765, guid: e874f197d5bfa8e4db663bcfbdbaa885, type: 3}

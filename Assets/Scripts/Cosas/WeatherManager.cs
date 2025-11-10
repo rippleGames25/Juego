@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 public enum WeatherType
 {
@@ -83,30 +84,82 @@ public class WeatherManager : MonoBehaviour
 
     public DailyWeather GenerateWeather()
     {
-        Array values = Enum.GetValues(typeof(WeatherType));
-        WeatherType randomType = (WeatherType)values.GetValue(UnityEngine.Random.Range(0, values.Length));
-        int randomIntensity = UnityEngine.Random.Range(1, maxIntensity);
+        // Obtenemos la puntuación del jugador
+        int playerSuccessScore = 0;
+        if (GameManager.Instance != null)
+        {
+            playerSuccessScore = GameManager.Instance.CurrentBiodiversity;
+        }
+
+        // Calcular la Intensidad maxima (1, 2, o 3)
+        int maxIntensity;
+        if (playerSuccessScore <= 3)
+        {
+            maxIntensity = 1; // Nivel 1: Solo intensidad 1
+        }
+        else if (playerSuccessScore <= 5)
+        {
+            maxIntensity = 2; // Nivel 2: Intensidad 1 o 2
+        }
+        else
+        {
+            maxIntensity = 3; // Nivel 3: Intensidad 1, 2 o 3
+        }
+
+        // Definir el umbral para desbloquear el granizo
+        const int GRANIZO_UNLOCK_THRESHOLD = 3; // El granizo no aparecerá hasta que tengas 3 de biodiversidad
+
+        // Crear el saco de probabilidades para la frecuencua
+        List<WeatherType> weatherPool = new List<WeatherType>();
+
+        // Eventos base (siempre presentes)
+        weatherPool.Add(WeatherType.Nublado);
+        weatherPool.Add(WeatherType.Lluvia);
+        weatherPool.Add(WeatherType.Lluvia);
+        weatherPool.Add(WeatherType.Soleado);
+
+        // Añadir Granizo solo si el jugador ha superado el umbral
+        if (playerSuccessScore >= GRANIZO_UNLOCK_THRESHOLD)
+        {
+            weatherPool.Add(WeatherType.Granizo); // Desbloqueado
+        }
+
+        // Añadir más eventos malos según el éxito del jugador
+        int bonusBadEvents = playerSuccessScore / 2;
+        for (int i = 0; i < bonusBadEvents; i++)
+        {
+            weatherPool.Add(WeatherType.Soleado);
+
+            if (playerSuccessScore >= GRANIZO_UNLOCK_THRESHOLD && i % 2 == 0)
+            {
+                weatherPool.Add(WeatherType.Granizo);
+            }
+        }
+
+        // Elegir un tipo de clima del saco
+        WeatherType randomType = weatherPool[UnityEngine.Random.Range(0, weatherPool.Count)];
+
+        // Generar la intensidad y los efectos
+        int randomIntensity = UnityEngine.Random.Range(1, maxIntensity + 1);
+
         int waterChangeAux = 0;
         float deathProbabilityAux = 0;
 
         switch (randomType)
         {
             case WeatherType.Soleado:
-                waterChangeAux = -randomIntensity; // Resta agua: -1, -2 o -3
+                waterChangeAux = -randomIntensity;
                 break;
             case WeatherType.Nublado:
-                // No resta agua
                 break;
             case WeatherType.Lluvia:
-                waterChangeAux = randomIntensity*2; // Suma agua: 2, 4 o 6
+                waterChangeAux = randomIntensity * 2;
                 break;
             case WeatherType.Granizo:
-                waterChangeAux = randomIntensity;   // Suma agua: 1, 2 o 3
-                deathProbabilityAux = randomIntensity/5f; // Probablidad de muerte de plantas pequeñas y con salud baja: 1/5, 2/5, 3/5
+                waterChangeAux = randomIntensity;
+                deathProbabilityAux = randomIntensity / 5f;
                 break;
         }
-
-
 
         DailyWeather weather = new DailyWeather
         {
