@@ -9,7 +9,7 @@ public class HUDUI : MonoBehaviour
 {
     #region Propierties
     [Header("Paneles")]
-    [SerializeField] private GameObject PauseMenuPanel;
+    [SerializeField] private GameObject PauseMenuCanvas;
     [SerializeField] private GameObject HUDPanel;
     [SerializeField] private GameObject plantInfoPanel;
     [SerializeField] private GameObject plotInfoPanel;
@@ -30,13 +30,22 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dayText;
     [SerializeField] private TextMeshProUGUI biodiversityText;
 
-    [Header("Panel Info")]
+    [Header("Info Planta")]
     [SerializeField] private Image plantPhoto;
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI typeText;
+    [SerializeField] private TextMeshProUGUI lifeDaysText;
     [SerializeField] private TextMeshProUGUI growthState;
+    [SerializeField] private TextMeshProUGUI sunDemand;
+    [SerializeField] private TextMeshProUGUI waterDemand;
+    [SerializeField] private TextMeshProUGUI fertilizerDemand;
     [SerializeField] private TextMeshProUGUI health;
-    [SerializeField] private TextMeshProUGUI resourcesDemand;
-    [SerializeField] private TextMeshProUGUI plotInfo;
+
+    [Header("Info Parcela")]
+    [SerializeField] private TextMeshProUGUI plotGridInfo;
+    [SerializeField] private TextMeshProUGUI plotSolarInfo;
+    [SerializeField] private TextMeshProUGUI plotWaterInfo;
+    [SerializeField] private TextMeshProUGUI plotFertilizerInfo;
 
     [Header("Panel Tipo de planta")]
     [SerializeField] private GameObject plantTypeInfoPanel;
@@ -95,7 +104,7 @@ public class HUDUI : MonoBehaviour
     {
         SFXManager.Instance?.PlayClick();
         HUDPanel.SetActive(false);
-        settingsPanel.SetActive(true);
+        PauseMenuCanvas.SetActive(true);
     }
 
     public void SettingsButton()
@@ -181,9 +190,10 @@ public class HUDUI : MonoBehaviour
     // Metodo que muestra panel de información de la parcela
     private void ShowPlotInfoPanel(Plot plot)
     {
-        plotInfo.text = $"Parcela {plot.gridCoordinates}\n" +
-            $"Agua: {plot.currentWater}\n" +
-            $"Abono: {plot.currentFertility}\n";
+        plotGridInfo.text = $"Parcela {plot.gridCoordinates}";
+        plotSolarInfo.text = $"{plot.currentSolarExposure}";
+        plotWaterInfo.text = $"Agua: {plot.currentWater}";
+        plotFertilizerInfo.text = $"Abono: {plot.currentFertility}";
 
         plotInfoPanel.SetActive(true);
     }
@@ -191,15 +201,21 @@ public class HUDUI : MonoBehaviour
     // Metodo que muestra panel de información de la planta
     private void ShowPlantInfoPanel(Plant plant)
     {
-        nameText.text= plant.plantData.plantName;
-        plantPhoto.sprite = plant.plantData.plantSprites[GameManager.IDX_PLANT_SPRITE]; // Sprite de la planta estado: madura
+        plantPhoto.sprite = plant.plantData.plantSprites[GameManager.IDX_PLANT_SPRITE]; // Sprite de la planta madura
 
-        growthState.text = $"Estado: {plant.currentGrowth}";
+        // Info
+        nameText.text= plant.plantData.plantName;
+        typeText.text = plant.plantData.category.ToString();
+
+        // Estado
+        lifeDaysText.text = $"Días de vida: {plant.lifeDays}";
+        growthState.text = $"Crecimiento: {plant.currentGrowth}";
         health.text = $"Salud: {plant.currentHealth}";
-        resourcesDemand.text = $"NECESIDADES\n" +
-            $"Agua: {plant.plantData.waterDemand}\n" +
-            $"Abono: {plant.plantData.fertilizerDemand} \n" +
-            $"Exposición Solar: {plant.plantData.solarExposureDemand} \n";
+  
+        // Necesidades
+        waterDemand.text = $"Agua: {plant.plantData.waterDemand}";
+        fertilizerDemand.text = $"Abono: {plant.plantData.fertilizerDemand}";
+        sunDemand.text = $"Exposición: {plant.plantData.solarExposureDemand}";
 
         plantInfoPanel.SetActive(true);
     }
@@ -265,15 +281,13 @@ public class HUDUI : MonoBehaviour
     {
         if(biodiversityText != null)
         {
-            biodiversityText.text = "Biodiversidad: " + value.ToString();
+            biodiversityText.text = $"Biodiversidad: {value}/{GameManager.Instance.winCondition}";
         }
     }
 
     #endregion
 
     #region Cursor
-
-    // Dentro de HUDUI.cs
 
     private void UpdateCursor(ToolType _type)
     {

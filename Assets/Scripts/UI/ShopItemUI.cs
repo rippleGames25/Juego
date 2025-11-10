@@ -5,11 +5,12 @@ using System.Linq;
 
 public class ShopItemUI : MonoBehaviour
 {
-
-    [Header("Referencias Internas")]
+    [Header("Referencias")]
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI typeText;
     [SerializeField] private Image plantImage;
     [SerializeField] private TextMeshProUGUI priceText;
+
     [SerializeField] private Button buyButton;
 
     private PlantType plantData;
@@ -21,6 +22,7 @@ public class ShopItemUI : MonoBehaviour
         if (plantData == null) return;
 
         nameText.text = plantData.plantName;
+        typeText.text = plantData.category.ToString();
         priceText.text = plantData.price.ToString();
 
         if (plantData.plantSprites != null && plantData.plantSprites.Length > 0)

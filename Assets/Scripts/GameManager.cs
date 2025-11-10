@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public event Action OnDayEnd;
 
     // Variables
-    private int winCondition;
+    public int winCondition;
     private ToolType currentTool;
     private int currentDay = 1;
     private int currentBiodiversity = 0;

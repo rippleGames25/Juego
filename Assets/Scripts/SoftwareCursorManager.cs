@@ -40,8 +40,8 @@ public class SoftwareCursorManager : MonoBehaviour
             cursorImage.raycastTarget = false;
 
         Cursor.visible = false;
+        cursorImage.sprite = normalCursor;
 
-    
         SceneManager.activeSceneChanged += OnSceneChanged;
     }
 
