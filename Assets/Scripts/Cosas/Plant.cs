@@ -161,7 +161,7 @@ public class Plant : MonoBehaviour
         UpdatePlantSprite();
     }
 
-    private bool CheckSolarExposure()
+    public bool CheckSolarExposure()
     {
         SolarExposure required = plantData.solarExposureDemand;
         SolarExposure current = parentPlot.GetCurrentSolarExposure();

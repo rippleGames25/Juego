@@ -263,7 +263,7 @@ public class Plot : MonoBehaviour
             case ToolType.Shovel:
                 if (this.isPlanted)
                 {
-                    GameManager.Instance.CurrentMoney+=this.currentPlant.plantData.price; // Dinero que gana
+                    GameManager.Instance.CurrentMoney+= (this.currentPlant.plantData.price)/2; // Gana la mitad de lo que vale la planta
                     SFXManager.Instance?.PlayDesplantar();
                     PlotsManager.Instance.PlantsDeath(this);
                 }

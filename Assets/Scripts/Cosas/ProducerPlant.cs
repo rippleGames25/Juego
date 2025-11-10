@@ -35,7 +35,7 @@ public class ProducerPlant : Plant
 
     public void CollectProduct()
     {
-        GameManager.Instance.CurrentMoney++; // De momento suma 1 petalo
+        GameManager.Instance.CurrentMoney += plantData.price; // Suma el valor de la planta
         hasProduct = false;
         UpdateProductVisuals();
         SFXManager.Instance?.PlayComprar();

@@ -148,7 +148,7 @@ public class WeatherManager : MonoBehaviour
         switch (randomType)
         {
             case WeatherType.Soleado:
-                waterChangeAux = -randomIntensity;
+                waterChangeAux = 0;
                 break;
             case WeatherType.Nublado:
                 break;

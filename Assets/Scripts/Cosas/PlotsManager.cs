@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System.Linq;
 
 public class PlotsManager : MonoBehaviour
 {
@@ -101,6 +102,60 @@ public class PlotsManager : MonoBehaviour
             currentSelectedPlot = null;
             OnPlotUnselected?.Invoke(); // Invocar evento
         }
+    }
+
+    public int GetDailyBiodiversityIncome()
+    {
+        int maturePlants = 0;
+        int totalPlanted = 0;
+        bool allPlantsInCorrectSun = true;
+
+        // hashSet para guardar solo las categorías únicas
+        HashSet<PlantCategory> categoriesPresent = new HashSet<PlantCategory>();
+
+        if (plotGrid == null) return 0;
+
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot != null && plot.isPlanted && plot.currentPlant != null)
+            {
+                totalPlanted++;
+
+                // comprobar la exposición solar
+                if (!plot.currentPlant.CheckSolarExposure())
+                {
+                    allPlantsInCorrectSun = false; // si una planta esta mal, perdemos el bono
+                }
+
+                // comprobar madurez y diversidad
+                if (plot.currentPlant.currentGrowth == GrowthState.madura)
+                {
+                    maturePlants++;
+                    categoriesPresent.Add(plot.currentPlant.plantData.category);
+                }
+            }
+        }
+
+        int income = 0;
+
+        // +1 de dinero por cada 2 plantas maduras
+        income += maturePlants / 2;
+
+        // +1 de dinero si tienes las 4 categorías maduras
+        if (categoriesPresent.Count == 4)
+        {
+            income += 1;
+            Debug.Log("¡Bono de Diversidad conseguido!");
+        }
+
+        // +1 si TODAS las plantas están bien puestas
+        if (totalPlanted > 0 && allPlantsInCorrectSun)
+        {
+            income += 1;
+            Debug.Log("¡Bono de Exposición Solar conseguido!");
+        }
+
+        return income;
     }
 
     #endregion
@@ -244,16 +299,59 @@ public class PlotsManager : MonoBehaviour
         Debug.Log("Actualización de salud de plantas (Fin de día) hecha.");
     }
 
-    public void DailyUpdateWeatherWater(int _waterChange)
+    public void DailyUpdateWeatherWater(DailyWeather currentWeather)
     {
-        foreach (Plot plot in plotGrid) 
+        if (currentWeather.type != WeatherType.Soleado)
         {
-            plot.ChangeWater(_waterChange); // Agua segun evento meteorologico
-            
-            plot.UpdatePlotWaterVisuals();
+            foreach (Plot plot in plotGrid)
+            {
+                plot.ChangeWater(currentWeather.waterChange);
+                plot.UpdatePlotWaterVisuals();
+            }
+        }
+        else
+        {
+            // Recorre cada parcela y "tira el dado"
+            Debug.Log($"[PlotsManager] Aplicando Sequía Probabilística (Intensidad: {currentWeather.intensity})");
+            foreach (Plot plot in plotGrid)
+            {
+                ApplyProbabilisticDrought(plot, currentWeather.intensity);
+                plot.UpdatePlotWaterVisuals(); // Actualiza visual SÍ O SÍ
+            }
         }
 
         Debug.Log("Cambio de agua por evento meteorologico.");
+    }
+
+    private void ApplyProbabilisticDrought(Plot plot, int intensity)
+    {
+        float roll = UnityEngine.Random.Range(0f, 1f); // Tira el dado (0.0 a 1.0)
+        int waterLoss = 0;
+
+        if (intensity == 1)
+        {
+            // 70% de perder 1
+            if (roll <= 0.70f) waterLoss = -1;
+            // 30% de no perder nada
+        }
+        else if (intensity == 2)
+        {
+            // 40% (pierde 1), 30% (pierde 2), 30% (nada)
+            if (roll <= 0.40f) waterLoss = -1;
+            else if (roll <= 0.70f) waterLoss = -2; // 0.40 + 0.30 = 0.70
+        }
+        else // Intensidad 3
+        {
+            // 33% (pierde 1), 33% (pierde 2), 33% (pierde 3)
+            if (roll <= 0.33f) waterLoss = -1;
+            else if (roll <= 0.66f) waterLoss = -2;
+            else waterLoss = -3;
+        }
+
+        if (waterLoss < 0)
+        {
+            plot.ChangeWater(waterLoss);
+        }
     }
 
     private void DailyUpdatePlotsFertilizer()

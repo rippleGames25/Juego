@@ -38,11 +38,11 @@ public class GameManager : MonoBehaviour
     private bool isDayTransitioning = false;
 
     // Resources
-    private int currentMoney = 3;
+    private int currentMoney = 5;
     private int currentWater = 8;
     private int currentFertilizer = 8;
-    private const int INITIAL_AMOUNT = 1;
-    private const int AMOUNT_PER_PLANT = 2;
+    private const int BASE_INCOME_IF_PLANTED = 3;
+    private const int AMOUNT_PER_PLANT = 1;
     public const int IDX_PLANT_SPRITE = 7; // Indice de la imagen principal de la planta en el plantSprites
 
     [Header("Plantas")]
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         get { return currentMoney; }
         set
         {
+            int newValue = Mathf.Max(0, value); // Dinero nunca negativo
             if (currentMoney != value)
             {
                 currentMoney = value;
@@ -212,7 +213,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("INICIO DE DÍA: Día " + CurrentDay);
 
         HandleWeatherEvent();
-        PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather.waterChange);
+        PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather);
 
         PlotsManager.Instance.DailyUpdatePlantsGrowthAndEffects();
 
@@ -275,6 +276,8 @@ public class GameManager : MonoBehaviour
     {
         SFXManager.Instance?.PlayMuerte();
         Debug.Log($"La planta {plantToDeath.plantData.plantName} ha muerto porque no has cubierto sus necesidades");
+        CurrentMoney -= 1;
+        Debug.Log("Se ha restado 1 pétalo de tu economía total");
         Destroy(plantToDeath.gameObject);
         CurrentBiodiversity--;
     }
@@ -340,16 +343,17 @@ public class GameManager : MonoBehaviour
     // Metodo para calcular que cantidad de recursos se distribuyen según la biodiversidad
     private int CalculateResourcesAmount()
     {
-        int amount = CurrentBiodiversity * AMOUNT_PER_PLANT;
+        int plantCount = CurrentBiodiversity;
 
-        if (amount == 0)
+        // 1. Si no tienes plantas, no ganas nada
+        if (plantCount == 0)
         {
-            return INITIAL_AMOUNT;
+            return 0;
         }
-        else
-        {
-            return amount;
-        }
+
+        // gana un fijo + el bono por cantidad
+        int amount = BASE_INCOME_IF_PLANTED + (plantCount * AMOUNT_PER_PLANT);
+        return amount;
     }
 
     #region Métodos de actualización diaria
@@ -362,11 +366,33 @@ public class GameManager : MonoBehaviour
 
     private void DistributeDailyResources()
     {
-        int amount = CalculateResourcesAmount();    // Calcular la cantidad que le tienen que dar
+        // agua y abono basado en la cantidad de plantas
+        int amount = CalculateResourcesAmount();
+        CurrentWater += amount;
+        CurrentFertilizer += amount;
 
-        CurrentMoney += CurrentBiodiversity;  // Sumar dinero
-        CurrentWater += amount;  // Sumar agua
-        CurrentFertilizer += amount; // Sumar abono
+        int dailyIncome = 1;
+        Debug.Log($"[GameManager] Ingresos: +1 (Bono base diario)");
+
+        int plantBonus = CurrentBiodiversity / 2;
+        if (plantBonus > 0)
+        {
+            dailyIncome += plantBonus;
+            Debug.Log($"[GameManager] Ingresos: +{plantBonus} (Bono por cantidad de plantas)");
+        }
+
+        // dinero llamando al método de PlotsManager
+        if (PlotsManager.Instance != null)
+        {
+            int qualityBonus = PlotsManager.Instance.GetDailyBiodiversityIncome();
+            if (qualityBonus > 0)
+            {
+                dailyIncome += qualityBonus;
+                Debug.Log($"[GameManager] Ingresos: +{qualityBonus} (Bonos de Calidad: Madurez/Diversidad/Sol)");
+            }
+        }
+
+        CurrentMoney += dailyIncome;
     }
 
     private void CheckWinCondition()
