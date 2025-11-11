@@ -7,8 +7,7 @@ public enum GrowthState
     semilla,
     brote,
     joven,
-    madura,
-    muerta
+    madura
 }
 
 public enum Health
@@ -27,6 +26,7 @@ public class Plant : MonoBehaviour
     public Health currentHealth;
     public int lifeDays;
     public bool hasAppliedEnvironmentEffect = false;
+    public bool isDeath = false;
 
     protected Plot parentPlot;
 
@@ -68,6 +68,7 @@ public class Plant : MonoBehaviour
         currentGrowth = GrowthState.semilla; // Comienza como semilla
         parentPlot = _parentPlot;
         currentHealth = Health.buena;
+        isDeath = false;
 
         spriteRenderer.sprite = plantData.plantSprites[0];
     }
@@ -95,15 +96,10 @@ public class Plant : MonoBehaviour
         {
             if (!CheckSolarExposure())
             {
-                Debug.Log($"Planta sana");
-            }
-            else
-            {
                 currentHealth = Health.moderada;
                 // Salud moderada porque la exposición no es la ideal
                 Debug.Log($"La planta {plantData.plantName} tiene salud moderada por la exposición solar.");
             }
-            
         }
 
         UpdatePlantSprite();
@@ -120,6 +116,9 @@ public class Plant : MonoBehaviour
             currentHealth= Health.mala;
         } else
         {
+            isDeath = true;
+            SFXManager.Instance?.PlayMarchita();
+            UpdatePlantSprite();
             return true; // La planta ha muerto
         }
 
@@ -182,12 +181,19 @@ public class Plant : MonoBehaviour
 
     protected void UpdatePlantSprite()
     {
-        if (currentGrowth == GrowthState.semilla)
+        if (isDeath) // Planta muerta
+        {
+            spriteRenderer.sprite = plantData.deathSprite;
+            return;
+        }
+
+        if (currentGrowth == GrowthState.semilla) // Semilla
         {
             spriteRenderer.sprite = plantData.plantSprites[0];
             return;
         }
 
+        // Logica para calcular el idx del sprite
         int growthBaseIndex = 0;
         int growthInt = (int)currentGrowth; //Crecimiento
 
@@ -202,10 +208,6 @@ public class Plant : MonoBehaviour
         else if (currentGrowth == GrowthState.madura)
         {
             growthBaseIndex = 7;
-        }
-        else // Muerta o semilla (ya cubierta)
-        {
-            return;
         }
 
         int healthOffset = (int) currentHealth; //Salud

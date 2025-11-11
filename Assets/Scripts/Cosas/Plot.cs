@@ -119,12 +119,6 @@ public class Plot : MonoBehaviour
         this.currentWater = Mathf.Clamp(this.currentWater, 0, PLOT_LIMIT); // Mantener el limite de la parcela
     }
 
-    public void ChangeFertility(int fertilityChange)
-    {
-        this.currentFertility += fertilityChange;
-        this.currentFertility = Mathf.Clamp(this.currentFertility, 0, PLOT_LIMIT); // Mantener el limite de la parcela
-    }
-
     public void ChangeSolarExposure(int newSolarExposure)
     {
         this.currentSolarExposure = (SolarExposure) newSolarExposure;
@@ -263,17 +257,45 @@ public class Plot : MonoBehaviour
             case ToolType.Shovel:
                 if (this.isPlanted)
                 {
-                    GameManager.Instance.CurrentMoney+= (this.currentPlant.plantData.price)/2; // Gana la mitad de lo que vale la planta
                     SFXManager.Instance?.PlayDesplantar();
-                    PlotsManager.Instance.PlantsDeath(this);
-                }
-                else
+                    RemovePlant();
+                } else
                 {
                     SFXManager.Instance?.PlayDenegar();
                     Debug.Log($"En la parcela {gridCoordinates} no hay ninguna planta.");
                 }
                 break;
         }
+    }
+
+    public void RemovePlant()
+    {
+        if (currentPlant == null) return;
+
+        // Economía
+        if (currentPlant.isDeath)
+        {
+            // Restar Economia
+        }
+        else
+        {
+            // Retirar efectos de la planta
+            if (currentPlant.plantData.category == PlantCategory.ProvidesShade)
+            {
+                PlotsManager.Instance.RemoveShade(gridCoordinates);
+            }
+
+            GameManager.Instance.CurrentMoney += (currentPlant.plantData.price) / 2; // Gana la mitad de lo que vale la planta
+        }
+
+        // Restar número de plantas
+        GameManager.Instance.CurrentBiodiversity--;
+
+        Destroy(currentPlant.gameObject);
+
+        // Variables parcela
+        this.currentPlant = null;
+        this.isPlanted = false;
     }
 
     public void UpdateEnviroment(PlantCategory plantType)
@@ -329,7 +351,7 @@ public class Plot : MonoBehaviour
 
     public IEnumerator AnimateDailyConsumptionAndChange()
     {
-        if (!isPlanted || currentPlant == null)
+        if (!isPlanted || currentPlant == null || currentPlant.isDeath)
         {
             yield break;
         }
@@ -341,7 +363,7 @@ public class Plot : MonoBehaviour
         if (waterDemand > 0)
         {
             string text = $"-{waterDemand}";
-            // INICIAR Y ESPERAR la animación del agua antes de pasar al siguiente
+            // Iniciar y esperar la animación del agua antes de pasar al siguiente
             yield return StartCoroutine(AnimateSingleTextChange(text, 0, Color.blue));
         }
 
@@ -349,7 +371,7 @@ public class Plot : MonoBehaviour
         if (fertilizerDemand > 0)
         {
             string text = $"-{fertilizerDemand}";
-            // INICIAR Y ESPERAR la animación del abono
+            // Iniciar y esperar la animación del abono
             yield return StartCoroutine(AnimateSingleTextChange(text, 1, new Color(0.2f, 0.8f, 0.2f))); // Color verde oscuro para abono
         }
 
@@ -365,6 +387,13 @@ public class Plot : MonoBehaviour
         this.currentWater += waterChange;
         this.currentWater = Mathf.Clamp(this.currentWater, 0, PLOT_LIMIT); // Mantener el limite
     }
+
+    public void ChangeFertility(int fertilityChange)
+    {
+        this.currentFertility += fertilityChange;
+        this.currentFertility = Mathf.Clamp(this.currentFertility, 0, PLOT_LIMIT); // Mantener el limite de la parcela
+    }
+
 
     private IEnumerator AnimateSingleTextChange(string _text, int type, Color textColor)
     {
@@ -402,8 +431,10 @@ public class Plot : MonoBehaviour
         changeCanvas.SetActive(false);
     }
 
-    public void UpdatePlantDaily(PlotsManager plotsManager)
+    public void UpdatePlantDaily()
     {
+        if (currentPlant == null || currentPlant.isDeath) return;
+
         // Lógica de si la planta muere por falta de recursos
         int waterDemand = currentPlant.GetWaterDemand();
         int fertilizerDemand = currentPlant.GetFertilizerDemand();
@@ -411,9 +442,10 @@ public class Plot : MonoBehaviour
         if (waterDemand > currentWater || fertilizerDemand > currentFertility)
         {
             Debug.Log($"La parcela {gridCoordinates} no puede cubrir las necesidades de su planta");
+
             if (currentPlant.DecreaseHealth()) // true si la planta ha muerto
             {
-                plotsManager.PlantsDeath(this); // Llama a la muerte
+                PlotsManager.Instance.PlantsDeath(this); // Llama a la muerte
                 return; // Salir si la planta murió
             }
         }
@@ -424,7 +456,6 @@ public class Plot : MonoBehaviour
 
         // Lógica de crecimiento y producción (si no murió)
         currentPlant.UpdateLifeDays(); // Actualizar días de vida y crecimiento 
-
     }
 
 

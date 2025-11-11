@@ -8395,6 +8395,10 @@ MonoBehaviour:
   summaryPanel: {fileID: 214855454}
   settingsPanel: {fileID: 1737943190}
   currentWeatherText: {fileID: 1336006280}
+  forecastText:
+  - {fileID: 260282602}
+  - {fileID: 2142471612}
+  - {fileID: 198917238}
   forecastImages:
   - {fileID: 1546019263}
   - {fileID: 1222656102}
@@ -12055,6 +12059,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 45d2a074515ac664fbb6a91518e77cc0, type: 2}
   - {fileID: 11400000, guid: efbb30ec1f6d13740aae5049e20191f9, type: 2}
   - {fileID: 11400000, guid: 28634bb9fa2f6384db8945151b29e04c, type: 2}
+  - {fileID: 11400000, guid: d11d94672eb7a5d4695d1af82a160f59, type: 2}
 --- !u!4 &2074705701
 Transform:
   m_ObjectHideFlags: 0

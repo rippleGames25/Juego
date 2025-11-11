@@ -67,15 +67,41 @@ public class PlotsManager : MonoBehaviour
         }
     }
 
-    
-
     public void PlantsDeath(Plot plotToDeath)
     {
+        SFXManager.Instance?.PlayMuerte();
+        Debug.Log($"La planta {plotToDeath.currentPlant.plantData.plantName} ha muerto porque no has cubierto sus necesidades");
+
+        // Retirar efectos de la planta
         if (plotToDeath.currentPlant.plantData.category == PlantCategory.ProvidesShade) RemoveShade(plotToDeath.gridCoordinates);
 
-        GameManager.Instance.PlantsDeath(plotToDeath.currentPlant);
-        plotToDeath.currentPlant = null;
-        plotToDeath.isPlanted = false;
+        GameManager.Instance.CurrentMoney -= 1;
+        Debug.Log("Se ha restado 1 pétalo de tu economía total");
+
+        GameManager.Instance.CurrentBiodiversity--;
+    }
+
+    public void RemovePlant(Plot plotToRemove)
+    {
+        Plant plant = plotToRemove.currentPlant;
+
+        // Economía
+        if (plant.isDeath)
+        {
+            // Restar Economia
+        }
+        else
+        {
+            GameManager.Instance.CurrentMoney += (plant.plantData.price) / 2; // Gana la mitad de lo que vale la planta
+        }
+
+        // Restar número de plantas
+        GameManager.Instance.CurrentBiodiversity--;
+
+        // Variables parcela
+        plotToRemove.currentPlant = null;
+        plotToRemove.isPlanted = false;
+
     }
 
     public void PlotSelected(Plot _plot)
@@ -226,7 +252,7 @@ public class PlotsManager : MonoBehaviour
         // 1. Iterar e INICIAR la Coroutine de animación y consumo en cada parcela plantada
         foreach (Plot plot in plotGrid)
         {
-            if (plot.isPlanted && plot.currentPlant != null)
+            if (plot.isPlanted && plot.currentPlant != null && !plot.currentPlant.isDeath)
             {
                 // Iniciamos la Coroutine y la guardamos para esperar
                 Coroutine animation = StartCoroutine(plot.AnimateDailyConsumptionAndChange());
@@ -234,7 +260,7 @@ public class PlotsManager : MonoBehaviour
             }
         }
 
-        // 2. Esperar a que TODAS las Coroutines terminen (animación simultánea)
+        // 2. Esperar a que todas las Coroutines terminen
         foreach (Coroutine anim in consumptionAnimations)
         {
             yield return anim;
@@ -270,30 +296,9 @@ public class PlotsManager : MonoBehaviour
 
     public void DailyUpdatePlantsHealth()
     {
-        int waterDemand;
-        int fertilizerDemand;
-
         foreach (Plot plot in plotGrid)
         {
-            if (plot.isPlanted && plot.currentPlant != null)
-            {
-                waterDemand = plot.currentPlant.GetWaterDemand();
-                fertilizerDemand = plot.currentPlant.GetFertilizerDemand();
-
-                // Lógica de SALUD: Comprobar si la parcela puede cubrir las necesidades
-                if (waterDemand > plot.currentWater || fertilizerDemand > plot.currentFertility)
-                {
-                    Debug.Log($"La parcela {plot.gridCoordinates} no puede cubrir las necesidades de su planta");
-                    if (plot.currentPlant.DecreaseHealth()) // true si la planta ha muerto
-                    {
-                        PlantsDeath(plot); // Llama a la muerte
-                    }
-                }
-                else
-                {
-                    plot.currentPlant.IncreaseHealth();
-                }
-            }
+            if(plot.isPlanted && plot.currentPlant != null && !plot.currentPlant.isDeath) plot.UpdatePlantDaily();
         }
 
         Debug.Log("Actualización de salud de plantas (Fin de día) hecha.");

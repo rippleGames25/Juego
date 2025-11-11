@@ -18,6 +18,7 @@ public class HUDUI : MonoBehaviour
 
     [Header("Clima")]
     [SerializeField] private TextMeshProUGUI currentWeatherText;
+    [SerializeField] private List<TextMeshProUGUI> forecastText = new List<TextMeshProUGUI>();
     [SerializeField] private List<Image> forecastImages = new List<Image>();
     [SerializeField] private List<Sprite> forecastSprites = new List<Sprite>();
 
@@ -226,6 +227,13 @@ public class HUDUI : MonoBehaviour
     // Metodo que actualiza el panel de la prevision del tiempo
     private void UpdateForecastDisplay(DailyWeather[] forecastArray)
     {
+        int currentDay = GameManager.Instance.CurrentDay;
+
+        for (int i = 0; i < forecastText.Count; i++)
+        {
+            forecastText[i].text = $"Día {currentDay + i + 1}";
+        }
+
         for (int i = 0; i < forecastArray.Length && i < forecastImages.Count; i++)
         {
             DailyWeather weather = forecastArray[i];

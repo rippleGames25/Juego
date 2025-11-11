@@ -6,15 +6,9 @@ public class ProducerPlant : Plant
 
     public override void ApplyDailyEffect()
     {
-        if (currentGrowth == GrowthState.madura)
+        if (currentGrowth == GrowthState.madura && !isDeath && currentHealth!=Health.mala && !hasProduct)
         {
             ProduceCycle();
-        }
-
-        if (plantData.category == PlantCategory.ProvidesShade && !hasAppliedEnvironmentEffect)
-        {
-            parentPlot.UpdateEnviroment(plantData.category);
-            hasAppliedEnvironmentEffect = true;
         }
     }
 

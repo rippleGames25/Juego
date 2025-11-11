@@ -48,6 +48,8 @@ public class PlantType : ScriptableObject
     public int price = 1; // Precio en la tienda
 
     [Header("Sprites")]
+    [SerializeField] public Sprite shopSprite;
     [SerializeField] public Sprite[] plantSprites;
+    [SerializeField] public Sprite deathSprite;
 
 }

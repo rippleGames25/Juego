@@ -177,14 +177,15 @@ public class GameManager : MonoBehaviour
     {
         if (inputLocked) return;
         SFXManager.Instance?.PlayPasarDia();
+
         if (isDayTransitioning)
         {
             Debug.Log("Transición de día en curso, espera un momento.");
             return;
         }
+
         SFXManager.Instance?.StopAmbient();
         StartCoroutine(EndDayCoroutine());
-
     }
 
     private IEnumerator EndDayCoroutine()
@@ -192,12 +193,12 @@ public class GameManager : MonoBehaviour
         isDayTransitioning = true;
 
         Debug.Log("Fin de día");
-
-        // 1. Animación de consumo de recursos
-        yield return PlotsManager.Instance.AnimateDailyConsumptionAndConsume(); ;
-
-        // 2. Actualizar estado de salud
+        
+        // 1. Actualizar estado de salud
         PlotsManager.Instance.DailyUpdatePlantsHealth();
+
+        // 2. Animación de consumo de recursos
+        yield return PlotsManager.Instance.AnimateDailyConsumptionAndConsume(); ;
 
         // 3. Condición de victoria
         CheckWinCondition(); 
@@ -270,16 +271,6 @@ public class GameManager : MonoBehaviour
         SFXManager.Instance?.PlayPlantar();
 
         Debug.Log($"Semilla de {plantData.plantName} plantada en la parcela {plot.gridCoordinates}");
-    }
-
-    public void PlantsDeath(Plant plantToDeath)
-    {
-        SFXManager.Instance?.PlayMuerte();
-        Debug.Log($"La planta {plantToDeath.plantData.plantName} ha muerto porque no has cubierto sus necesidades");
-        CurrentMoney -= 1;
-        Debug.Log("Se ha restado 1 pétalo de tu economía total");
-        Destroy(plantToDeath.gameObject);
-        CurrentBiodiversity--;
     }
 
     public void ShowPlantTypePanel(PlantType plantType)

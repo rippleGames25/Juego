@@ -28,6 +28,7 @@ MonoBehaviour:
   shadeSize: 0
   timeToProduce: 0
   price: 3
+  shopSprite: {fileID: 906137403, guid: 7bb3c961cb8cda447942d7e7e8325312, type: 3}
   plantSprites:
   - {fileID: 21300000, guid: d876bde82d4d10f4a864c882f6f08367, type: 3}
   - {fileID: -3966044189379602213, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
@@ -36,6 +37,7 @@ MonoBehaviour:
   - {fileID: -5255372173975147240, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
   - {fileID: 1692280188772239226, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
   - {fileID: -1808941308251631867, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
-  - {fileID: 1670842524067567818, guid: 7bb3c961cb8cda447942d7e7e8325312, type: 3}
-  - {fileID: 868518682232843581, guid: 7bb3c961cb8cda447942d7e7e8325312, type: 3}
-  - {fileID: 3188248657967811188, guid: 7bb3c961cb8cda447942d7e7e8325312, type: 3}
+  - {fileID: 906137403, guid: 7bb3c961cb8cda447942d7e7e8325312, type: 3}
+  - {fileID: -1768918107, guid: 7bb3c961cb8cda447942d7e7e8325312, type: 3}
+  - {fileID: 1287872852, guid: 7bb3c961cb8cda447942d7e7e8325312, type: 3}
+  deathSprite: {fileID: 21300000, guid: 858d3eea78e01114890a57e8a6049e03, type: 3}
