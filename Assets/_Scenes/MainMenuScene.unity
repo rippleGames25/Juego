@@ -983,6 +983,7 @@ MonoBehaviour:
   daysSurvived: 0
   maxBiodiversityAchieved: 0
   maxMaturePlantsAchieved: 0
+  didWinGame: 0
 --- !u!4 &205289024
 Transform:
   m_ObjectHideFlags: 0
@@ -2356,7 +2357,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b463e42c4a18f8a4b9567466538922be, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.029
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3234,6 +3235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6152f245995f7a84a91c4d4a392d411d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxMixerGroup: {fileID: -2688405520275582482, guid: 52fc5ab8fea5d0546acfa0226721f4ff, type: 2}
   sfxSource: {fileID: 0}
   ambientSource: {fileID: 0}
   ambientFadeTime: 0.6

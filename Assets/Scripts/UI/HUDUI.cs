@@ -117,6 +117,7 @@ public class HUDUI : MonoBehaviour
     public void PauseButton()
     {
         SFXManager.Instance?.PlayClick();
+        SFXManager.Instance?.PauseAmbient(true);
         HUDPanel.SetActive(false);
         PauseMenuCanvas.SetActive(true);
     }
@@ -124,9 +125,9 @@ public class HUDUI : MonoBehaviour
     public void SettingsButton()
     {
         SFXManager.Instance?.PlayClick();
+        SFXManager.Instance?.PauseAmbient(true);
         HUDPanel.SetActive(false);
         if (toolsRoot) toolsRoot.SetActive(false);
-        if (plotsGrid) plotsGrid.SetActive(false);
         settingsPanel.SetActive(true);
         GameManager.Instance.SetInputLocked(true);
     }
@@ -134,9 +135,9 @@ public class HUDUI : MonoBehaviour
     public void GoBackFromSettingsButton()
     {
         SFXManager.Instance?.PlayClick();
+        SFXManager.Instance?.PauseAmbient(false);
         settingsPanel.SetActive(false);
         if (toolsRoot) toolsRoot.SetActive(true);
-        if (plotsGrid) plotsGrid.SetActive(true);
         HUDPanel.SetActive(true);
         GameManager.Instance.SetInputLocked(false);
     }
