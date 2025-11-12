@@ -173,6 +173,14 @@ public class Plant : MonoBehaviour
 
     }
 
+    public void ForceKill()
+    {
+        isDeath = true;
+        currentHealth = Health.mala;
+        UpdatePlantSprite();
+        SFXManager.Instance?.PlayMarchita();
+    }
+
     #endregion
 
 

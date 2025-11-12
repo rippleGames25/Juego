@@ -154,6 +154,7 @@ public class WeatherManager : MonoBehaviour
                 break;
             case WeatherType.Lluvia:
                 waterChangeAux = randomIntensity * 2;
+                deathProbabilityAux = randomIntensity / 5f;
                 break;
             case WeatherType.Granizo:
                 waterChangeAux = randomIntensity;

@@ -44,6 +44,9 @@ public class Plot : MonoBehaviour
     [SerializeField] private Sprite waterIcon;
     [SerializeField] private Sprite fertilizerIcon;
 
+    // Evento para actualizar información de parcela estando abierta
+    public event Action<Plot> OnPlotDataUpdated;
+
     // Colores
     private Color colorFullWaterFullFertility;
     private Color colorNoWaterNoFertility;
@@ -199,6 +202,8 @@ public class Plot : MonoBehaviour
 
                     SFXManager.Instance?.PlayRegar();
 
+                    OnPlotDataUpdated?.Invoke(this);
+
                     Debug.Log($"Parcela {this.gridCoordinates} regada -> {currentWater} de agua");
                 }
                 else if (GameManager.Instance.CurrentWater > 0 && currentWater >= PLOT_LIMIT) // Tiene agua pero la parcela está llena
@@ -225,6 +230,8 @@ public class Plot : MonoBehaviour
                     this.UpdatePlotFertilizerVisuals();
 
                     SFXManager.Instance?.PlayAbonar();
+
+                    OnPlotDataUpdated?.Invoke(this);
 
                     Debug.Log($"Parcela {this.gridCoordinates} abonada -> {currentFertility} de abono");
 

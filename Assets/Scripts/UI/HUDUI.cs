@@ -16,13 +16,12 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject summaryPanel;
     [SerializeField] private GameObject settingsPanel;
 
-    // --- ¡NUEVO! Sistema de Strikes ---
+    // Sistema de Strikes
     [Header("Strikes")]
     [SerializeField] private Image[] strikeIcons; // Array de 5 imágenes
     [SerializeField] private Color strikeColor_Empty = Color.gray;
     [SerializeField] private Color strikeColor_Normal = Color.yellow;
     [SerializeField] private Color strikeColor_Permanent = Color.red;
-    // ----------------------------------
 
     [Header("Clima")]
     [SerializeField] private TextMeshProUGUI currentWeatherText;
@@ -62,6 +61,7 @@ public class HUDUI : MonoBehaviour
 
     [SerializeField] GameObject toolsRoot;
     [SerializeField] GameObject plotsGrid;
+    private Plot currentlySelectedPlot;
 
 
     #endregion
@@ -181,11 +181,18 @@ public class HUDUI : MonoBehaviour
 
     private void ShowInfoPanel(Plot plot)
     {
-        ShowPlotInfoPanel(plot);
+        if (currentlySelectedPlot != null)
+        {
+            currentlySelectedPlot.OnPlotDataUpdated -= UpdatePlotInfoPanelText;
+        }
 
+        currentlySelectedPlot = plot;
+        currentlySelectedPlot.OnPlotDataUpdated += UpdatePlotInfoPanelText;
+
+        ShowPlotInfoPanel(plot); 
         if (plot.isPlanted)
         {
-            ShowPlantInfoPanel(plot.currentPlant);
+            ShowPlantInfoPanel(plot.currentPlant); 
         }
         else
         {
@@ -195,8 +202,25 @@ public class HUDUI : MonoBehaviour
 
     private void UnShowInfoPanel()
     {
+        if (currentlySelectedPlot != null)
+        {
+            currentlySelectedPlot.OnPlotDataUpdated -= UpdatePlotInfoPanelText;
+            currentlySelectedPlot = null;
+        }
+
         plotInfoPanel.SetActive(false);
         plantInfoPanel.SetActive(false);
+    }
+
+    private void UpdatePlotInfoPanelText(Plot plot)
+    {
+        // Comprobamos que el panel siga abierto y que la info sea del plot correcto
+        if (plotInfoPanel.activeSelf && plot == currentlySelectedPlot)
+        {
+            Debug.Log("HUDUI: Actualizando panel de info en tiempo real.");
+            plotWaterInfo.text = $"Agua: {plot.currentWater}";
+            plotFertilizerInfo.text = $"Abono: {plot.currentFertility}";
+        }
     }
 
     private void ShowPlotInfoPanel(Plot plot)
@@ -343,6 +367,11 @@ public class HUDUI : MonoBehaviour
         {
             WeatherManager.Instance.OnCurrentWeatherChanged -= UpdateCurrentWeatherDisplay;
             WeatherManager.Instance.OnForecastChanged -= UpdateForecastDisplay;
+        }
+
+        if (currentlySelectedPlot != null)
+        {
+            currentlySelectedPlot.OnPlotDataUpdated -= UpdatePlotInfoPanelText;
         }
     }
 }

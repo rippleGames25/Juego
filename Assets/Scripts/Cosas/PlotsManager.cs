@@ -312,28 +312,91 @@ public class PlotsManager : MonoBehaviour
 
     public void DailyUpdateWeatherWater(DailyWeather currentWeather)
     {
-        if (currentWeather.type != WeatherType.Soleado)
+        float baseDeathProb = currentWeather.deathProbability; // ej. 0.2, 0.4, o 0.6
+
+        if (currentWeather.type == WeatherType.Soleado)
         {
+            Debug.Log($"[PlotsManager] Aplicando Sequía Probabilística (Intensidad: {currentWeather.intensity})");
             foreach (Plot plot in plotGrid)
             {
-                plot.ChangeWater(currentWeather.waterChange);
+                if (plot == null) continue;
+                ApplyProbabilisticDrought(plot, currentWeather.intensity);
                 plot.UpdatePlotWaterVisuals();
             }
         }
         else
         {
-            // Recorre cada parcela y "tira el dado"
-            Debug.Log($"[PlotsManager] Aplicando Sequía Probabilística (Intensidad: {currentWeather.intensity})");
+            // esto para lluvia y granizo
             foreach (Plot plot in plotGrid)
             {
-                ApplyProbabilisticDrought(plot, currentWeather.intensity);
-                plot.UpdatePlotWaterVisuals(); // Actualiza visual SÍ O SÍ
+                if (plot == null) continue;
+                plot.ChangeWater(currentWeather.waterChange);
+                plot.UpdatePlotWaterVisuals();
             }
         }
 
+        if (baseDeathProb > 0)
+        {
+            Debug.Log($"[PlotsManager] ¡Evento de muerte detectado! Tipo: {currentWeather.type}, Prob. Base: {baseDeathProb * 100}%");
+
+            foreach (Plot plot in plotGrid.Cast<Plot>().Where(p => p != null).ToList())
+            {
+                if (plot.isPlanted && plot.currentPlant != null && !plot.currentPlant.isDeath)
+                {
+                    Plant plant = plot.currentPlant;
+                    float finalDeathProb = 0f;
+
+                    if (currentWeather.type == WeatherType.Granizo)
+                    {
+                        switch (plant.currentHealth)
+                        {
+                            case Health.buena:
+                                finalDeathProb = 0f; // Si tiene buena salud no puede matar
+                                break;
+                            case Health.moderada:
+                                finalDeathProb = baseDeathProb * 0.5f; // 50% de la prob. base
+                                break;
+                            case Health.mala:
+                                finalDeathProb = baseDeathProb * 1.5f; // 150% de la prob. base
+                                break;
+                        }
+                    } else if(currentWeather.type == WeatherType.Lluvia && currentWeather.intensity == 3)
+                    {
+                        switch (plant.currentHealth)
+                        {
+                            case Health.buena:
+                                finalDeathProb = 0f; // Si tiene buena salud no puede matar
+                                break;
+                            case Health.moderada:
+                                finalDeathProb = baseDeathProb * 0.5f; // 50% de la prob. base
+                                break;
+                            case Health.mala:
+                                finalDeathProb = baseDeathProb;
+                                break;
+                        }
+                    }
+
+                    // probabilidad no mayor al 95%
+                    finalDeathProb = Mathf.Clamp(finalDeathProb, 0f, 0.95f);
+
+                    if (finalDeathProb > 0)
+                    {
+                        float roll = UnityEngine.Random.Range(0f, 1f); // (0.0 a 1.0)
+
+                        if (roll <= finalDeathProb)
+                        {
+                            // ¡Muerte!
+                            Debug.LogWarning($"¡Planta {plant.plantData.plantName} ({plant.currentHealth}) ha muerto por {currentWeather.type}! (Tirada: {roll} <= Prob: {finalDeathProb})");
+
+                            plant.ForceKill(); // Usa el método de muerte instantánea
+                            PlantsDeath(plot); // Aplica penalizaciones [cite: PlotsManager.cs]
+                        }
+                    }
+                }
+            }
+        }
         Debug.Log("Cambio de agua por evento meteorologico.");
     }
-
     private void ApplyProbabilisticDrought(Plot plot, int intensity)
     {
         float roll = UnityEngine.Random.Range(0f, 1f); // Tira el dado (0.0 a 1.0)
