@@ -1,16 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class SFXManager : MonoBehaviour
 {
     public static SFXManager Instance { get; private set; }
 
+    [Header("Mixer Group (asigna GameMixer/SFX)")]
+    [SerializeField] private AudioMixerGroup sfxMixerGroup;
+
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource sfxSource;      // Efectos cortos (PlayOneShot)
-    [SerializeField] private AudioSource ambientSource;  // Ambiente/clima (loop)
+    [SerializeField] private AudioSource sfxSource;      // efectos cortos (PlayOneShot)
+    [SerializeField] private AudioSource ambientSource;  // ambiente/clima (loop)
 
     [Header("Ambient Fades")]
-    [SerializeField] private float ambientFadeTime = 0.6f; // segundos (0 = sin fade)
+    [SerializeField] private float ambientFadeTime = 0.6f;
     private Coroutine ambientFadeRoutine;
 
     [Header("Clips (acción)")]
@@ -38,32 +43,48 @@ public class SFXManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
 
-        // SFX corto
-        if (sfxSource == null)
-            sfxSource = GetComponent<AudioSource>();
-        if (sfxSource == null)
-            sfxSource = gameObject.AddComponent<AudioSource>();
-
+        // ---- SFX corto ----
+        if (!sfxSource) sfxSource = gameObject.AddComponent<AudioSource>();
         sfxSource.playOnAwake = false;
         sfxSource.loop = false;
-        sfxSource.spatialBlend = 0f; // 2D
-        // IMPORTANTE: Asigna en el Inspector Output = GameMixer/SFX
+        sfxSource.spatialBlend = 0f;
 
-        // Ambiente/Clima (loop)
-        if (ambientSource == null)
-            ambientSource = gameObject.AddComponent<AudioSource>();
-
+        // ---- Ambiente/Clima ----
+        if (!ambientSource) ambientSource = gameObject.AddComponent<AudioSource>();
         ambientSource.playOnAwake = false;
         ambientSource.loop = true;
-        ambientSource.spatialBlend = 0f; // 2D
-        // IMPORTANTE: Asigna en el Inspector Output = GameMixer/SFX
+        ambientSource.spatialBlend = 0f;
+        ambientSource.ignoreListenerPause = false; // por si usáis AudioListener.pause
+
+        // 🔊 Enrutar ambos al mismo grupo SFX
+        if (sfxMixerGroup)
+        {
+            sfxSource.outputAudioMixerGroup = sfxMixerGroup;
+            ambientSource.outputAudioMixerGroup = sfxMixerGroup;
+        }
+        else
+        {
+            Debug.LogWarning("[SFXManager] No se asignó AudioMixerGroup; los sliders podrían no afectar.");
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.activeSceneChanged += OnSceneChanged;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.activeSceneChanged -= OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene oldSc, Scene newSc)
+    {
+        // Si sales del gameplay (o en general, al cambiar de escena) corta el ambiente
+        if (!newSc.name.Contains("Game")) StopAmbient();
     }
 
     // ---------------------------
@@ -85,7 +106,6 @@ public class SFXManager : MonoBehaviour
             ambientFadeRoutine = null;
         }
 
-        // Si no hay fade, cortar y reproducir
         if (ambientFadeTime <= 0f)
         {
             if (ambientSource.isPlaying) ambientSource.Stop();
@@ -98,7 +118,6 @@ public class SFXManager : MonoBehaviour
             return;
         }
 
-        // Con fade
         ambientFadeRoutine = StartCoroutine(CoPlayAmbientWithFade(clip, ambientFadeTime));
     }
 
@@ -121,23 +140,35 @@ public class SFXManager : MonoBehaviour
         ambientFadeRoutine = StartCoroutine(CoFadeOutAmbient(ambientFadeTime));
     }
 
+    // Pausar/Reanudar sólo el ambiente (para el menú de pausa)
+    public void PauseAmbient(bool paused)
+    {
+        if (!ambientSource) return;
+        if (paused)
+        {
+            if (ambientSource.isPlaying) ambientSource.Pause();
+        }
+        else
+        {
+            if (ambientSource.clip && !ambientSource.isPlaying) ambientSource.UnPause();
+        }
+    }
+
     private IEnumerator CoPlayAmbientWithFade(AudioClip next, float duration)
     {
-        // Fade out del actual
         if (ambientSource.isPlaying && ambientSource.volume > 0f)
         {
             float t = 0f;
             float start = ambientSource.volume;
             while (t < duration)
             {
-                t += Time.unscaledDeltaTime; // que funcione en pausa
+                t += Time.unscaledDeltaTime;
                 ambientSource.volume = Mathf.Lerp(start, 0f, t / duration);
                 yield return null;
             }
             ambientSource.Stop();
         }
 
-        // Arrancar el nuevo en 0 y subir a 1
         if (next != null)
         {
             ambientSource.clip = next;
@@ -170,7 +201,7 @@ public class SFXManager : MonoBehaviour
                 yield return null;
             }
             ambientSource.Stop();
-            ambientSource.volume = 1f; // dejar preparado para el siguiente
+            ambientSource.volume = 1f; // listo para el siguiente
         }
         ambientFadeRoutine = null;
     }

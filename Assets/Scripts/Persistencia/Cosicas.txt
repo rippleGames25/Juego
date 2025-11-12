@@ -1,0 +1,7 @@
+En GameScene:
+- Poner boton de guardado
+
+En MainMenuScene:
+- Poner los prefabs
+- Boton jugar cambiar onClick()
+- 
