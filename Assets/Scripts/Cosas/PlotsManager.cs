@@ -5,6 +5,14 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Linq;
 
+public struct DailyBonusData
+{
+    public int madurityBonus;
+    public int diversityBonus;
+    public int solarExposureBonus;
+    public int maturePlantCount;
+}
+
 public class PlotsManager : MonoBehaviour
 {
     public static PlotsManager Instance; // Singleton
@@ -78,6 +86,8 @@ public class PlotsManager : MonoBehaviour
         GameManager.Instance.CurrentMoney -= 1;
         Debug.Log("Se ha restado 1 pétalo de tu economía total");
 
+        GameManager.Instance.ReportPlantDeath();
+
         GameManager.Instance.CurrentBiodiversity--;
     }
 
@@ -130,30 +140,24 @@ public class PlotsManager : MonoBehaviour
         }
     }
 
-    public int GetDailyBiodiversityIncome()
+    public DailyBonusData GetDailyBonusData()
     {
         int maturePlants = 0;
         int totalPlanted = 0;
         bool allPlantsInCorrectSun = true;
-
-        // hashSet para guardar solo las categorías únicas
         HashSet<PlantCategory> categoriesPresent = new HashSet<PlantCategory>();
 
-        if (plotGrid == null) return 0;
+        if (plotGrid == null) return new DailyBonusData(); // Devuelve vacío
 
         foreach (Plot plot in plotGrid)
         {
             if (plot != null && plot.isPlanted && plot.currentPlant != null)
             {
                 totalPlanted++;
-
-                // comprobar la exposición solar
                 if (!plot.currentPlant.CheckSolarExposure())
                 {
-                    allPlantsInCorrectSun = false; // si una planta esta mal, perdemos el bono
+                    allPlantsInCorrectSun = false;
                 }
-
-                // comprobar madurez y diversidad
                 if (plot.currentPlant.currentGrowth == GrowthState.madura)
                 {
                     maturePlants++;
@@ -162,26 +166,28 @@ public class PlotsManager : MonoBehaviour
             }
         }
 
-        int income = 0;
+        // Preparamos los datos para devolver
+        DailyBonusData data = new DailyBonusData();
+        data.maturePlantCount = maturePlants; // Para las stats de Game Over
 
         // +1 de dinero por cada 2 plantas maduras
-        income += maturePlants / 2;
+        data.madurityBonus = maturePlants / 2;
 
         // +1 de dinero si tienes las 4 categorías maduras
         if (categoriesPresent.Count == 4)
         {
-            income += 1;
+            data.diversityBonus = 1;
             Debug.Log("¡Bono de Diversidad conseguido!");
         }
 
-        // +1 si TODAS las plantas están bien puestas
+        // +1 si todas las plantas están bien puestas
         if (totalPlanted > 0 && allPlantsInCorrectSun)
         {
-            income += 1;
+            data.solarExposureBonus = 1;
             Debug.Log("¡Bono de Exposición Solar conseguido!");
         }
 
-        return income;
+        return data;
     }
 
     #endregion

@@ -16,6 +16,14 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject summaryPanel;
     [SerializeField] private GameObject settingsPanel;
 
+    // --- ¡NUEVO! Sistema de Strikes ---
+    [Header("Strikes")]
+    [SerializeField] private Image[] strikeIcons; // Array de 5 imágenes
+    [SerializeField] private Color strikeColor_Empty = Color.gray;
+    [SerializeField] private Color strikeColor_Normal = Color.yellow;
+    [SerializeField] private Color strikeColor_Permanent = Color.red;
+    // ----------------------------------
+
     [Header("Clima")]
     [SerializeField] private TextMeshProUGUI currentWeatherText;
     [SerializeField] private List<TextMeshProUGUI> forecastText = new List<TextMeshProUGUI>();
@@ -64,17 +72,16 @@ public class HUDUI : MonoBehaviour
         plantInfoPanel.SetActive(false);
         plotInfoPanel.SetActive(false);
         summaryPanel.SetActive(false);
-        Cursor.visible = false;
 
         // Actualizar UI
         UpdateMoneyText(GameManager.Instance.CurrentMoney);
         UpdateWaterText(GameManager.Instance.CurrentWater);
         UpdateFertilizerText(GameManager.Instance.CurrentFertilizer);
         UpdateDayText(GameManager.Instance.CurrentDay);
-        UpdateBiodiversityText(GameManager.Instance.CurrentBiodiversity);
+        UpdateBiodiversityText(GameManager.Instance.currentBiodiversity);
 
         // Subscripción a eventos
-        if(GameManager.Instance!= null)
+        if (GameManager.Instance != null)
         {
             GameManager.Instance.OnMoneyChanged += UpdateMoneyText;
             GameManager.Instance.OnWaterChanged += UpdateWaterText;
@@ -84,9 +91,15 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnBiodiversityChanged += UpdateBiodiversityText;
             GameManager.Instance.OnPlantInfoClick += ShownPlantTypeInfoPanel;
             GameManager.Instance.OnDayEnd += ShowDaySummaryPanel;
+
+            // Suscripción a Strikes
+            GameManager.Instance.OnStrikesChanged += UpdateStrikesVisuals;
+        }
+
+        if (PlotsManager.Instance != null)
+        {
             PlotsManager.Instance.OnPlotSelected += ShowInfoPanel;
             PlotsManager.Instance.OnPlotUnselected += UnShowInfoPanel;
-
         }
 
         if (WeatherManager.Instance != null)
@@ -94,9 +107,9 @@ public class HUDUI : MonoBehaviour
             WeatherManager.Instance.OnCurrentWeatherChanged += UpdateCurrentWeatherDisplay;
             WeatherManager.Instance.OnForecastChanged += UpdateForecastDisplay;
 
-            UpdateCurrentWeatherDisplay(WeatherManager.Instance.currentWeather); 
-            UpdateForecastDisplay(WeatherManager.Instance.forecast); 
-        } 
+            UpdateCurrentWeatherDisplay(WeatherManager.Instance.currentWeather);
+            UpdateForecastDisplay(WeatherManager.Instance.forecast);
+        }
     }
 
 
@@ -153,7 +166,6 @@ public class HUDUI : MonoBehaviour
         SFXManager.Instance?.PlayClick();
         // Poner info planta
         plantTypeName.text = plantType.plantName;
-
         plantTypeInfoPanel.SetActive(true);
     }
 
@@ -167,7 +179,6 @@ public class HUDUI : MonoBehaviour
 
     #region Metodos para Paneles de Info Parcelas
 
-    // Metodo que muestra panel de información
     private void ShowInfoPanel(Plot plot)
     {
         ShowPlotInfoPanel(plot);
@@ -175,44 +186,41 @@ public class HUDUI : MonoBehaviour
         if (plot.isPlanted)
         {
             ShowPlantInfoPanel(plot.currentPlant);
-        } else
+        }
+        else
         {
             plantInfoPanel.SetActive(false);
         }
     }
 
-    // Metodo que esconde el panel de información
     private void UnShowInfoPanel()
     {
         plotInfoPanel.SetActive(false);
         plantInfoPanel.SetActive(false);
     }
 
-    // Metodo que muestra panel de información de la parcela
     private void ShowPlotInfoPanel(Plot plot)
     {
         plotGridInfo.text = $"Parcela {plot.gridCoordinates}";
         plotSolarInfo.text = $"{plot.currentSolarExposure}";
         plotWaterInfo.text = $"Agua: {plot.currentWater}";
         plotFertilizerInfo.text = $"Abono: {plot.currentFertility}";
-
         plotInfoPanel.SetActive(true);
     }
 
-    // Metodo que muestra panel de información de la planta
     private void ShowPlantInfoPanel(Plant plant)
     {
-        plantPhoto.sprite = plant.plantData.plantSprites[GameManager.IDX_PLANT_SPRITE]; // Sprite de la planta madura
+        plantPhoto.sprite = plant.plantData.plantSprites[GameManager.IDX_PLANT_SPRITE];
 
         // Info
-        nameText.text= plant.plantData.plantName;
+        nameText.text = plant.plantData.plantName;
         typeText.text = plant.plantData.category.ToString();
 
         // Estado
         lifeDaysText.text = $"Días de vida: {plant.lifeDays}";
         growthState.text = $"Crecimiento: {plant.currentGrowth}";
         health.text = $"Salud: {plant.currentHealth}";
-  
+
         // Necesidades
         waterDemand.text = $"Agua: {plant.plantData.waterDemand}";
         fertilizerDemand.text = $"Abono: {plant.plantData.fertilizerDemand}";
@@ -223,8 +231,36 @@ public class HUDUI : MonoBehaviour
 
     #endregion
 
+    // método para pintar los Strikes 
+    #region Strikes UI
+    private void UpdateStrikesVisuals(int normalStrikes, int permanentStrikes)
+    {
+        if (strikeIcons == null) return;
+
+        int totalStrikes = normalStrikes + permanentStrikes;
+
+        for (int i = 0; i < strikeIcons.Length; i++)
+        {
+            if (i < permanentStrikes)
+            {
+                // Strikes Permanentes (Rojos)
+                strikeIcons[i].color = strikeColor_Permanent;
+            }
+            else if (i < totalStrikes)
+            {
+                // Strikes Normales (Amarillos)
+                strikeIcons[i].color = strikeColor_Normal;
+            }
+            else
+            {
+                // Vacíos (Gris)
+                strikeIcons[i].color = strikeColor_Empty;
+            }
+        }
+    }
+    #endregion
+
     #region Actualización UI
-    // Metodo que actualiza el panel de la prevision del tiempo
     private void UpdateForecastDisplay(DailyWeather[] forecastArray)
     {
         int currentDay = GameManager.Instance.CurrentDay;
@@ -238,82 +274,53 @@ public class HUDUI : MonoBehaviour
         {
             DailyWeather weather = forecastArray[i];
             int idx = ((int)weather.type * WeatherManager.Instance.maxIntensity) + (weather.intensity - 1);
-
             forecastImages[i].sprite = forecastSprites[idx]; // Actualizamos la imagen
         }
     }
 
-    // Metodo que actualiza el Texto de la meteorología actual
     private void UpdateCurrentWeatherDisplay(DailyWeather weather)
     {
         if (currentWeatherText != null)
         {
             currentWeatherText.text = $"HOY: {weather.ToString()}";
-            // Efectos visuales
         }
     }
 
     private void UpdateMoneyText(int value)
     {
-        if (moneyText != null)
-        {
-            moneyText.text = value.ToString();
-        }
+        if (moneyText != null) moneyText.text = value.ToString();
     }
-
     private void UpdateWaterText(int value)
     {
-        if (waterText != null)
-        {
-            waterText.text = value.ToString();
-        }
+        if (waterText != null) waterText.text = value.ToString();
     }
-
     private void UpdateFertilizerText(int value)
     {
-        if (fertilizerText != null)
-        {
-            fertilizerText.text = value.ToString();
-        }
+        if (fertilizerText != null) fertilizerText.text = value.ToString();
     }
-
     private void UpdateDayText(int value)
     {
-        if (dayText != null)
-        {
-            dayText.text = "Dia: " + value.ToString();
-        }
+        if (dayText != null) dayText.text = "Dia: " + value.ToString();
     }
-
     private void UpdateBiodiversityText(int value)
     {
-        if(biodiversityText != null)
-        {
-            biodiversityText.text = $"Biodiversidad: {value}/{GameManager.Instance.winCondition}";
-        }
+        if (biodiversityText != null) biodiversityText.text = $"Biodiversidad: {value}/{GameManager.Instance.winCondition}";
     }
-
     #endregion
 
     #region Cursor
-
     private void UpdateCursor(ToolType _type)
     {
-        // Le decimos al manager qué herramienta hemos seleccionado
         if (SoftwareCursorManager.Instance != null)
         {
             SoftwareCursorManager.Instance.SetTool(_type);
         }
     }
-
-
     #endregion
 
-
-    // Desuscribirse a los metodos al destuir el objeto
     private void OnDestroy()
     {
-        if(GameManager.Instance != null)
+        if (GameManager.Instance != null)
         {
             GameManager.Instance.OnMoneyChanged -= UpdateMoneyText;
             GameManager.Instance.OnWaterChanged -= UpdateWaterText;
@@ -323,6 +330,11 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnBiodiversityChanged -= UpdateBiodiversityText;
             GameManager.Instance.OnPlantInfoClick -= ShownPlantTypeInfoPanel;
             GameManager.Instance.OnDayEnd -= ShowDaySummaryPanel;
+            GameManager.Instance.OnStrikesChanged -= UpdateStrikesVisuals;
+        }
+
+        if (PlotsManager.Instance != null)
+        {
             PlotsManager.Instance.OnPlotSelected -= ShowInfoPanel;
             PlotsManager.Instance.OnPlotUnselected -= UnShowInfoPanel;
         }

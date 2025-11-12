@@ -28,12 +28,13 @@ public class GameManager : MonoBehaviour
     public event Action<ToolType> OnToolChanged;
     public event Action<PlantType> OnPlantInfoClick;
     public event Action OnDayEnd;
+    public event Action<int, int> OnStrikesChanged;
 
     // Variables
     public int winCondition;
     private ToolType currentTool;
     private int currentDay = 1;
-    private int currentBiodiversity = 0;
+    public int currentBiodiversity = 0;
     private DailyWeather currentWeather;
     private bool isDayTransitioning = false;
 
@@ -43,7 +44,20 @@ public class GameManager : MonoBehaviour
     private int currentFertilizer = 8;
     private const int BASE_INCOME_IF_PLANTED = 3;
     private const int AMOUNT_PER_PLANT = 1;
+    [SerializeField] private int cheapestPlantPrice = 1;
     public const int IDX_PLANT_SPRITE = 7; // Indice de la imagen principal de la planta en el plantSprites
+
+    // Sistema de strikes 
+    private const int MAX_STRIKES = 5;
+    private int normalStrikes = 0;
+    private int permanentStrikes = 0;
+    private int plantDeathCounter = 0; // Contador para (1 strike por 3 muertes)
+
+    private int daysWithoutDeathRacha = 0;
+    private int diversityBonusRacha = 0;
+
+    private int maxBiodiversityAchieved = 0;
+    private int maxMaturePlantsAchieved = 0;
 
     [Header("Plantas")]
     [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.1f, -0.1f);
@@ -129,11 +143,17 @@ public class GameManager : MonoBehaviour
         get { return currentBiodiversity; }
         set
         {
-            if (currentBiodiversity != value)
+            int newValue = Mathf.Max(0, value);
+            if (currentBiodiversity != newValue)
             {
-                currentBiodiversity = value;
+                currentBiodiversity = newValue;
                 Debug.Log("La biodiversidad ha cambiado a " + currentBiodiversity);
                 OnBiodiversityChanged?.Invoke(currentBiodiversity);
+
+                if (currentBiodiversity > maxBiodiversityAchieved)
+                {
+                    maxBiodiversityAchieved = currentBiodiversity;
+                }
             }
         }
     }
@@ -163,6 +183,9 @@ public class GameManager : MonoBehaviour
         // Generar proximos eventos meteorologicos
         // Generar objetivo
         GenerateWinCondition();
+
+        GameSessionStats.Instance?.ResetStats();
+        OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
     }
 
     void Update()
@@ -200,9 +223,6 @@ public class GameManager : MonoBehaviour
         // 2. Animación de consumo de recursos
         yield return PlotsManager.Instance.AnimateDailyConsumptionAndConsume(); ;
 
-        // 3. Condición de victoria
-        CheckWinCondition(); 
-
         OnDayEnd?.Invoke();
 
         isDayTransitioning = false;
@@ -213,6 +233,15 @@ public class GameManager : MonoBehaviour
         CurrentDay++;
         Debug.Log("INICIO DE DÍA: Día " + CurrentDay);
 
+        CheckDailyRachas(); // Comprueba si gana o pierde rachas
+        CheckForBailout();    // Comprueba si necesita el rescate
+
+        // Comprueba Game Over antes de hacer nada
+        if (CheckForGameOver())
+        {
+            return;
+        }
+
         HandleWeatherEvent();
         PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather);
 
@@ -220,7 +249,55 @@ public class GameManager : MonoBehaviour
 
         DistributeDailyResources();
 
+        if (GameSessionStats.Instance != null)
+        {
+            GameSessionStats.Instance.daysSurvived = currentDay;
+        }
+
         Debug.Log("Inicio de día completado.");
+    }
+
+    public void ReportPlantDeath()
+    {
+        // penalización de dinero
+        CurrentMoney -= 1;
+        Debug.Log("Se ha restado 1 pétalo por muerte de planta.");
+
+        // resetea la racha de días sin muerte
+        daysWithoutDeathRacha = 0;
+
+        // lógica de strikes
+        plantDeathCounter++;
+        if (plantDeathCounter >= 3)
+        {
+            AddStrike(false); // añade un strike normal (no permanente)
+            plantDeathCounter = 0; // resetea el contador
+        }
+    }
+
+    private void AddStrike(bool isPermanent)
+    {
+        if (isPermanent)
+        {
+            permanentStrikes++;
+            Debug.LogWarning($"[GameManager] ¡Strike PERMANENTE añadido! Total: {normalStrikes} Normales, {permanentStrikes} Permanentes.");
+        }
+        else
+        {
+            normalStrikes++;
+            Debug.LogWarning($"[GameManager] ¡Strike Normal añadido! Total: {normalStrikes} Normales, {permanentStrikes} Permanentes.");
+        }
+        OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
+    }
+
+    private void RemoveStrike()
+    {
+        if (normalStrikes > 0)
+        {
+            normalStrikes--;
+            Debug.Log($"[GameManager] ¡Strike Normal ELIMINADO por buen comportamiento! Quedan: {normalStrikes} Normales, {permanentStrikes} Permanentes.");
+            OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
+        }
     }
 
     public void PlantSeed(Plot plot, int idx)
@@ -336,7 +413,7 @@ public class GameManager : MonoBehaviour
     {
         int plantCount = CurrentBiodiversity;
 
-        // 1. Si no tienes plantas, no ganas nada
+        // si no tienes plantas, no ganas nada
         if (plantCount == 0)
         {
             return 0;
@@ -375,24 +452,100 @@ public class GameManager : MonoBehaviour
         // dinero llamando al método de PlotsManager
         if (PlotsManager.Instance != null)
         {
-            int qualityBonus = PlotsManager.Instance.GetDailyBiodiversityIncome();
-            if (qualityBonus > 0)
+            DailyBonusData bonusData = PlotsManager.Instance.GetDailyBonusData();
+
+            // actualizamos stats
+            if (bonusData.maturePlantCount > maxMaturePlantsAchieved)
             {
-                dailyIncome += qualityBonus;
-                Debug.Log($"[GameManager] Ingresos: +{qualityBonus} (Bonos de Calidad: Madurez/Diversidad/Sol)");
+                maxMaturePlantsAchieved = bonusData.maturePlantCount;
+            }
+
+            // añadimos bonos de dinero
+            dailyIncome += bonusData.madurityBonus;
+            dailyIncome += bonusData.diversityBonus;
+            dailyIncome += bonusData.solarExposureBonus;
+
+            // actualizamos racha de diversidad
+            if (bonusData.diversityBonus > 0)
+            {
+                diversityBonusRacha++;
+            }
+            else
+            {
+                diversityBonusRacha = 0; // se rompió la racha
             }
         }
 
         CurrentMoney += dailyIncome;
     }
 
-    private void CheckWinCondition()
+    private void CheckDailyRachas()
     {
-        if (currentBiodiversity == winCondition) // Comparar el objetivo con el estado actual
+        // racha sin muertes
+        daysWithoutDeathRacha++;
+        if (daysWithoutDeathRacha >= 5)
         {
-            Debug.Log("Has llegado al objetivo de biodiversidad. Enhorabuena");
-            SceneManager.LoadScene("GameOverScene");
+            RemoveStrike(); // Quita 1 strike normal
+            daysWithoutDeathRacha = 0; // Resetea la racha
         }
+
+        // racha de diversidad
+        if (diversityBonusRacha >= 3)
+        {
+            RemoveStrike(); // Quita 1 strike normal
+            diversityBonusRacha = 0; // Resetea la racha
+        }
+    }
+
+    private void CheckForBailout()
+    {
+        if (CurrentBiodiversity == 0 && CurrentMoney < cheapestPlantPrice)
+        {
+            Debug.LogWarning("[GameManager] ¡BAILOUT! 0 plantas y 0 dinero.");
+
+            // da el strike permanente
+            AddStrike(true);
+
+            // da el dinero de rescate
+            CurrentMoney += 3;
+        }
+    }
+
+    private bool CheckForGameOver()
+    {
+        // condición de derrota (Strikes)
+        if (normalStrikes + permanentStrikes >= MAX_STRIKES)
+        {
+            Debug.LogError("[GameManager] GAME OVER: Límite de Strikes alcanzado.");
+            EndGame(false);
+            return true;
+        }
+
+        // condición de victoria
+        if (currentBiodiversity >= winCondition)
+        {
+            Debug.Log("[GameManager] ¡VICTORIA! Biodiversidad alcanzada.");
+            EndGame(true);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void EndGame(bool didWin)
+    {
+        // Guardamos las estadísticas finales
+        if (GameSessionStats.Instance != null)
+        {
+            GameSessionStats.Instance.daysSurvived = currentDay;
+            GameSessionStats.Instance.maxBiodiversityAchieved = maxBiodiversityAchieved;
+            GameSessionStats.Instance.maxMaturePlantsAchieved = maxMaturePlantsAchieved;
+
+            GameSessionStats.Instance.didWinGame = didWin;
+        }
+
+        // Cargamos la escena de fin de partida
+        SceneManager.LoadScene("GameOverScene");
     }
 
     #endregion
