@@ -1,38 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: 9f5b2ee8dfa517b45a51368d0fe100c7
-=======
-guid: 91078b559d52d02408e7a83fe502e8d0
->>>>>>> Stashed changes
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 929288423535477821
-    second: garambullo_0
-  - first:
-      213: 3398676121110629881
-    second: garambullo_1
-  - first:
-      213: 4885618507619335319
-    second: garambullo_2
-  - first:
-      213: 32447029637604857
-    second: garambullo_3
-  - first:
-      213: -1421500296465033304
-    second: garambullo_4
-  - first:
-      213: 8469205361368226270
-    second: garambullo_5
-  - first:
-      213: 1433451588136751725
-    second: garambullo_6
-  - first:
-      213: -8178938223782883581
-    second: garambullo_7
-  - first:
-      213: 5299764212181043164
-    second: garambullo_8
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -94,16 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 2
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,14 +93,12 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< Updated upstream
-=======
   - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> Stashed changes
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -147,20 +113,20 @@ TextureImporter:
       name: garambullo_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 14
-        width: 258
-        height: 411
+        x: 0
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d3407bac5ee75ec00800000000000000
-      internalID: 929288423535477821
+      spriteID: 9c6f0eca8dd4ca744939887e2cafcd7e
+      internalID: 1316054971
       vertices: []
       indices: 
       edges: []
@@ -169,20 +135,20 @@ TextureImporter:
       name: garambullo_1
       rect:
         serializedVersion: 2
-        x: 129
-        y: 5
-        width: 32
-        height: 24
+        x: 400
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9fdc669dce58a2f20800000000000000
-      internalID: 3398676121110629881
+      spriteID: 4491a07908f6a3746a92a869f96e4d43
+      internalID: -910023611
       vertices: []
       indices: 
       edges: []
@@ -191,152 +157,20 @@ TextureImporter:
       name: garambullo_2
       rect:
         serializedVersion: 2
-        x: 274
-        y: 9
-        width: 46
-        height: 34
+        x: 800
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 79c79b6c5243dc340800000000000000
-      internalID: 4885618507619335319
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: garambullo_3
-      rect:
-        serializedVersion: 2
-        x: 439
-        y: 14
-        width: 258
-        height: 411
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9f5e09bc666437000800000000000000
-      internalID: 32447029637604857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: garambullo_4
-      rect:
-        serializedVersion: 2
-        x: 529
-        y: 5
-        width: 31
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8a7d6150301d54ce0800000000000000
-      internalID: -1421500296465033304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: garambullo_5
-      rect:
-        serializedVersion: 2
-        x: 674
-        y: 9
-        width: 45
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed9df268769a88570800000000000000
-      internalID: 8469205361368226270
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: garambullo_6
-      rect:
-        serializedVersion: 2
-        x: 839
-        y: 14
-        width: 258
-        height: 411
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d625c99ef94a4e310800000000000000
-      internalID: 1433451588136751725
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: garambullo_7
-      rect:
-        serializedVersion: 2
-        x: 929
-        y: 5
-        width: 31
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 30f8e83f4039e7e80800000000000000
-      internalID: -8178938223782883581
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: garambullo_8
-      rect:
-        serializedVersion: 2
-        x: 1074
-        y: 9
-        width: 45
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cd7016cb87b8c8940800000000000000
-      internalID: 5299764212181043164
+      spriteID: 776a65dd54540e9428ad99f9286e422a
+      internalID: -8978202
       vertices: []
       indices: 
       edges: []
@@ -345,7 +179,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -355,15 +189,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      garambullo_0: 929288423535477821
-      garambullo_1: 3398676121110629881
-      garambullo_2: 4885618507619335319
-      garambullo_3: 32447029637604857
-      garambullo_4: -1421500296465033304
-      garambullo_5: 8469205361368226270
-      garambullo_6: 1433451588136751725
-      garambullo_7: -8178938223782883581
-      garambullo_8: 5299764212181043164
+      garambullo_0: 1316054971
+      garambullo_1: -910023611
+      garambullo_2: -8978202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

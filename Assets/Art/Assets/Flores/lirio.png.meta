@@ -1,38 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: f0afe43b39ed1d243b8593cca5ec9f42
-=======
-guid: d3ab044972d7f294d886c31aa676ff2e
->>>>>>> Stashed changes
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 3319268987545588420
-    second: lirio_0
-  - first:
-      213: -153665411361018998
-    second: lirio_1
-  - first:
-      213: 6817328942546005569
-    second: lirio_2
-  - first:
-      213: -5857250363030057975
-    second: lirio_3
-  - first:
-      213: -3974998630885577780
-    second: lirio_4
-  - first:
-      213: 2453889690572654991
-    second: lirio_5
-  - first:
-      213: 581702460955548602
-    second: lirio_6
-  - first:
-      213: -8366137293992340753
-    second: lirio_7
-  - first:
-      213: -8018318527863294575
-    second: lirio_8
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -94,16 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 2
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,14 +93,12 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< Updated upstream
-=======
   - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> Stashed changes
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -147,20 +113,20 @@ TextureImporter:
       name: lirio_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 14
-        width: 312
-        height: 425
+        x: 0
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4c210a4de89601e20800000000000000
-      internalID: 3319268987545588420
+      spriteID: bb7aa070adad58b4bac1cc4527d67aa3
+      internalID: 1695233328
       vertices: []
       indices: 
       edges: []
@@ -169,20 +135,20 @@ TextureImporter:
       name: lirio_1
       rect:
         serializedVersion: 2
-        x: 129
-        y: 5
-        width: 32
-        height: 24
+        x: 400
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a8bef8d5f121eddf0800000000000000
-      internalID: -153665411361018998
+      spriteID: 92c5c2f43c2d3f346ae87e66b5f66d60
+      internalID: -386335805
       vertices: []
       indices: 
       edges: []
@@ -191,152 +157,20 @@ TextureImporter:
       name: lirio_2
       rect:
         serializedVersion: 2
-        x: 274
-        y: 9
-        width: 46
-        height: 34
+        x: 800
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 14ea171bd840c9e50800000000000000
-      internalID: 6817328942546005569
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lirio_3
-      rect:
-        serializedVersion: 2
-        x: 457
-        y: 14
-        width: 278
-        height: 381
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 90cc01fe3ddd6bea0800000000000000
-      internalID: -5857250363030057975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lirio_4
-      rect:
-        serializedVersion: 2
-        x: 529
-        y: 5
-        width: 31
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ccba66f3ec7f5d8c0800000000000000
-      internalID: -3974998630885577780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lirio_5
-      rect:
-        serializedVersion: 2
-        x: 674
-        y: 9
-        width: 45
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f89839c1ca7fd0220800000000000000
-      internalID: 2453889690572654991
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lirio_6
-      rect:
-        serializedVersion: 2
-        x: 874
-        y: 14
-        width: 237
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: abbd9366e4f921800800000000000000
-      internalID: 581702460955548602
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lirio_7
-      rect:
-        serializedVersion: 2
-        x: 929
-        y: 5
-        width: 31
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fe25071f47285eb80800000000000000
-      internalID: -8366137293992340753
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lirio_8
-      rect:
-        serializedVersion: 2
-        x: 1074
-        y: 9
-        width: 45
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 19576c228c539b090800000000000000
-      internalID: -8018318527863294575
+      spriteID: 52b15e39a43d5b14596d284e3fa1b175
+      internalID: 1692462593
       vertices: []
       indices: 
       edges: []
@@ -345,7 +179,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -355,15 +189,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lirio_0: 3319268987545588420
-      lirio_1: -153665411361018998
-      lirio_2: 6817328942546005569
-      lirio_3: -5857250363030057975
-      lirio_4: -3974998630885577780
-      lirio_5: 2453889690572654991
-      lirio_6: 581702460955548602
-      lirio_7: -8366137293992340753
-      lirio_8: -8018318527863294575
+      lirio_0: 1695233328
+      lirio_1: -386335805
+      lirio_2: 1692462593
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
