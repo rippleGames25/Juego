@@ -1,0 +1,702 @@
+fileFormatVersion: 2
+guid: 1961d96bff404e34db05cc38b19ed4d4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8018027484968216133
+    second: fresa2_0
+  - first:
+      213: -5541292423051131213
+    second: fresa2_1
+  - first:
+      213: -2046234110272305598
+    second: fresa2_2
+  - first:
+      213: 3141330637670168131
+    second: fresa2_3
+  - first:
+      213: 4821472308270241887
+    second: fresa2_4
+  - first:
+      213: 188368462415953287
+    second: fresa2_5
+  - first:
+      213: 4089763063887278218
+    second: fresa2_6
+  - first:
+      213: 3691322704227636490
+    second: fresa2_7
+  - first:
+      213: -572072542888793310
+    second: fresa2_8
+  - first:
+      213: 5315160795129912506
+    second: fresa2_9
+  - first:
+      213: -339496481425076319
+    second: fresa2_10
+  - first:
+      213: 3861280100300531608
+    second: fresa2_11
+  - first:
+      213: -5249212729043812352
+    second: fresa2_12
+  - first:
+      213: -7567125847169309905
+    second: fresa2_13
+  - first:
+      213: 452407765818774882
+    second: fresa2_14
+  - first:
+      213: -4909898814049223849
+    second: fresa2_15
+  - first:
+      213: -276191757824612124
+    second: fresa2_16
+  - first:
+      213: 6857775428078702582
+    second: fresa2_17
+  - first:
+      213: 2046397602021995031
+    second: fresa2_18
+  - first:
+      213: 9177524041326822267
+    second: fresa2_19
+  - first:
+      213: 1627367259110310170
+    second: fresa2_20
+  - first:
+      213: -6548564339362130126
+    second: fresa2_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fresa2_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 459
+        width: 335
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54669d82481c54f60800000000000000
+      internalID: 8018027484968216133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 455
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b6497776ef5913b0800000000000000
+      internalID: -5541292423051131213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_2
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 464
+        width: 288
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2468ee90be05a93e0800000000000000
+      internalID: -2046234110272305598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_3
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 455
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 346b16c429f389b20800000000000000
+      internalID: 3141330637670168131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_4
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 459
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5894d4e48f49e240800000000000000
+      internalID: 4821472308270241887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_5
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 464
+        width: 262
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78d70395e183d9200800000000000000
+      internalID: 188368462415953287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_6
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 455
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a80b38e86d1c1c830800000000000000
+      internalID: 4089763063887278218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_7
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 459
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0592d821763a3330800000000000000
+      internalID: 3691322704227636490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_8
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 463
+        width: 335
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22beb5f9d079f08f0800000000000000
+      internalID: -572072542888793310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_9
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 455
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc1dcd059e33c940800000000000000
+      internalID: 5315160795129912506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_10
+      rect:
+        serializedVersion: 2
+        x: 1466
+        y: 459
+        width: 54
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1afc926bfbdd94bf0800000000000000
+      internalID: -339496481425076319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_11
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 9
+        width: 315
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 897a2b41bc5069530800000000000000
+      internalID: 3861280100300531608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_12
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 5
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00082ee95dc0727b0800000000000000
+      internalID: -5249212729043812352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_13
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 14
+        width: 271
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f23ebc4622b2cf690800000000000000
+      internalID: -7567125847169309905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_14
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 5
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 265914f4776474600800000000000000
+      internalID: 452407765818774882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_15
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 9
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75bfb79da098cdbb0800000000000000
+      internalID: -4909898814049223849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_16
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 14
+        width: 262
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e829f04f05ca2cf0800000000000000
+      internalID: -276191757824612124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_17
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 5
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ff8804fa66bb2f50800000000000000
+      internalID: 6857775428078702582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_18
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 9
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7127bb9d6c3466c10800000000000000
+      internalID: 2046397602021995031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_19
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 14
+        width: 217
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7384e0bd7d1d5f70800000000000000
+      internalID: 9177524041326822267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_20
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 5
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a110f5666e1959610800000000000000
+      internalID: 1627367259110310170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fresa2_21
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 9
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 237978bdd63de15a0800000000000000
+      internalID: -6548564339362130126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fresa2_0: 8018027484968216133
+      fresa2_1: -5541292423051131213
+      fresa2_10: -339496481425076319
+      fresa2_11: 3861280100300531608
+      fresa2_12: -5249212729043812352
+      fresa2_13: -7567125847169309905
+      fresa2_14: 452407765818774882
+      fresa2_15: -4909898814049223849
+      fresa2_16: -276191757824612124
+      fresa2_17: 6857775428078702582
+      fresa2_18: 2046397602021995031
+      fresa2_19: 9177524041326822267
+      fresa2_2: -2046234110272305598
+      fresa2_20: 1627367259110310170
+      fresa2_21: -6548564339362130126
+      fresa2_3: 3141330637670168131
+      fresa2_4: 4821472308270241887
+      fresa2_5: 188368462415953287
+      fresa2_6: 4089763063887278218
+      fresa2_7: 3691322704227636490
+      fresa2_8: -572072542888793310
+      fresa2_9: 5315160795129912506
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

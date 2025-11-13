@@ -1,0 +1,702 @@
+fileFormatVersion: 2
+guid: 694ae19e581341546bafbf25a0fdcd87
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1488322852082617571
+    second: tomatera2_0
+  - first:
+      213: 7461610073201806112
+    second: tomatera2_1
+  - first:
+      213: 4851943850897737633
+    second: tomatera2_2
+  - first:
+      213: 2977159947213938703
+    second: tomatera2_3
+  - first:
+      213: -5502372090742607268
+    second: tomatera2_4
+  - first:
+      213: 8728966633112715272
+    second: tomatera2_5
+  - first:
+      213: 3834584546802091974
+    second: tomatera2_6
+  - first:
+      213: -79714790757223620
+    second: tomatera2_7
+  - first:
+      213: 1334842875626173289
+    second: tomatera2_8
+  - first:
+      213: 7476532601773431608
+    second: tomatera2_9
+  - first:
+      213: -5993733467412143916
+    second: tomatera2_10
+  - first:
+      213: -7633159513584651043
+    second: tomatera2_11
+  - first:
+      213: -7729105667247816929
+    second: tomatera2_12
+  - first:
+      213: -4608523136474467643
+    second: tomatera2_13
+  - first:
+      213: -3194512192059670475
+    second: tomatera2_14
+  - first:
+      213: 3578211272562564601
+    second: tomatera2_15
+  - first:
+      213: -5238713366078347355
+    second: tomatera2_16
+  - first:
+      213: -813292941764948546
+    second: tomatera2_17
+  - first:
+      213: -8236880406574551013
+    second: tomatera2_18
+  - first:
+      213: 3651359821117625530
+    second: tomatera2_19
+  - first:
+      213: -1300770114449815365
+    second: tomatera2_20
+  - first:
+      213: 6783029250103334109
+    second: tomatera2_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tomatera2_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 459
+        width: 316
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13f482604a685be0800000000000000
+      internalID: -1488322852082617571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 455
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b8ba904d6fc8760800000000000000
+      internalID: 7461610073201806112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_2
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 464
+        width: 281
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a786e6c931955340800000000000000
+      internalID: 4851943850897737633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_3
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 455
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f002535c23ff05920800000000000000
+      internalID: 2977159947213938703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_4
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 459
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c52734d7cb5a3a3b0800000000000000
+      internalID: -5502372090742607268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_5
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 464
+        width: 251
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 800cbee97e4832970800000000000000
+      internalID: 8728966633112715272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_6
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 455
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7475d245e273530800000000000000
+      internalID: 3834584546802091974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_7
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 459
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c333295f1dbc4eef0800000000000000
+      internalID: -79714790757223620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_8
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 464
+        width: 217
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963b8a8e580568210800000000000000
+      internalID: 1334842875626173289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_9
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 455
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b1558f9caf1c760800000000000000
+      internalID: 7476532601773431608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_10
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 459
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d06784ea2bf1dca0800000000000000
+      internalID: -5993733467412143916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_11
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 9
+        width: 298
+        height: 431
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4b4e65dd1911690800000000000000
+      internalID: -7633159513584651043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_12
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 5
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f3c30a853bcb490800000000000000
+      internalID: -7729105667247816929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_13
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 14
+        width: 274
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c23547df9c3b00c0800000000000000
+      internalID: -4608523136474467643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_14
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 5
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53001a92610daa3d0800000000000000
+      internalID: -3194512192059670475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_15
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 9
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fdd368b13c58a130800000000000000
+      internalID: 3578211272562564601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_16
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 14
+        width: 251
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a72fce03f95c47b0800000000000000
+      internalID: -5238713366078347355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_17
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 5
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebd84c3e06a96b4f0800000000000000
+      internalID: -813292941764948546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_18
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 9
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b10bfbc39e8b0bd80800000000000000
+      internalID: -8236880406574551013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_19
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 14
+        width: 296
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab499dc596c3ca230800000000000000
+      internalID: 3651359821117625530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_20
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 5
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb846c1097cb2fde0800000000000000
+      internalID: -1300770114449815365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tomatera2_21
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 9
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd45e793a29222e50800000000000000
+      internalID: 6783029250103334109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tomatera2_0: -1488322852082617571
+      tomatera2_1: 7461610073201806112
+      tomatera2_10: -5993733467412143916
+      tomatera2_11: -7633159513584651043
+      tomatera2_12: -7729105667247816929
+      tomatera2_13: -4608523136474467643
+      tomatera2_14: -3194512192059670475
+      tomatera2_15: 3578211272562564601
+      tomatera2_16: -5238713366078347355
+      tomatera2_17: -813292941764948546
+      tomatera2_18: -8236880406574551013
+      tomatera2_19: 3651359821117625530
+      tomatera2_2: 4851943850897737633
+      tomatera2_20: -1300770114449815365
+      tomatera2_21: 6783029250103334109
+      tomatera2_3: 2977159947213938703
+      tomatera2_4: -5502372090742607268
+      tomatera2_5: 8728966633112715272
+      tomatera2_6: 3834584546802091974
+      tomatera2_7: -79714790757223620
+      tomatera2_8: 1334842875626173289
+      tomatera2_9: 7476532601773431608
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
