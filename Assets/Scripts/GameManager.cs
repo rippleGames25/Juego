@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public enum ToolType
 {
@@ -190,7 +191,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (inputLocked) return;                 
+        if (inputLocked) return;
+
         if (Input.GetMouseButtonDown(0))
             HandleInput();
     }
@@ -366,6 +368,7 @@ public class GameManager : MonoBehaviour
     {
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Convertir mouse a posicion del mundo
         RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero); // Lanzar rayo
+        bool isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
 
         if (hit.collider != null) // Si colisiona
         {
@@ -393,16 +396,22 @@ public class GameManager : MonoBehaviour
                 plot.SelectPlot();
             }
 
-        } else
+        }
+        else
         {
-            // Si no ha colisionado con nada
-            Plot _currentSelectedPlot = PlotsManager.Instance.currentSelectedPlot;
-            this.CurrentTool = ToolType.None;
+            // El clic no golpeó ningún objeto 2D
 
-            if (_currentSelectedPlot != null)
+            // Si no golpeó la UI, entonces es un clic en  nada
+            if (!isPointerOverUI)
             {
-                PlotsManager.Instance.PlotUnselected(_currentSelectedPlot); // Deseleccionar Parcela
+                // Es un clic en la nada
+                Plot _currentSelectedPlot = PlotsManager.Instance.currentSelectedPlot;
+                this.CurrentTool = ToolType.None;
 
+                if (_currentSelectedPlot != null)
+                {
+                    PlotsManager.Instance.PlotUnselected(_currentSelectedPlot);
+                }
             }
         }
 

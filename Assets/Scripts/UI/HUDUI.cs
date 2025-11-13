@@ -162,11 +162,33 @@ public class HUDUI : MonoBehaviour
         summaryPanel.SetActive(true);
     }
 
+    public void OnDynamicInfoPanel_InfoButtonClick()
+    {
+        if (currentlySelectedPlot != null && currentlySelectedPlot.isPlanted)
+        {
+            PlantType type = currentlySelectedPlot.currentPlant.plantData;
+
+            ShownPlantTypeInfoPanel(type);
+        }
+    }
+
     public void ShownPlantTypeInfoPanel(PlantType plantType)
     {
+        if (plantType == null) return;
         SFXManager.Instance?.PlayClick();
-        // Poner info planta
+
         plantTypeName.text = plantType.plantName;
+
+        if (plantInfoPanel.activeSelf)
+        {
+            plantInfoPanel.SetActive(false);
+        }
+        if (plotInfoPanel.activeSelf)
+        {
+            plotInfoPanel.SetActive(false);
+        }
+
+        // Muestra el panel de enciclopedia
         plantTypeInfoPanel.SetActive(true);
     }
 
