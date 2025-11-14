@@ -336,7 +336,7 @@ public class GameManager : MonoBehaviour
 
     private void CalculateEndOfDayBonuses()
     {
-        lastDayBaseIncome = BASE_INCOME;
+        lastDayBaseIncome = (CurrentBiodiversity == 0) ? 0 : BASE_INCOME;
         lastDayPlantBonus = CurrentBiodiversity / 2;
         lastDayBonusData = PlotsManager.Instance.GetDailyBonusData();
 
