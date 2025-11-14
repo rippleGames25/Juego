@@ -301,6 +301,8 @@ MonoBehaviour:
   isPlanted: 0
   initialSolarExposure: 0
   shadeSourceCount: 0
+  pollinatorSourceCount: 0
+  refugeSourceCount: 0
   solarExposurePlot:
   - {fileID: -5258524063300221356, guid: 0750026efbd202141ba0e96b7e1982cf, type: 3}
   - {fileID: -7342669920469189202, guid: 42f7c713b094f9b4887c782dd29c437b, type: 3}
@@ -311,8 +313,8 @@ MonoBehaviour:
   changeImage: {fileID: 8568513719800348703}
   waterIcon: {fileID: 21300000, guid: 45ca2269ca3ed6e4ea5c17b3ab2ee5fa, type: 3}
   fertilizerIcon: {fileID: 21300000, guid: d876bde82d4d10f4a864c882f6f08367, type: 3}
-  color1: {r: 0.3921569, g: 0.34509805, b: 0.13725491, a: 1}
-  color2: {r: 0.16470589, g: 0.1254902, b: 0.050980397, a: 0}
+  pollinatorVisualPrefab: {fileID: 647531223538058953, guid: b0cba90e65a2b2642a8c78d62f25f157, type: 3}
+  wildlifeVisualPrefab: {fileID: 5330657378168321581, guid: 1562f71f68787454387f09d26d51cfb6, type: 3}
 --- !u!61 &1269398612439380240
 BoxCollider2D:
   m_ObjectHideFlags: 0

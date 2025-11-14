@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 678d9af5cc9aa7f488a72b1b2f372f94
+guid: 6a6539e5a58e61749b2e70d9ff479675
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 818764077102228473
-    second: margarita_0
+      213: 5000927251509650613
+    second: Back_0
   - first:
-      213: 3099998601655886881
-    second: margarita_1
+      213: 564042922023100985
+    second: Back_1
   - first:
-      213: -3106765223704731922
-    second: margarita_2
+      213: -6931248352422374901
+    second: Back_2
+  - first:
+      213: 4990789188432626572
+    second: Back_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 33
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: margarita_0
+      name: Back_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 133
-        height: 150
+        x: 162
+        y: 616
+        width: 7
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f367821795dc5b00800000000000000
-      internalID: 818764077102228473
+      spriteID: 5b4adc5d6dcd66540800000000000000
+      internalID: 5000927251509650613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: margarita_1
+      name: Back_1
       rect:
         serializedVersion: 2
-        x: 133
-        y: 0
-        width: 133
-        height: 150
+        x: 122
+        y: 506
+        width: 92
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12428efbd48650b20800000000000000
-      internalID: 3099998601655886881
+      spriteID: 932a2459c02e3d700800000000000000
+      internalID: 564042922023100985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: margarita_2
+      name: Back_2
       rect:
         serializedVersion: 2
-        x: 266
-        y: 0
-        width: 133
-        height: 150
+        x: 221
+        y: 505
+        width: 92
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +181,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eeeda884d7d82e4d0800000000000000
-      internalID: -3106765223704731922
+      spriteID: b025ad7c8524fcf90800000000000000
+      internalID: -6931248352422374901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back_3
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 510
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8303651358d24540800000000000000
+      internalID: 4990789188432626572
       vertices: []
       indices: 
       edges: []
@@ -188,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5ab54cac47eddc74484831354a50d0f5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      margarita_0: 818764077102228473
-      margarita_1: 3099998601655886881
-      margarita_2: -3106765223704731922
+      Back_0: 5000927251509650613
+      Back_1: 564042922023100985
+      Back_2: -6931248352422374901
+      Back_3: 4990789188432626572
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

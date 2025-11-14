@@ -23,10 +23,10 @@ MonoBehaviour:
   timeToGrow: 3
   timeToMature: 7
   category: 1
-  shadeSize: 0
+  shadeSize: 1
   timeToProduce: 0
   price: 2
-  shopSprite: {fileID: 993747402, guid: 585549731d02c2d49a7c2005d1349f7a, type: 3}
+  shopSprite: {fileID: -7039456930571511278, guid: aa9364ccff453db41b41cfed2aa04751, type: 3}
   plantSprites:
   - {fileID: 21300000, guid: d876bde82d4d10f4a864c882f6f08367, type: 3}
   - {fileID: -3966044189379602213, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
@@ -39,3 +39,4 @@ MonoBehaviour:
   - {fileID: 1047894794273927321, guid: aa9364ccff453db41b41cfed2aa04751, type: 3}
   - {fileID: 1826820615116883047, guid: aa9364ccff453db41b41cfed2aa04751, type: 3}
   deathSprite: {fileID: 21300000, guid: 858d3eea78e01114890a57e8a6049e03, type: 3}
+  refugeVisualPrefab: {fileID: 0}

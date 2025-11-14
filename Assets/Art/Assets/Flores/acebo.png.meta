@@ -120,6 +120,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -127,10 +140,10 @@ TextureImporter:
       name: acebo_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 14
-        width: 316
-        height: 436
+        x: 0
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,10 +162,10 @@ TextureImporter:
       name: acebo_1
       rect:
         serializedVersion: 2
-        x: 129
-        y: 5
-        width: 32
-        height: 24
+        x: 400
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +184,10 @@ TextureImporter:
       name: acebo_2
       rect:
         serializedVersion: 2
-        x: 274
-        y: 9
-        width: 46
-        height: 34
+        x: 800
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,143 +202,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: acebo_3
-      rect:
-        serializedVersion: 2
-        x: 449
-        y: 14
-        width: 285
-        height: 396
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d81ea2623800114a0800000000000000
-      internalID: -6624513013604228723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acebo_4
-      rect:
-        serializedVersion: 2
-        x: 529
-        y: 5
-        width: 31
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b20f7b38340b92710800000000000000
-      internalID: 1669058940936646699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acebo_5
-      rect:
-        serializedVersion: 2
-        x: 674
-        y: 9
-        width: 45
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d039d9765c0bfa30800000000000000
-      internalID: 4250004238905192661
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acebo_6
-      rect:
-        serializedVersion: 2
-        x: 867
-        y: 14
-        width: 243
-        height: 343
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 365c081f4ae1cec80800000000000000
-      internalID: -8292219120120707741
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acebo_7
-      rect:
-        serializedVersion: 2
-        x: 929
-        y: 5
-        width: 31
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d908688d0ce742150800000000000000
-      internalID: 5846937582965260445
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acebo_8
-      rect:
-        serializedVersion: 2
-        x: 1074
-        y: 9
-        width: 45
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e67ae3f7df834fd80800000000000000
-      internalID: -8217880758631618706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8c03b0a2f0cdb6243947bd4c2c9917eb
     internalID: 0
     vertices: []
     indices: 
@@ -338,12 +219,6 @@ TextureImporter:
       acebo_0: 921942916253569763
       acebo_1: -6276978348839805830
       acebo_2: 2364120634783497644
-      acebo_3: -6624513013604228723
-      acebo_4: 1669058940936646699
-      acebo_5: 4250004238905192661
-      acebo_6: -8292219120120707741
-      acebo_7: 5846937582965260445
-      acebo_8: -8217880758631618706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

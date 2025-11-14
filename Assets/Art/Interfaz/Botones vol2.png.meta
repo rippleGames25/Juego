@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: 678d9af5cc9aa7f488a72b1b2f372f94
+guid: a486ae92c6511eb4a8e6cf01477b2903
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 818764077102228473
-    second: margarita_0
+      213: -2983650107613715232
+    second: Botones vol2_0
   - first:
-      213: 3099998601655886881
-    second: margarita_1
+      213: 242904864474794813
+    second: Botones vol2_1
   - first:
-      213: -3106765223704731922
-    second: margarita_2
+      213: 2357410699013606076
+    second: Botones vol2_2
+  - first:
+      213: -5174862937895023459
+    second: Botones vol2_3
+  - first:
+      213: 911932170902643324
+    second: Botones vol2_4
+  - first:
+      213: -6152252966357180342
+    second: Botones vol2_5
+  - first:
+      213: 4033775771274414325
+    second: Botones vol2_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 33
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: margarita_0
+      name: Botones vol2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 133
-        height: 150
+        x: 162
+        y: 616
+        width: 7
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f367821795dc5b00800000000000000
-      internalID: 818764077102228473
+      spriteID: 0e4e0a10902f796d0800000000000000
+      internalID: -2983650107613715232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: margarita_1
+      name: Botones vol2_1
       rect:
         serializedVersion: 2
-        x: 133
-        y: 0
-        width: 133
-        height: 150
+        x: 122
+        y: 506
+        width: 92
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12428efbd48650b20800000000000000
-      internalID: 3099998601655886881
+      spriteID: d3b0c31ffa8fe5300800000000000000
+      internalID: 242904864474794813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: margarita_2
+      name: Botones vol2_2
       rect:
         serializedVersion: 2
-        x: 266
-        y: 0
-        width: 133
-        height: 150
+        x: 221
+        y: 505
+        width: 92
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +190,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eeeda884d7d82e4d0800000000000000
-      internalID: -3106765223704731922
+      spriteID: cba49686a8437b020800000000000000
+      internalID: 2357410699013606076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botones vol2_3
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 510
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9cce6953913f28b0800000000000000
+      internalID: -5174862937895023459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botones vol2_4
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 396
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7227e15a75d7ac00800000000000000
+      internalID: 911932170902643324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botones vol2_5
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 395
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a40efebe58ece9aa0800000000000000
+      internalID: -6152252966357180342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botones vol2_6
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 400
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f8836e21b9daf730800000000000000
+      internalID: 4033775771274414325
       vertices: []
       indices: 
       edges: []
@@ -188,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5ab54cac47eddc74484831354a50d0f5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +298,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      margarita_0: 818764077102228473
-      margarita_1: 3099998601655886881
-      margarita_2: -3106765223704731922
+      Botones vol2_0: -2983650107613715232
+      Botones vol2_1: 242904864474794813
+      Botones vol2_2: 2357410699013606076
+      Botones vol2_3: -5174862937895023459
+      Botones vol2_4: 911932170902643324
+      Botones vol2_5: -6152252966357180342
+      Botones vol2_6: 4033775771274414325
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -52,4 +52,5 @@ public class PlantType : ScriptableObject
     [SerializeField] public Sprite[] plantSprites;
     [SerializeField] public Sprite deathSprite;
 
+    public GameObject refugeVisualPrefab;
 }

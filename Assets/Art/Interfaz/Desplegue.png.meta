@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 678d9af5cc9aa7f488a72b1b2f372f94
+guid: aabcc24cd2d75d14999d20053fc8f910
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 818764077102228473
-    second: margarita_0
+      213: 7387406086803129352
+    second: Desplegue_0
   - first:
-      213: 3099998601655886881
-    second: margarita_1
+      213: -193463046756754863
+    second: Desplegue_1
   - first:
-      213: -3106765223704731922
-    second: margarita_2
+      213: 8047315497398676718
+    second: Desplegue_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 33
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: margarita_0
+      name: Desplegue_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 133
-        height: 150
+        x: 122
+        y: 396
+        width: 92
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f367821795dc5b00800000000000000
-      internalID: 818764077102228473
+      spriteID: 804857f12b6558660800000000000000
+      internalID: 7387406086803129352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: margarita_1
+      name: Desplegue_1
       rect:
         serializedVersion: 2
-        x: 133
-        y: 0
-        width: 133
-        height: 150
+        x: 222
+        y: 395
+        width: 92
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12428efbd48650b20800000000000000
-      internalID: 3099998601655886881
+      spriteID: 15a16ec426ea05df0800000000000000
+      internalID: -193463046756754863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: margarita_2
+      name: Desplegue_2
       rect:
         serializedVersion: 2
-        x: 266
-        y: 0
-        width: 133
-        height: 150
+        x: 327
+        y: 400
+        width: 82
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eeeda884d7d82e4d0800000000000000
-      internalID: -3106765223704731922
+      spriteID: eeca1f1fececdaf60800000000000000
+      internalID: 8047315497398676718
       vertices: []
       indices: 
       edges: []
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5ab54cac47eddc74484831354a50d0f5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      margarita_0: 818764077102228473
-      margarita_1: 3099998601655886881
-      margarita_2: -3106765223704731922
+      Desplegue_0: 7387406086803129352
+      Desplegue_1: -193463046756754863
+      Desplegue_2: 8047315497398676718
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

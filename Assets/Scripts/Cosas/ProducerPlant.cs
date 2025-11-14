@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class ProducerPlant : Plant
 {
-
     public override void ApplyDailyEffect()
     {
         if (currentGrowth == GrowthState.madura && !isDeath && currentHealth!=Health.mala && !hasProduct)
         {
-            ProduceCycle();
+            if (parentPlot.IsPollinated)
+            {
+                ProduceCycle();
+            }
         }
     }
 

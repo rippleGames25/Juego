@@ -82,6 +82,8 @@ public class PlotsManager : MonoBehaviour
 
         // Retirar efectos de la planta
         if (plotToDeath.currentPlant.plantData.category == PlantCategory.ProvidesShade) RemoveShade(plotToDeath.gridCoordinates);
+        if (plotToDeath.currentPlant.plantData.category == PlantCategory.PollinatorAttractor) RemovePollination(plotToDeath.gridCoordinates);
+        if (plotToDeath.currentPlant.plantData.category == PlantCategory.WildlifeRefuge) RemoveRefuge(plotToDeath.gridCoordinates);
 
         GameManager.Instance.AddPenalty(1);
         Debug.Log("Se ha restado 1 pétalo de tu economía total");
@@ -249,6 +251,107 @@ public class PlotsManager : MonoBehaviour
 
     #endregion
 
+    #region Pollinator Methods
+    public void GeneratePollination(Vector2Int _plantCoordinates)
+    {
+        int x = _plantCoordinates.x;
+        int y = _plantCoordinates.y;
+        int sizeX = plotGrid.GetLength(0);
+        int sizeY = plotGrid.GetLength(1);
+
+        List<Vector2Int> neighbors = new List<Vector2Int>
+    {
+        new Vector2Int(x - 1, y), // Izquierda
+        new Vector2Int(x + 1, y), // Derecha
+        new Vector2Int(x, y - 1), // Abajo
+        new Vector2Int(x, y + 1)  // Arriba
+    };
+
+        foreach (var coord in neighbors)
+        {
+            if (coord.x >= 0 && coord.x < sizeX && coord.y >= 0 && coord.y < sizeY)
+            {
+                plotGrid[coord.x, coord.y].AddPollinatorSource();
+            }
+        }
+    }
+
+    public void RemovePollination(Vector2Int _plantCoordinates)
+    {
+        int x = _plantCoordinates.x;
+        int y = _plantCoordinates.y;
+        int sizeX = plotGrid.GetLength(0);
+        int sizeY = plotGrid.GetLength(1);
+
+        List<Vector2Int> neighbors = new List<Vector2Int>
+    {
+        new Vector2Int(x - 1, y), // Izquierda
+        new Vector2Int(x + 1, y), // Derecha
+        new Vector2Int(x, y - 1), // Abajo
+        new Vector2Int(x, y + 1)  // Arriba
+    };
+
+        foreach (var coord in neighbors)
+        {
+            if (coord.x >= 0 && coord.x < sizeX && coord.y >= 0 && coord.y < sizeY)
+            {
+                plotGrid[coord.x, coord.y].RemovePollinatorSource();
+            }
+        }
+    }
+
+    #endregion
+
+    #region Wildlife Refuge Methods
+    public void GenerateRefuge(Vector2Int _plantCoordinates)
+    {
+        int x = _plantCoordinates.x;
+        int y = _plantCoordinates.y;
+        int sizeX = plotGrid.GetLength(0);
+        int sizeY = plotGrid.GetLength(1);
+
+        List<Vector2Int> neighbors = new List<Vector2Int>
+    {
+        new Vector2Int(x - 1, y), // Izquierda
+        new Vector2Int(x + 1, y), // Derecha
+        new Vector2Int(x, y - 1), // Abajo
+        new Vector2Int(x, y + 1)  // Arriba
+    };
+
+        foreach (var coord in neighbors)
+        {
+            if (coord.x >= 0 && coord.x < sizeX && coord.y >= 0 && coord.y < sizeY)
+            {
+                plotGrid[coord.x, coord.y].AddRefugeSource();
+            }
+        }
+    }
+
+    public void RemoveRefuge(Vector2Int _plantCoordinates)
+    {
+        int x = _plantCoordinates.x;
+        int y = _plantCoordinates.y;
+        int sizeX = plotGrid.GetLength(0);
+        int sizeY = plotGrid.GetLength(1);
+
+        List<Vector2Int> neighbors = new List<Vector2Int>
+    {
+        new Vector2Int(x - 1, y), // Izquierda
+        new Vector2Int(x + 1, y), // Derecha
+        new Vector2Int(x, y - 1), // Abajo
+        new Vector2Int(x, y + 1)  // Arriba
+    };
+
+        foreach (var coord in neighbors)
+        {
+            if (coord.x >= 0 && coord.x < sizeX && coord.y >= 0 && coord.y < sizeY)
+            {
+                plotGrid[coord.x, coord.y].RemoveRefugeSource();
+            }
+        }
+    }
+
+    #endregion
     #region Métodos privados
 
     public IEnumerator AnimateDailyConsumptionAndConsume()

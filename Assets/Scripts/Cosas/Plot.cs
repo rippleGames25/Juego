@@ -35,6 +35,13 @@ public class Plot : MonoBehaviour
     [SerializeField] private SolarExposure initialSolarExposure; 
     [SerializeField] private int shadeSourceCount = 0; // Contador de plantas que dan sombra a esta parcela
 
+    [Header("Gestion de Fauna")]
+    [SerializeField] private int pollinatorSourceCount = 0;
+    [SerializeField] private int refugeSourceCount = 0;
+
+    public bool IsPollinated => pollinatorSourceCount > 0;
+    public bool IsProtected => pollinatorSourceCount > 0;
+
     [Header("Visual")]
     [SerializeField] private List<Sprite> solarExposurePlot = new List<Sprite> ();
     [SerializeField] public GameObject selectionBorder;
@@ -43,6 +50,11 @@ public class Plot : MonoBehaviour
     [SerializeField] private Image changeImage;
     [SerializeField] private Sprite waterIcon;
     [SerializeField] private Sprite fertilizerIcon;
+
+    [Header("Visual Effects (Prefabs)")]
+    [SerializeField] private GameObject pollinatorVisualPrefab;
+    private GameObject currentPollinatorVisual;
+
 
     // Evento para actualizar información de parcela estando abierta
     public event Action<Plot> OnPlotDataUpdated;
@@ -132,6 +144,7 @@ public class Plot : MonoBehaviour
         this.isPlanted = newIsPlanted;
     }
 
+    #region Plant Effects
     public void AddShadeSource()
     {
         shadeSourceCount++;
@@ -170,6 +183,46 @@ public class Plot : MonoBehaviour
 
         UpdatePlotSolarExposureVisuals();
     }
+
+    public void AddPollinatorSource()
+    {
+        pollinatorSourceCount++;
+
+        if (pollinatorSourceCount == 1 && currentPollinatorVisual == null)
+        {
+            // Instanciamos el prefab como hijo de esta parcela
+            currentPollinatorVisual = Instantiate(pollinatorVisualPrefab, transform.position, Quaternion.identity, this.transform);
+        }
+    }
+
+    public void RemovePollinatorSource()
+    {
+        if (pollinatorSourceCount > 0)
+        {
+            pollinatorSourceCount--;
+
+            // Si el contandor llega a cero
+            if (pollinatorSourceCount == 0 && currentPollinatorVisual != null)
+            {
+                Destroy(currentPollinatorVisual);
+            }
+        }
+    }
+
+    public void AddRefugeSource()
+    {
+        refugeSourceCount++;
+    }
+
+    public void RemoveRefugeSource()
+    {
+        if (refugeSourceCount > 0)
+        {
+            refugeSourceCount--;
+        }
+    }
+
+    #endregion
 
     // Metodo que define que accion se realiza sobre la parcela según la herramienta equipada
     public void SelectPlot()
@@ -292,6 +345,16 @@ public class Plot : MonoBehaviour
                 PlotsManager.Instance.RemoveShade(gridCoordinates);
             }
 
+            if (currentPlant.plantData.category == PlantCategory.PollinatorAttractor)
+            {
+                PlotsManager.Instance.RemovePollination(gridCoordinates);
+            }
+
+            if (currentPlant.plantData.category == PlantCategory.WildlifeRefuge)
+            {
+                PlotsManager.Instance.RemoveRefuge(gridCoordinates);
+            }
+
             GameManager.Instance.CurrentMoney += (currentPlant.plantData.price) / 2; // Gana la mitad de lo que vale la planta
         }
 
@@ -310,7 +373,8 @@ public class Plot : MonoBehaviour
         switch (plantType)
         {
             case PlantCategory.PollinatorAttractor:
-                // Atraer polinizadores
+                // Atraer polinizadores a parcelas adyacentes
+                PlotsManager.Instance.GeneratePollination(this.gridCoordinates);
 
                 break;
 
@@ -325,8 +389,8 @@ public class Plot : MonoBehaviour
                 break;
 
             case PlantCategory.WildlifeRefuge:
-                // Instanciar fauna
-
+                // Instanciar fauna en parcelas adyacentes
+                PlotsManager.Instance.GenerateRefuge(this.gridCoordinates);
                 break;
         }
     }
