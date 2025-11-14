@@ -1,6 +1,7 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;              // ‚Üê para las corutinas
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -17,7 +18,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
 
     // Panel del Dia
-    [Header("Resumen DÌa")]
+    [Header("Resumen D√≠a")]
     [SerializeField] private TextMeshProUGUI summaryBaseIncomeText;
     [SerializeField] private TextMeshProUGUI summaryQuantityBonusText;
     [SerializeField] private TextMeshProUGUI summaryMaturityBonusText;
@@ -31,7 +32,7 @@ public class HUDUI : MonoBehaviour
 
     // Sistema de Strikes
     [Header("Strikes")]
-    [SerializeField] private Image[] strikeIcons; // Array de 5 im·genes
+    [SerializeField] private Image[] strikeIcons; // Array de 5 im√°genes
     [SerializeField] private Color strikeColor_Empty = Color.gray;
     [SerializeField] private Color strikeColor_Normal = Color.yellow;
     [SerializeField] private Color strikeColor_Permanent = Color.red;
@@ -72,11 +73,15 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject plantTypeInfoPanel;
     [SerializeField] private TextMeshProUGUI plantTypeName;
 
+    [Header("Transici√≥n de D√≠a")]
+    [SerializeField] private Image dayTransitionPanel;      // panel blanco que tapa todo
+    [SerializeField] private TMP_Text dayTransitionText;    // texto "D√≠a X"
+    [SerializeField] private float dayFadeDuration = 0.4f;  // tiempo de fade in/out
+    [SerializeField] private float dayHoldDuration = 0.3f;  // tiempo en blanco
+
     [SerializeField] GameObject toolsRoot;
     [SerializeField] GameObject plotsGrid;
     private Plot currentlySelectedPlot;
-
-
     #endregion
 
     private void Start()
@@ -93,7 +98,7 @@ public class HUDUI : MonoBehaviour
         UpdateDayText(GameManager.Instance.CurrentDay);
         UpdateBiodiversityText(GameManager.Instance.currentBiodiversity);
 
-        // SubscripciÛn a eventos
+        // Subscripci√≥n a eventos
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnMoneyChanged += UpdateMoneyText;
@@ -105,7 +110,7 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnPlantInfoClick += ShownPlantTypeInfoPanel;
             GameManager.Instance.OnDayEnd += ShowDaySummaryPanel;
 
-            // SuscripciÛn a Strikes
+            // Suscripci√≥n a Strikes
             GameManager.Instance.OnStrikesChanged += UpdateStrikesVisuals;
         }
 
@@ -123,8 +128,24 @@ public class HUDUI : MonoBehaviour
             UpdateCurrentWeatherDisplay(WeatherManager.Instance.currentWeather);
             UpdateForecastDisplay(WeatherManager.Instance.forecast);
         }
-    }
 
+        // Inicializar transici√≥n de d√≠a (invisible)
+        if (dayTransitionPanel != null)
+        {
+            var c = dayTransitionPanel.color;
+            c.a = 0f;
+            dayTransitionPanel.color = c;
+            dayTransitionPanel.gameObject.SetActive(false);
+        }
+
+        if (dayTransitionText != null)
+        {
+            var tc = dayTransitionText.color;
+            tc.a = 0f;
+            dayTransitionText.color = tc;
+            dayTransitionText.gameObject.SetActive(false);
+        }
+    }
 
     #region Metodos para botones
     public void PauseButton()
@@ -161,12 +182,12 @@ public class HUDUI : MonoBehaviour
         GameManager.Instance.EndDay();
     }
 
-
     public void NextButton()
     {
         SFXManager.Instance?.PlayClick();
-        GameManager.Instance.StartNewDay();
-        summaryPanel.SetActive(false);
+        // Antes: StartNewDay directo + cerrar summary.
+        // Ahora: animaci√≥n de transici√≥n de d√≠a.
+        StartCoroutine(DayTransitionRoutine());
     }
 
     public void ShowDaySummaryPanel()
@@ -195,7 +216,7 @@ public class HUDUI : MonoBehaviour
         if (summaryQuantityBonusText) summaryQuantityBonusText.text = $"Bono por Cantidad: {plantBonus}";
         if (summaryMaturityBonusText) summaryMaturityBonusText.text = $"Bono de Madurez: {bonusData.madurityBonus}";
         if (summaryDiversityBonusText) summaryDiversityBonusText.text = $"Bono de Biodiversidad: {bonusData.diversityBonus}";
-        if (summarySolarBonusText) summarySolarBonusText.text = $"Bono ExposiciÛn Solar: {bonusData.solarExposureBonus}";
+        if (summarySolarBonusText) summarySolarBonusText.text = $"Bono Exposici√≥n Solar: {bonusData.solarExposureBonus}";
         if (summaryDeathPenaltyText) summaryDeathPenaltyText.text = $"Plantas Muertas: -{penalties}";
 
         // Calcular y asignar total
@@ -209,13 +230,13 @@ public class HUDUI : MonoBehaviour
         {
             if (bailoutIsPending)
             {
-                summaryBailoutText.text = "°Aviso grave!\nSe te otorgar·n 3 pÈtalos para el siguiente dÌa";
-                summaryBailoutText.gameObject.SetActive(true); // Lo mostramos
+                summaryBailoutText.text = "¬°Aviso grave!\nSe te otorgar√°n 3 p√©talos para el siguiente d√≠a";
+                summaryBailoutText.gameObject.SetActive(true);
             }
             else
             {
-                summaryBailoutText.text = ""; // Lo vaciamos
-                summaryBailoutText.gameObject.SetActive(false); // Lo ocultamos
+                summaryBailoutText.text = "";
+                summaryBailoutText.gameObject.SetActive(false);
             }
         }
 
@@ -227,7 +248,6 @@ public class HUDUI : MonoBehaviour
         if (currentlySelectedPlot != null && currentlySelectedPlot.isPlanted)
         {
             PlantType type = currentlySelectedPlot.currentPlant.plantData;
-
             ShownPlantTypeInfoPanel(type);
         }
     }
@@ -257,7 +277,6 @@ public class HUDUI : MonoBehaviour
         SFXManager.Instance?.PlayClick();
         plantTypeInfoPanel.SetActive(false);
     }
-
     #endregion
 
     #region Metodos para Paneles de Info Parcelas
@@ -272,10 +291,10 @@ public class HUDUI : MonoBehaviour
         currentlySelectedPlot = plot;
         currentlySelectedPlot.OnPlotDataUpdated += UpdatePlotInfoPanelText;
 
-        ShowPlotInfoPanel(plot); 
+        ShowPlotInfoPanel(plot);
         if (plot.isPlanted)
         {
-            ShowPlantInfoPanel(plot.currentPlant); 
+            ShowPlantInfoPanel(plot.currentPlant);
         }
         else
         {
@@ -324,21 +343,19 @@ public class HUDUI : MonoBehaviour
         typeText.text = plant.plantData.category.ToString();
 
         // Estado
-        lifeDaysText.text = $"DÌas de vida: {plant.lifeDays}";
+        lifeDaysText.text = $"D√≠as de vida: {plant.lifeDays}";
         growthState.text = $"Crecimiento: {plant.currentGrowth}";
         health.text = $"Salud: {plant.currentHealth}";
 
         // Necesidades
         waterDemand.text = $"Agua: {plant.plantData.waterDemand}";
         fertilizerDemand.text = $"Abono: {plant.plantData.fertilizerDemand}";
-        sunDemand.text = $"ExposiciÛn: {plant.plantData.solarExposureDemand}";
+        sunDemand.text = $"Exposici√≥n: {plant.plantData.solarExposureDemand}";
 
         plantInfoPanel.SetActive(true);
     }
-
     #endregion
 
-    // mÈtodo para pintar los Strikes 
     #region Strikes UI
     private void UpdateStrikesVisuals(int normalStrikes, int permanentStrikes)
     {
@@ -350,38 +367,35 @@ public class HUDUI : MonoBehaviour
         {
             if (i < permanentStrikes)
             {
-                // Strikes Permanentes (Rojos)
                 strikeIcons[i].color = strikeColor_Permanent;
             }
             else if (i < totalStrikes)
             {
-                // Strikes Normales (Amarillos)
                 strikeIcons[i].color = strikeColor_Normal;
             }
             else
             {
-                // VacÌos (Gris)
                 strikeIcons[i].color = strikeColor_Empty;
             }
         }
     }
     #endregion
 
-    #region ActualizaciÛn UI
+    #region Actualizaci√≥n UI
     private void UpdateForecastDisplay(DailyWeather[] forecastArray)
     {
         int currentDay = GameManager.Instance.CurrentDay;
 
         for (int i = 0; i < forecastText.Count; i++)
         {
-            forecastText[i].text = $"DÌa {currentDay + i + 1}";
+            forecastText[i].text = $"D√≠a {currentDay + i + 1}";
         }
 
         for (int i = 0; i < forecastArray.Length && i < forecastImages.Count; i++)
         {
             DailyWeather weather = forecastArray[i];
             int idx = ((int)weather.type * WeatherManager.Instance.maxIntensity) + (weather.intensity - 1);
-            forecastImages[i].sprite = forecastSprites[idx]; // Actualizamos la imagen
+            forecastImages[i].sprite = forecastSprites[idx];
         }
     }
 
@@ -421,6 +435,109 @@ public class HUDUI : MonoBehaviour
         if (SoftwareCursorManager.Instance != null)
         {
             SoftwareCursorManager.Instance.SetTool(_type);
+        }
+    }
+    #endregion
+
+    #region Transici√≥n de D√≠a
+    private IEnumerator DayTransitionRoutine()
+    {
+        if (dayTransitionPanel != null) dayTransitionPanel.gameObject.SetActive(true);
+        if (dayTransitionText != null)
+        {
+            dayTransitionText.gameObject.SetActive(true);
+            dayTransitionText.text = $"D√≠a {GameManager.Instance.CurrentDay + 1}";
+        }
+
+        Color panelColor = dayTransitionPanel ? dayTransitionPanel.color : Color.white;
+        Color textColor = dayTransitionText ? dayTransitionText.color : Color.white;
+
+        float t = 0f;
+        float startA_panel = panelColor.a;
+        float startA_text = textColor.a;
+
+        // Fade-in a blanco
+        while (t < dayFadeDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            float k = Mathf.Clamp01(t / dayFadeDuration);
+
+            if (dayTransitionPanel != null)
+            {
+                panelColor.a = Mathf.Lerp(startA_panel, 1f, k);
+                dayTransitionPanel.color = panelColor;
+            }
+
+            if (dayTransitionText != null)
+            {
+                textColor.a = Mathf.Lerp(startA_text, 1f, k);
+                dayTransitionText.color = textColor;
+            }
+
+            // Cuando ya casi est√° blanco, quitamos el summary para que no se vea "desaparecer"
+            if (k >= 1f && summaryPanel.activeSelf)
+                summaryPanel.SetActive(false);
+
+            yield return null;
+        }
+
+        // Asegurar full blanco
+        if (dayTransitionPanel != null)
+        {
+            panelColor.a = 1f;
+            dayTransitionPanel.color = panelColor;
+        }
+        if (dayTransitionText != null)
+        {
+            textColor.a = 1f;
+            dayTransitionText.color = textColor;
+        }
+        if (summaryPanel.activeSelf) summaryPanel.SetActive(false);
+
+        // Mantener un pel√≠n
+        yield return new WaitForSecondsRealtime(dayHoldDuration);
+
+        // Nuevo d√≠a
+        GameManager.Instance.StartNewDay();
+
+        // Fade-out
+        t = 0f;
+        startA_panel = panelColor.a;
+        startA_text = textColor.a;
+
+        while (t < dayFadeDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            float k = Mathf.Clamp01(t / dayFadeDuration);
+            float a = Mathf.Lerp(startA_panel, 0f, k);
+
+            if (dayTransitionPanel != null)
+            {
+                panelColor.a = a;
+                dayTransitionPanel.color = panelColor;
+            }
+
+            if (dayTransitionText != null)
+            {
+                textColor.a = a;
+                dayTransitionText.color = textColor;
+            }
+
+            yield return null;
+        }
+
+        // Dejarlo limpio
+        if (dayTransitionPanel != null)
+        {
+            panelColor.a = 0f;
+            dayTransitionPanel.color = panelColor;
+            dayTransitionPanel.gameObject.SetActive(false);
+        }
+        if (dayTransitionText != null)
+        {
+            textColor.a = 0f;
+            dayTransitionText.color = textColor;
+            dayTransitionText.gameObject.SetActive(false);
         }
     }
     #endregion

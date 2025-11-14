@@ -9,6 +9,7 @@ TagManager:
   - Tool
   - Boton
   - Plague
+  - UIButton
   layers:
   - Default
   - TransparentFX
