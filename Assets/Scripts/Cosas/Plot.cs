@@ -40,7 +40,7 @@ public class Plot : MonoBehaviour
     [SerializeField] private int refugeSourceCount = 0;
 
     public bool IsPollinated => pollinatorSourceCount > 0;
-    public bool IsProtected => pollinatorSourceCount > 0;
+    public bool IsProtected => refugeSourceCount > 0;
 
     [Header("Visual")]
     [SerializeField] private List<Sprite> solarExposurePlot = new List<Sprite> ();
@@ -187,12 +187,7 @@ public class Plot : MonoBehaviour
     public void AddPollinatorSource()
     {
         pollinatorSourceCount++;
-
-        if (pollinatorSourceCount == 1 && currentPollinatorVisual == null)
-        {
-            // Instanciamos el prefab como hijo de esta parcela
-            currentPollinatorVisual = Instantiate(pollinatorVisualPrefab, transform.position, Quaternion.identity, this.transform);
-        }
+        UpdatePollinatorVisual();
     }
 
     public void RemovePollinatorSource()
@@ -200,13 +195,8 @@ public class Plot : MonoBehaviour
         if (pollinatorSourceCount > 0)
         {
             pollinatorSourceCount--;
-
-            // Si el contandor llega a cero
-            if (pollinatorSourceCount == 0 && currentPollinatorVisual != null)
-            {
-                Destroy(currentPollinatorVisual);
-            }
         }
+        UpdatePollinatorVisual();
     }
 
     public void AddRefugeSource()
@@ -366,6 +356,8 @@ public class Plot : MonoBehaviour
         // Variables parcela
         this.currentPlant = null;
         this.isPlanted = false;
+
+        UpdatePollinatorVisual();
     }
 
     public void UpdateEnviroment(PlantCategory plantType)
@@ -547,6 +539,43 @@ public class Plot : MonoBehaviour
     {
         int max = solarExposurePlot.Count;
         sr.sprite = solarExposurePlot[Math.Min((int)this.currentSolarExposure, max)];
+    }
+
+    public void UpdatePollinatorVisual()
+    {
+        bool isPollinated = pollinatorSourceCount > 0;
+
+        bool hasValidPlant = false;
+        if (isPlanted && currentPlant != null)
+        {
+            // Si es Productora, el visual es válido desde que brota
+            if (currentPlant is ProducerPlant && currentPlant.currentGrowth >= GrowthState.brote)
+            {
+                hasValidPlant = true;
+            }
+            // Si es Atractora, el visual es válido cuando madura
+            else if (currentPlant is PollinatorAttractorPlant && currentPlant.currentGrowth == GrowthState.madura)
+            {
+                hasValidPlant = true;
+            }
+        }
+
+        bool isPlagued = (isPlanted && currentPlant != null && currentPlant.isPlagued);
+
+        if (isPollinated && hasValidPlant && !isPlagued)
+        {
+            if (currentPollinatorVisual == null)
+            {
+                currentPollinatorVisual = Instantiate(pollinatorVisualPrefab, transform.position, Quaternion.identity, this.transform);
+            }
+        }
+        else
+        {
+            if (currentPollinatorVisual != null)
+            {
+                Destroy(currentPollinatorVisual);
+            }
+        }
     }
 
     public override string ToString()

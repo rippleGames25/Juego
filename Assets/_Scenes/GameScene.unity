@@ -12897,6 +12897,8 @@ MonoBehaviour:
   columns: 5
   spacing: 1.1
   currentSelectedPlot: {fileID: 0}
+  dailyPlagueOutbreakChance: 0.1
+  plaguePrefab: {fileID: 5124270658393400389, guid: 8fa48891eafb6494bbefafa94872107a, type: 3}
 --- !u!4 &1907678813
 Transform:
   m_ObjectHideFlags: 0

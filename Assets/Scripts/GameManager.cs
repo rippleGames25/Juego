@@ -257,9 +257,10 @@ public class GameManager : MonoBehaviour
         }
 
         HandleWeatherEvent();
-        PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather);
 
+        PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather);
         PlotsManager.Instance.DailyUpdatePlantsGrowthAndEffects();
+        PlotsManager.Instance.DailyPlagueUpdate();
 
         ApplyDailyResourcesAndPenalties();
 
@@ -387,6 +388,8 @@ public class GameManager : MonoBehaviour
 
         plot.currentPlant= newPlant; // Asociamos la planta a la parcela
         plot.isPlanted = true;
+
+        plot.UpdatePollinatorVisual();
 
         CurrentTool = ToolType.None; // Desequipamos la semilla
         SFXManager.Instance?.PlayPlantar();

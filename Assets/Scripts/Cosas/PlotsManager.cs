@@ -27,6 +27,10 @@ public class PlotsManager : MonoBehaviour
 
     public Plot currentSelectedPlot;
 
+    [Header("Plagas")]
+    [SerializeField] [Range(0f, 1f)] private float dailyPlagueOutbreakChance = 0.1f; // 10% de probabilidad de un brote nuevo cada día
+    [SerializeField] private GameObject plaguePrefab;
+
     // Events
     public event Action<Plot> OnPlotSelected;
     public event Action OnPlotUnselected;
@@ -36,6 +40,7 @@ public class PlotsManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            plotGrid = new Plot[rows, columns]; // Inicializar Array
         }
         else
         {
@@ -43,10 +48,6 @@ public class PlotsManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        plotGrid = new Plot[rows, columns]; // Inicializar Array
-    }
 
     #region Métodos publicos
 
@@ -73,6 +74,35 @@ public class PlotsManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private List<Plot> GetNeighborPlots(Vector2Int coords)
+    {
+        List<Plot> neighbors = new List<Plot>();
+        int x = coords.x;
+        int y = coords.y;
+        int sizeX = plotGrid.GetLength(0);
+        int sizeY = plotGrid.GetLength(1);
+
+        Vector2Int[] neighborCoords = new Vector2Int[]
+        {
+            new Vector2Int(x - 1, y), // Izquierda
+            new Vector2Int(x + 1, y), // Derecha
+            new Vector2Int(x, y - 1), // Abajo
+            new Vector2Int(x, y + 1)  // Arriba
+        };
+
+        foreach (var coord in neighborCoords)
+        {
+            if (coord.x >= 0 && coord.x < sizeX && coord.y >= 0 && coord.y < sizeY)
+            {
+                if (plotGrid[coord.x, coord.y] != null)
+                {
+                    neighbors.Add(plotGrid[coord.x, coord.y]);
+                }
+            }
+        }
+        return neighbors;
     }
 
     public void PlantsDeath(Plot plotToDeath)
@@ -347,6 +377,91 @@ public class PlotsManager : MonoBehaviour
             if (coord.x >= 0 && coord.x < sizeX && coord.y >= 0 && coord.y < sizeY)
             {
                 plotGrid[coord.x, coord.y].RemoveRefugeSource();
+            }
+        }
+    }
+
+    #endregion
+
+    #region Plague Methods
+    public void DailyPlagueUpdate()
+    {
+        // 1. Vemos si las plagas matan alguna planta
+        foreach (Plot plot in plotGrid)
+        {
+            if (!plot.isPlanted || plot.currentPlant != null) continue;
+
+            if (plot.IsProtected)
+            {
+                plot.currentPlant.CurePlague();
+            }
+            else
+            {
+                // No está protegida
+                bool plantDied = plot.currentPlant.UpdatePlagueStatus();
+                if (plantDied)
+                {
+                    PlantsDeath(plot);
+                }
+            }
+        }
+
+        // 2. Extender plagas existentes
+        HashSet<Plant> plantsToInfect = new HashSet<Plant>();
+
+        foreach (Plot plot in plotGrid)
+        {
+            // Buscamos una planta que sea un foco de infección
+            if (plot != null && plot.isPlanted && plot.currentPlant != null &&
+                plot.currentPlant.isPlagued && !plot.currentPlant.isDeath)
+            {
+                // Revisamos sus vecinos
+                List<Plot> neighbors = GetNeighborPlots(plot.gridCoordinates);
+
+                foreach (Plot neighborPlot in neighbors)
+                {
+                    if (neighborPlot.isPlanted && neighborPlot.currentPlant != null &&      // 1. Hay planta
+                        !neighborPlot.currentPlant.isDeath &&                               // 2. No está muerta
+                        !neighborPlot.currentPlant.isPlagued &&                             // 3. No está ya infectada
+                        !neighborPlot.IsProtected &&                                        // 4. No esta protegida
+                        neighborPlot.currentPlant.plantData == plot.currentPlant.plantData) // 5. Es de la misma especie
+                    {
+                        Debug.Log($"[Plaga] Propagación con ÉXITO de {plot.gridCoordinates} a {neighborPlot.gridCoordinates}.");
+                        plantsToInfect.Add(neighborPlot.currentPlant);
+                    }
+                }
+            }
+        }
+
+        // Infectamos plantas de la lista
+        foreach (Plant plant in plantsToInfect)
+        {
+            plant.InfectWithPlague(plaguePrefab);
+        }
+
+        // 3. Posible nuevo brote (aleatorio)
+        if (UnityEngine.Random.Range(0f, 1f) <= dailyPlagueOutbreakChance)
+        {
+            // Buscamos plantas que se puedan infectar
+            List<Plot> possibleTargets = new List<Plot>(); 
+            foreach (Plot plot in plotGrid)
+            {
+                // Debe tener una planta, no estar muerta, no estar infectada Y no estar protegida
+                if (plot != null && plot.isPlanted && plot.currentPlant != null &&
+                    !plot.currentPlant.isDeath &&
+                    !plot.currentPlant.isPlagued &&
+                    !plot.IsProtected)
+                {
+                    possibleTargets.Add(plot);
+                }
+            }
+
+            if (possibleTargets.Count > 0)
+            {
+                // Infectar una planta aleatoria de la lista de objetivos
+                Plot target = possibleTargets[UnityEngine.Random.Range(0, possibleTargets.Count)];
+                target.currentPlant.InfectWithPlague(plaguePrefab);
+                Debug.LogWarning($"Ha surgido un nuevo brote de plaga en la parcela {target.gridCoordinates}");
             }
         }
     }

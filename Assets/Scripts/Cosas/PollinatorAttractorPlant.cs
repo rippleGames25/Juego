@@ -8,6 +8,7 @@ public class PollinatorAttractorPlant : Plant
         {
             // Llama a la lógica ambiental (Atraer Polinizadores) una sola vez al madurar
             parentPlot.UpdateEnviroment(plantData.category);
+            parentPlot.AddPollinatorSource();
             hasAppliedEnvironmentEffect = true;
         }
     }

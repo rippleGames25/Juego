@@ -8,6 +8,7 @@ TagManager:
   - Plot
   - Tool
   - Boton
+  - Plague
   layers:
   - Default
   - TransparentFX

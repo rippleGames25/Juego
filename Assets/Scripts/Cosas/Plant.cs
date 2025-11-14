@@ -30,9 +30,14 @@ public class Plant : MonoBehaviour
 
     protected Plot parentPlot;
 
-    // Producer Type
+    [Header("Plantas productoras")]
     [SerializeField] protected int produceDays = 0;
     [SerializeField] public bool hasProduct = false;
+
+
+    [Header("Plagas")]
+    public bool isPlagued = false;
+    private GameObject plagueVisualInstance;
 
     // Visuals
     protected SpriteRenderer spriteRenderer;
@@ -47,6 +52,7 @@ public class Plant : MonoBehaviour
         {
             Debug.LogError("Plant: no se encontro el spriterenderer");
         }
+
     }
 
     #region Public methods
@@ -76,6 +82,8 @@ public class Plant : MonoBehaviour
     // Metodo que Incrementa el estado de salud
     public void IncreaseHealth()
     {
+        if (isPlagued) return; // No puede curarse si está infectada
+
         if (currentHealth == Health.mala)
         {
             currentHealth = Health.moderada;
@@ -142,6 +150,8 @@ public class Plant : MonoBehaviour
             GameManager.Instance.CurrentBiodiversity++; // Sumamos uno a la biodiversidad
             SFXManager.Instance?.PlayCrece();
             Debug.Log($"La planta {plantData.plantName} ha brotado.");
+
+            parentPlot.UpdatePollinatorVisual();
         } 
         else if (currentGrowth == GrowthState.brote && lifeDays >= plantData.timeToGrow)
         {
@@ -155,6 +165,7 @@ public class Plant : MonoBehaviour
             SFXManager.Instance?.PlayCrece();
             Debug.Log($"La planta {plantData.plantName} ha madurado.");
 
+            parentPlot.UpdatePollinatorVisual();
         }
 
         UpdatePlantSprite();
@@ -168,30 +179,75 @@ public class Plant : MonoBehaviour
         return current == required;
     }
 
-    public virtual void ApplyDailyEffect()
-    {
-
-    }
+    public virtual void ApplyDailyEffect() { }
 
     public void ForceKill()
     {
         isDeath = true;
         currentHealth = Health.mala;
+
+        if (plagueVisualInstance != null)
+        {
+            plagueVisualInstance.SetActive(false);
+        }
+
         UpdatePlantSprite();
         SFXManager.Instance?.PlayMarchita();
     }
 
     #endregion
 
+    #region Plague Methods
+    public void InfectWithPlague(GameObject prefab)
+    {
+        if (isPlagued || isDeath || prefab == null) return; // No infectar si ya lo está o está muerta
 
+        isPlagued = true;
+
+        plagueVisualInstance = Instantiate(prefab, transform.position, Quaternion.identity, this.transform);
+
+        parentPlot.UpdatePollinatorVisual();
+
+        Debug.Log($"La planta {plantData.plantName} ha sido infectada por una plaga");
+    }
+    public bool UpdatePlagueStatus()
+    {
+        if (!isPlagued || isDeath) return false;
+
+        bool didDie = DecreaseHealth();
+
+        return didDie;
+    }
+
+    public void CurePlague()
+    {
+        if (!isPlagued) return; // Si no está infectada, no hacer nada
+
+        isPlagued = false;
+
+        if (plagueVisualInstance != null)
+        {
+            Destroy(plagueVisualInstance);
+        }
+
+        parentPlot.UpdatePollinatorVisual();
+
+        Debug.Log($"La planta {plantData.plantName} ha sido curada de la plaga");
+    }
+    #endregion
 
     // Metodos de visualización
 
-    protected void UpdatePlantSprite()
+    protected virtual void UpdatePlantSprite()
     {
         if (isDeath) // Planta muerta
         {
             spriteRenderer.sprite = plantData.deathSprite;
+
+            if (plagueVisualInstance != null)
+            {
+                Destroy(plagueVisualInstance);
+            }
             return;
         }
 
