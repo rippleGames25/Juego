@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour
     public int lastDayPenalties { get; private set; }
     public int lastDayWaterIncome { get; private set; }
     public int lastDayFertilizerIncome { get; private set; }
+    public int lastDayBailoutIncome { get; private set; }
+
+    private int bailoutIncomeToday = 0;
+    private bool isBailoutPending = false;
+    public bool IsBailoutPending => isBailoutPending;
 
     [Header("Plantas")]
     [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.1f, -0.1f);
@@ -237,6 +242,16 @@ public class GameManager : MonoBehaviour
 
         CalculateEndOfDayBonuses();
 
+        if (CurrentBiodiversity == 0 && CurrentMoney < cheapestPlantPrice)
+        {
+            isBailoutPending = true;
+            Debug.LogWarning("[GameManager] BAILOUT PENDING! (Se mostrará en el resumen)");
+        }
+        else
+        {
+            isBailoutPending = false;
+        }
+
         OnDayEnd?.Invoke();
 
         isDayTransitioning = false;
@@ -248,7 +263,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("INICIO DE DÍA: Día " + CurrentDay);
 
         CheckDailyRachas(); // Comprueba si gana o pierde rachas
-        CheckForBailout();    // Comprueba si necesita el rescate
+        ApplyPendingBailout();
 
         // Comprueba Game Over antes de hacer nada
         if (CheckForGameOver())
@@ -522,17 +537,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CheckForBailout()
+    private void ApplyPendingBailout()
     {
-        if (CurrentBiodiversity == 0 && CurrentMoney < cheapestPlantPrice)
+        if (isBailoutPending)
         {
-            Debug.LogWarning("[GameManager] ¡BAILOUT! 0 plantas y 0 dinero.");
+            Debug.LogWarning("[GameManager] ¡BAILOUT APLICADO!");
 
-            // da el strike permanente
             AddStrike(true);
 
-            // da el dinero de rescate
             CurrentMoney += 3;
+
+            isBailoutPending = false;
         }
     }
 

@@ -24,6 +24,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI summaryDiversityBonusText;
     [SerializeField] private TextMeshProUGUI summarySolarBonusText;
     [SerializeField] private TextMeshProUGUI summaryDeathPenaltyText;
+    [SerializeField] private TextMeshProUGUI summaryBailoutText;
     [SerializeField] private TextMeshProUGUI summaryTotalIncomeText;
     [SerializeField] private TextMeshProUGUI summaryWaterIncomeText;
     [SerializeField] private TextMeshProUGUI summaryFertilizerIncomeText;
@@ -187,6 +188,8 @@ public class HUDUI : MonoBehaviour
         int waterIncome = GameManager.Instance.lastDayWaterIncome;
         int fertilizerIncome = GameManager.Instance.lastDayFertilizerIncome;
 
+        bool bailoutIsPending = GameManager.Instance.IsBailoutPending;
+
         // Asignar textos
         if (summaryBaseIncomeText) summaryBaseIncomeText.text = $"Ingreso base: {baseIncome}";
         if (summaryQuantityBonusText) summaryQuantityBonusText.text = $"Bono por Cantidad: {plantBonus}";
@@ -198,10 +201,23 @@ public class HUDUI : MonoBehaviour
         // Calcular y asignar total
         int total = baseIncome + plantBonus + bonusData.madurityBonus + bonusData.diversityBonus + bonusData.solarExposureBonus - penalties;
 
-        if (summaryTotalIncomeText) summaryTotalIncomeText.text = $"Total: {total}";
+        if (summaryTotalIncomeText) summaryTotalIncomeText.text = $"Total: +{total}";
 
         if (summaryWaterIncomeText) summaryWaterIncomeText.text = $"Agua Obtenida: {waterIncome}";
         if (summaryFertilizerIncomeText) summaryFertilizerIncomeText.text = $"Abono Obtenido: {fertilizerIncome}";
+        if (summaryBailoutText)
+        {
+            if (bailoutIsPending)
+            {
+                summaryBailoutText.text = "¡Aviso grave!\nSe te otorgarán 3 pétalos para el siguiente día";
+                summaryBailoutText.gameObject.SetActive(true); // Lo mostramos
+            }
+            else
+            {
+                summaryBailoutText.text = ""; // Lo vaciamos
+                summaryBailoutText.gameObject.SetActive(false); // Lo ocultamos
+            }
+        }
 
         summaryPanel.SetActive(true);
     }
