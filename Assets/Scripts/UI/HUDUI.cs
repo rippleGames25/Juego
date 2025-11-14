@@ -16,6 +16,18 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject summaryPanel;
     [SerializeField] private GameObject settingsPanel;
 
+    // Panel del Dia
+    [Header("Resumen Día")]
+    [SerializeField] private TextMeshProUGUI summaryBaseIncomeText;
+    [SerializeField] private TextMeshProUGUI summaryQuantityBonusText;
+    [SerializeField] private TextMeshProUGUI summaryMaturityBonusText;
+    [SerializeField] private TextMeshProUGUI summaryDiversityBonusText;
+    [SerializeField] private TextMeshProUGUI summarySolarBonusText;
+    [SerializeField] private TextMeshProUGUI summaryDeathPenaltyText;
+    [SerializeField] private TextMeshProUGUI summaryTotalIncomeText;
+    [SerializeField] private TextMeshProUGUI summaryWaterIncomeText;
+    [SerializeField] private TextMeshProUGUI summaryFertilizerIncomeText;
+
     // Sistema de Strikes
     [Header("Strikes")]
     [SerializeField] private Image[] strikeIcons; // Array de 5 imágenes
@@ -159,6 +171,38 @@ public class HUDUI : MonoBehaviour
     public void ShowDaySummaryPanel()
     {
         SFXManager.Instance?.PlayClick();
+
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("HUDUI: No se puede mostrar resumen, GameManager no encontrado.");
+            return;
+        }
+
+        // Coger los valores calculados del GameManager
+        int baseIncome = GameManager.Instance.lastDayBaseIncome;
+        int plantBonus = GameManager.Instance.lastDayPlantBonus;
+        DailyBonusData bonusData = GameManager.Instance.lastDayBonusData;
+        int penalties = GameManager.Instance.lastDayPenalties;
+
+        int waterIncome = GameManager.Instance.lastDayWaterIncome;
+        int fertilizerIncome = GameManager.Instance.lastDayFertilizerIncome;
+
+        // Asignar textos
+        if (summaryBaseIncomeText) summaryBaseIncomeText.text = $"Ingreso base: {baseIncome}";
+        if (summaryQuantityBonusText) summaryQuantityBonusText.text = $"Bono por Cantidad: {plantBonus}";
+        if (summaryMaturityBonusText) summaryMaturityBonusText.text = $"Bono de Madurez: {bonusData.madurityBonus}";
+        if (summaryDiversityBonusText) summaryDiversityBonusText.text = $"Bono de Biodiversidad: {bonusData.diversityBonus}";
+        if (summarySolarBonusText) summarySolarBonusText.text = $"Bono Exposición Solar: {bonusData.solarExposureBonus}";
+        if (summaryDeathPenaltyText) summaryDeathPenaltyText.text = $"Plantas Muertas: -{penalties}";
+
+        // Calcular y asignar total
+        int total = baseIncome + plantBonus + bonusData.madurityBonus + bonusData.diversityBonus + bonusData.solarExposureBonus - penalties;
+
+        if (summaryTotalIncomeText) summaryTotalIncomeText.text = $"Total: {total}";
+
+        if (summaryWaterIncomeText) summaryWaterIncomeText.text = $"Agua Obtenida: {waterIncome}";
+        if (summaryFertilizerIncomeText) summaryFertilizerIncomeText.text = $"Abono Obtenido: {fertilizerIncome}";
+
         summaryPanel.SetActive(true);
     }
 

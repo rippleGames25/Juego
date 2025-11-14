@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     private int currentMoney = 5;
     private int currentWater = 8;
     private int currentFertilizer = 8;
-    private const int BASE_INCOME_IF_PLANTED = 3;
+    private const int BASE_INCOME = 1;
     private const int AMOUNT_PER_PLANT = 1;
     [SerializeField] private int cheapestPlantPrice = 1;
     public const int IDX_PLANT_SPRITE = 7; // Indice de la imagen principal de la planta en el plantSprites
@@ -59,6 +59,16 @@ public class GameManager : MonoBehaviour
 
     private int maxBiodiversityAchieved = 0;
     private int maxMaturePlantsAchieved = 0;
+
+    private int penaltiesThisDay = 0;
+
+    // Para panel de final del dia
+    public DailyBonusData lastDayBonusData { get; private set; }
+    public int lastDayBaseIncome { get; private set; }
+    public int lastDayPlantBonus { get; private set; }
+    public int lastDayPenalties { get; private set; }
+    public int lastDayWaterIncome { get; private set; }
+    public int lastDayFertilizerIncome { get; private set; }
 
     [Header("Plantas")]
     [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.1f, -0.1f);
@@ -225,6 +235,8 @@ public class GameManager : MonoBehaviour
         // 2. Animación de consumo de recursos
         yield return PlotsManager.Instance.AnimateDailyConsumptionAndConsume(); ;
 
+        CalculateEndOfDayBonuses();
+
         OnDayEnd?.Invoke();
 
         isDayTransitioning = false;
@@ -249,7 +261,7 @@ public class GameManager : MonoBehaviour
 
         PlotsManager.Instance.DailyUpdatePlantsGrowthAndEffects();
 
-        DistributeDailyResources();
+        ApplyDailyResourcesAndPenalties();
 
         if (GameSessionStats.Instance != null)
         {
@@ -261,9 +273,8 @@ public class GameManager : MonoBehaviour
 
     public void ReportPlantDeath()
     {
-        // penalización de dinero
-        CurrentMoney -= 1;
-        Debug.Log("Se ha restado 1 pétalo por muerte de planta.");
+        // CurrentMoney -= 1;
+        // Debug.Log("Se ha restado 1 pétalo por muerte de planta.");
 
         // resetea la racha de días sin muerte
         daysWithoutDeathRacha = 0;
@@ -292,6 +303,11 @@ public class GameManager : MonoBehaviour
         OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
     }
 
+    public void AddPenalty(int amount)
+    {
+        penaltiesThisDay += amount;
+    }
+
     private void RemoveStrike()
     {
         if (normalStrikes > 0)
@@ -299,6 +315,32 @@ public class GameManager : MonoBehaviour
             normalStrikes--;
             Debug.Log($"[GameManager] ¡Strike Normal ELIMINADO por buen comportamiento! Quedan: {normalStrikes} Normales, {permanentStrikes} Permanentes.");
             OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
+        }
+    }
+
+    private void CalculateEndOfDayBonuses()
+    {
+        lastDayBaseIncome = BASE_INCOME;
+        lastDayPlantBonus = CurrentBiodiversity / 2;
+        lastDayBonusData = PlotsManager.Instance.GetDailyBonusData();
+
+        int resourceAmount = CalculateResourcesAmount();
+        lastDayWaterIncome = resourceAmount;
+        lastDayFertilizerIncome = resourceAmount;
+
+        lastDayPenalties = penaltiesThisDay;
+
+        if (lastDayBonusData.maturePlantCount > maxMaturePlantsAchieved)
+        {
+            maxMaturePlantsAchieved = lastDayBonusData.maturePlantCount;
+        }
+        if (lastDayBonusData.diversityBonus > 0)
+        {
+            diversityBonusRacha++;
+        }
+        else
+        {
+            diversityBonusRacha = 0;
         }
     }
 
@@ -429,7 +471,7 @@ public class GameManager : MonoBehaviour
         }
 
         // gana un fijo + el bono por cantidad
-        int amount = BASE_INCOME_IF_PLANTED + (plantCount * AMOUNT_PER_PLANT);
+        int amount = BASE_INCOME + (plantCount * AMOUNT_PER_PLANT);
         return amount;
     }
 
@@ -440,52 +482,23 @@ public class GameManager : MonoBehaviour
         currentWeather = WeatherManager.Instance.PassDay();
     }
 
-
-    private void DistributeDailyResources()
+    private void ApplyDailyResourcesAndPenalties()
     {
-        // agua y abono basado en la cantidad de plantas
-        int amount = CalculateResourcesAmount();
-        CurrentWater += amount;
-        CurrentFertilizer += amount;
+        // 1. Aplicar bonos de recursos
+        CurrentWater += lastDayWaterIncome;
+        CurrentFertilizer += lastDayFertilizerIncome;
 
-        int dailyIncome = 1;
-        Debug.Log($"[GameManager] Ingresos: +1 (Bono base diario)");
+        // 2. Aplicar ingresos de dinero
+        int totalIncome = lastDayBaseIncome + lastDayPlantBonus + lastDayBonusData.madurityBonus + lastDayBonusData.diversityBonus + lastDayBonusData.solarExposureBonus;
+        CurrentMoney += totalIncome;
 
-        int plantBonus = CurrentBiodiversity / 2;
-        if (plantBonus > 0)
-        {
-            dailyIncome += plantBonus;
-            Debug.Log($"[GameManager] Ingresos: +{plantBonus} (Bono por cantidad de plantas)");
-        }
+        // Aplicar penalizaciones de dinero
+        CurrentMoney -= lastDayPenalties;
 
-        // dinero llamando al método de PlotsManager
-        if (PlotsManager.Instance != null)
-        {
-            DailyBonusData bonusData = PlotsManager.Instance.GetDailyBonusData();
+        // Resetear contador de penalizaciones para el nuevo día
+        penaltiesThisDay = 0;
 
-            // actualizamos stats
-            if (bonusData.maturePlantCount > maxMaturePlantsAchieved)
-            {
-                maxMaturePlantsAchieved = bonusData.maturePlantCount;
-            }
-
-            // añadimos bonos de dinero
-            dailyIncome += bonusData.madurityBonus;
-            dailyIncome += bonusData.diversityBonus;
-            dailyIncome += bonusData.solarExposureBonus;
-
-            // actualizamos racha de diversidad
-            if (bonusData.diversityBonus > 0)
-            {
-                diversityBonusRacha++;
-            }
-            else
-            {
-                diversityBonusRacha = 0; // se rompió la racha
-            }
-        }
-
-        CurrentMoney += dailyIncome;
+        Debug.Log($"[GameManager] Ingresos aplicados: +{totalIncome}. Penalizaciones: -{lastDayPenalties}.");
     }
 
     private void CheckDailyRachas()

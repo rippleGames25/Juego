@@ -83,7 +83,7 @@ public class PlotsManager : MonoBehaviour
         // Retirar efectos de la planta
         if (plotToDeath.currentPlant.plantData.category == PlantCategory.ProvidesShade) RemoveShade(plotToDeath.gridCoordinates);
 
-        GameManager.Instance.CurrentMoney -= 1;
+        GameManager.Instance.AddPenalty(1);
         Debug.Log("Se ha restado 1 pétalo de tu economía total");
 
         GameManager.Instance.ReportPlantDeath();
