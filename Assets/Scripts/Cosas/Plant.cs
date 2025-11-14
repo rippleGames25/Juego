@@ -210,19 +210,9 @@ public class Plant : MonoBehaviour
 
         Debug.Log($"La planta {plantData.plantName} ha sido infectada por una plaga");
     }
-    public bool UpdatePlagueStatus()
-    {
-        if (!isPlagued || isDeath) return false;
-
-        bool didDie = DecreaseHealth();
-
-        return didDie;
-    }
 
     public void CurePlague()
     {
-        if (!isPlagued) return; // Si no está infectada, no hacer nada
-
         isPlagued = false;
 
         if (plagueVisualInstance != null)

@@ -386,23 +386,14 @@ public class PlotsManager : MonoBehaviour
     #region Plague Methods
     public void DailyPlagueUpdate()
     {
-        // 1. Vemos si las plagas matan alguna planta
+        // 1. Vemos si alguna planta se
         foreach (Plot plot in plotGrid)
         {
-            if (!plot.isPlanted || plot.currentPlant != null) continue;
+            if (!plot.isPlanted || plot.currentPlant == null) continue;
 
-            if (plot.IsProtected)
+            if (plot.IsProtected && plot.currentPlant.isPlagued)
             {
                 plot.currentPlant.CurePlague();
-            }
-            else
-            {
-                // No está protegida
-                bool plantDied = plot.currentPlant.UpdatePlagueStatus();
-                if (plantDied)
-                {
-                    PlantsDeath(plot);
-                }
             }
         }
 
@@ -426,7 +417,7 @@ public class PlotsManager : MonoBehaviour
                         !neighborPlot.IsProtected &&                                        // 4. No esta protegida
                         neighborPlot.currentPlant.plantData == plot.currentPlant.plantData) // 5. Es de la misma especie
                     {
-                        Debug.Log($"[Plaga] Propagación con ÉXITO de {plot.gridCoordinates} a {neighborPlot.gridCoordinates}.");
+                        Debug.Log($"Plaga: Propagación con éxitp de {plot.gridCoordinates} a {neighborPlot.gridCoordinates}");
                         plantsToInfect.Add(neighborPlot.currentPlant);
                     }
                 }
