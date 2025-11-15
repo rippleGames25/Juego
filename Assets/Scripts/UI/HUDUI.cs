@@ -239,11 +239,11 @@ public class HUDUI : MonoBehaviour
         bool bailoutIsPending = GameManager.Instance.IsBailoutPending;
 
         // Asignar textos
-        if (summaryBaseIncomeText) summaryBaseIncomeText.text = $"Ingreso base: {baseIncome}";
-        if (summaryQuantityBonusText) summaryQuantityBonusText.text = $"Bono por Cantidad: {plantBonus}";
-        if (summaryMaturityBonusText) summaryMaturityBonusText.text = $"Bono de Madurez: {bonusData.madurityBonus}";
-        if (summaryDiversityBonusText) summaryDiversityBonusText.text = $"Bono de Biodiversidad: {bonusData.diversityBonus}";
-        if (summarySolarBonusText) summarySolarBonusText.text = $"Bono Exposición Solar: {bonusData.solarExposureBonus}";
+        if (summaryBaseIncomeText) summaryBaseIncomeText.text = $"Ingreso base: +{baseIncome}";
+        if (summaryQuantityBonusText) summaryQuantityBonusText.text = $"Bono por Cantidad: +{plantBonus}";
+        if (summaryMaturityBonusText) summaryMaturityBonusText.text = $"Bono de Madurez: +{bonusData.madurityBonus}";
+        if (summaryDiversityBonusText) summaryDiversityBonusText.text = $"Bono de Biodiversidad: +{bonusData.diversityBonus}";
+        if (summarySolarBonusText) summarySolarBonusText.text = $"Bono Exposición Solar: +{bonusData.solarExposureBonus}";
         if (summaryDeathPenaltyText) summaryDeathPenaltyText.text = $"Plantas Muertas: -{penalties}";
 
         // Calcular y asignar total

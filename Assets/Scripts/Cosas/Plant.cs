@@ -38,6 +38,7 @@ public class Plant : MonoBehaviour
     [Header("Plagas")]
     public bool isPlagued = false;
     private GameObject plagueVisualInstance;
+    [SerializeField] private Vector3 currentPlaguePosition = new Vector3(0, 0.1f, 0);
 
     // Visuals
     protected SpriteRenderer spriteRenderer;
@@ -204,7 +205,7 @@ public class Plant : MonoBehaviour
 
         isPlagued = true;
 
-        plagueVisualInstance = Instantiate(prefab, transform.position, Quaternion.identity, this.transform);
+        plagueVisualInstance = Instantiate(prefab, transform.position + currentPlaguePosition, Quaternion.identity, this.transform);
 
         parentPlot.UpdatePollinatorVisual();
 
