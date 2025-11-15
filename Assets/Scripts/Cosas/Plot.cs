@@ -38,6 +38,7 @@ public class Plot : MonoBehaviour
     [Header("Gestion de Fauna")]
     [SerializeField] private int pollinatorSourceCount = 0;
     [SerializeField] private int refugeSourceCount = 0;
+    [SerializeField] private Vector3 currentPollinatorPosition = new Vector3(0, 0.3f, 0);
 
     public bool IsPollinated => pollinatorSourceCount > 0;
     public bool IsProtected => refugeSourceCount > 0;
@@ -59,6 +60,8 @@ public class Plot : MonoBehaviour
 
     // Evento para actualizar información de parcela estando abierta
     public event Action<Plot> OnPlotDataUpdated;
+
+
 
     // Colores
     private Color colorFullWaterFullFertility;
@@ -584,7 +587,7 @@ public class Plot : MonoBehaviour
         {
             if (currentPollinatorVisual == null)
             {
-                currentPollinatorVisual = Instantiate(pollinatorVisualPrefab, transform.position, Quaternion.identity, this.transform);
+                currentPollinatorVisual = Instantiate(pollinatorVisualPrefab, transform.position + currentPollinatorPosition, Quaternion.identity, this.transform);
             }
         }
         else

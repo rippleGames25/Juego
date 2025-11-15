@@ -199,6 +199,7 @@ MonoBehaviour:
   shadeSourceCount: 0
   pollinatorSourceCount: 0
   refugeSourceCount: 0
+  currentPollinatorPosition: {x: 0, y: 0.2, z: 0}
   solarExposurePlot:
   - {fileID: -5258524063300221356, guid: 0750026efbd202141ba0e96b7e1982cf, type: 3}
   - {fileID: -7342669920469189202, guid: 42f7c713b094f9b4887c782dd29c437b, type: 3}
