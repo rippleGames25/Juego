@@ -75,7 +75,20 @@ public class PlotsManager : MonoBehaviour
             }
         }
     }
+    public int GetTotalPlantedCount()
+    {
+        int count = 0;
+        if (plotGrid == null) return 0; // Por si acaso
 
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot != null && plot.isPlanted)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
     public int CalculateCurrentBiodiversity()
     {
         HashSet<PlantType> uniquePlantSpecies = new HashSet<PlantType>();
@@ -160,9 +173,9 @@ public class PlotsManager : MonoBehaviour
         Debug.Log($"La planta {plotToDeath.currentPlant.plantData.plantName} ha muerto porque no has cubierto sus necesidades");
 
         // Retirar efectos de la planta
-        if (plotToDeath.currentPlant.plantData.category == PlantCategory.ProvidesShade) RemoveShade(plotToDeath.gridCoordinates);
-        if (plotToDeath.currentPlant.plantData.category == PlantCategory.PollinatorAttractor) RemovePollination(plotToDeath.gridCoordinates);
-        if (plotToDeath.currentPlant.plantData.category == PlantCategory.WildlifeRefuge) RemoveRefuge(plotToDeath.gridCoordinates);
+        if (plotToDeath.currentPlant.plantData.category == PlantCategory.Sombra) RemoveShade(plotToDeath.gridCoordinates);
+        if (plotToDeath.currentPlant.plantData.category == PlantCategory.Polinizadores) RemovePollination(plotToDeath.gridCoordinates);
+        if (plotToDeath.currentPlant.plantData.category == PlantCategory.RefugioFauna) RemoveRefuge(plotToDeath.gridCoordinates);
 
         GameManager.Instance.AddPenalty(1);
         Debug.Log("Se ha restado 1 pétalo de tu economía total");

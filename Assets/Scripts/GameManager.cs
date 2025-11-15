@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
     private bool isDayTransitioning = false;
 
     // Resources
-    private int currentMoney = 5;
-    private int currentWater = 8;
-    private int currentFertilizer = 8;
+    private int currentMoney = 50;
+    private int currentWater = 80;
+    private int currentFertilizer = 80;
     private const int BASE_INCOME = 1;
     private const int AMOUNT_PER_PLANT = 1;
     [SerializeField] private int cheapestPlantPrice = 1;
@@ -244,7 +244,9 @@ public class GameManager : MonoBehaviour
 
         CalculateEndOfDayBonuses();
 
-        if (CurrentBiodiversity == 0 && CurrentMoney < cheapestPlantPrice)
+        int totalPlanted = PlotsManager.Instance.GetTotalPlantedCount();
+
+        if (totalPlanted == 0 && CurrentMoney < cheapestPlantPrice)
         {
             isBailoutPending = true;
             Debug.LogWarning("[GameManager] BAILOUT PENDING! (Se mostrará en el resumen)");
@@ -391,16 +393,16 @@ public class GameManager : MonoBehaviour
 
         switch (plantData.category)
         {
-            case PlantCategory.Producer:
+            case PlantCategory.Productor:
                 newPlant = newPlantGO.AddComponent<ProducerPlant>();
                 break;
-            case PlantCategory.ProvidesShade:
+            case PlantCategory.Sombra:
                 newPlant = newPlantGO.AddComponent<ShaderProviderPlant>();
                 break;
-            case PlantCategory.PollinatorAttractor:
+            case PlantCategory.Polinizadores:
                 newPlant = newPlantGO.AddComponent<PollinatorAttractorPlant>();
                 break;
-            case PlantCategory.WildlifeRefuge:
+            case PlantCategory.RefugioFauna:
                 newPlant = newPlantGO.AddComponent<WildlifeRefugePlant>();
                 break;
             default:
@@ -565,19 +567,19 @@ public class GameManager : MonoBehaviour
 
     private bool CheckForGameOver()
     {
+        // condición de victoria (Strikes)
+        if (currentBiodiversity >= winCondition)
+        {
+            Debug.Log("[GameManager] ¡VICTORIA! Biodiversidad alcanzada.");
+            EndGame(true);
+            return true;
+        }
+
         // condición de derrota (Strikes)
         if (normalStrikes + permanentStrikes >= MAX_STRIKES)
         {
             Debug.LogError("[GameManager] GAME OVER: Límite de Strikes alcanzado.");
             EndGame(false);
-            return true;
-        }
-
-        // condición de victoria
-        if (currentBiodiversity >= winCondition)
-        {
-            Debug.Log("[GameManager] ¡VICTORIA! Biodiversidad alcanzada.");
-            EndGame(true);
             return true;
         }
 

@@ -28,8 +28,8 @@ public class Plot : MonoBehaviour
 
     private SpriteRenderer sr; // SpriteRenderer ded la Parcela
     private const int PLOT_LIMIT = 5; // Limite de agua y abono
-    private RectTransform rectTransform;
-    private Vector3 initialPosition;
+    //private RectTransform rectTransform;
+    //private Vector3 initialPosition;
 
     [Header("Gestion de la sombra")]
     [SerializeField] private SolarExposure initialSolarExposure; 
@@ -45,9 +45,10 @@ public class Plot : MonoBehaviour
     [Header("Visual")]
     [SerializeField] private List<Sprite> solarExposurePlot = new List<Sprite> ();
     [SerializeField] public GameObject selectionBorder;
-    [SerializeField] private GameObject changeCanvas;
-    [SerializeField] private TextMeshProUGUI changeText;
-    [SerializeField] private Image changeImage;
+    //[SerializeField] private GameObject changeCanvas;
+    //[SerializeField] private TextMeshProUGUI changeText;
+    //[SerializeField] private Image changeImage;
+    [SerializeField] private GameObject changeCanvasPrefab;
     [SerializeField] private Sprite waterIcon;
     [SerializeField] private Sprite fertilizerIcon;
 
@@ -88,13 +89,13 @@ public class Plot : MonoBehaviour
     void Start()
     {
         selectionBorder = this.transform.GetChild(0).gameObject; // Obtenemos el contorno de seleccion
-        changeCanvas.SetActive(false); // Ocultamos el canvas del texto
+        //changeCanvas.SetActive(false); // Ocultamos el canvas del texto
         
         CalculateColor(); // Calculo de diferencia de color
 
-        rectTransform = changeCanvas.GetComponent<RectTransform>();
+        //rectTransform = changeCanvas.GetComponent<RectTransform>();
 
-        initialPosition = rectTransform.localPosition;
+        //initialPosition = rectTransform.localPosition;
         initialSolarExposure = currentSolarExposure;
 
         UpdatePlotWaterVisuals();
@@ -334,17 +335,17 @@ public class Plot : MonoBehaviour
         else
         {
             // Retirar efectos de la planta
-            if (currentPlant.plantData.category == PlantCategory.ProvidesShade)
+            if (currentPlant.plantData.category == PlantCategory.Sombra)
             {
                 PlotsManager.Instance.RemoveShade(gridCoordinates);
             }
 
-            if (currentPlant.plantData.category == PlantCategory.PollinatorAttractor)
+            if (currentPlant.plantData.category == PlantCategory.Polinizadores)
             {
                 PlotsManager.Instance.RemovePollination(gridCoordinates);
             }
 
-            if (currentPlant.plantData.category == PlantCategory.WildlifeRefuge)
+            if (currentPlant.plantData.category == PlantCategory.RefugioFauna)
             {
                 PlotsManager.Instance.RemoveRefuge(gridCoordinates);
             }
@@ -370,23 +371,23 @@ public class Plot : MonoBehaviour
     {
         switch (plantType)
         {
-            case PlantCategory.PollinatorAttractor:
+            case PlantCategory.Polinizadores:
                 // Atraer polinizadores a parcelas adyacentes
                 PlotsManager.Instance.GeneratePollination(this.gridCoordinates);
 
                 break;
 
-            case PlantCategory.ProvidesShade:
+            case PlantCategory.Sombra:
                 // Cambiar la exposicion solar de las parcelas adyacentes
                 PlotsManager.Instance.GenerateShade(this.gridCoordinates);
                 break;
 
-            case PlantCategory.Producer:
+            case PlantCategory.Productor:
                 // Empezar el ciclo de produccion
   
                 break;
 
-            case PlantCategory.WildlifeRefuge:
+            case PlantCategory.RefugioFauna:
                 // Instanciar fauna en parcelas adyacentes
                 PlotsManager.Instance.GenerateRefuge(this.gridCoordinates);
                 break;
@@ -466,38 +467,52 @@ public class Plot : MonoBehaviour
 
     private IEnumerator AnimateSingleTextChange(string _text, int type, Color textColor)
     {
-        // Lógica para mostrar icono/texto
-        if (type == 0)
+        // 1. Instanciar el prefab de la animación
+        // Lo instanciamos en la posición de la parcela, pero como hijo del *padre* de la parcela (el PlotsManager)
+        // para que no se mueva si la parcela se mueve (aunque no lo haga).
+        GameObject canvasInstance = Instantiate(changeCanvasPrefab, transform.position, Quaternion.identity, transform.parent);
+        canvasInstance.SetActive(true);
+
+        // 2. Obtener referencias de la NUEVA instancia
+        // (Asegúrate de que el prefab tenga estos componentes)
+        Image changeImage = canvasInstance.GetComponentInChildren<Image>();
+        TextMeshProUGUI changeText = canvasInstance.GetComponentInChildren<TextMeshProUGUI>();
+        Transform textTransform = canvasInstance.transform; // El transform del objeto Canvas
+        Vector3 initialPosition = textTransform.localPosition;
+
+        // 3. Configurar el texto y el icono
+        if (type == 0 && waterIcon != null)
             changeImage.sprite = waterIcon;
-        else if (type == 1)
+        else if (type == 1 && fertilizerIcon != null)
             changeImage.sprite = fertilizerIcon;
         else
-            yield break;
+            changeImage.gameObject.SetActive(false); // Ocultar si no hay icono
 
         changeText.text = _text;
         changeText.color = textColor;
 
-        changeCanvas.SetActive(true);
 
-        // Lógica de movimiento 
-        float duration = 1f; 
+        // 4. Lógica de movimiento (idéntica a la que tenías)
+        float duration = 1f;
         float distance = 0.6f;
-
-        rectTransform.localPosition = initialPosition;
 
         float elapsed = 0f;
         while (elapsed < duration)
         {
             float t = elapsed / duration;
             Vector3 targetPosition = initialPosition + Vector3.up * distance;
-            rectTransform.localPosition = Vector3.Lerp(initialPosition, targetPosition, t);
+            textTransform.localPosition = Vector3.Lerp(initialPosition, targetPosition, t);
+
+            // Opcional: Hacer que desaparezca (Fade out)
+            // changeText.color = new Color(textColor.r, textColor.g, textColor.b, 1f - t);
+            // changeImage.color = new Color(1, 1, 1, 1f - t);
+
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Ocultar el texto 
-        rectTransform.localPosition = initialPosition;
-        changeCanvas.SetActive(false);
+        // 5. Autodestruir la instancia de la animación
+        Destroy(canvasInstance);
     }
 
     public void UpdatePlantDaily()
@@ -522,9 +537,6 @@ public class Plot : MonoBehaviour
         {
             currentPlant.IncreaseHealth();
         }
-
-        // Lógica de crecimiento y producción (si no murió)
-        currentPlant.UpdateLifeDays(); // Actualizar días de vida y crecimiento 
     }
 
 

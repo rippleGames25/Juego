@@ -162,6 +162,7 @@ public class HUDUI : MonoBehaviour
         SFXManager.Instance?.PauseAmbient(true);
         HUDPanel.SetActive(false);
         PauseMenuCanvas.SetActive(true);
+        GameManager.Instance.SetInputLocked(true);
     }
 
     public void SettingsButton()
@@ -296,12 +297,15 @@ public class HUDUI : MonoBehaviour
 
         // Muestra el panel de enciclopedia
         plantTypeInfoPanel.SetActive(true);
+
+        GameManager.Instance.SetInputLocked(true);
     }
 
     public void UnShowPlantTypeInfoPanel()
     {
         SFXManager.Instance?.PlayClick();
         plantTypeInfoPanel.SetActive(false);
+        GameManager.Instance.SetInputLocked(false);
     }
     #endregion
 

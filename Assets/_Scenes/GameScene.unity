@@ -11325,7 +11325,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11348,7 +11348,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -14928,6 +14928,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: efbb30ec1f6d13740aae5049e20191f9, type: 2}
   - {fileID: 11400000, guid: 28634bb9fa2f6384db8945151b29e04c, type: 2}
   - {fileID: 11400000, guid: d11d94672eb7a5d4695d1af82a160f59, type: 2}
+  - {fileID: 11400000, guid: ca3fb6e7209371b43958bc0654b4724f, type: 2}
+  - {fileID: 11400000, guid: 978ada3c0bd31cc4b8dfe4cd8b96ce0a, type: 2}
+  - {fileID: 11400000, guid: 3471a04b429c04a45b68b6d3e5d8385e, type: 2}
+  - {fileID: 11400000, guid: 848b142a2e87ff44a903d92e6742eebf, type: 2}
+  - {fileID: 11400000, guid: 7a8066bd369481a43aff6d62a081acd9, type: 2}
 --- !u!4 &2074705701
 Transform:
   m_ObjectHideFlags: 0

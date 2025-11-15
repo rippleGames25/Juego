@@ -2,10 +2,10 @@ using UnityEngine;
 
 public enum PlantCategory
 {
-    PollinatorAttractor,
-    ProvidesShade,
-    Producer,
-    WildlifeRefuge
+    Polinizadores,
+    Sombra,
+    Productor,
+    RefugioFauna
 }
 
 [CreateAssetMenu(fileName = "NewPlantType", menuName = "Plant/Plant Type Config", order = 1)]
@@ -28,7 +28,7 @@ public class PlantType : ScriptableObject
     public int timeToMature = 9;
 
     [Header("Categoria")]
-    public PlantCategory category = PlantCategory.PollinatorAttractor;
+    public PlantCategory category = PlantCategory.Polinizadores;
 
     [Header("Características")]
     // Atractores de polinizadores

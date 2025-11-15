@@ -138,7 +138,7 @@ public class Plant : MonoBehaviour
     // Metodo que actualiza la vida y el estado de crecimiento de la planta
     public void UpdateLifeDays()
     {
-        lifeDays++;
+        lifeDays = lifeDays+1;
 
         if(currentGrowth == GrowthState.madura)
         {

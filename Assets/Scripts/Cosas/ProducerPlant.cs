@@ -40,11 +40,11 @@ public class ProducerPlant : Plant
 
     protected void UpdateProductVisuals()
     {
-        if (plantData.category == PlantCategory.Producer && hasProduct)
+        if (plantData.category == PlantCategory.Productor && hasProduct)
         {
             spriteRenderer.sprite = plantData.plantSprites.Last();
         }
-        else if (plantData.category == PlantCategory.Producer && !hasProduct)
+        else if (plantData.category == PlantCategory.Productor && !hasProduct)
         {
             spriteRenderer.sprite = plantData.plantSprites[GameManager.IDX_PLANT_SPRITE];
         }
