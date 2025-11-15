@@ -57,15 +57,19 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI typeText;
     [SerializeField] private TextMeshProUGUI lifeDaysText;
-    [SerializeField] private TextMeshProUGUI growthState;
-    [SerializeField] private TextMeshProUGUI sunDemand;
+    [SerializeField] private Image growthState;
+    [SerializeField] private Image sunDemand;
     [SerializeField] private TextMeshProUGUI waterDemand;
     [SerializeField] private TextMeshProUGUI fertilizerDemand;
-    [SerializeField] private TextMeshProUGUI health;
+    [SerializeField] private Image health;
+    [SerializeField] private List<Sprite> healthSprites;
+    [SerializeField] private List<Sprite> growthStateSprites;
+    [SerializeField] private List<Sprite> solarSprites;
+
 
     [Header("Info Parcela")]
     [SerializeField] private TextMeshProUGUI plotGridInfo;
-    [SerializeField] private TextMeshProUGUI plotSolarInfo;
+    [SerializeField] private Image plotSolarInfo;
     [SerializeField] private TextMeshProUGUI plotWaterInfo;
     [SerializeField] private TextMeshProUGUI plotFertilizerInfo;
 
@@ -319,18 +323,17 @@ public class HUDUI : MonoBehaviour
         // Comprobamos que el panel siga abierto y que la info sea del plot correcto
         if (plotInfoPanel.activeSelf && plot == currentlySelectedPlot)
         {
-            Debug.Log("HUDUI: Actualizando panel de info en tiempo real.");
-            plotWaterInfo.text = $"Agua: {plot.currentWater}";
-            plotFertilizerInfo.text = $"Abono: {plot.currentFertility}";
+            plotWaterInfo.text = $" {plot.currentWater}";
+            plotFertilizerInfo.text = $"{plot.currentFertility}";
         }
     }
 
     private void ShowPlotInfoPanel(Plot plot)
     {
         plotGridInfo.text = $"Parcela {plot.gridCoordinates}";
-        plotSolarInfo.text = $"{plot.currentSolarExposure}";
-        plotWaterInfo.text = $"Agua: {plot.currentWater}";
-        plotFertilizerInfo.text = $"Abono: {plot.currentFertility}";
+        plotSolarInfo.sprite = solarSprites[(int)plot.currentSolarExposure];
+        plotWaterInfo.text = $"{plot.currentWater}";
+        plotFertilizerInfo.text = $"{plot.currentFertility}";
         plotInfoPanel.SetActive(true);
     }
 
@@ -343,14 +346,30 @@ public class HUDUI : MonoBehaviour
         typeText.text = plant.plantData.category.ToString();
 
         // Estado
-        lifeDaysText.text = $"Días de vida: {plant.lifeDays}";
-        growthState.text = $"Crecimiento: {plant.currentGrowth}";
-        health.text = $"Salud: {plant.currentHealth}";
+        lifeDaysText.text = $"{plant.lifeDays}";
+
+        switch (plant.currentGrowth)
+        {
+            case GrowthState.semilla:
+                growthState.sprite = growthStateSprites[0];
+                break;
+            case GrowthState.brote:
+                growthState.sprite = growthStateSprites[1];
+                break;
+            case GrowthState.joven:
+                growthState.sprite = growthStateSprites[1];
+                break;
+            case GrowthState.madura:
+                growthState.sprite = growthStateSprites[2];
+                break;
+
+        }
+        health.sprite = healthSprites[(int)plant.currentHealth];
 
         // Necesidades
-        waterDemand.text = $"Agua: {plant.plantData.waterDemand}";
-        fertilizerDemand.text = $"Abono: {plant.plantData.fertilizerDemand}";
-        sunDemand.text = $"Exposición: {plant.plantData.solarExposureDemand}";
+        waterDemand.text = $"{plant.plantData.waterDemand}";
+        fertilizerDemand.text = $"{plant.plantData.fertilizerDemand}";
+        sunDemand.sprite = solarSprites[(int) plant.plantData.solarExposureDemand];
 
         plantInfoPanel.SetActive(true);
     }
@@ -425,7 +444,7 @@ public class HUDUI : MonoBehaviour
     }
     private void UpdateBiodiversityText(int value)
     {
-        if (biodiversityText != null) biodiversityText.text = $"Biodiversidad: {value}/{GameManager.Instance.winCondition}";
+        if (biodiversityText != null) biodiversityText.text = $"{value}/{GameManager.Instance.winCondition}";
     }
     #endregion
 

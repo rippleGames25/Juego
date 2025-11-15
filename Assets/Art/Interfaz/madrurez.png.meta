@@ -122,10 +122,10 @@ TextureImporter:
       name: madrurez_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 172
-        width: 265
-        height: 65
+        x: 0
+        y: 167
+        width: 300
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: madrurez_1
       rect:
         serializedVersion: 2
-        x: 14
-        y: 93
-        width: 265
-        height: 65
+        x: 0
+        y: 84
+        width: 300
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: madrurez_2
       rect:
         serializedVersion: 2
-        x: 14
-        y: 13
-        width: 265
-        height: 65
+        x: 0
+        y: 1
+        width: 300
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 37ebbbc4583a40e419c12f850ce9a296
     internalID: 0
     vertices: []
     indices: 

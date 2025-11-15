@@ -155,10 +155,10 @@ TextureImporter:
       name: iconoSombra_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 13
-        width: 63
-        height: 65
+        x: 0
+        y: 0
+        width: 76
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,10 +177,10 @@ TextureImporter:
       name: iconoSombra_1
       rect:
         serializedVersion: 2
-        x: 78
-        y: 13
-        width: 58
-        height: 65
+        x: 76
+        y: 0
+        width: 76
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,10 +199,10 @@ TextureImporter:
       name: iconoSombra_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 53
-        width: 14
-        height: 16
+        x: 152
+        y: 0
+        width: 76
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,253 +217,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: iconoSombra_3
-      rect:
-        serializedVersion: 2
-        x: 155
-        y: 13
-        width: 64
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3b38ed82f5b164850800000000000000
-      internalID: 6360801619228918707
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_4
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 61
-        width: 10
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 56abddfd84f4cb7b0800000000000000
-      internalID: -5207199894735046043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_5
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 36
-        width: 16
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4606284698e726850800000000000000
-      internalID: 6368791951617187940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_6
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 36
-        width: 16
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cc98b2726c7f702e0800000000000000
-      internalID: -2159485065868113460
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_7
-      rect:
-        serializedVersion: 2
-        x: 212
-        y: 36
-        width: 17
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2282780e269630d60800000000000000
-      internalID: 7855238048458942498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_8
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 4
-        width: 11
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 513fcefe851ab5f50800000000000000
-      internalID: 6871263059838300949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_9
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 14
-        width: 15
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 798f924f5b349c870800000000000000
-      internalID: 8703562203634727063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_10
-      rect:
-        serializedVersion: 2
-        x: 110
-        y: 4
-        width: 11
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 00c14c82d359104a0800000000000000
-      internalID: -6628853086603174912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_11
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 14
-        width: 15
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fcec55abc99738f40800000000000000
-      internalID: 5729556864993447631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_12
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 4
-        width: 11
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8bc5ff1d57f9aba60800000000000000
-      internalID: 7690634642071706808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iconoSombra_13
-      rect:
-        serializedVersion: 2
-        x: 204
-        y: 14
-        width: 16
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a386f5ebefbb61860800000000000000
-      internalID: 7500388932222150714
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f90e183181c12fc408f889e88eff2a20
     internalID: 0
     vertices: []
     indices: 
@@ -475,18 +233,7 @@ TextureImporter:
     nameFileIdTable:
       iconoSombra_0: -7600134884433208834
       iconoSombra_1: 6725547746993044978
-      iconoSombra_10: -6628853086603174912
-      iconoSombra_11: 5729556864993447631
-      iconoSombra_12: 7690634642071706808
-      iconoSombra_13: 7500388932222150714
       iconoSombra_2: -4394791917025258448
-      iconoSombra_3: 6360801619228918707
-      iconoSombra_4: -5207199894735046043
-      iconoSombra_5: 6368791951617187940
-      iconoSombra_6: -2159485065868113460
-      iconoSombra_7: 7855238048458942498
-      iconoSombra_8: 6871263059838300949
-      iconoSombra_9: 8703562203634727063
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

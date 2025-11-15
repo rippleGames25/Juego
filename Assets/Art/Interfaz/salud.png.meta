@@ -122,10 +122,10 @@ TextureImporter:
       name: salud_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 12
-        width: 54
-        height: 54
+        x: 0
+        y: 0
+        width: 70
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: salud_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 13
-        width: 54
-        height: 54
+        x: 70
+        y: 0
+        width: 70
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: salud_2
       rect:
         serializedVersion: 2
-        x: 151
-        y: 13
-        width: 54
-        height: 54
+        x: 140
+        y: 0
+        width: 70
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c2fae30369ab2e1479fb225c005c30bd
     internalID: 0
     vertices: []
     indices: 
