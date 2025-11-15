@@ -224,6 +224,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        PlotsManager.Instance.PlotUnselected(PlotsManager.Instance.currentSelectedPlot); //Deselecciónar parcelas
+
         SFXManager.Instance?.StopAmbient();
         StartCoroutine(EndDayCoroutine());
     }

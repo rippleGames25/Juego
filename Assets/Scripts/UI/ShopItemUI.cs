@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 public class ShopItemUI : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI typeText;
     [SerializeField] private Image plantImage;
     [SerializeField] private TextMeshProUGUI priceText;
+    [SerializeField] private Image solarExposure;
+    [SerializeField] private List<Sprite> solarSprites = new List<Sprite>();
+
 
     [SerializeField] private Button buyButton;
 
@@ -24,6 +29,7 @@ public class ShopItemUI : MonoBehaviour
         nameText.text = plantData.plantName;
         typeText.text = plantData.category.ToString();
         priceText.text = plantData.price.ToString();
+        solarExposure.sprite = solarSprites[(int)plantData.solarExposureDemand];
 
         if (plantData.plantSprites != null && plantData.plantSprites.Length > 0)
         {

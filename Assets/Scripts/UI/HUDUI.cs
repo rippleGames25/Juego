@@ -16,6 +16,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject plotInfoPanel;
     [SerializeField] private GameObject summaryPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject helpPanel;
 
     // Panel del Dia
     [Header("Resumen Día")]
@@ -33,7 +34,6 @@ public class HUDUI : MonoBehaviour
     // Sistema de Strikes
     [Header("Strikes")]
     [SerializeField] private Image[] strikeIcons; // Array de 5 imágenes
-    [SerializeField] private Color strikeColor_Empty = Color.gray;
     [SerializeField] private Color strikeColor_Normal = Color.yellow;
     [SerializeField] private Color strikeColor_Permanent = Color.red;
 
@@ -42,6 +42,8 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> forecastText = new List<TextMeshProUGUI>();
     [SerializeField] private List<Image> forecastImages = new List<Image>();
     [SerializeField] private List<Sprite> forecastSprites = new List<Sprite>();
+    [SerializeField] private List<Image> forecastIntensity = new List<Image>();
+    [SerializeField] private List<Sprite> intensitySprites = new List<Sprite>();
 
     [Header("Recursos")]
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -51,6 +53,8 @@ public class HUDUI : MonoBehaviour
     [Header("Progreso")]
     [SerializeField] private TextMeshProUGUI dayText;
     [SerializeField] private TextMeshProUGUI biodiversityText;
+    [SerializeField] private Image currentWeather;
+    [SerializeField] private Image currentIntensity;
 
     [Header("Info Planta")]
     [SerializeField] private Image plantPhoto;
@@ -189,9 +193,27 @@ public class HUDUI : MonoBehaviour
     public void NextButton()
     {
         SFXManager.Instance?.PlayClick();
-        // Antes: StartNewDay directo + cerrar summary.
-        // Ahora: animación de transición de día.
         StartCoroutine(DayTransitionRoutine());
+    }
+
+    public void HelpButton()
+    {
+        SFXManager.Instance?.PlayClick();
+        SFXManager.Instance?.PauseAmbient(true);
+        HUDPanel.SetActive(false);
+        if (toolsRoot) toolsRoot.SetActive(false);
+        helpPanel.SetActive(true);
+        GameManager.Instance.SetInputLocked(true);
+    }
+
+    public void GoBackFromHelpButton()
+    {
+        SFXManager.Instance?.PlayClick();
+        SFXManager.Instance?.PauseAmbient(false);
+        helpPanel.SetActive(false);
+        if (toolsRoot) toolsRoot.SetActive(true);
+        HUDPanel.SetActive(true);
+        GameManager.Instance.SetInputLocked(false);
     }
 
     public void ShowDaySummaryPanel()
@@ -386,15 +408,17 @@ public class HUDUI : MonoBehaviour
         {
             if (i < permanentStrikes)
             {
+                strikeIcons[i].enabled = true;
                 strikeIcons[i].color = strikeColor_Permanent;
             }
             else if (i < totalStrikes)
             {
+                strikeIcons[i].enabled = true;
                 strikeIcons[i].color = strikeColor_Normal;
             }
             else
             {
-                strikeIcons[i].color = strikeColor_Empty;
+                strikeIcons[i].enabled = false;
             }
         }
     }
@@ -415,14 +439,18 @@ public class HUDUI : MonoBehaviour
             DailyWeather weather = forecastArray[i];
             int idx = ((int)weather.type * WeatherManager.Instance.maxIntensity) + (weather.intensity - 1);
             forecastImages[i].sprite = forecastSprites[idx];
+            forecastIntensity[i].sprite = intensitySprites[i];
         }
     }
 
     private void UpdateCurrentWeatherDisplay(DailyWeather weather)
     {
-        if (currentWeatherText != null)
+        if (currentWeather != null)
         {
-            currentWeatherText.text = $"HOY: {weather.ToString()}";
+            int idx = ((int)weather.type * WeatherManager.Instance.maxIntensity) + (weather.intensity - 1);
+            currentWeather.sprite = forecastSprites[idx];
+
+            currentIntensity.sprite = intensitySprites[(int)weather.intensity-1];
         }
     }
 

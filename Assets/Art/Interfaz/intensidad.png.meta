@@ -111,6 +111,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -118,10 +131,10 @@ TextureImporter:
       name: intensidad_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 8
-        width: 13
-        height: 22
+        x: 0
+        y: 0
+        width: 50
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +153,10 @@ TextureImporter:
       name: intensidad_1
       rect:
         serializedVersion: 2
-        x: 18
-        y: 8
-        width: 26
-        height: 28
+        x: 50
+        y: 0
+        width: 50
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +175,10 @@ TextureImporter:
       name: intensidad_2
       rect:
         serializedVersion: 2
-        x: 56
-        y: 8
-        width: 13
-        height: 22
+        x: 100
+        y: 0
+        width: 50
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,77 +193,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: intensidad_3
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 8
-        width: 26
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b05c94bc3f96c3840800000000000000
-      internalID: 5205151765142029579
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: intensidad_4
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 8
-        width: 13
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: afe27ad3008f34a20800000000000000
-      internalID: 3045550452950642426
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: intensidad_5
-      rect:
-        serializedVersion: 2
-        x: 118
-        y: 8
-        width: 26
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a3e85d179f122f990800000000000000
-      internalID: -7353777886302204358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c9fab379277ba9d40961d0115c86bc17
     internalID: 0
     vertices: []
     indices: 
@@ -263,9 +210,6 @@ TextureImporter:
       intensidad_0: -7846875398051795618
       intensidad_1: -1275512764199500703
       intensidad_2: -3382558778357867172
-      intensidad_3: 5205151765142029579
-      intensidad_4: 3045550452950642426
-      intensidad_5: -7353777886302204358
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
