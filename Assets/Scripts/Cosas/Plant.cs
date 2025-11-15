@@ -147,7 +147,7 @@ public class Plant : MonoBehaviour
         else if (currentGrowth == GrowthState.semilla && lifeDays >= plantData.timeToSprout) 
         {
             currentGrowth++; // Brotar
-            GameManager.Instance.CurrentBiodiversity++; // Sumamos uno a la biodiversidad
+            GameManager.Instance.UpdateBiodiversityScore();
             SFXManager.Instance?.PlayCrece();
             Debug.Log($"La planta {plantData.plantName} ha brotado.");
 

@@ -188,6 +188,7 @@ public class Plot : MonoBehaviour
     {
         pollinatorSourceCount++;
         UpdatePollinatorVisual();
+        GameManager.Instance?.UpdateBiodiversityScore();
     }
 
     public void RemovePollinatorSource()
@@ -197,11 +198,13 @@ public class Plot : MonoBehaviour
             pollinatorSourceCount--;
         }
         UpdatePollinatorVisual();
+        GameManager.Instance?.UpdateBiodiversityScore();
     }
 
     public void AddRefugeSource()
     {
         refugeSourceCount++;
+        GameManager.Instance?.UpdateBiodiversityScore();
     }
 
     public void RemoveRefugeSource()
@@ -210,6 +213,7 @@ public class Plot : MonoBehaviour
         {
             refugeSourceCount--;
         }
+        GameManager.Instance?.UpdateBiodiversityScore();
     }
 
     #endregion
@@ -358,6 +362,8 @@ public class Plot : MonoBehaviour
         this.isPlanted = false;
 
         UpdatePollinatorVisual();
+
+        GameManager.Instance.UpdateBiodiversityScore();
     }
 
     public void UpdateEnviroment(PlantCategory plantType)

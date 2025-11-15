@@ -195,13 +195,13 @@ public class GameManager : MonoBehaviour
         // Generar nivel
         PlotsManager.Instance.CreatePlots(); // Inicializar parcelas
 
-        // Generar planta inicial
-        // Generar proximos eventos meteorologicos
         // Generar objetivo
         GenerateWinCondition();
 
         GameSessionStats.Instance?.ResetStats();
         OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
+
+        UpdateBiodiversityScore();
     }
 
     void Update()
@@ -287,6 +287,14 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("Inicio de día completado.");
+    }
+
+    public void UpdateBiodiversityScore()
+    {
+        if (PlotsManager.Instance != null)
+        {
+            CurrentBiodiversity = PlotsManager.Instance.CalculateCurrentBiodiversity();
+        }
     }
 
     public void ReportPlantDeath()
@@ -412,6 +420,8 @@ public class GameManager : MonoBehaviour
         SFXManager.Instance?.PlayPlantar();
 
         Debug.Log($"Semilla de {plantData.plantName} plantada en la parcela {plot.gridCoordinates}");
+
+        UpdateBiodiversityScore();
     }
 
     public void ShowPlantTypePanel(PlantType plantType)

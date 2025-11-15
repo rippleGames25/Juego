@@ -76,6 +76,55 @@ public class PlotsManager : MonoBehaviour
         }
     }
 
+    public int CalculateCurrentBiodiversity()
+    {
+        HashSet<PlantType> uniquePlantSpecies = new HashSet<PlantType>();
+        bool hasPollinators = false;
+        bool hasWildlife = false;
+
+        if (plotGrid == null) return 0;
+
+        foreach (Plot plot in plotGrid)
+        {
+            if (plot == null) continue;
+
+            // 1. Contar especies de plantas únicas
+            if (plot.isPlanted && plot.currentPlant != null &&
+                !plot.currentPlant.isDeath &&
+                plot.currentPlant.currentGrowth >= GrowthState.brote) // Contamos desde que es brote
+            {
+                uniquePlantSpecies.Add(plot.currentPlant.plantData);
+            }
+
+            // 2. Comprobar si hay fauna presente
+            if (plot.IsPollinated)
+            {
+                hasPollinators = true;
+            }
+            if (plot.IsProtected) // IsProtected usa refugeSourceCount
+            {
+                hasWildlife = true;
+            }
+        }
+
+        // Calcular puntuación final
+        int biodiversityScore = uniquePlantSpecies.Count;
+
+        if (hasPollinators)
+        {
+            biodiversityScore++;
+            Debug.Log("Biodiversidad: +1 por Polinizadores");
+        }
+
+        if (hasWildlife)
+        {
+            biodiversityScore++;
+            Debug.Log("Biodiversidad: +1 por Refugio de Fauna");
+        }
+
+        return biodiversityScore;
+    }
+
     private List<Plot> GetNeighborPlots(Vector2Int coords)
     {
         List<Plot> neighbors = new List<Plot>();
@@ -120,7 +169,7 @@ public class PlotsManager : MonoBehaviour
 
         GameManager.Instance.ReportPlantDeath();
 
-        GameManager.Instance.CurrentBiodiversity--;
+        GameManager.Instance.UpdateBiodiversityScore();
     }
 
     public void RemovePlant(Plot plotToRemove)
