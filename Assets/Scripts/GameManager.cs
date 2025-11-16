@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
     private bool isDayTransitioning = false;
 
     // Resources
-    private int currentMoney = 50;
-    private int currentWater = 80;
-    private int currentFertilizer = 80;
+    private int currentMoney = 5;
+    private int currentWater = 8;
+    private int currentFertilizer = 8;
     private const int BASE_INCOME = 1;
     private const int AMOUNT_PER_PLANT = 1;
     [SerializeField] private int cheapestPlantPrice = 1;
@@ -204,6 +204,7 @@ public class GameManager : MonoBehaviour
         OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
 
         UpdateBiodiversityScore();
+        HandleWeatherEvent();
     }
 
     void Update()
