@@ -20,7 +20,7 @@ MonoBehaviour:
     la humedad del entorno y mejorando la salud general del jard\xEDn."
   waterDemand: 2
   fertilizerDemand: 2
-  solarExposureDemand: 0
+  solarExposureDemand: 1
   timeToSprout: 1
   timeToGrow: 2
   timeToMature: 4

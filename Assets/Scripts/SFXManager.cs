@@ -11,8 +11,8 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup sfxMixerGroup;
 
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource sfxSource;      // efectos cortos (PlayOneShot)
-    [SerializeField] private AudioSource ambientSource;  // ambiente/clima (loop)
+    [SerializeField] private AudioSource sfxSource;      // efectos cortos 
+    [SerializeField] private AudioSource ambientSource;  // ambiente/clima 
 
     [Header("Ambient Fades")]
     [SerializeField] private float ambientFadeTime = 0.6f;
@@ -46,20 +46,19 @@ public class SFXManager : MonoBehaviour
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
 
-        // ---- SFX corto ----
+        // SFX corto 
         if (!sfxSource) sfxSource = gameObject.AddComponent<AudioSource>();
         sfxSource.playOnAwake = false;
         sfxSource.loop = false;
         sfxSource.spatialBlend = 0f;
 
-        // ---- Ambiente/Clima ----
+        // Ambiente/Clima
         if (!ambientSource) ambientSource = gameObject.AddComponent<AudioSource>();
         ambientSource.playOnAwake = false;
         ambientSource.loop = true;
         ambientSource.spatialBlend = 0f;
-        ambientSource.ignoreListenerPause = false; // por si usáis AudioListener.pause
+        ambientSource.ignoreListenerPause = false; 
 
-        // 🔊 Enrutar ambos al mismo grupo SFX
         if (sfxMixerGroup)
         {
             sfxSource.outputAudioMixerGroup = sfxMixerGroup;
@@ -83,13 +82,9 @@ public class SFXManager : MonoBehaviour
 
     private void OnSceneChanged(Scene oldSc, Scene newSc)
     {
-        // Si sales del gameplay (o en general, al cambiar de escena) corta el ambiente
         if (!newSc.name.Contains("Game")) StopAmbient();
     }
 
-    // ---------------------------
-    // Core helpers
-    // ---------------------------
     public void Play(AudioClip clip)
     {
         if (!clip || !sfxSource) return;
@@ -140,7 +135,7 @@ public class SFXManager : MonoBehaviour
         ambientFadeRoutine = StartCoroutine(CoFadeOutAmbient(ambientFadeTime));
     }
 
-    // Pausar/Reanudar sólo el ambiente (para el menú de pausa)
+    // Pausar/Reanudar sólo el ambiente
     public void PauseAmbient(bool paused)
     {
         if (!ambientSource) return;
@@ -201,14 +196,13 @@ public class SFXManager : MonoBehaviour
                 yield return null;
             }
             ambientSource.Stop();
-            ambientSource.volume = 1f; // listo para el siguiente
+            ambientSource.volume = 1f; 
         }
         ambientFadeRoutine = null;
     }
 
-    // ---------------------------
-    // Atajos: Acción (one shots)
-    // ---------------------------
+  
+    // Atajos
     public void PlayAbonar() => Play(abonar);
     public void PlayAbono() => Play(abono);
     public void PlayClick() => Play(clickNormal);
@@ -225,9 +219,8 @@ public class SFXManager : MonoBehaviour
     public void PlayRegadera() => Play(regadera);
     public void PlayRegar() => Play(regar);
 
-    // ---------------------------
-    // Atajos: Clima (loop/ambiente)
-    // ---------------------------
+
+    // Atajos: Clima
     public void PlayLluvia() => PlayAmbient(lluvia);
     public void PlayNieve() => PlayAmbient(nieve);
     public void PlaySoleado() => PlayAmbient(soleado);

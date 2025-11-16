@@ -18,7 +18,7 @@ public class SoftwareCursorManager : MonoBehaviour
 
     void Awake()
     {
-        // --- Configuración del Singleton ---
+        // Configuración del Singleton
         if (Instance == null)
         {
             Instance = this;
@@ -30,7 +30,7 @@ public class SoftwareCursorManager : MonoBehaviour
             return;
         }
 
-        // --- Configuración Inicial ---
+        // Configuración Inicial
         if (cursorImage == null)
         {
             cursorImage = GetComponent<Image>();

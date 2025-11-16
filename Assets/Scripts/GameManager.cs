@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 {
     #region Propiedades
     
-    public static GameManager Instance; // Singleton
+    public static GameManager Instance; 
 
     // Events
     public event Action<int> OnMoneyChanged;
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     private const int BASE_INCOME = 1;
     private const int AMOUNT_PER_PLANT = 1;
     [SerializeField] private int cheapestPlantPrice = 1;
-    public const int IDX_PLANT_SPRITE = 7; // Indice de la imagen principal de la planta en el plantSprites
+    public const int IDX_PLANT_SPRITE = 7; 
 
     // Sistema de strikes 
     private const int MAX_STRIKES = 5;
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
         currentTool = ToolType.None; // No tiene cogida ninguna herramienta
 
         // Generar nivel
-        PlotsManager.Instance.CreatePlots(); // Inicializar parcelas
+        PlotsManager.Instance.CreatePlots(); 
 
         // Generar objetivo
         GenerateWinCondition();
@@ -215,7 +215,6 @@ public class GameManager : MonoBehaviour
             HandleInput();
     }
 
-    // Public Methods
     public void EndDay()
     {
         if (inputLocked) return;
@@ -227,7 +226,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        PlotsManager.Instance.PlotUnselected(PlotsManager.Instance.currentSelectedPlot); //Deselecciónar parcelas
+        PlotsManager.Instance.PlotUnselected(PlotsManager.Instance.currentSelectedPlot); // Deselecciónar parcelas
 
         SFXManager.Instance?.StopAmbient();
         StartCoroutine(EndDayCoroutine());
@@ -239,10 +238,10 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Fin de día");
         
-        // 1. Actualizar estado de salud
+        // Actualizar estado de salud
         PlotsManager.Instance.DailyUpdatePlantsHealth();
 
-        // 2. Animación de consumo de recursos
+        // Animación de consumo de recursos
         yield return PlotsManager.Instance.AnimateDailyConsumptionAndConsume(); ;
 
         CalculateEndOfDayBonuses();
@@ -304,9 +303,6 @@ public class GameManager : MonoBehaviour
 
     public void ReportPlantDeath()
     {
-        // CurrentMoney -= 1;
-        // Debug.Log("Se ha restado 1 pétalo por muerte de planta.");
-
         // resetea la racha de días sin muerte
         daysWithoutDeathRacha = 0;
 
@@ -314,8 +310,8 @@ public class GameManager : MonoBehaviour
         plantDeathCounter++;
         if (plantDeathCounter >= 3)
         {
-            AddStrike(false); // añade un strike normal (no permanente)
-            plantDeathCounter = 0; // resetea el contador
+            AddStrike(false);       // añade un strike normal (no permanente)
+            plantDeathCounter = 0;  // resetea el contador
         }
     }
 
@@ -409,19 +405,19 @@ public class GameManager : MonoBehaviour
                 newPlant = newPlantGO.AddComponent<WildlifeRefugePlant>();
                 break;
             default:
-                newPlant = newPlantGO.AddComponent<Plant>(); // O una clase base Plant simple, o PollinatorAttractorPlant
+                newPlant = newPlantGO.AddComponent<Plant>(); 
                 break;
         }
 
 
         newPlant.InitializePlant(plantData, plot);
 
-        plot.currentPlant= newPlant; // Asociamos la planta a la parcela
+        plot.currentPlant= newPlant;    // Asociamos la planta a la parcela
         plot.isPlanted = true;
 
         plot.UpdatePollinatorVisual();
 
-        CurrentTool = ToolType.None; // Desequipamos la semilla
+        CurrentTool = ToolType.None;    // Desequipamos la semilla
         SFXManager.Instance?.PlayPlantar();
 
         Debug.Log($"Semilla de {plantData.plantName} plantada en la parcela {plot.gridCoordinates}");
@@ -443,8 +439,8 @@ public class GameManager : MonoBehaviour
 
     private void HandleInput()
     {
-        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Convertir mouse a posicion del mundo
-        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero); // Lanzar rayo
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);    // Convertir mouse a posicion del mundo
+        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);              
         bool isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
 
         if (hit.collider != null) // Si colisiona
@@ -476,8 +472,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // El clic no golpeó ningún objeto 2D
-
             // Si no golpeó la UI, entonces es un clic en  nada
             if (!isPointerOverUI)
             {
@@ -519,11 +513,11 @@ public class GameManager : MonoBehaviour
 
     private void ApplyDailyResourcesAndPenalties()
     {
-        // 1. Aplicar bonos de recursos
+        // Aplicar bonos de recursos
         CurrentWater += lastDayWaterIncome;
         CurrentFertilizer += lastDayFertilizerIncome;
 
-        // 2. Aplicar ingresos de dinero
+        // Aplicar ingresos de dinero
         int totalIncome = lastDayBaseIncome + lastDayPlantBonus + lastDayBonusData.madurityBonus + lastDayBonusData.diversityBonus + lastDayBonusData.solarExposureBonus;
         CurrentMoney += totalIncome;
 
@@ -542,15 +536,15 @@ public class GameManager : MonoBehaviour
         daysWithoutDeathRacha++;
         if (daysWithoutDeathRacha >= 5)
         {
-            RemoveStrike(); // Quita 1 strike normal
-            daysWithoutDeathRacha = 0; // Resetea la racha
+            RemoveStrike();             // Quita 1 strike normal
+            daysWithoutDeathRacha = 0;  // Resetea la racha
         }
 
         // racha de diversidad
         if (diversityBonusRacha >= 3)
         {
-            RemoveStrike(); // Quita 1 strike normal
-            diversityBonusRacha = 0; // Resetea la racha
+            RemoveStrike();             // Quita 1 strike normal
+            diversityBonusRacha = 0;    // Resetea la racha
         }
     }
 

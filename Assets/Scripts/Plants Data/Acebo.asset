@@ -19,7 +19,7 @@ MonoBehaviour:
     de medicamentos. Las bayas son muy venenosas y no deben ingerirse."
   waterDemand: 2
   fertilizerDemand: 2
-  solarExposureDemand: 0
+  solarExposureDemand: 2
   timeToSprout: 1
   timeToGrow: 2
   timeToMature: 3

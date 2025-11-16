@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class SettingsUI : MonoBehaviour
 {
-    [SerializeField] private GameObject hudPanel;        // vuestro HUD
-    [SerializeField] private GameObject settingsPanel;   // vuestro SettingsPanel
-
+    [SerializeField] private GameObject hudPanel;        
+    [SerializeField] private GameObject settingsPanel;   
     public void Open()
     {
         SFXManager.Instance?.PlayClick();

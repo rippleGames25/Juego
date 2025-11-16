@@ -4,4 +4,3 @@ En GameScene:
 En MainMenuScene:
 - Poner los prefabs
 - Boton jugar cambiar onClick()
-- 

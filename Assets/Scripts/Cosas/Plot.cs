@@ -12,7 +12,6 @@ public enum SolarExposure
     Sombra
 }
 
-// This class represent a Plot in the game
 public class Plot : MonoBehaviour
 {
     [Header("Variables")]
@@ -26,10 +25,8 @@ public class Plot : MonoBehaviour
     [SerializeField] public SolarExposure currentSolarExposure;
     [SerializeField] public bool isPlanted;
 
-    private SpriteRenderer sr; // SpriteRenderer ded la Parcela
+    private SpriteRenderer sr; // SpriteRenderer de la Parcela
     private const int PLOT_LIMIT = 5; // Limite de agua y abono
-    //private RectTransform rectTransform;
-    //private Vector3 initialPosition;
 
     [Header("Gestion de la sombra")]
     [SerializeField] private SolarExposure initialSolarExposure; 
@@ -46,9 +43,6 @@ public class Plot : MonoBehaviour
     [Header("Visual")]
     [SerializeField] private List<Sprite> solarExposurePlot = new List<Sprite> ();
     [SerializeField] public GameObject selectionBorder;
-    //[SerializeField] private GameObject changeCanvas;
-    //[SerializeField] private TextMeshProUGUI changeText;
-    //[SerializeField] private Image changeImage;
     [SerializeField] private GameObject changeCanvasPrefab;
     [SerializeField] private Sprite waterIcon;
     [SerializeField] private Sprite fertilizerIcon;
@@ -57,11 +51,8 @@ public class Plot : MonoBehaviour
     [SerializeField] private GameObject pollinatorVisualPrefab;
     private GameObject currentPollinatorVisual;
 
-
     // Evento para actualizar información de parcela estando abierta
     public event Action<Plot> OnPlotDataUpdated;
-
-
 
     // Colores
     private Color colorFullWaterFullFertility;
@@ -92,13 +83,9 @@ public class Plot : MonoBehaviour
     void Start()
     {
         selectionBorder = this.transform.GetChild(0).gameObject; // Obtenemos el contorno de seleccion
-        //changeCanvas.SetActive(false); // Ocultamos el canvas del texto
-        
+      
         CalculateColor(); // Calculo de diferencia de color
 
-        //rectTransform = changeCanvas.GetComponent<RectTransform>();
-
-        //initialPosition = rectTransform.localPosition;
         initialSolarExposure = currentSolarExposure;
 
         UpdatePlotWaterVisuals();
@@ -114,8 +101,8 @@ public class Plot : MonoBehaviour
         currentWater = UnityEngine.Random.Range(0, PLOT_LIMIT);
         currentSolarExposure = (SolarExposure)UnityEngine.Random.Range(0, 1); //Exposicion solar random
         initialSolarExposure = currentSolarExposure;
-        isPlanted = false; // Se inicializa vacia
-        currentPlant = null; // No hay planta
+        isPlanted = false;      // Se inicializa vacia
+        currentPlant = null;    // No hay planta
 
         Debug.Log(this.ToString());
     }
@@ -134,8 +121,8 @@ public class Plot : MonoBehaviour
             waterChange = waterChange - currentPlant.plantData.waterDemand; // Restamos agua consumida por la planta
         }
 
-        this.currentWater  += waterChange; // Agua aportada por evento meteorologico
-        this.currentWater = Mathf.Clamp(this.currentWater, 0, PLOT_LIMIT); // Mantener el limite de la parcela
+        this.currentWater  += waterChange;                                  // Agua aportada por evento meteorologico
+        this.currentWater = Mathf.Clamp(this.currentWater, 0, PLOT_LIMIT);  // Mantener el limite de la parcela
     }
 
     public void ChangeSolarExposure(int newSolarExposure)
@@ -245,7 +232,7 @@ public class Plot : MonoBehaviour
                
                 if (GameManager.Instance.CurrentWater > 0 && currentWater < PLOT_LIMIT) // Tiene agua y la parcela no esta llena
                 {
-                    GameManager.Instance.CurrentWater--; // Cosume agua del deposito
+                    GameManager.Instance.CurrentWater--;                                // Cosume agua del deposito
                     this.currentWater++;
 
                     StartCoroutine(AnimateSingleTextChange("+1", 0, Color.green));
@@ -257,7 +244,7 @@ public class Plot : MonoBehaviour
 
                     Debug.Log($"Parcela {this.gridCoordinates} regada -> {currentWater} de agua");
                 }
-                else if (GameManager.Instance.CurrentWater > 0 && currentWater >= PLOT_LIMIT) // Tiene agua pero la parcela está llena
+                else if (GameManager.Instance.CurrentWater > 0 && currentWater >= PLOT_LIMIT)   // Tiene agua pero la parcela está llena
                 {
                     StartCoroutine(AnimateSingleTextChange("Lleno", 0, Color.green));
                     SFXManager.Instance?.PlayDenegar();
@@ -272,9 +259,9 @@ public class Plot : MonoBehaviour
 
             case ToolType.FertilizerBag:
 
-                if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility < PLOT_LIMIT) // Tiene abono y la parcela no esta llena
+                if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility < PLOT_LIMIT)    // Tiene abono y la parcela no esta llena
                 {
-                    GameManager.Instance.CurrentFertilizer--; // Consume abono del deposito
+                    GameManager.Instance.CurrentFertilizer--;                                       // Consume abono del deposito
                     this.currentFertility++;
 
                     StartCoroutine(AnimateSingleTextChange("+1", 1, Color.green));
@@ -455,16 +442,13 @@ public class Plot : MonoBehaviour
     private IEnumerator AnimateSingleTextChange(string _text, int type, Color textColor)
     {
         // 1. Instanciar el prefab de la animación
-        // Lo instanciamos en la posición de la parcela, pero como hijo del *padre* de la parcela (el PlotsManager)
-        // para que no se mueva si la parcela se mueve (aunque no lo haga).
         GameObject canvasInstance = Instantiate(changeCanvasPrefab, transform.position, Quaternion.identity, transform.parent);
         canvasInstance.SetActive(true);
 
         // 2. Obtener referencias de la NUEVA instancia
-        // (Asegúrate de que el prefab tenga estos componentes)
         Image changeImage = canvasInstance.GetComponentInChildren<Image>();
         TextMeshProUGUI changeText = canvasInstance.GetComponentInChildren<TextMeshProUGUI>();
-        Transform textTransform = canvasInstance.transform; // El transform del objeto Canvas
+        Transform textTransform = canvasInstance.transform; 
         Vector3 initialPosition = textTransform.localPosition;
 
         // 3. Configurar el texto y el icono
@@ -479,7 +463,7 @@ public class Plot : MonoBehaviour
         changeText.color = textColor;
 
 
-        // 4. Lógica de movimiento (idéntica a la que tenías)
+        // 4. Lógica de movimiento
         float duration = 1f;
         float distance = 0.6f;
 
@@ -489,10 +473,6 @@ public class Plot : MonoBehaviour
             float t = elapsed / duration;
             Vector3 targetPosition = initialPosition + Vector3.up * distance;
             textTransform.localPosition = Vector3.Lerp(initialPosition, targetPosition, t);
-
-            // Opcional: Hacer que desaparezca (Fade out)
-            // changeText.color = new Color(textColor.r, textColor.g, textColor.b, 1f - t);
-            // changeImage.color = new Color(1, 1, 1, 1f - t);
 
             elapsed += Time.deltaTime;
             yield return null;
@@ -514,10 +494,10 @@ public class Plot : MonoBehaviour
         {
             Debug.Log($"La parcela {gridCoordinates} no puede cubrir las necesidades de su planta");
 
-            if (currentPlant.DecreaseHealth()) // true si la planta ha muerto
+            if (currentPlant.DecreaseHealth())              // true si la planta ha muerto
             {
-                PlotsManager.Instance.PlantsDeath(this); // Llama a la muerte
-                return; // Salir si la planta murió
+                PlotsManager.Instance.PlantsDeath(this);    // Llama a la muerte
+                return;                                     // Salir si la planta murió
             }
         }
         else

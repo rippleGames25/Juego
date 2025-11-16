@@ -260,7 +260,7 @@ public class Plant : MonoBehaviour
 
         // Logica para calcular el idx del sprite
         int growthBaseIndex = 0;
-        int growthInt = (int)currentGrowth; //Crecimiento
+        int growthInt = (int)currentGrowth; // Crecimiento
 
         if (currentGrowth == GrowthState.brote)
         {
@@ -275,7 +275,7 @@ public class Plant : MonoBehaviour
             growthBaseIndex = 7;
         }
 
-        int healthOffset = (int) currentHealth; //Salud
+        int healthOffset = (int) currentHealth; // Salud
 
         int finalIndex = growthBaseIndex + healthOffset;
 
