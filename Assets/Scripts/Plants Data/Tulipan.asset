@@ -19,7 +19,7 @@ MonoBehaviour:
     marcar el ciclo natural del jard\xEDn y dar color temporal."
   waterDemand: 2
   fertilizerDemand: 2
-  solarExposureDemand: 0
+  solarExposureDemand: 1
   timeToSprout: 1
   timeToGrow: 2
   timeToMature: 3

@@ -173,6 +173,7 @@ public class HUDUI : MonoBehaviour
     #region Metodos para botones
     public void LetterButton()
     {
+        SFXManager.Instance?.PlayClick();
         letterPanel.SetActive(false);
         HUDPanel.SetActive(true);
     }

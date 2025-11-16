@@ -20,7 +20,7 @@ MonoBehaviour:
     y su capacidad para atraer colibr\xEDes."
   waterDemand: 2
   fertilizerDemand: 3
-  solarExposureDemand: 0
+  solarExposureDemand: 1
   timeToSprout: 1
   timeToGrow: 2
   timeToMature: 3

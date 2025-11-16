@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: a4383527f01b23941b93e074d6e3ecca
+guid: 3df1b08211b672a409930e73af743284
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 7305236644661036664
-    second: tulipan_0
-  - first:
-      213: -3964184944941180614
-    second: tulipan_1
-  - first:
-      213: 2203101897113011270
-    second: tulipan_2
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -57,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 33
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,16 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 2
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -107,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,67 +110,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tulipan_0
+      name: abelia_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 133
-        height: 150
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8760035060a616560800000000000000
-      internalID: 7305236644661036664
+      spriteID: b29958c0ce76492448f5324a53c72dfa
+      internalID: -204460622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tulipan_1
+      name: abelia_1
       rect:
         serializedVersion: 2
-        x: 133
+        x: 400
         y: 0
-        width: 133
-        height: 150
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a3954d4bbc26cf8c0800000000000000
-      internalID: -3964184944941180614
+      spriteID: 394800529a598ea46ad2f1a89f70b210
+      internalID: -1197185767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tulipan_2
+      name: abelia_2
       rect:
         serializedVersion: 2
-        x: 266
+        x: 800
         y: 0
-        width: 133
-        height: 150
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 644096db08df29e10800000000000000
-      internalID: 2203101897113011270
+      spriteID: 9c41b0c13d1e0924b8e582e260f28c06
+      internalID: 930298599
       vertices: []
       indices: 
       edges: []
@@ -188,7 +179,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 88f851f111a7b524eac68643d11f3c65
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +189,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tulipan_0: 7305236644661036664
-      tulipan_1: -3964184944941180614
-      tulipan_2: 2203101897113011270
+      abelia_0: -204460622
+      abelia_1: -1197185767
+      abelia_2: 930298599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
