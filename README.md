@@ -43,7 +43,7 @@ Finalmente, el modelo de monetización se basará en Ventas "In-Game", lo que pu
 
 # 2. Monetización
 ## 2.1. Tipo de modelo de monetización
-The Living Garden será un juego Free-to-Play (F2P) con microtransacciones centradas en cosméticos, junto a publicidad no intrusiva (solo anuncios recompensados).
+The Living Garden será un juego Free-to-Play (F2P) con microtransacciones centradas en cosméticos, junto a publicidad no intrusiva (solo anuncios recompensados)  y al apoyo de marcas que patrocinen el proyecto..
 
 El objetivo es mantener una experiencia relajada, coherente con la filosofía del juego, evitando modelos invasivos o de pago obligatorio. Los pagos se orientan a la personalización, la estética y la mejora de la experiencia, sin ofrecer ventajas competitivas de pay-to-win que afecten el equilibrio ecológico.
 
@@ -67,6 +67,10 @@ El juego incluirá una fuente de ingresos limitada a los **Vídeos Recompensados
 **Política anti pay-to-win:**
 
 Ningún objeto que afecte de forma permanente la competencia o desbloquee especies raras de forma instantánea estará detrás de un paywall. Estos recursos comprables aceleran o facilitan, pero siempre es posible lograr con todo con tiempo y buena gestión.
+
+**Patrocinadores:**
+
+Además, el proyecto será patrocinado por marcas de productos de agricultura como abono, fertilizantes y tratamientos antiplagas, que se verán beneficiados mediante el emplazamiento publicitario de sus marcas y productos en el videojuego. 
 
 
 ## 2.2. Tablas de productos y precios
@@ -176,29 +180,76 @@ El objetivo final es alcanzar la máxima biodiversidad, midiendo el progreso por
 ## 4.2. Descripción detallada de las mecánicas del juego
 ### 4.2.1. Gestión de recursos
 - **Gestión de recursos primarios:** El jugador debe gestionar el suministro limitado de **Agua** y **Abono**. Estos recursos son vitales para la salud de las plantas.
-    - **Adquisición**: Los recursos básicos se reciben diariamente al inicio del día. Cuantas más especies tenga el jardín, mayor será la cantidad de recursos recibidos. También se pueden comprar en la tienda con recursos.
+    - **Adquisición**: Los recursos básicos se reciben diariamente al inicio del día. Cuantas más especies tenga el jardín, mayor será la cantidad de recursos recibidos. También se pueden comprar en la tienda con recursos. La cantidad exacta de Agua y Abono recibida se calcula con la siguiente fórmula basada en la puntuación de Biodiversidad actual:
+        - Si la Biodiversidad es 0: El jugador no recibe recursos.
+        - Si la Biodiversidad es mayor que 0: El jugador recibe una cantidad base de 1 (de agua y abono) más 1 recurso adicional por cada punto de Biodiversidad.
+        - Fórmula: Recursos Obtenidos = 1 + Biodiversidad Actual (siempre que la Biodiversidad sea > 0).
+
     - **Uso**: El jugador tiene que decidir regar y abonar cada parcela manualmente, considerando la previsión meteorológica y las necesidades de cada especie. El uso eficiente es crucial dada su escasez.
     
-- **Gestión financiera:**   Los pétalos en el juego se utilizan para comprar semillas y recursos esenciales. Se obtienen a través de la cosecha y el suministro.
+- **Gestión financiera:**   Los pétalos en el juego se utilizan para comprar semillas y recursos esenciales. Se obtienen a través de la cosecha y bonos que te proporcionan por tu buena labor.
+    - Recolectar Frutos: Gana dinero cuando recoges el producto de una Planta Productora. La cantidad que gana es igual al precio que se pagó por la planta.
+    - Ingreso Base: Gana +1 pétalo automáticamente, solo por pasar el día. Si la biodiversidad es 0, no se gana nada para evitar exploits.
+    - Bono por Cantidad: Gana +1 pétalo  por cada 2 de biodiversidad que tenga el jardín (sin importar su estado).
+    - Bono de Madurez: Gana +1 pétalo  por cada 2 plantas que estén en estado madura.
+    - Bono de Diversidad: Gana +1 pétalo  si se tiene al menos una planta madura de cada una de las 4 categorías (Productora, Sombra, Polinizadora y Refugio).
+    - Bono de Exposición Solar: Gana +1 pétalo si todas las plantas están en su exposición solar correcta.
+
+Sin embargo el jugador puede obtener una penalización de -1 pétalo por cada 3 plantas que se mueran en el jardín, y se otorgará un strike no permanente.
+
 
 ### 4.2.2. Cultivo y planificación del jardín
-- **Plantación y cosecha:**
+- **Plantación**
     - **Plantación:** El jugador puede comprar semillas en la tienda y plantarlas en cualquiera de las parcelas disponibles, teniendo en cuenta los requerimientos de la semilla y lo que puede aportar a las parcelas adyacentes. Las especies de plantas tienen requerimientos específicos de sol, agua y atracción o repulsión de especies.
-    - **Cosecha y suministro:** Una vez que las plantas alcanzan la madurez, el jugador puede cosechar sus productos (ej: semillas, flores, frutos). Estos productos se envían a las Fundaciones Ecológicas a cambio de pétalos.
+
+- **Categorías de plantas**
+    Cuando una planta llegue a la fase de maduración aplicará sus efectos a las parcelas adyacentes.
+    - Atractoras de polinizadores: Estas plantas atraen a insectos polinizadores. Si se planta una planta productora en una parcela adyacente aparecerán polinizadores sobre ella y cuando esté en condiciones ideales comenzará a producir.
+    - Productoras: Estas plantas cuando llegan a madurar, si tienen polinizadores en la parcela comenzará el ciclo de producción. Cada cierto número de días echará un fruto que el jugador podrá recoger a cambio de pétalos.
+    - Proveedoras de sombra:  Estas especies proveen semisombra a las cuatro parcelas adyacentes. Si dos de estas plantas dan semisombra a una misma parcela, se convertirá en una sombra. El jugador debe usarlas para poder plantar plantas que necesiten sombra o semisombra.
+    - Atractores de fauna: Estas plantas atraen especies de fauna salvaje. Esta fauna tiene un efecto protector en las parcelas adyacentes contra plagas.
+
 
 - **Sinergias y micro-ecosistemas (planificación ecológica):**
     - El jugador debe planear estratégicamente la **disposición de las plantas**.
     - La proximidad de ciertas especies genera **efectos positivos (sinergias) o negativos**. Por ejemplo, una planta alta puede dar sombra a una planta vecina sensible al sol extremo, o una flor puede insectos polinizadores que beneficien a otra planta.
     - El éxito a largo plazo depende de la **creación de cadenas de interdependencia** que refuercen la salud general del jardín.
 
-### 4.2.3. Interacción con el entorno
+### 4.2.3. Climas y plagas
+    - Existen diferentes tipos de clima de diferentes intensidades que pueden afectar al jardín de manera positiva o negativa.
+        - Nublado: No tiene efectos sobre el jardín.
+        - Soleado: Causa una sequía probabilística que resta agua de las parcelas. No añade agua.
+            - Intensidad 1: Cada parcela tiene un 70% de probabilidad de perder 1 de agua.
+            - Intensidad 2: Cada parcela tiene un 40% de probabilidad de perder 1 de agua y un 30% de probabilidad de perder 2 de agua.
+            - Intensidad 3: Cada parcela tiene un 33% de probabilidad de perder 1, 33% de perder 2, y 33% de perder 3 de agua.
+        - Lluvia:
+            - Efecto Positivo: Añade agua a todas las parcelas. La cantidad ganada es igual a la intensidad*2 (es decir, +2, +4, o +6 de agua).
+            - Efecto Negativo: Si la lluvia es de intensidad 3, existe la probabilidad de matar instantáneamente a las plantas que tengan salud moderada o mala. Las plantas con buena salud no corren peligro.
+        - Granizo
+            - Efecto Positivo: Añade una pequeña cantidad de agua a todas las parcelas. La cantidad ganada es igual a la intensidad (es decir, +1, +2, o +3 de agua).
+            - Efecto Negativo: Tiene una probabilidad de matar instantáneamente a las plantas que tengan salud moderada o mala. Las plantas con buena salud no corren peligro.
+
+    - Plagas: Cada día hay un 10% de probabilidad de que una plaga pueda aparecer en el jardín. Las plagas sólo afectan a las plantas que no están protegidas con fauna (son una especie atractora de fauna o están adyacentes a una). Una vez una planta está infectada no podrá curar su salud y si es productora o atractora de polinizadores anulará sus efectos. Además, las plagas se extienden si hay alguna planta de la misma especie adyacente y sin proteger. Una planta se puede desinfectar plantando una atractora de fauna en una parcela adyacente.
+
+
+### 4.2.4. Interacción con el entorno
 - **Ciclo diario:** el juego opera con un ciclo temporal donde los eventos climáticos y el consumo de recursos de las plantas se simulan al inicio de cada día. El jugador puede pasar de día cuando decida que ha acabado de hacer sus tareas de ese día.
 - **Adaptación climática:** El jugador debe consultar la previsión meteorológica para tomar decisiones preventivas. Por ejemplo regar más antes de un sol muy intenso o plantar variedades resistentes.
 - **Eventos ecológicos (plagas y fauna):** El juego simula la aparición de plagas o la llegada de fauna beneficiosa. El jugador debe gestionar estos eventos, simulando una planificación ecológica para que la propia biodiversidad actúe como defensa natural.
 
 ### 4.2.4. Progresión y objetivo
-- **Logro de biodiversidad:** El progreso se mide por la cantidad de especies y fauna crítica que el jardín logra albergar y mantener en equilibrio.
+- **Logro de biodiversidad:** El progreso se mide por la cantidad de especies y fauna crítica que el jardín logra albergar y mantener en equilibrio. El jugador ganará la partida cuando consiga aguantar 1 día con 10 o más de biodiversidad. 
+La puntuación total de Biodiversidad, que se comprueba al inicio de cada día para la condición de victoria, se calcula sumando los siguientes tres componentes:
+    1. Plantas: El número total de especies de plantas únicas que estén plantadas en el jardín, siempre que hayan superado el estado de semilla (es decir, se cuentan desde el estado de brote en adelante).
+    2. Polinizadores: Se suma +1 punto al total si al menos una planta Productora o Atractora de Polinizadores madura está atrayendo polinizadores (ej. abejas) al jardín.
+    3. Fauna de Refugio: Se suma +1 punto al total si al menos una planta Refugio de Fauna madura está atrayendo fauna (ej. pájaros) al jardín.
+
 - **Sistema de salud de la planta:** Cada planta tiene un estado de salud dinámico que se recalcula diariamente en función de si ha cubierto sus requerimientos de recursos y el clima. Mantener la salud de las especies es un reto constante.
+
+- **Strikes:** Se puede ganar o perder una partida en The Living Garden. Para perder, el jugador deberá obtener 5 strikes en total, que pueden ser otorgados por diferentes cuestiones:
+    - Strike amarillo (No permanente): Este tipo de strikes se otorgan cuando se mueren 3 plantas. Puedes ser removidos si el jugador logra estar 5 días sin que se haya muerto ninguna planta o por cada Bono de Diversidad.
+    - Strike rojo (Permanente): Este tipo de strikes se otorgan cuando el jugador se queda a 0 pétalos y tiene 0 plantas plantadas, lo que le invalida para progresar en el santuario. Tras otorgarle el strike, se le abonarán 3 pétalos para que pueda continuar su partida.
+
 
 
 ## 4.3. Controles
@@ -604,8 +655,8 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
                 <b>Nombre científico:</b> <i>Fragaria vesca</i><br>
                 <img src="Recursos/Imágenes/Fresa.png" alt="Fresa" width="100">
             </td>
-            <td>Planta pequeña y frutal que crece en zonas húmedas. Produce frutos dulces que atraen fauna y aportan ingresos moderados.</td>
-            <td>Productora / Atractor de fauna</td>
+            <td>Planta pequeña y frutal que crece en zonas húmedas. Produce frutos dulces que atraen fauna y aportan ingresos moderados.
+            </td>
             <td>
                 <b>Necesidad de agua:</b> 2<br>
                 <b>Necesidad de abono:</b> 2<br>
@@ -700,6 +751,14 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
                 <img src="Recursos/Imágenes/Saco_abono.PNG" alt="Saco de abono" width="300">
             </td>
         </tr>
+        <tr>
+            <td>
+                <b>Pala:</b> La pala es la herramienta que permite eliminar las plantas muertas del terreno, o incluso las plantas vivas que no estén aportando al ecosistema. 
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/pala.PNG" alt="Pala" width="300">
+            </td>
+        </tr>
     </tbody>
 </table>
 
@@ -788,88 +847,100 @@ El entorno inmediato al jardín incluye la **casa de campo**, un edificio peque�
 A continuación se muestra el guión del tutorial que aparecerá la primera vez que se juegue una partida:
 
 Leo habla
-- _¡Buenos días, Curador! Soy Leo, el guardián de este Santuario. Hace mucho que la naturaleza duerme aquí... pero contigo puede volver a florecer._
+- _“¡Bienvenido, Curador! Soy Leo, guardián de este Santuario. La naturaleza aquí duerme… pero contigo puede volver a despertar.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla
-- _"El mundo exterior se marchita, pero este lugar aún tiene esperanza. Cada planta que cuides devolverá equilibrio a la tierra. Aquí, cada acción cuenta."_
+- _"“Tu misión es restaurar este lugar hasta alcanzar la biodiversidad necesaria para que vuelva a ser un lugar lleno de vida. Cada especie cuenta.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza visualmente en el ciclo de Plantar → Regar → Abonar.
-- _"Planta, riega, abona y pasa el día. Así crece la vida, así respira el Santuario."_
+- _“Plantar, regar, abonar y pasar el día. Ese es el ritmo del Santuario; así es como empieza todo.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en una casilla vacía; cursor seleccionando "Tienda -> Semillas -> Margarita". Flecha al botón "Plantar".
-- _"Selecciona una semilla y plántala en una parcela. Todo comienza con un pequeño gesto."_
+- _“Elige una semilla en la tienda y plántala en una parcela vacía. Cada planta es una nueva oportunidad.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en la regadera en la barra de herramientas con área de riego señalada.
-- _"Usa la regadera para hidratar la parcela. El depósito se rellena cada día; el agua es vida."_
+- _“La regadera y el abono permiten que la planta crezca fuerte. Cada parcela guarda su propio nivel de agua y fertilidad… ¡cuídalas bien!”_
     - **PULSAR SIGUIENTE**
 
 Leo habla
-- _“Cada parcela tiene su propio nivel de agua y abono, ¡no dejes a tus plantas sin los recursos básicos!”_
-    - **PULSAR SIGUIENTE**
-
-Leo habla y se enfatiza en el saco de abono en barra.
-- _“El abono mejora la fertilidad del suelo y ayuda a mantener las plantas fuertes y sanas, pero no acelera su crecimiento. Úsalo hábilmente para su uso en todas las parcelas.”_
+- _“Una planta puede estar sana, regular o mala. Si le falta agua, abono, sombra… o si la atacan plagas, su salud caerá.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en el botón grande "Pasar día" en la esquina.
-- _“Cuando todo esté listo, pasa de día. Durante la noche, las plantas consumen el agua y el abono de sus parcelas, y al amanecer, el clima entrará en juego.”_
+- _“Al pasar de día, tus plantas consumen los recursos de su parcela. Si tienen lo que necesitan, crecerán… si no, se marchitarán.”_
+    - **PULSAR SIGUIENTE**
+
+Leo habla
+- _"El clima cambia cada día. Puede hacer sol, nublado, lluvia o incluso caer granizo.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en el panel meteorológico con iconos: sol intenso, lluvia, granizo. 
-- _“El clima cambia cada día. La lluvia regará tus parcelas, el calor las secará… y las tormentas pueden ser un desafío. ¡Planifica con previsión!”_
+- _“Cada clima tiene distintos niveles de intensidad. Cuanto más fuerte, más impacto tendrá en tus parcelas y plantas.”_
+    - **PULSAR SIGUIENTE**
+
+Leo habla
+- _“La lluvia restaura el agua del suelo. El sol lo seca. El nublado refresca. Y el granizo es peligroso para plantas debilitadas.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en las plantas.
-- _“Hay cuatro tipos de plantas: Productoras, atractoras de polinizadores, refugio de fauna y de sombra”_
+- _“Hay cuatro tipos de plantas, cada una con un papel esencial en el ecosistema.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en las plantas productoras.
-- _“Algunas plantas son productoras: si están sanas, te darán recursos o dinero al final del día. Cuídalas bien y el Santuario prosperará contigo”_
+- _“Las productoras dan frutos que puedes recoger… pero solo si están sanas, sin plaga y con polinizadores cerca.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en las plantas atractoras de polinizadores.
-- _"Algunas especies son atractoras: atraen amigos que controlan plagas. Usa la biodiversidad a tu favor."_
+- _“Las plantas polinizadoras atraen polinizadores que ayudan a las productoras cercanas a producir.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en las plantas refugios de fauna.
-- _"Algunas especies son refugios para nuestros amigos: cuantas más plantas refugio, ¡más fauna atraerá tu ecosistema!."_
+- _“Las plantas refugio atraen pequeños animales que mantienen alejadas las plagas. Si hay fauna cerca, tus plantas estarán a salvo.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en las plantas de sombra.
-- _"Por último, están las plantas de sombra: generan una sombra a su alrededor que puede favorecer el bienestar de otras especies vegetales."_
+- _“Las plantas de sombra protegen del sol fuerte a las especies sensibles. Una buena sombra puede ser la diferencia entre crecer… o sufrir.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en dos casillas contiguas con Agave (sombra) + Margarita (sensible al sol) y un halo verde mostrando beneficios.
-- _“Las plantas colaboran entre sí: unas dan sombra, otras atraen polinizadores… Aprende qué combinaciones crean armonía.”_
+- _“Combinar plantas sabiamente crea equilibrio: sombras para las delicadas, polinizadores para las productoras, refugios contra plagas… Cada especie ayuda a otra.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla y se enfatiza en el ejemplo de plaga y mariquita.
-- _“Algunas especies atraen aliados naturales, como las mariquitas, que controlan las plagas. La diversidad es tu mejor defensa.”_
-    - **PULSAR SIGUIENTE**
-
-Leo habla y se enfatiza en el menú de la planta con tres estados (buena, regular, mala) y pequeña lista de causas (falta agua, plaga, sombra).
-- _“Cada planta tiene un nivel de salud. Si su parcela se seca o pierde fertilidad, enfermará… y los climas duros pueden acabar con ella.”_
+- _“Las plagas aparecen en plantas desprotegidas. Una planta con plaga no se cura… y si es productora, deja de producir. Si es atractora de polinizadores los espantará.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla
-- _“Si tus plantas no están sanas, el frío o el calor extremo pueden matarlas. Observa sus niveles de agua y abono cada día.”_
+- _“Puedes ganar dinero recolectando frutos de productoras. Y si eliminas una planta con la pala, recuperas la mitad de lo que te costó.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla
-- _“Tu meta: crear un Santuario autosuficiente, equilibrado y lleno de vida. Escucha al clima y deja que la naturaleza hable contigo.”_
+- _“Cada noche recibes ingresos por el trabajo del día. Ganarás dinero por tener muchas plantas, por tener plantas maduras, por la diversidad…  y si todas están en la exposición solar correcta, recibirás un pequeño premio extra.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla
-- _“Recuerda: planta con cuidado, riega antes del calor, abona con moderación y usa las sinergias entre especies.”_
+- _“Las pérdidas también cuentan… Si una planta muere, perderás algo de dinero ese día.”_
     - **PULSAR SIGUIENTE**
 
 Leo habla
-- _"Léelo cuando quieras desde el menú 'Ayuda'. ¡Buena suerte, Curador, y que el Santuario florezca contigo!”_
+- _“Cada tres plantas que mueren, recibes un strike. Si acumulas demasiados, el Santuario caerá en ruina… pero si pasas varios días sin muertes o madura una planta de cada categoría, podrás recuperar alguno. También recibirás un strike permanente si te quedas sin dinero y el jardín está vacío.”_
     - **PULSAR CERRAR**
+
+Leo habla
+- _“Desde aquí verás todo: tus recursos, el clima, el día, la biodiversidad… Y al seleccionar una parcela podrás ver la salud, necesidades y fase de cualquier planta.”_
+    - **PULSAR SIGUIENTE**
+
+Leo habla
+- _“La tienda está a tu izquierda: agua, abono y semillas. Arriba podrás pausar, ajustar volúmenes o consultar esta guía rápida cuando puedas.”_
+    - **PULSAR SIGUIENTE**
+
+Leo habla
+- _“Eso es todo, Curador.  Escucha al clima, cuida cada parcela…  y deja que el Santuario vuelva a florecer contigo.”_
+    - **PULSAR SIGUIENTE**
 
 
 # 6. Arte
@@ -913,7 +984,56 @@ Empezando por la semilla, continuando con un brote pequeño, uno un poco más gr
 
 Una planta se puede encontrar en tres niveles de salud en cualquiera de sus etapas: bueno, regular y malo. Esto se visualiza con la pérdida de color y el decaimiento de las hojas, de las flores y la putrefacción de los frutos.
 
-![Diseño margarita](Recursos/Imágenes/Diseño_margarita.png)
+![Diseño brotes](Recursos/Imágenes/brotes.png)
+
+Abelia
+![Diseño abelia](Recursos/Imágenes/abelia.png)
+
+Acebo
+![Diseño acebo](Recursos/Imágenes/acebo.png)
+
+Agabe
+![Diseño agabe](Recursos/Imágenes/agabe.png)
+
+Bambú
+![Diseño bambú](Recursos/Imágenes/bambu.png)
+
+Cheflera
+![Diseño cheflera](Recursos/Imágenes/cheflera_.png)
+
+Fresa
+![Diseño fresa](Recursos/Imágenes/fresa_.png)
+
+Garambullo
+![Diseño garambullo](Recursos/Imágenes/garambullo_.png)
+
+Lavanda
+![Diseño lavanda](Recursos/Imágenes/lavanda_.png)
+
+Lirio
+![Diseño lirio](Recursos/Imágenes/lirio_.png)
+
+Margarita
+![Diseño margarita](Recursos/Imágenes/margarita_.png)
+
+Tulipán
+![Diseño tulipán](Recursos/Imágenes/tulipan_.png)
+
+Orquídea
+![Diseño orquídea](Recursos/Imágenes/orquidea_.png)
+
+Rosa
+![Diseño rosa](Recursos/Imágenes/rosa_.png)
+
+Trigo
+![Diseño trigo](Recursos/Imágenes/trigo_.png)
+
+Tomatera
+![Diseño tomatera](Recursos/Imágenes/tomatera_.png)
+
+Trompetilla
+![Diseño trompetilla](Recursos/Imágenes/trompetilla.png)
+
 
 ### 6.2.2. Fauna
 La fauna se diseñará para ser expresiva, adorable y funcionalmente clara, manteniendo el estilo de ilustración 2D y la paleta de colores suaves. 
@@ -927,7 +1047,9 @@ La fauna se diseñará para ser expresiva, adorable y funcionalmente clara, mant
 
   A continuación se muestran algunos bocetos del personaje:
 
-  ![Diseño Leo](Recursos/Imágenes/Boceto_Leo.png)
+  ![Boceto Leo](Recursos/Imágenes/Boceto_Leo.png)
+  ![Diseño Leo](Recursos/Imágenes/Diseño_Leo.png)
+
 
 - **Fauna jugable:** Todos los animales tendrán una clara diferenciación visual que dirija la atención del jugador de manera sutil, coherente con el principio de Armonía Visual.
 
@@ -937,6 +1059,24 @@ La fauna se diseñará para ser expresiva, adorable y funcionalmente clara, mant
 | Plagas y amenazas | Deben ser fácilmente legibles, pero su diseño debe ser más aburrido o apagado, no agresivo. | Pulgón, caracoles, etc. |
 | Fauna | Se aplica la estética beneficiosa pero con un diseño más complejo. | Conejos, mariquitas, ranas, etc. |
 
+<table>
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/abejas.PNG" alt="Abejas" width="200"><br>
+                Abejas
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/pajarito.PNG" alt="Pajarito" width="200"><br>
+                pajarito
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/pulgon.PNG" alt="Pulgón" width="200"><br>
+                Pulgón
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ### 6.2.3. Recursos y objetos
 <table>
@@ -945,6 +1085,10 @@ La fauna se diseñará para ser expresiva, adorable y funcionalmente clara, mant
             <td style="text-align: center;">
                 <img src="Recursos/Imágenes/Regadera.PNG" alt="Regadera" width="200"><br>
                 Regadera
+            </td>
+            <td style="text-align: center;">
+                <img src="Recursos/Imágenes/Pala.PNG" alt="Pala" width="200"><br>
+                Pala
             </td>
             <td style="text-align: center;">
                 <img src="Recursos/Imágenes/Saco_abono.PNG" alt="Saco de abono" width="200"><br>
@@ -1025,21 +1169,26 @@ A continuación, se muestran unos bocetos de cómo serían las diferentes pantal
 
 <img src="Recursos/Imágenes/Menu_principal.png" alt="Pantalla de menú principal" width="500">
 
-**Tienda:**
-
-<img src="Recursos/Imágenes/Tienda.png" alt="Pantalla de tienda" width="500">
-
 **Ajustes:**
 
 <img src="Recursos/Imágenes/Ajustes.png" alt="Pantalla de ajustes" width="500">
 
 **Pantalla de juego:**
 
-<img src="Recursos/Imágenes/Pantalla_juego.jpeg" alt="Pantalla de juego" width="500">
+<img src="Recursos/Imágenes/Pantalla_juego.png" alt="Pantalla de juego" width="500">
+<img src="Recursos/Imágenes/Pantalla_juego2.png" alt="Pantalla de juego" width="500">
 
 **Menú de pausa:**
 
 <img src="Recursos/Imágenes/Menu_pausa.png" alt="Pantalla de pausa" width="500">
+
+**Menú de créditos:**
+
+<img src="Recursos/Imágenes/Menu_creditos.png" alt="Pantalla de créditos" width="500">
+
+**Menú de guía rápida:**
+
+<img src="Recursos/Imágenes/Guia_rapida.png" alt="Pantalla de guía rápida" width="500">
 
 
 # 8. Hoja de ruta de desarrollo
@@ -1047,8 +1196,42 @@ A continuación, se muestran unos bocetos de cómo serían las diferentes pantal
 |-----------|-----------|-----------|
 | 1 | GDD | 19/10/25 |
 | 2 | Prototipo | 19/10/25 |
-| 3 | Integración estética | - |
-| 4 | Mecánicas completas | - |
-| 5 | Contenido final y narrativa | - |
+| 3 | Integración estética | 16/11/25 |
+| 4 | Mecánicas completas | 16/11/25 |
+| 5 | Contenido final y narrativa | 16/11/25 |
 | 6 | Pulido completo | - |
 | 7 | Día de lanzamiento | 12/25 |
+
+
+# 9. Cambios
+
+Este apartado detalla la evolución del proyecto desde la entrega inicial del GDD (v1) a la presente versión (v2 - Alpha). Los cambios reflejan una definición más profunda de las mecánicas centrales, la implementación de los recursos artísticos finales y el ajuste de la lógica del juego basada en el prototipado.
+
+## 9.1. Mecánicas de Juego (Core Gameplay)
+
+El cambio más significativo se encuentra en la profundización y definición de las mecánicas de juego, que han pasado de ser conceptos generales a reglas de sistema específicas:
+
+* Definición del Sistema de Strikes (Sección 4.2.5): Se ha implementado el sistema de 5 strikes para la derrota. Se diferencian Strikes Amarillos (No permanentes, se obtienen por cada 3 muertes de plantas ) y Strikes Rojos (Permanentes, se obtienen por bancarrota total, quedando a 0 pétalos y 0 plantas ).
+* Sistema Detallado de Clima y Plagas (Sección 4.2.3): Se ha añadido una sección completa que define la jugabilidad de los eventos externos.
+    * Clima: Se han definido los efectos positivos y negativos del Soleado (3 intensidades de sequía probabilística ), Lluvia (añade agua, pero la Intensidad 3 es peligrosa para plantas débiles ) y Granizo (añade poca agua y es peligroso para plantas débiles ).
+    * Plagas: Se ha definido la mecánica completa: probabilidad de aparición (10% por día ), anulación de efectos de la planta , expansión a plantas adyacentes de la misma especie y la cura (plantar refugios de fauna adyacentes ).
+* Categorías de Plantas y Sinergias (Sección 4.2.2): El sistema de cultivo se ha expandido para incluir formalmente 4 categorías de plantas (Productoras, Polinizadores, Sombra, Refugio de Fauna). Estas interactúan entre sí (ej. polinizadores activan la producción de las plantas productoras).
+* Economía Detallada (Pétalos) (Sección 4.2.1): Se han definido las fórmulas exactas para la obtención de ingresos diarios, que ahora incluyen:
+Ingreso Base (+1 pétalo, solo si se tienen plantas).
+    * Bono por Cantidad (+1 pétalo por cada 2 de biodiversidad).
+    * Bono de Madurez (+1 pétalo por cada 2 plantas maduras).
+    * Bono de Diversidad (+1 pétalo si hay 4 categorías maduras).
+    * Bono de Exposición Solar (+1 pétalo si todas las plantas están correctas).
+* Adquisición de Recursos (Agua/Abono) (Sección 4.2.1): Se ha establecido la fórmula de adquisición diaria de recursos: 0 si no hay biodiversidad, o 1 + Biodiversidad Actual si hay más de 0.
+* Definición de Victoria y Biodiversidad (Sección 4.2.5): Se ha establecido el objetivo de victoria en 10 puntos de Biodiversidad. Se ha definido la fórmula de cálculo de biodiversidad: (Nº de especies únicas en estado 'Brote' o superior) + (1 si hay Polinizadores) + (1 si hay Fauna de Refugio).
+
+## 9.2. Interfaz y Arte (UI/UX y Assets)
+
+El GDD v1 presentaba bocetos y arte conceptual. La v2 integra los recursos finales:
+* Implementación de la Interfaz Final (Sección 7.2): Se han reemplazado todos los bocetos dibujados a mano por los diseños y capturas de la interfaz (UI) finales del juego, incluyendo la Pantalla de Juego, Menú Principal, Ajustes y Créditos.
+* Integración de Recursos Artísticos (Assets) (Sección 6.2): Todos los placeholders han sido reemplazados por los sprites 2D finales de las plantas (mostrando sus 3 estados de salud) , los personajes (Leo) , los objetos (herramientas, monedas) y el escenario de juego.
+
+## 9.3. Narrativa y Documentación
+
+* Guión Completo del Tutorial (Sección 5.4): Se ha redactado el guión completo y detallado del tutorial, guiado por el personaje Leo. El guión ahora explica todas las mecánicas principales implementadas (ciclo de día, categorías de plantas, clima, plagas, strikes) .
+* Detalle de Objetos (Sección 4.5): La lista de plantas se ha formalizado en una tabla detallada que especifica todos sus atributos de gameplay (coste, tiempos de crecimiento, demandas de agua/abono/sol, categoría).
