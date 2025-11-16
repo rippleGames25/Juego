@@ -24,7 +24,7 @@ MonoBehaviour:
   timeToSprout: 1
   timeToGrow: 2
   timeToMature: 3
-  category: 2
+  category: 0
   shadeSize: 0
   timeToProduce: 0
   price: 2

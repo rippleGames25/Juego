@@ -40,5 +40,6 @@ MonoBehaviour:
   - {fileID: 7461610073201806112, guid: 694ae19e581341546bafbf25a0fdcd87, type: 3}
   - {fileID: 4851943850897737633, guid: 694ae19e581341546bafbf25a0fdcd87, type: 3}
   - {fileID: -5502372090742607268, guid: 694ae19e581341546bafbf25a0fdcd87, type: 3}
+  - {fileID: 8728966633112715272, guid: 694ae19e581341546bafbf25a0fdcd87, type: 3}
   deathSprite: {fileID: 21300000, guid: 858d3eea78e01114890a57e8a6049e03, type: 3}
   refugeVisualPrefab: {fileID: 0}

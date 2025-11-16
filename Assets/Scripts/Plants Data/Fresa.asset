@@ -36,9 +36,10 @@ MonoBehaviour:
   - {fileID: -5255372173975147240, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
   - {fileID: 1692280188772239226, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
   - {fileID: -1808941308251631867, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}
-  - {fileID: -3065193834084163684, guid: 363399d80ed8ae9458abf3bcc4964593, type: 3}
-  - {fileID: 8347759781963605301, guid: 363399d80ed8ae9458abf3bcc4964593, type: 3}
-  - {fileID: 4207253497888249200, guid: 363399d80ed8ae9458abf3bcc4964593, type: 3}
-  - {fileID: -2714682497457683847, guid: 363399d80ed8ae9458abf3bcc4964593, type: 3}
+  - {fileID: 4821472308270241887, guid: 1961d96bff404e34db05cc38b19ed4d4, type: 3}
+  - {fileID: 188368462415953287, guid: 1961d96bff404e34db05cc38b19ed4d4, type: 3}
+  - {fileID: -2046234110272305598, guid: 1961d96bff404e34db05cc38b19ed4d4, type: 3}
+  - {fileID: 8018027484968216133, guid: 1961d96bff404e34db05cc38b19ed4d4, type: 3}
+  - {fileID: -5541292423051131213, guid: 1961d96bff404e34db05cc38b19ed4d4, type: 3}
   deathSprite: {fileID: 21300000, guid: 858d3eea78e01114890a57e8a6049e03, type: 3}
   refugeVisualPrefab: {fileID: 0}

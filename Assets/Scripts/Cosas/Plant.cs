@@ -37,7 +37,7 @@ public class Plant : MonoBehaviour
 
     [Header("Plagas")]
     public bool isPlagued = false;
-    private GameObject plagueVisualInstance;
+    protected GameObject plagueVisualInstance;
     [SerializeField] private Vector3 currentPlaguePosition = new Vector3(0, 0.1f, 0);
 
     // Visuals
