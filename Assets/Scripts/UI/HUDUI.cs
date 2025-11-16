@@ -427,7 +427,7 @@ public class HUDUI : MonoBehaviour
 
     private void ShowPlantInfoPanel(Plant plant)
     {
-        plantPhoto.sprite = plant.plantData.plantSprites[GameManager.IDX_PLANT_SPRITE];
+        plantPhoto.sprite = plant.plantData.shopSprite;
 
         // Info
         nameText.text = plant.plantData.plantName;

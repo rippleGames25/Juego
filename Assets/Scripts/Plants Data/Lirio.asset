@@ -27,7 +27,7 @@ MonoBehaviour:
   shadeSize: 0
   timeToProduce: 0
   price: 2
-  shopSprite: {fileID: 2097702173, guid: c77a4a08649aead4cac0e79118f8a784, type: 3}
+  shopSprite: {fileID: 21300000, guid: 2a5e2d5061f57ed4782842b10e1eb202, type: 3}
   plantSprites:
   - {fileID: 21300000, guid: d876bde82d4d10f4a864c882f6f08367, type: 3}
   - {fileID: -3966044189379602213, guid: 2122e2abca629884c921fe063d0cc4de, type: 3}

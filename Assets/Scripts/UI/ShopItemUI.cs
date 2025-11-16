@@ -31,11 +31,8 @@ public class ShopItemUI : MonoBehaviour
         priceText.text = plantData.price.ToString();
         solarExposure.sprite = solarSprites[(int)plantData.solarExposureDemand];
 
-        if (plantData.plantSprites != null && plantData.plantSprites.Length > 0)
-        {
-            int spriteIndex = Mathf.Min(GameManager.IDX_PLANT_SPRITE, plantData.plantSprites.Length - 1);
-            plantImage.sprite = plantData.plantSprites[spriteIndex];
-        }
+        plantImage.sprite = plantData.shopSprite;
+        
 
         GameManager.Instance.OnMoneyChanged += UpdateItemAvailability;
 
