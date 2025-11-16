@@ -29,7 +29,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void Tutorial()
     {
-        SceneManager.LoadScene(TUTORIAL_SCENE_NAME);
+        SceneManager.LoadScene("TutorialScene");
     }
 
     public void Quit()
