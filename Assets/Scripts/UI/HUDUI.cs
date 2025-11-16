@@ -88,8 +88,6 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI plantTypeCategoryText;
     [SerializeField] private TextMeshProUGUI plantTypeWaterDemandText;
     [SerializeField] private TextMeshProUGUI plantTypeFertilizerDemandText;
-    [SerializeField] private TextMeshProUGUI plantTypeToSprout;
-    [SerializeField] private TextMeshProUGUI plantTypeToGrow;
     [SerializeField] private TextMeshProUGUI plantTypeToMature;
     [SerializeField] private Image plantTypeSolarDemandImage;
 
@@ -361,36 +359,28 @@ public class HUDUI : MonoBehaviour
         plantTypeName.text = plantType.plantName;
 
         if (plantTypeScientificName != null)
-            plantTypeScientificName.text = plantType.scientificName; //
+            plantTypeScientificName.text = plantType.scientificName; 
 
         if (plantTypeDescription != null)
-            plantTypeDescription.text = plantType.description; //
+            plantTypeDescription.text = plantType.description; 
 
-        if (plantTypePhoto != null && plantType.plantSprites != null && plantType.plantSprites.Length > GameManager.IDX_PLANT_SPRITE)
+        if (plantTypePhoto != null && plantType.shopSprite != null)
         {
-            // Usamos la misma imagen que en la tienda
-            plantTypePhoto.sprite = plantType.plantSprites[GameManager.IDX_PLANT_SPRITE]; //
+            plantTypePhoto.sprite = plantType.shopSprite; 
         }
 
         if (plantTypeCategoryText != null)
             plantTypeCategoryText.text = plantType.category.ToString();
 
         if (plantTypeWaterDemandText != null)
-            plantTypeWaterDemandText.text = $"Agua necesaria: {plantType.waterDemand.ToString()}";
+            plantTypeWaterDemandText.text = $"{plantType.waterDemand.ToString()}";
 
         if (plantTypeFertilizerDemandText != null)
-            plantTypeFertilizerDemandText.text = $"Abono necesario: {plantType.fertilizerDemand.ToString()}";
-
-        if (plantTypeToSprout != null)
-            plantTypeToSprout.text = $"Tiempo para brotar: {plantType.timeToSprout.ToString()}";
-
-        if (plantTypeToGrow != null)
-            plantTypeToGrow.text = $"Tiempo para crecer: {plantType.timeToGrow.ToString()}";
+            plantTypeFertilizerDemandText.text = $"{plantType.fertilizerDemand.ToString()}";
 
         if (plantTypeToMature != null)
-            plantTypeToMature.text = $"Tiempo para madurar: {plantType.timeToMature.ToString()}";
+            plantTypeToMature.text = $"Madura en:\n {plantType.timeToMature.ToString()} días";
 
-        // Para la imagen del sol, usamos la lista 'solarSprites' que ya tienes en HUDUI
         if (plantTypeSolarDemandImage != null && solarSprites != null && solarSprites.Count > 0)
         {
             int solarIndex = (int)plantType.solarExposureDemand;
@@ -409,7 +399,6 @@ public class HUDUI : MonoBehaviour
             plotInfoPanel.SetActive(false);
         }
 
-        // Muestra el panel de enciclopedia
         plantTypeInfoPanel.SetActive(true);
 
         GameManager.Instance.SetInputLocked(true);

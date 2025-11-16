@@ -1034,8 +1034,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -631, y: -436}
-  m_SizeDelta: {x: 540, y: 70.2292}
+  m_AnchoredPosition: {x: -631, y: -452.94272}
+  m_SizeDelta: {x: 540, y: 104.1146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &210429014
 MonoBehaviour:
@@ -2404,8 +2404,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: -2.1099854}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -35.148003, y: 0}
+  m_SizeDelta: {x: 388.9544, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &891561362
 MonoBehaviour:
@@ -2427,7 +2427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tipograf\xEDa: "
+  m_text: 'Fuente: Delius (Licencia de uso comercial)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b626bea2fb7dd745b66d689d9d563c3, type: 2}
   m_sharedMaterial: {fileID: 4546141632955884259, guid: 8b626bea2fb7dd745b66d689d9d563c3, type: 2}
@@ -2492,7 +2492,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -164.71619, y: 0, z: -171.62476, w: 0}
+  m_margin: {x: -1.7433777, y: 0, z: -0.5840454, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

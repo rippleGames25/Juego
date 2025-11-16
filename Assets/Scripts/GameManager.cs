@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     public int lastDayFertilizerIncome { get; private set; }
     public int lastDayBailoutIncome { get; private set; }
 
-    private int bailoutIncomeToday = 0;
+
     private bool isBailoutPending = false;
     public bool IsBailoutPending => isBailoutPending;
 
