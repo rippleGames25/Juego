@@ -2,14 +2,27 @@ using UnityEngine;
 
 public class PollinatorAttractorPlant : Plant
 {
-    public override void ApplyDailyEffect()
+    public override void UpdateEnvironmentEffect()
     {
-        if (currentGrowth == GrowthState.madura && !hasAppliedEnvironmentEffect)
+        // Estar madura, no estar muerta, salud buena o moderada, y no tener plaga.
+        bool canBeActive = (currentGrowth == GrowthState.madura &&  // madura
+                            !isDeath &&                             // viva 
+                            !isPlagued);                            // sin plagas
+
+        if (canBeActive && !isEffectActive)
         {
-            // Llama a la lógica ambiental (Atraer Polinizadores) una sola vez al madurar
-            parentPlot.UpdateEnviroment(plantData.category);
+            // Activar efecto
+            PlotsManager.Instance.GeneratePollination(parentPlot.gridCoordinates);
             parentPlot.AddPollinatorSource();
-            hasAppliedEnvironmentEffect = true;
+            isEffectActive = true;
+        }
+        else if (!canBeActive && isEffectActive)
+        {
+            // Desactivar efecto
+            PlotsManager.Instance.RemovePollination(parentPlot.gridCoordinates);
+            parentPlot.RemovePollinatorSource();
+            isEffectActive = false;
         }
     }
+
 }

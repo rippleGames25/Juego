@@ -25,7 +25,7 @@ public class Plant : MonoBehaviour
     public GrowthState currentGrowth;
     public Health currentHealth;
     public int lifeDays;
-    public bool hasAppliedEnvironmentEffect = false;
+    public bool isEffectActive = false;
     public bool isDeath = false;
 
     protected Plot parentPlot;
@@ -112,6 +112,7 @@ public class Plant : MonoBehaviour
         }
 
         UpdatePlantSprite();
+        UpdateEnvironmentEffect();
     }
 
     // Metodo que Decrementa el estado de salud
@@ -128,12 +129,14 @@ public class Plant : MonoBehaviour
             isDeath = true;
             SFXManager.Instance?.PlayMarchita();
             UpdatePlantSprite();
+            UpdateEnvironmentEffect();
             parentPlot.UpdatePollinatorVisual();
             return true; // La planta ha muerto
         }
 
         SFXManager.Instance?.PlayMarchita();
         UpdatePlantSprite();
+        UpdateEnvironmentEffect();
         return false;
     }
 
@@ -168,6 +171,7 @@ public class Plant : MonoBehaviour
             Debug.Log($"La planta {plantData.plantName} ha madurado.");
 
             parentPlot.UpdatePollinatorVisual();
+            UpdateEnvironmentEffect();
         }
 
         UpdatePlantSprite();
@@ -183,6 +187,8 @@ public class Plant : MonoBehaviour
 
     public virtual void ApplyDailyEffect() { }
 
+    public virtual void UpdateEnvironmentEffect() { }
+
     public void ForceKill()
     {
         isDeath = true;
@@ -194,6 +200,7 @@ public class Plant : MonoBehaviour
         }
 
         UpdatePlantSprite();
+        UpdateEnvironmentEffect();
         SFXManager.Instance?.PlayMarchita();
     }
 
@@ -210,6 +217,8 @@ public class Plant : MonoBehaviour
 
         parentPlot.UpdatePollinatorVisual();
 
+        UpdateEnvironmentEffect();
+
         Debug.Log($"La planta {plantData.plantName} ha sido infectada por una plaga");
     }
 
@@ -224,12 +233,12 @@ public class Plant : MonoBehaviour
 
         parentPlot.UpdatePollinatorVisual();
 
+        UpdateEnvironmentEffect();
         Debug.Log($"La planta {plantData.plantName} ha sido curada de la plaga");
     }
     #endregion
 
     // Metodos de visualización
-
     protected virtual void UpdatePlantSprite()
     {
         if (isDeath) // Planta muerta

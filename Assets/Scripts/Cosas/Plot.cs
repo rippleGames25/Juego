@@ -337,27 +337,11 @@ public class Plot : MonoBehaviour
         }
         else
         {
-            // Retirar efectos de la planta
-            if (currentPlant.plantData.category == PlantCategory.Sombra)
-            {
-                PlotsManager.Instance.RemoveShade(gridCoordinates);
-            }
-
-            if (currentPlant.plantData.category == PlantCategory.Polinizadores)
-            {
-                PlotsManager.Instance.RemovePollination(gridCoordinates);
-            }
-
-            if (currentPlant.plantData.category == PlantCategory.RefugioFauna)
-            {
-                PlotsManager.Instance.RemoveRefuge(gridCoordinates);
-            }
+            currentPlant.isDeath = true;
+            currentPlant.UpdateEnvironmentEffect();
 
             GameManager.Instance.CurrentMoney += (currentPlant.plantData.price) / 2; // Gana la mitad de lo que vale la planta
         }
-
-        // Restar número de plantas
-        GameManager.Instance.CurrentBiodiversity--;
 
         Destroy(currentPlant.gameObject);
 
