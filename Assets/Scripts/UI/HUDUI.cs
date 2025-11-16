@@ -18,6 +18,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject summaryPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject helpPanel;
+    [SerializeField] private GameObject inputBlockerPanel;
 
     // Panel del Dia
     [Header("Resumen Día")]
@@ -210,6 +211,7 @@ public class HUDUI : MonoBehaviour
     public void PassDayButton()
     {
         SFXManager.Instance?.PlayClick();
+        if (inputBlockerPanel != null) inputBlockerPanel.SetActive(true);
         GameManager.Instance.EndDay();
     }
 
@@ -242,6 +244,8 @@ public class HUDUI : MonoBehaviour
     public void ShowDaySummaryPanel()
     {
         SFXManager.Instance?.PlayClick();
+
+        if (inputBlockerPanel != null) inputBlockerPanel.SetActive(false);
 
         if (GameManager.Instance == null)
         {

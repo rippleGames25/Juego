@@ -208,7 +208,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (inputLocked) return;
+        if (inputLocked || isDayTransitioning) return;
 
         if (Input.GetMouseButtonDown(0))
             HandleInput();
