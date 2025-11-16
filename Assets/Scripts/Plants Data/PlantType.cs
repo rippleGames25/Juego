@@ -31,18 +31,11 @@ public class PlantType : ScriptableObject
     public PlantCategory category = PlantCategory.Polinizadores;
 
     [Header("Características")]
-    // Atractores de polinizadores
-    // Tipo de polinizador
-
     // Proporcionan sombra
     public int shadeSize = 0;
 
     // Productores
     public int timeToProduce = 0;
-
-    // Refugio de fauna
-    // Tipo de fauna
-    
 
     [Header("Precio")]
     public int price = 1; // Precio en la tienda

@@ -19,14 +19,14 @@ public class SaveSlotsUI : MonoBehaviour
 
     void OnEnable()
     {
-        // Bootstrap del SaveManager si aún no existe (por seguridad)
+        // Bootstrap del SaveManager si aún no existe
         if (SaveManager.Instance == null)
         {
             var existing = FindObjectOfType<SaveManager>();
             if (existing == null)
             {
                 var go = new GameObject("~SaveManager");
-                go.AddComponent<SaveManager>(); // DontDestroyOnLoad en Awake
+                go.AddComponent<SaveManager>(); 
             }
         }
 
@@ -81,7 +81,7 @@ public class SaveSlotsUI : MonoBehaviour
         }
         else
         {
-            // Nueva partida: entrar “limpio”
+            // Nueva partida, entrar limpio
             SceneManager.LoadScene("GameScene");
         }
     }
@@ -98,7 +98,7 @@ public class SaveSlotsUI : MonoBehaviour
         SceneManager.sceneLoaded -= OnGameLoadedThenApply;
         var slot = PlayerPrefs.GetInt("lastSlot", 1);
         if (SaveManager.Instance.Exists(slot))
-            SaveManager.Instance.BeginLoad(slot); // <-- antes llamabas Load(); ahora BeginLoad()
+            SaveManager.Instance.BeginLoad(slot);
     }
 
 

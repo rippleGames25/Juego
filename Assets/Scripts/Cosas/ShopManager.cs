@@ -5,7 +5,7 @@ using System.Linq;
 
 public class ShopManager : MonoBehaviour
 {
-    public static ShopManager Instance; // Singleton
+    public static ShopManager Instance; 
 
     [NonSerialized] public PlantType selectedPlantType = null;
     [SerializeField] private GameObject shopItemPrefab;

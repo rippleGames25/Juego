@@ -9,7 +9,7 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance { get; private set; }
 
     public bool IsLoading { get; private set; } = false;
-    private int queuedSlot = -1;           // slot encolado para cargar
+    private int queuedSlot = -1;            // slot encolado para cargar
     private SaveGameData queuedData = null; // datos ya leídos del disco
 
     void Awake()
@@ -70,7 +70,7 @@ public class SaveManager : MonoBehaviour
 #endif
     }
 
-    // ---------- LOAD (modo seguro) ----------
+    // Carga
     // Llamada desde SaveSlotsUI tras cargar GameScene
     public void BeginLoad(int slot)
     {
@@ -89,7 +89,6 @@ public class SaveManager : MonoBehaviour
         while (GameManager.Instance == null || PlotsManager.Instance == null || WeatherManager.Instance == null)
             yield return null;
 
-        // Espera UN frame extra para dejar que Awake/Start de esos managers terminen
         yield return null;
 
         ApplySave(queuedData);
@@ -100,7 +99,7 @@ public class SaveManager : MonoBehaviour
         IsLoading = false;
     }
 
-    // ---------- Build snapshot desde el estado actual ----------
+    // Build desde el estado actual
     private SaveGameData BuildSave()
     {
         var gm = GameManager.Instance;
@@ -159,7 +158,7 @@ public class SaveManager : MonoBehaviour
         return d;
     }
 
-    // ---------- Reconstruir escena desde snapshot ----------
+    // Reconstruir escena
     private void ApplySave(SaveGameData d)
     {
         var gm = GameManager.Instance;
@@ -169,7 +168,7 @@ public class SaveManager : MonoBehaviour
         // 1) Preparar escena
         SFXManager.Instance?.StopAmbient();
 
-        pm.ClearAllPlots();     // limpia lo anterior (si hubiere)
+        pm.ClearAllPlots();     // limpia lo anterior 
         pm.CreatePlots();       // crea la malla base
 
         // 2) Estado global
@@ -229,11 +228,11 @@ public class SaveManager : MonoBehaviour
             plot.UpdatePlotSolarExposureVisuals();
         }
 
-        // 5) Reaplicar efectos de entorno (sombras, etc.) y notificar UI/clima
+        // 5) Reaplicar efectos de entorno y notificar UI/clima
         pm.RebuildEnvironmentFromPlants();
         wm.NotifyAll();
 
-        // --- notificar UI tras restaurar TODO (winCondition incluido) ---
+        // notificar UI tras restaurar todo
         gm.ForceRefreshUI();
 
         Debug.Log("[Save] Snapshot aplicado.");
@@ -245,8 +244,8 @@ public class SaveManager : MonoBehaviour
         var w = new DailyWeather();
         w.type = (WeatherType)System.Enum.Parse(typeof(WeatherType), x.type);
         w.waterChange = x.waterChange;
-        w.intensity = 1;          // si quieres guardar intensidad, añádela al Save
-        w.deathProbability = 0f;  // idem
+        w.intensity = 1;          
+        w.deathProbability = 0f; 
         return w;
     }
 

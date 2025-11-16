@@ -106,6 +106,5 @@ public class ProducerPlant : Plant
         }
     }
 
-
     #endregion
 }

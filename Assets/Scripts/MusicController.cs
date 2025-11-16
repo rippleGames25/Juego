@@ -21,13 +21,12 @@ public class MusicController : MonoBehaviour
 
         src = GetComponent<AudioSource>();
 
-        // 🔹 Si tienes un AudioMixer llamado GameMixer con grupo Music
         if (SettingsManager.Instance != null)
         {
             var mixer = SettingsManager.Instance.GetComponent<UnityEngine.Audio.AudioMixer>();
             if (mixer != null && src.outputAudioMixerGroup == null)
             {
-                // Intentar asignar automáticamente el grupo "Music"
+                // Intentar asignar automáticamente el grupo Music
                 var groups = mixer.FindMatchingGroups("Music");
                 if (groups.Length > 0) src.outputAudioMixerGroup = groups[0];
             }

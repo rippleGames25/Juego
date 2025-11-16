@@ -4,7 +4,6 @@ public class GameSessionStats : MonoBehaviour
 {
     public static GameSessionStats Instance;
 
-    // Estadísticas que la pantalla de Game Over lee
     public int daysSurvived = 0;
     public int maxBiodiversityAchieved = 0;
     public int maxMaturePlantsAchieved = 0;

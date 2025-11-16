@@ -10,10 +10,6 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Paneles del tutorial (en orden)")]
     [SerializeField] private List<GameObject> panels = new List<GameObject>();
-    // Panel 0  = Intro Leo (botón "Empezar tutorial")
-    // Panel 1  = Primer panel "en el jardín"
-    // ...
-    // Panel 23 = Último panel con Leo + botón "Volver al menú"
 
     [Header("Fade")]
     [SerializeField] private Image fadeImage;     

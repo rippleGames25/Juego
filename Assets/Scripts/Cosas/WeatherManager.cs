@@ -26,7 +26,7 @@ public class DailyWeather
 
 public class WeatherManager : MonoBehaviour
 {
-    public static WeatherManager Instance; // Singleton
+    public static WeatherManager Instance; 
     private const int FORECAST_LENGTH = 3;
     
 
@@ -193,7 +193,5 @@ public class WeatherManager : MonoBehaviour
             break;
     }
     }
-
-
 
 }

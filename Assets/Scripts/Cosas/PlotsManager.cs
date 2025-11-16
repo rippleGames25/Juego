@@ -15,12 +15,12 @@ public struct DailyBonusData
 
 public class PlotsManager : MonoBehaviour
 {
-    public static PlotsManager Instance; // Singleton
+    public static PlotsManager Instance; 
 
     [SerializeField] private GameObject plotPrefab;
     [SerializeField] private int rows = 6;
     [SerializeField] private int columns = 5;
-    [SerializeField] private float spacing = 0.5f; // Espacio entre parcelas
+    [SerializeField] private float spacing = 0.5f; 
     
 
     private Plot[,] plotGrid;
@@ -31,7 +31,7 @@ public class PlotsManager : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] private float dailyPlagueOutbreakChance = 0.1f; // 10% de probabilidad de un brote nuevo cada día
     [SerializeField] private GameObject plaguePrefab;
 
-    // Events
+    // Eventos
     public event Action<Plot> OnPlotSelected;
     public event Action OnPlotUnselected;
 
@@ -78,7 +78,7 @@ public class PlotsManager : MonoBehaviour
     public int GetTotalPlantedCount()
     {
         int count = 0;
-        if (plotGrid == null) return 0; // Por si acaso
+        if (plotGrid == null) return 0; 
 
         foreach (Plot plot in plotGrid)
         {
@@ -196,7 +196,7 @@ public class PlotsManager : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.CurrentMoney += (plant.plantData.price) / 2; // Gana la mitad de lo que vale la planta
+            GameManager.Instance.CurrentMoney += (plant.plantData.price) / 2;   // Gana la mitad de lo que vale la planta
         }
 
         // Restar número de plantas
@@ -205,7 +205,6 @@ public class PlotsManager : MonoBehaviour
         // Variables parcela
         plotToRemove.currentPlant = null;
         plotToRemove.isPlanted = false;
-
     }
 
     public void PlotSelected(Plot _plot)
@@ -218,11 +217,11 @@ public class PlotsManager : MonoBehaviour
         }
 
         // Si hace click en una parcela que no esta seleccionada
-        if(currentSelectedPlot!=null) PlotUnselected(currentSelectedPlot); // Deselecciona la que haya seleccionada
+        if(currentSelectedPlot!=null) PlotUnselected(currentSelectedPlot);
         currentSelectedPlot = _plot;
         currentSelectedPlot.selectionBorder.SetActive(true);
 
-        OnPlotSelected?.Invoke(currentSelectedPlot); // Invocar evento 
+        OnPlotSelected?.Invoke(currentSelectedPlot); 
     }
 
     public void PlotUnselected(Plot plot)
@@ -230,7 +229,7 @@ public class PlotsManager : MonoBehaviour
         if(currentSelectedPlot!= null && currentSelectedPlot==plot) {
             currentSelectedPlot.selectionBorder.SetActive(false);
             currentSelectedPlot = null;
-            OnPlotUnselected?.Invoke(); // Invocar evento
+            OnPlotUnselected?.Invoke(); 
         }
     }
 
@@ -241,7 +240,7 @@ public class PlotsManager : MonoBehaviour
         bool allPlantsInCorrectSun = true;
         HashSet<PlantCategory> categoriesPresent = new HashSet<PlantCategory>();
 
-        if (plotGrid == null) return new DailyBonusData(); // Devuelve vacío
+        if (plotGrid == null) return new DailyBonusData(); 
 
         foreach (Plot plot in plotGrid)
         {
@@ -283,10 +282,6 @@ public class PlotsManager : MonoBehaviour
 
         return data;
     }
-
-    #endregion
-
-    #region Producers Methods
 
     #endregion
 
@@ -597,7 +592,6 @@ public class PlotsManager : MonoBehaviour
         }
         else
         {
-            // esto para lluvia y granizo
             foreach (Plot plot in plotGrid)
             {
                 if (plot == null) continue;
@@ -660,7 +654,7 @@ public class PlotsManager : MonoBehaviour
                             Debug.LogWarning($"¡Planta {plant.plantData.plantName} ({plant.currentHealth}) ha muerto por {currentWeather.type}! (Tirada: {roll} <= Prob: {finalDeathProb})");
 
                             plant.ForceKill(); // Usa el método de muerte instantánea
-                            PlantsDeath(plot); // Aplica penalizaciones [cite: PlotsManager.cs]
+                            PlantsDeath(plot); // Aplica penalizaciones
                         }
                     }
                 }
