@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 0
   plantName: Margarita
-  scientificName: Lorem Ipsum
-  description: Lorem Ipsun
+  scientificName: Bellis perennis
+  description: "Planta simple y com\xFAn, de r\xE1pido crecimiento. Perfecta para
+    principiantes y para estabilizar suelos secos."
   waterDemand: 1
   fertilizerDemand: 1
   solarExposureDemand: 0

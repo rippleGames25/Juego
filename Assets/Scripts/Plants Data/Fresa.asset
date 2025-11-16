@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 3
   plantName: Fresa
-  scientificName: Lorem Ipsum
-  description: Lorem Ipsun
+  scientificName: Fragaria vesca
+  description: "Planta peque\xF1a y frutal que crece en zonas h\xFAmedas. Produce
+    frutos dulces que atraen fauna y aportan ingresos moderados."
   waterDemand: 2
   fertilizerDemand: 2
   solarExposureDemand: 0
@@ -40,3 +41,4 @@ MonoBehaviour:
   - {fileID: 4207253497888249200, guid: 363399d80ed8ae9458abf3bcc4964593, type: 3}
   - {fileID: -2714682497457683847, guid: 363399d80ed8ae9458abf3bcc4964593, type: 3}
   deathSprite: {fileID: 21300000, guid: 858d3eea78e01114890a57e8a6049e03, type: 3}
+  refugeVisualPrefab: {fileID: 0}

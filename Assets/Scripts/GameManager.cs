@@ -190,6 +190,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
+
         currentTool = ToolType.None; // No tiene cogida ninguna herramienta
 
         // Generar nivel

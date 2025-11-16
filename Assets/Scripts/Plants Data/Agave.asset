@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 1
   plantName: Agave
-  scientificName: Lorem Ipsum
-  description: Lorem Ipsun
+  scientificName: Agave americana
+  description: "Planta suculenta resistente a la sequ\xEDa. Genera sombra densa a
+    su alrededor, reduciendo la evaporaci\xF3n del suelo y protegiendo especies sensibles
+    al sol."
   waterDemand: 1
   fertilizerDemand: 1
   solarExposureDemand: 0
