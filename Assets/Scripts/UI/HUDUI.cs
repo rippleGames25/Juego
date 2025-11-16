@@ -179,7 +179,7 @@ public class HUDUI : MonoBehaviour
     
     public void PauseButton()
     {
-        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
             SFXManager.Instance?.PlayClick();
@@ -194,16 +194,10 @@ public class HUDUI : MonoBehaviour
 
     public void SettingsButton()
     {
-        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
             SFXManager.Instance?.PlayClick();
-        }
-
-        if (IsToolBlockingUI())
-        {
-            SFXManager.Instance?.PlayDenegar();
-            return;
         }
 
         SFXManager.Instance?.PlayClick();
@@ -226,16 +220,10 @@ public class HUDUI : MonoBehaviour
 
     public void PassDayButton()
     {
-        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
             SFXManager.Instance?.PlayClick();
-        }
-
-        if (IsToolBlockingUI())
-        {
-            SFXManager.Instance?.PlayDenegar();
-            return;
         }
 
         SFXManager.Instance?.PlayClick();
@@ -251,16 +239,10 @@ public class HUDUI : MonoBehaviour
 
     public void HelpButton()
     {
-        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
             SFXManager.Instance?.PlayClick();
-        }
-
-        if (IsToolBlockingUI())
-        {
-            SFXManager.Instance?.PlayDenegar();
-            return;
         }
 
         SFXManager.Instance?.PlayClick();
@@ -413,18 +395,6 @@ public class HUDUI : MonoBehaviour
     #endregion
 
     #region Metodos para Paneles de Info Parcelas
-
-    private bool IsToolBlockingUI()
-    {
-        if (GameManager.Instance == null) return false;
-
-        ToolType tool = GameManager.Instance.CurrentTool;
-
-        // Comprueba si la herramienta seleccionada es una de las que debe bloquear
-        return (tool == ToolType.WateringCan ||
-                tool == ToolType.FertilizerBag ||
-                tool == ToolType.Shovel); 
-    }
 
     private void ShowInfoPanel(Plot plot)
     {

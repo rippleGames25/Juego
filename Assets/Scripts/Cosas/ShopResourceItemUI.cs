@@ -29,15 +29,6 @@ public class ResourceShopItem : MonoBehaviour
         }
     }
 
-    private bool IsToolBlockingUI()
-    {
-        if (GameManager.Instance == null) return false;
-        ToolType tool = GameManager.Instance.CurrentTool;
-        return (tool == ToolType.WateringCan ||
-                tool == ToolType.FertilizerBag ||
-                tool == ToolType.Shovel);
-    }
-
     private void UpdateItemAvailability(int _currentmoney)
     {
         buyButton.interactable = (_currentmoney >= price);
@@ -45,16 +36,10 @@ public class ResourceShopItem : MonoBehaviour
 
     public void BuyItem()
     {
-        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
             SFXManager.Instance?.PlayClick();
-        }
-
-        if (IsToolBlockingUI())
-        {
-            SFXManager.Instance?.PlayDenegar();
-            return;
         }
 
         SFXManager.Instance?.PlayClick();

@@ -58,10 +58,10 @@ public class ShopItemUI : MonoBehaviour
 
     public void SelectItem()
     {
-        if (IsToolBlockingUI())
+        if (GameManager.Instance.CurrentTool != ToolType.None)
         {
-            SFXManager.Instance?.PlayDenegar();
-            return;
+            GameManager.Instance.CurrentTool = ToolType.None;
+            SFXManager.Instance?.PlayClick();
         }
 
         if (plantData != null)
@@ -72,27 +72,12 @@ public class ShopItemUI : MonoBehaviour
         }
     }
 
-    private bool IsToolBlockingUI()
-    {
-        if (GameManager.Instance == null) return false;
-        ToolType tool = GameManager.Instance.CurrentTool;
-        return (tool == ToolType.WateringCan ||
-                tool == ToolType.FertilizerBag ||
-                tool == ToolType.Shovel);
-    }
-
     public void ShowInfoPanel()
     {
-        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
             SFXManager.Instance?.PlayClick();
-        }
-
-        if (IsToolBlockingUI())
-        {
-            SFXManager.Instance?.PlayDenegar();
-            return;
         }
 
         if (plantData != null)
