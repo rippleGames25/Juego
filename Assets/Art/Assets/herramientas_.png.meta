@@ -120,6 +120,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -127,10 +140,10 @@ TextureImporter:
       name: herramientas__0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 1002
-        width: 378
-        height: 273
+        x: 0
+        y: 900
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,10 +162,10 @@ TextureImporter:
       name: herramientas__1
       rect:
         serializedVersion: 2
-        x: 476
-        y: 1000
-        width: 247
-        height: 269
+        x: 400
+        y: 900
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +184,10 @@ TextureImporter:
       name: herramientas__2
       rect:
         serializedVersion: 2
-        x: 933
-        y: 991
-        width: 128
-        height: 287
+        x: 800
+        y: 900
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +206,10 @@ TextureImporter:
       name: herramientas__3
       rect:
         serializedVersion: 2
-        x: 13
-        y: 557
-        width: 364
-        height: 260
+        x: 0
+        y: 450
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +228,10 @@ TextureImporter:
       name: herramientas__4
       rect:
         serializedVersion: 2
-        x: 483
-        y: 556
-        width: 233
-        height: 254
+        x: 400
+        y: 450
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +250,10 @@ TextureImporter:
       name: herramientas__5
       rect:
         serializedVersion: 2
-        x: 939
-        y: 547
-        width: 116
-        height: 274
+        x: 800
+        y: 450
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,10 +272,10 @@ TextureImporter:
       name: herramientas__6
       rect:
         serializedVersion: 2
-        x: 9
-        y: 101
-        width: 374
-        height: 270
+        x: 0
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +294,10 @@ TextureImporter:
       name: herramientas__7
       rect:
         serializedVersion: 2
-        x: 478
-        y: 104
-        width: 244
-        height: 267
+        x: 400
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,10 +316,10 @@ TextureImporter:
       name: herramientas__8
       rect:
         serializedVersion: 2
-        x: 934
-        y: 92
-        width: 127
-        height: 283
+        x: 800
+        y: 0
+        width: 400
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 64392be0babae434ba5d515830691f99
     internalID: 0
     vertices: []
     indices: 

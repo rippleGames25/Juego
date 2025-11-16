@@ -10,6 +10,7 @@ public class HUDUI : MonoBehaviour
 {
     #region Propierties
     [Header("Paneles")]
+    [SerializeField] private GameObject letterPanel;
     [SerializeField] private GameObject PauseMenuCanvas;
     [SerializeField] private GameObject HUDPanel;
     [SerializeField] private GameObject plantInfoPanel;
@@ -108,6 +109,11 @@ public class HUDUI : MonoBehaviour
         plantInfoPanel.SetActive(false);
         plotInfoPanel.SetActive(false);
         summaryPanel.SetActive(false);
+        PauseMenuCanvas.SetActive(false);
+        helpPanel.SetActive(false);
+        HUDPanel.SetActive(false);
+
+        letterPanel.SetActive(true);
 
         // Actualizar UI
         UpdateMoneyText(GameManager.Instance.CurrentMoney);
@@ -166,6 +172,12 @@ public class HUDUI : MonoBehaviour
     }
 
     #region Metodos para botones
+    public void LetterButton()
+    {
+        letterPanel.SetActive(false);
+        HUDPanel.SetActive(true);
+    }
+    
     public void PauseButton()
     {
         SFXManager.Instance?.PlayClick();
