@@ -566,8 +566,10 @@ public class Plot : MonoBehaviour
     {
         bool isPollinated = pollinatorSourceCount > 0;
 
+        bool isDead = (isPlanted && currentPlant != null && currentPlant.isDeath);
+
         bool hasValidPlant = false;
-        if (isPlanted && currentPlant != null)
+        if (isPlanted && currentPlant != null && !isDead)
         {
             // Si es Productora, el visual es válido desde que brota
             if (currentPlant is ProducerPlant && currentPlant.currentGrowth >= GrowthState.brote)
@@ -583,7 +585,7 @@ public class Plot : MonoBehaviour
 
         bool isPlagued = (isPlanted && currentPlant != null && currentPlant.isPlagued);
 
-        if (isPollinated && hasValidPlant && !isPlagued)
+        if (isPollinated && hasValidPlant && !isPlagued && !isDead)
         {
             if (currentPollinatorVisual == null)
             {

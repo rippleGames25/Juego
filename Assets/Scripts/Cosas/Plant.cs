@@ -128,6 +128,7 @@ public class Plant : MonoBehaviour
             isDeath = true;
             SFXManager.Instance?.PlayMarchita();
             UpdatePlantSprite();
+            parentPlot.UpdatePollinatorVisual();
             return true; // La planta ha muerto
         }
 

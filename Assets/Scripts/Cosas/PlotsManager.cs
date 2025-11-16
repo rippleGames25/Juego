@@ -562,7 +562,7 @@ public class PlotsManager : MonoBehaviour
     {
         foreach (Plot plot in plotGrid)
         {
-            if (plot.isPlanted && plot.currentPlant != null)
+            if (plot.isPlanted && plot.currentPlant != null && !plot.currentPlant.isDeath)
             {
                 plot.currentPlant.UpdateLifeDays();
                 plot.currentPlant.ApplyDailyEffect();
