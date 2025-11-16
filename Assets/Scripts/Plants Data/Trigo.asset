@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 2
   plantName: Trigo
-  scientificName: Lorem Ipsum
-  description: Lorem Ipsun
+  scientificName: Triticum aestivum
+  description: "Cereal b\xE1sico de bajo mantenimiento. Aporta alimento, semillas
+    y refugio para peque\xF1os animales e insectos. Favorece la fauna y la estabilidad
+    del suelo."
   waterDemand: 2
   fertilizerDemand: 2
   solarExposureDemand: 0
