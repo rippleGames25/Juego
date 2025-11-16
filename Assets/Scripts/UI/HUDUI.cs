@@ -181,6 +181,12 @@ public class HUDUI : MonoBehaviour
     
     public void PauseButton()
     {
+        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        {
+            GameManager.Instance.CurrentTool = ToolType.None;
+            SFXManager.Instance?.PlayClick();
+        }
+
         SFXManager.Instance?.PlayClick();
         SFXManager.Instance?.PauseAmbient(true);
         HUDPanel.SetActive(false);
@@ -190,6 +196,18 @@ public class HUDUI : MonoBehaviour
 
     public void SettingsButton()
     {
+        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        {
+            GameManager.Instance.CurrentTool = ToolType.None;
+            SFXManager.Instance?.PlayClick();
+        }
+
+        if (IsToolBlockingUI())
+        {
+            SFXManager.Instance?.PlayDenegar();
+            return;
+        }
+
         SFXManager.Instance?.PlayClick();
         SFXManager.Instance?.PauseAmbient(true);
         HUDPanel.SetActive(false);
@@ -210,6 +228,18 @@ public class HUDUI : MonoBehaviour
 
     public void PassDayButton()
     {
+        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        {
+            GameManager.Instance.CurrentTool = ToolType.None;
+            SFXManager.Instance?.PlayClick();
+        }
+
+        if (IsToolBlockingUI())
+        {
+            SFXManager.Instance?.PlayDenegar();
+            return;
+        }
+
         SFXManager.Instance?.PlayClick();
         if (inputBlockerPanel != null) inputBlockerPanel.SetActive(true);
         GameManager.Instance.EndDay();
@@ -223,6 +253,18 @@ public class HUDUI : MonoBehaviour
 
     public void HelpButton()
     {
+        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        {
+            GameManager.Instance.CurrentTool = ToolType.None;
+            SFXManager.Instance?.PlayClick();
+        }
+
+        if (IsToolBlockingUI())
+        {
+            SFXManager.Instance?.PlayDenegar();
+            return;
+        }
+
         SFXManager.Instance?.PlayClick();
         SFXManager.Instance?.PauseAmbient(true);
         HUDPanel.SetActive(false);
@@ -307,6 +349,12 @@ public class HUDUI : MonoBehaviour
 
     public void ShownPlantTypeInfoPanel(PlantType plantType)
     {
+        if (GameManager.Instance.CurrentTool == ToolType.Plant)
+        {
+            GameManager.Instance.CurrentTool = ToolType.None;
+            SFXManager.Instance?.PlayClick();
+        }
+
         if (plantType == null) return;
         SFXManager.Instance?.PlayClick();
 
@@ -376,6 +424,18 @@ public class HUDUI : MonoBehaviour
     #endregion
 
     #region Metodos para Paneles de Info Parcelas
+
+    private bool IsToolBlockingUI()
+    {
+        if (GameManager.Instance == null) return false;
+
+        ToolType tool = GameManager.Instance.CurrentTool;
+
+        // Comprueba si la herramienta seleccionada es una de las que debe bloquear
+        return (tool == ToolType.WateringCan ||
+                tool == ToolType.FertilizerBag ||
+                tool == ToolType.Shovel); 
+    }
 
     private void ShowInfoPanel(Plot plot)
     {
