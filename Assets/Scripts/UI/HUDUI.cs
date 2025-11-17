@@ -529,7 +529,7 @@ public class HUDUI : MonoBehaviour
             DailyWeather weather = forecastArray[i];
             int idx = ((int)weather.type * WeatherManager.Instance.maxIntensity) + (weather.intensity - 1);
             forecastImages[i].sprite = forecastSprites[idx];
-            forecastIntensity[i].sprite = intensitySprites[i];
+            forecastIntensity[i].sprite = intensitySprites[weather.intensity - 1];
         }
     }
 

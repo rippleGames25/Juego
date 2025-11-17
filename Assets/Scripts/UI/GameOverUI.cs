@@ -12,6 +12,8 @@ public class GameOverUI : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
+
         // Texto de derrota
         bool hasWon = false;
 
