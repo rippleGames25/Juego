@@ -43,8 +43,14 @@ public class SFXManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null) { Destroy(gameObject); return; }
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         // SFX corto 
         if (!sfxSource) sfxSource = gameObject.AddComponent<AudioSource>();

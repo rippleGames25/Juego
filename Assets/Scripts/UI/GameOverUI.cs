@@ -44,6 +44,8 @@ public class GameOverUI : MonoBehaviour
 
     public void RetryGame()
     {
+        SFXManager.Instance?.PlayClick();
+
         // Resetea las stats para la nueva partida
         GameSessionStats.Instance?.ResetStats();
         SceneManager.LoadScene("GameScene");
@@ -51,6 +53,8 @@ public class GameOverUI : MonoBehaviour
 
     public void ReturnMenu()
     {
+        SFXManager.Instance?.PlayClick();
+
         // Resetea las stats
         GameSessionStats.Instance?.ResetStats();
         SceneManager.LoadScene("MainMenuScene");
