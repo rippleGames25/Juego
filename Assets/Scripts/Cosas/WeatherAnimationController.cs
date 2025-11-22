@@ -33,8 +33,6 @@ public class WeatherAnimationController : MonoBehaviour
             int intensity = (int) _weather.intensity;
             weatherAnimator.SetInteger(WEATHER_STATE_PARAM, weatherType);
             weatherAnimator.SetInteger(INTENSITY_PARAM, intensity);
-
-            Debug.Log($"Animator: Establecido '{WEATHER_STATE_PARAM}' a: {(WeatherType)weatherType} {intensity}");
         }
     }
 

@@ -13636,7 +13636,6 @@ MonoBehaviour:
   rows: 6
   columns: 5
   spacing: 1.1
-  currentSelectedPlot: {fileID: 0}
   dailyPlagueOutbreakChance: 0.1
   plaguePrefab: {fileID: 5124270658393400389, guid: 8fa48891eafb6494bbefafa94872107a, type: 3}
 --- !u!4 &1907678813
@@ -14969,7 +14968,7 @@ MonoBehaviour:
   winCondition: 0
   currentBiodiversity: 0
   cheapestPlantPrice: 1
-  plantPosition: {x: 0, y: 0.1, z: -1}
+  plantPosition: {x: 0, y: 0.35, z: -1}
   plantPrefab: {fileID: 8749424176873088592, guid: 9db5c5411358b9b4ba2f6f5ff82a8d60, type: 3}
   plantsList:
   - {fileID: 11400000, guid: 01c6a9cdb63c2da4b9e9e5f727e67b7d, type: 2}

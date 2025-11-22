@@ -174,8 +174,9 @@ public class HUDUI : MonoBehaviour
     public void LetterButton()
     {
         SFXManager.Instance?.PlayClick();
+        
+        StartCoroutine(DayTransitionRoutine());
         letterPanel.SetActive(false);
-        HUDPanel.SetActive(true);
     }
     
     public void PauseButton()
@@ -235,6 +236,10 @@ public class HUDUI : MonoBehaviour
     public void NextButton()
     {
         SFXManager.Instance?.PlayClick();
+
+        // Nuevo día
+        GameManager.Instance.StartNewDay();
+
         StartCoroutine(DayTransitionRoutine());
     }
 
@@ -583,7 +588,7 @@ public class HUDUI : MonoBehaviour
         if (dayTransitionText != null)
         {
             dayTransitionText.gameObject.SetActive(true);
-            dayTransitionText.text = $"Día {GameManager.Instance.CurrentDay + 1}";
+            dayTransitionText.text = $"Día {GameManager.Instance.CurrentDay}";
         }
 
         Color panelColor = dayTransitionPanel ? dayTransitionPanel.color : Color.white;
@@ -634,9 +639,6 @@ public class HUDUI : MonoBehaviour
         // Mantener un pelín
         yield return new WaitForSecondsRealtime(dayHoldDuration);
 
-        // Nuevo día
-        GameManager.Instance.StartNewDay();
-
         // Fade-out
         t = 0f;
         startA_panel = panelColor.a;
@@ -662,6 +664,8 @@ public class HUDUI : MonoBehaviour
 
             yield return null;
         }
+
+        HUDPanel.SetActive(true);
 
         // Dejarlo limpio
         if (dayTransitionPanel != null)

@@ -15,21 +15,20 @@ public struct DailyBonusData
 
 public class PlotsManager : MonoBehaviour
 {
-    public static PlotsManager Instance; 
+    public static PlotsManager Instance;
 
+    [Header("Configuracion Jardin")]
     [SerializeField] private GameObject plotPrefab;
     [SerializeField] private int rows = 6;
     [SerializeField] private int columns = 5;
     [SerializeField] private float spacing = 0.5f; 
     
-
-    private Plot[,] plotGrid;
-
-    public Plot currentSelectedPlot;
-
     [Header("Plagas")]
     [SerializeField] [Range(0f, 1f)] private float dailyPlagueOutbreakChance = 0.1f; // 10% de probabilidad de un brote nuevo cada día
     [SerializeField] private GameObject plaguePrefab;
+
+    private Plot[,] plotGrid;
+    [NonSerialized] public Plot currentSelectedPlot;
 
     // Eventos
     public event Action<Plot> OnPlotSelected;
@@ -47,7 +46,6 @@ public class PlotsManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 
     #region Métodos publicos
 
@@ -74,7 +72,24 @@ public class PlotsManager : MonoBehaviour
                 }
             }
         }
+
+        SetInitialShades();
     }
+
+    private void SetInitialShades()
+    {
+        plotGrid[0, columns-1].AddShadeSource();
+        plotGrid[0, columns - 1].AddShadeSource();
+
+        plotGrid[rows-1, 0].AddShadeSource();
+        plotGrid[rows-1, 0].AddShadeSource();
+
+        plotGrid[rows - 1, 1].AddShadeSource();
+        plotGrid[rows - 2, 0].AddShadeSource();
+        plotGrid[1, columns - 1].AddShadeSource();
+        plotGrid[0, columns - 2].AddShadeSource();
+    }
+
     public int GetTotalPlantedCount()
     {
         int count = 0;

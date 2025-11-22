@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     public bool IsBailoutPending => isBailoutPending;
 
     [Header("Plantas")]
-    [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.1f, -0.1f);
+    [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.35f, -1f);
     [SerializeField] private GameObject plantPrefab;
     [SerializeField] public List<PlantType> plantsList; // Lista de Tipos de planta (ScriptableObjects)
 
@@ -186,6 +186,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Generar objetivo
+        GenerateWinCondition();
     }
 
     void Start()
@@ -196,9 +199,6 @@ public class GameManager : MonoBehaviour
 
         // Generar nivel
         PlotsManager.Instance.CreatePlots(); 
-
-        // Generar objetivo
-        GenerateWinCondition();
 
         GameSessionStats.Instance?.ResetStats();
         OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
@@ -266,7 +266,6 @@ public class GameManager : MonoBehaviour
     public void StartNewDay()
     {
         CurrentDay++;
-        Debug.Log("INICIO DE DÍA: Día " + CurrentDay);
 
         CheckDailyRachas(); // Comprueba si gana o pierde rachas
         ApplyPendingBailout();
@@ -290,7 +289,7 @@ public class GameManager : MonoBehaviour
             GameSessionStats.Instance.daysSurvived = currentDay;
         }
 
-        Debug.Log("Inicio de día completado.");
+        Debug.Log($"Inicio del día {CurrentDay}. Previsión : {currentWeather} nivel {currentWeather.intensity}");
     }
 
     public void UpdateBiodiversityScore()
@@ -491,7 +490,7 @@ public class GameManager : MonoBehaviour
     // Metodo para calcular que cantidad de recursos se distribuyen según la biodiversidad
     private int CalculateResourcesAmount()
     {
-        int plantCount = CurrentBiodiversity;
+        int plantCount = PlotsManager.Instance.GetTotalPlantedCount();
 
         // si no tienes plantas, no ganas nada
         if (plantCount == 0)

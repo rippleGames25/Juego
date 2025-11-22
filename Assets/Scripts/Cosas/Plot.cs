@@ -29,13 +29,13 @@ public class Plot : MonoBehaviour
     private const int PLOT_LIMIT = 5; // Limite de agua y abono
 
     [Header("Gestion de la sombra")]
-    [SerializeField] private SolarExposure initialSolarExposure; 
+
     [SerializeField] private int shadeSourceCount = 0; // Contador de plantas que dan sombra a esta parcela
 
     [Header("Gestion de Fauna")]
     [SerializeField] private int pollinatorSourceCount = 0;
     [SerializeField] private int refugeSourceCount = 0;
-    [SerializeField] private Vector3 currentPollinatorPosition = new Vector3(0, 0.3f, 0);
+    [SerializeField] private Vector3 currentPollinatorPosition = new Vector3(0, 0.65f, 0);
 
     public bool IsPollinated => pollinatorSourceCount > 0;
     public bool IsProtected => refugeSourceCount > 0;
@@ -74,10 +74,10 @@ public class Plot : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
 
-        ColorUtility.TryParseHtmlString("#2A200D", out colorFullWaterFullFertility);
-        ColorUtility.TryParseHtmlString("#645923", out colorNoWaterNoFertility);
-        ColorUtility.TryParseHtmlString("#663D26", out colorNoWaterFullFertility);
-        ColorUtility.TryParseHtmlString("#483C03", out colorFullWaterNoFertility);
+        ColorUtility.TryParseHtmlString("#352D1B", out colorFullWaterFullFertility);
+        ColorUtility.TryParseHtmlString("#7B6F39", out colorNoWaterNoFertility);
+        ColorUtility.TryParseHtmlString("#5A4E1E", out colorNoWaterFullFertility);
+        ColorUtility.TryParseHtmlString("#7B5239", out colorFullWaterNoFertility);
     }
 
     void Start()
@@ -85,8 +85,6 @@ public class Plot : MonoBehaviour
         selectionBorder = this.transform.GetChild(0).gameObject; // Obtenemos el contorno de seleccion
       
         CalculateColor(); // Calculo de diferencia de color
-
-        initialSolarExposure = currentSolarExposure;
 
         UpdatePlotWaterVisuals();
         UpdatePlotFertilizerVisuals();
@@ -100,12 +98,10 @@ public class Plot : MonoBehaviour
         currentFertility = UnityEngine.Random.Range(0, PLOT_LIMIT);
         currentWater = UnityEngine.Random.Range(0, PLOT_LIMIT);
         currentSolarExposure = (SolarExposure)UnityEngine.Random.Range(0, 1); //Exposicion solar random
-        initialSolarExposure = currentSolarExposure;
         isPlanted = false;      // Se inicializa vacia
         currentPlant = null;    // No hay planta
-
-        Debug.Log(this.ToString());
     }
+
 
     public SolarExposure GetCurrentSolarExposure()
     {

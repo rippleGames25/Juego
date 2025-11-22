@@ -167,7 +167,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -5258524063300221356, guid: 0750026efbd202141ba0e96b7e1982cf, type: 3}
-  m_Color: {r: 0.3921569, g: 0.34901962, b: 0.13725491, a: 1}
+  m_Color: {r: 0.20784315, g: 0.1764706, b: 0.10588236, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -195,11 +195,10 @@ MonoBehaviour:
   currentFertility: 0
   currentSolarExposure: 0
   isPlanted: 0
-  initialSolarExposure: 0
   shadeSourceCount: 0
   pollinatorSourceCount: 0
   refugeSourceCount: 0
-  currentPollinatorPosition: {x: 0, y: 0.2, z: 0}
+  currentPollinatorPosition: {x: 0, y: 0.55, z: 0}
   solarExposurePlot:
   - {fileID: -5258524063300221356, guid: 0750026efbd202141ba0e96b7e1982cf, type: 3}
   - {fileID: -7342669920469189202, guid: 42f7c713b094f9b4887c782dd29c437b, type: 3}
