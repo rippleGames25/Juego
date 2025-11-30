@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d851bcf462ee0df4583eee91a7dc9241
+guid: b51c02552ea9f1b47a66ffd408ec9afa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4389423673467029194
-    second: Panel recursos_0
+      213: 2492965959138310452
+    second: abonoUI_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Panel recursos_0
+      name: abonoUI_0
       rect:
         serializedVersion: 2
-        x: 500
-        y: 40
-        width: 951
-        height: 1025
+        x: 137
+        y: 167
+        width: 212
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 639be46dc62a513c0800000000000000
-      internalID: -4389423673467029194
+      spriteID: 439749fd45bc89220800000000000000
+      internalID: 2492965959138310452
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Panel recursos_0: -4389423673467029194
+      abonoUI_0: 2492965959138310452
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

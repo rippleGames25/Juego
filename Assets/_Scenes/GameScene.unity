@@ -10234,6 +10234,7 @@ MonoBehaviour:
   - {fileID: 9147654639109364168}
   strikeColor_Normal: {r: 0.7254902, g: 0.5176471, b: 0.050980393, a: 1}
   strikeColor_Permanent: {r: 0.9019608, g: 0.19215687, b: 0.21960784, a: 1}
+  strikeWarningPrefab: {fileID: 7112562739806245997, guid: cc7c699bf7a67014d9a7c9aec00be2df, type: 3}
   currentWeatherText: {fileID: 1336006280}
   forecastText:
   - {fileID: 260282602}
@@ -16091,6 +16092,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7357671224794485012, guid: 44b50522f76a37b47ba46302955e8ce4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b51c02552ea9f1b47a66ffd408ec9afa, type: 3}
     - target: {fileID: 7654137154068202086, guid: 44b50522f76a37b47ba46302955e8ce4, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -16104,12 +16109,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8512583227742838792, guid: 44b50522f76a37b47ba46302955e8ce4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512583227742838792, guid: 44b50522f76a37b47ba46302955e8ce4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512583227742838792, guid: 44b50522f76a37b47ba46302955e8ce4, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -32.8
       objectReference: {fileID: 0}
     - target: {fileID: 8512583227742838792, guid: 44b50522f76a37b47ba46302955e8ce4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 59.1
+      value: -5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

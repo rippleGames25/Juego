@@ -206,7 +206,7 @@ MonoBehaviour:
   selectionBorder: {fileID: 4951766284379348396}
   changeCanvasPrefab: {fileID: 8501249093245052381, guid: f37ab093c3b1edc488a5aed0d9c47e1d, type: 3}
   waterIcon: {fileID: 21300000, guid: 45ca2269ca3ed6e4ea5c17b3ab2ee5fa, type: 3}
-  fertilizerIcon: {fileID: 21300000, guid: d876bde82d4d10f4a864c882f6f08367, type: 3}
+  fertilizerIcon: {fileID: 21300000, guid: b51c02552ea9f1b47a66ffd408ec9afa, type: 3}
   pollinatorVisualPrefab: {fileID: 647531223538058953, guid: b0cba90e65a2b2642a8c78d62f25f157, type: 3}
 --- !u!61 &1269398612439380240
 BoxCollider2D:

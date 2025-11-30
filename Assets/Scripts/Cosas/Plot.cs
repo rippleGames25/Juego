@@ -60,6 +60,9 @@ public class Plot : MonoBehaviour
     private Color colorNoWaterFullFertility;
     private Color colorFullWaterNoFertility;
 
+    private Color colorSumaParcela;
+    private Color colorLlenoParcela;
+
 
     // Constructor
     public Plot(int _currentWater, int _currentFertility, int _currentSolarExposure, bool isPlanted)
@@ -78,6 +81,9 @@ public class Plot : MonoBehaviour
         ColorUtility.TryParseHtmlString("#7B6F39", out colorNoWaterNoFertility);
         ColorUtility.TryParseHtmlString("#5A4E1E", out colorNoWaterFullFertility);
         ColorUtility.TryParseHtmlString("#7B5239", out colorFullWaterNoFertility);
+
+        ColorUtility.TryParseHtmlString("#FEFECF", out colorSumaParcela);
+        ColorUtility.TryParseHtmlString("#FEFECF", out colorLlenoParcela);
     }
 
     void Start()
@@ -231,7 +237,7 @@ public class Plot : MonoBehaviour
                     GameManager.Instance.CurrentWater--;                                // Cosume agua del deposito
                     this.currentWater++;
 
-                    StartCoroutine(AnimateSingleTextChange("+1", 0, Color.green));
+                    StartCoroutine(AnimateSingleTextChange("+1", 0, colorSumaParcela));
                     this.UpdatePlotWaterVisuals();
 
                     SFXManager.Instance?.PlayRegar();
@@ -242,7 +248,7 @@ public class Plot : MonoBehaviour
                 }
                 else if (GameManager.Instance.CurrentWater > 0 && currentWater >= PLOT_LIMIT)   // Tiene agua pero la parcela está llena
                 {
-                    StartCoroutine(AnimateSingleTextChange("Lleno", 0, Color.green));
+                    StartCoroutine(AnimateSingleTextChange("Lleno", 0, colorLlenoParcela));
                     SFXManager.Instance?.PlayDenegar();
                     Debug.Log($"No se puede regar, la parcela {gridCoordinates} está al máximo de agua.");
                 }
@@ -260,7 +266,7 @@ public class Plot : MonoBehaviour
                     GameManager.Instance.CurrentFertilizer--;                                       // Consume abono del deposito
                     this.currentFertility++;
 
-                    StartCoroutine(AnimateSingleTextChange("+1", 1, Color.green));
+                    StartCoroutine(AnimateSingleTextChange("+1", 1, colorSumaParcela));
                     this.UpdatePlotFertilizerVisuals();
 
                     SFXManager.Instance?.PlayAbonar();
@@ -272,7 +278,7 @@ public class Plot : MonoBehaviour
                 }
                 else if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility >= PLOT_LIMIT) // Tiene abono pero la parcela está llena
                 {
-                    StartCoroutine(AnimateSingleTextChange("Lleno", 1, Color.green));
+                    StartCoroutine(AnimateSingleTextChange("Lleno", 1, colorLlenoParcela));
                     SFXManager.Instance?.PlayDenegar();
                     Debug.Log($"No se puede abonar, la parcela {gridCoordinates} está al máximo de abono.");
                 }
@@ -404,7 +410,7 @@ public class Plot : MonoBehaviour
         {
             string text = $"-{waterDemand}";
             // Iniciar y esperar la animación del agua antes de pasar al siguiente
-            yield return StartCoroutine(AnimateSingleTextChange(text, 0, Color.blue));
+            yield return StartCoroutine(AnimateSingleTextChange(text, 0, colorSumaParcela));
         }
 
         // 2. Animación de abono 
@@ -412,7 +418,7 @@ public class Plot : MonoBehaviour
         {
             string text = $"-{fertilizerDemand}";
             // Iniciar y esperar la animación del abono
-            yield return StartCoroutine(AnimateSingleTextChange(text, 1, new Color(0.2f, 0.8f, 0.2f))); // Color verde oscuro para abono
+            yield return StartCoroutine(AnimateSingleTextChange(text, 1, colorSumaParcela)); 
         }
 
 
@@ -438,10 +444,10 @@ public class Plot : MonoBehaviour
     private IEnumerator AnimateSingleTextChange(string _text, int type, Color textColor)
     {
         // 1. Instanciar el prefab de la animación
-        GameObject canvasInstance = Instantiate(changeCanvasPrefab, transform.position, Quaternion.identity, transform.parent);
+        GameObject canvasInstance = Instantiate(changeCanvasPrefab, transform.position + new Vector3(-0.5f,0,0), Quaternion.identity, transform.parent);
         canvasInstance.SetActive(true);
 
-        // 2. Obtener referencias de la NUEVA instancia
+        // 2. Obtener referencias de la nueva instancia
         Image changeImage = canvasInstance.GetComponentInChildren<Image>();
         TextMeshProUGUI changeText = canvasInstance.GetComponentInChildren<TextMeshProUGUI>();
         Transform textTransform = canvasInstance.transform; 

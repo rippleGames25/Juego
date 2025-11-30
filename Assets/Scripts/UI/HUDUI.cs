@@ -38,6 +38,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private Image[] strikeIcons; // Array de 5 imágenes
     [SerializeField] private Color strikeColor_Normal = Color.yellow;
     [SerializeField] private Color strikeColor_Permanent = Color.red;
+    [SerializeField] private GameObject strikeWarningPrefab;
 
     [Header("Clima")]
     [SerializeField] private TextMeshProUGUI currentWeatherText;
@@ -135,6 +136,7 @@ public class HUDUI : MonoBehaviour
 
             // Suscripción a Strikes
             GameManager.Instance.OnStrikesChanged += UpdateStrikesVisuals;
+            GameManager.Instance.OnNewStrike += ShowStrikeWarning;
         }
 
         if (PlotsManager.Instance != null)
@@ -517,6 +519,75 @@ public class HUDUI : MonoBehaviour
             }
         }
     }
+
+    private void ShowStrikeWarning (bool isPermanent)
+    {
+        string msg ="";
+
+        if (isPermanent)
+        {
+            msg = "STRIKE PERMANENTE \n Te has quedado sin petalos y sin plantas. Se te han otorgado 3 pétalos.";
+        } else
+        {
+            msg = "STRIKE \n Se te han muerto 3 plantas";
+        }
+
+        StartCoroutine(StrikeWarning(msg));
+    }
+
+    private IEnumerator StrikeWarning(string text)
+    {
+        yield return new WaitForSecondsRealtime(dayFadeDuration+dayHoldDuration); // Esperar a que se vaya el panel de paso de día
+
+        GameObject strikeWarningInstance = Instantiate(strikeWarningPrefab, HUDPanel.transform);
+
+        // Texto 
+        TextMeshProUGUI txtComp = strikeWarningInstance.GetComponentInChildren<TextMeshProUGUI>();
+        if (txtComp != null)
+        {
+            txtComp.text = text;
+        }
+
+        RectTransform rect = strikeWarningInstance.GetComponent<RectTransform>();
+        if (rect == null) // Por si el prefab no tiene RectTransform
+        {
+            Destroy(strikeWarningInstance);
+            yield break;
+        }
+
+        Vector2 visiblePosition = rect.anchoredPosition; // Posicion destino
+        Vector2 hiddenPosition = visiblePosition + new Vector2(0, 300f); // Posicion inicio y final
+
+
+        // BAJADA
+        float timer = 0f;
+        float duration = 0.5f;
+
+        while (timer < duration)
+        {
+            timer += Time.unscaledDeltaTime;
+            float t = timer / duration;
+            rect.anchoredPosition = Vector2.Lerp(hiddenPosition, visiblePosition, Mathf.SmoothStep(0f, 1f, t));
+            yield return null;
+        }
+        rect.anchoredPosition = visiblePosition; // Posicion final
+
+        //ESPERAR
+        yield return new WaitForSecondsRealtime(4f);
+
+        timer = 0f;
+        while (timer < duration)
+        {
+            timer += Time.unscaledDeltaTime;
+            float t = timer / duration;
+            rect.anchoredPosition = Vector2.Lerp(visiblePosition, hiddenPosition, Mathf.SmoothStep(0f, 1f, t));
+            yield return null;
+        }
+
+        // DESTRUIR GAME OBJECT
+        Destroy(strikeWarningInstance);
+    }
+
     #endregion
 
     #region Actualización UI
@@ -696,6 +767,7 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnPlantInfoClick -= ShownPlantTypeInfoPanel;
             GameManager.Instance.OnDayEnd -= ShowDaySummaryPanel;
             GameManager.Instance.OnStrikesChanged -= UpdateStrikesVisuals;
+            GameManager.Instance.OnNewStrike -= ShowStrikeWarning;
         }
 
         if (PlotsManager.Instance != null)

@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public event Action<PlantType> OnPlantInfoClick;
     public event Action OnDayEnd;
     public event Action<int, int> OnStrikesChanged;
+    public event Action<bool> OnNewStrike;
 
     // Variables
     public int winCondition;
@@ -326,6 +327,8 @@ public class GameManager : MonoBehaviour
             normalStrikes++;
             Debug.LogWarning($"[GameManager] ¡Strike Normal añadido! Total: {normalStrikes} Normales, {permanentStrikes} Permanentes.");
         }
+
+        OnNewStrike?.Invoke(isPermanent);
         OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
     }
 
