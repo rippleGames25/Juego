@@ -14,11 +14,18 @@ public enum ToolType
     Shovel
 }
 
+public enum StrikeReason
+{
+    PlantDeath,  // Por muertes
+    Inactivity,  // Por pasar días sin jugar
+    Bankruptcy   // Por quedarse sin dinero y plantas
+}
+
 public class GameManager : MonoBehaviour
 {
     #region Propiedades
-    
-    public static GameManager Instance; 
+
+    public static GameManager Instance;
 
     // Events
     public event Action<int> OnMoneyChanged;
@@ -30,7 +37,8 @@ public class GameManager : MonoBehaviour
     public event Action<PlantType> OnPlantInfoClick;
     public event Action OnDayEnd;
     public event Action<int, int> OnStrikesChanged;
-    public event Action<bool> OnNewStrike;
+
+    public event Action<StrikeReason> OnNewStrike;
 
     // Variables
     public int winCondition;
@@ -47,13 +55,15 @@ public class GameManager : MonoBehaviour
     private const int BASE_INCOME = 1;
     private const int AMOUNT_PER_PLANT = 1;
     [SerializeField] private int cheapestPlantPrice = 1;
-    public const int IDX_PLANT_SPRITE = 7; 
+    public const int IDX_PLANT_SPRITE = 7;
 
     // Sistema de strikes 
     private const int MAX_STRIKES = 5;
     private int normalStrikes = 0;
     private int permanentStrikes = 0;
-    private int plantDeathCounter = 0; // Contador para (1 strike por 3 muertes)
+    private int plantDeathCounter = 0;
+
+    private int inactivityDays = 0;
 
     private int daysWithoutDeathRacha = 0;
     private int diversityBonusRacha = 0;
@@ -79,7 +89,7 @@ public class GameManager : MonoBehaviour
     [Header("Plantas")]
     [SerializeField] private Vector3 plantPosition = new Vector3(0, 0.35f, -1f);
     [SerializeField] private GameObject plantPrefab;
-    [SerializeField] public List<PlantType> plantsList; // Lista de Tipos de planta (ScriptableObjects)
+    [SerializeField] public List<PlantType> plantsList;
 
     private bool inputLocked = false;
     public bool InputLocked => inputLocked;
@@ -92,7 +102,7 @@ public class GameManager : MonoBehaviour
         get { return currentMoney; }
         set
         {
-            int newValue = Mathf.Max(0, value); // Dinero nunca negativo
+            int newValue = Mathf.Max(0, value);
             if (currentMoney != value)
             {
                 currentMoney = value;
@@ -188,7 +198,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Generar objetivo
         GenerateWinCondition();
     }
 
@@ -196,10 +205,9 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        currentTool = ToolType.None; // No tiene cogida ninguna herramienta
+        currentTool = ToolType.None;
 
-        // Generar nivel
-        PlotsManager.Instance.CreatePlots(); 
+        PlotsManager.Instance.CreatePlots();
 
         GameSessionStats.Instance?.ResetStats();
         OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
@@ -227,7 +235,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        PlotsManager.Instance.PlotUnselected(PlotsManager.Instance.currentSelectedPlot); // Deselecciónar parcelas
+        PlotsManager.Instance.PlotUnselected(PlotsManager.Instance.currentSelectedPlot);
 
         SFXManager.Instance?.StopAmbient();
         StartCoroutine(EndDayCoroutine());
@@ -238,25 +246,42 @@ public class GameManager : MonoBehaviour
         isDayTransitioning = true;
 
         Debug.Log("Fin de día");
-        
-        // Actualizar estado de salud
+
         PlotsManager.Instance.DailyUpdatePlantsHealth();
 
-        // Animación de consumo de recursos
         yield return PlotsManager.Instance.AnimateDailyConsumptionAndConsume(); ;
 
         CalculateEndOfDayBonuses();
 
         int totalPlanted = PlotsManager.Instance.GetTotalPlantedCount();
 
-        if (totalPlanted == 0 && CurrentMoney < cheapestPlantPrice)
+        if (totalPlanted == 0)
         {
-            isBailoutPending = true;
-            Debug.LogWarning("[GameManager] BAILOUT PENDING! (Se mostrará en el resumen)");
+            if (CurrentMoney < cheapestPlantPrice)
+            {
+                // Bancarrota (Strike Rojo)
+                isBailoutPending = true;
+                inactivityDays = 0;
+                Debug.LogWarning("[GameManager] BAILOUT PENDING!");
+            }
+            else
+            {
+                // Tiene dinero pero no planta nada (Strike Amarillo por Inactividad)
+                isBailoutPending = false;
+                inactivityDays++;
+
+                if (inactivityDays >= 3)
+                {
+                    AddStrike(StrikeReason.Inactivity);
+                    inactivityDays = 0;
+                    Debug.LogWarning("[GameManager] Strike por inactividad (3 días vacíos teniendo dinero).");
+                }
+            }
         }
         else
         {
             isBailoutPending = false;
+            inactivityDays = 0;
         }
 
         OnDayEnd?.Invoke();
@@ -268,20 +293,20 @@ public class GameManager : MonoBehaviour
     {
         CurrentDay++;
 
-        CheckDailyRachas(); // Comprueba si gana o pierde rachas
+        CheckDailyRachas();
         ApplyPendingBailout();
 
-        // Comprueba Game Over antes de hacer nada
+        HandleWeatherEvent();
+        PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather);
+        PlotsManager.Instance.DailyUpdatePlantsGrowthAndEffects();
+        PlotsManager.Instance.DailyPlagueUpdate();
+
+        UpdateBiodiversityScore();
+
         if (CheckForGameOver())
         {
             return;
         }
-
-        HandleWeatherEvent();
-
-        PlotsManager.Instance.DailyUpdateWeatherWater(currentWeather);
-        PlotsManager.Instance.DailyUpdatePlantsGrowthAndEffects();
-        PlotsManager.Instance.DailyPlagueUpdate();
 
         ApplyDailyResourcesAndPenalties();
 
@@ -303,20 +328,20 @@ public class GameManager : MonoBehaviour
 
     public void ReportPlantDeath()
     {
-        // resetea la racha de días sin muerte
         daysWithoutDeathRacha = 0;
 
-        // lógica de strikes
         plantDeathCounter++;
         if (plantDeathCounter >= 3)
         {
-            AddStrike(false);       // añade un strike normal (no permanente)
-            plantDeathCounter = 0;  // resetea el contador
+            AddStrike(StrikeReason.PlantDeath);
+            plantDeathCounter = 0;
         }
     }
 
-    private void AddStrike(bool isPermanent)
+    private void AddStrike(StrikeReason reason)
     {
+        bool isPermanent = (reason == StrikeReason.Bankruptcy);
+
         if (isPermanent)
         {
             permanentStrikes++;
@@ -328,7 +353,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning($"[GameManager] ¡Strike Normal añadido! Total: {normalStrikes} Normales, {permanentStrikes} Permanentes.");
         }
 
-        OnNewStrike?.Invoke(isPermanent);
+        OnNewStrike?.Invoke(reason);
         OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
     }
 
@@ -375,20 +400,20 @@ public class GameManager : MonoBehaviour
 
     public void PlantSeed(Plot plot, int idx)
     {
-        PlantType plantData = plantsList[idx];        
+        PlantType plantData = plantsList[idx];
 
-        if(plantData.price > currentMoney) // No tiene suficiente dinero
+        if (plantData.price > currentMoney)
         {
             SFXManager.Instance?.PlayDenegar();
             Debug.Log("No tienes dinero suficiente para comprar la planta");
             return;
         }
 
-        CurrentMoney -= plantData.price; // Restar el dinero que cuesta la planta
+        CurrentMoney -= plantData.price;
 
         GameObject newPlantGO = Instantiate(plantPrefab, (plot.transform.position + plantPosition), Quaternion.identity);
 
-        newPlantGO.transform.SetParent(plot.transform); // Establecemos la parcela como padre
+        newPlantGO.transform.SetParent(plot.transform);
 
         Plant newPlant;
 
@@ -407,19 +432,19 @@ public class GameManager : MonoBehaviour
                 newPlant = newPlantGO.AddComponent<WildlifeRefugePlant>();
                 break;
             default:
-                newPlant = newPlantGO.AddComponent<Plant>(); 
+                newPlant = newPlantGO.AddComponent<Plant>();
                 break;
         }
 
 
         newPlant.InitializePlant(plantData, plot);
 
-        plot.currentPlant= newPlant;    // Asociamos la planta a la parcela
+        plot.currentPlant = newPlant;
         plot.isPlanted = true;
 
         plot.UpdatePollinatorVisual();
 
-        CurrentTool = ToolType.None;    // Desequipamos la semilla
+        CurrentTool = ToolType.None;
         SFXManager.Instance?.PlayPlantar();
 
         Debug.Log($"Semilla de {plantData.plantName} plantada en la parcela {plot.gridCoordinates}");
@@ -432,41 +457,39 @@ public class GameManager : MonoBehaviour
         OnPlantInfoClick?.Invoke(plantType);
     }
 
-    // Private Methods
     private void GenerateWinCondition()
     {
-        // De momento fija
         winCondition = 10;
     }
 
     private void HandleInput()
     {
-        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);    // Convertir mouse a posicion del mundo
-        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);              
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
         bool isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
 
-        if (hit.collider != null) // Si colisiona
+        if (hit.collider != null)
         {
             GameObject hitObject = hit.collider.gameObject;
 
-            if (hitObject.CompareTag("Tool")) // Herramienta
+            if (hitObject.CompareTag("Tool"))
             {
                 ToolItem tool = hitObject.GetComponent<ToolItem>();
 
                 if (CurrentTool == tool.type)
                 {
-                    CurrentTool = ToolType.None; // Si ya la tiene, la desactiva
+                    CurrentTool = ToolType.None;
                 }
                 else
                 {
-                    CurrentTool = tool.type; // Si no la tiene la equipa
+                    CurrentTool = tool.type;
                 }
 
                 SFXManager.Instance?.PlayClick();
             }
             else if (hitObject.CompareTag("Plot"))
             {
-                Plot plot = hitObject.GetComponent<Plot>(); // Parcela
+                Plot plot = hitObject.GetComponent<Plot>();
 
                 plot.SelectPlot();
             }
@@ -474,10 +497,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // Si no golpeó la UI, entonces es un clic en  nada
             if (!isPointerOverUI)
             {
-                // Es un clic en la nada
                 Plot _currentSelectedPlot = PlotsManager.Instance.currentSelectedPlot;
                 this.CurrentTool = ToolType.None;
 
@@ -490,18 +511,15 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Metodo para calcular que cantidad de recursos se distribuyen según la biodiversidad
     private int CalculateResourcesAmount()
     {
         int plantCount = PlotsManager.Instance.GetTotalPlantedCount();
 
-        // si no tienes plantas, no ganas nada
         if (plantCount == 0)
         {
             return 0;
         }
 
-        // gana un fijo + el bono por cantidad
         int amount = BASE_INCOME + (plantCount * AMOUNT_PER_PLANT);
         return amount;
     }
@@ -509,24 +527,19 @@ public class GameManager : MonoBehaviour
     #region Métodos de actualización diaria
     private void HandleWeatherEvent()
     {
-        // Pasar al evento meteorológico siguiente y generar uno nuevo
         currentWeather = WeatherManager.Instance.PassDay();
     }
 
     private void ApplyDailyResourcesAndPenalties()
     {
-        // Aplicar bonos de recursos
         CurrentWater += lastDayWaterIncome;
         CurrentFertilizer += lastDayFertilizerIncome;
 
-        // Aplicar ingresos de dinero
         int totalIncome = lastDayBaseIncome + lastDayPlantBonus + lastDayBonusData.madurityBonus + lastDayBonusData.diversityBonus + lastDayBonusData.solarExposureBonus;
         CurrentMoney += totalIncome;
 
-        // Aplicar penalizaciones de dinero
         CurrentMoney -= lastDayPenalties;
 
-        // Resetear contador de penalizaciones para el nuevo día
         penaltiesThisDay = 0;
 
         Debug.Log($"[GameManager] Ingresos aplicados: +{totalIncome}. Penalizaciones: -{lastDayPenalties}.");
@@ -534,19 +547,34 @@ public class GameManager : MonoBehaviour
 
     private void CheckDailyRachas()
     {
-        // racha sin muertes
-        daysWithoutDeathRacha++;
-        if (daysWithoutDeathRacha >= 5)
+        // verificar si hay plantas vivas. Si no hay plantas, no cuenta como no muertes.
+        int totalPlanted = 0;
+        if (PlotsManager.Instance != null)
         {
-            RemoveStrike();             // Quita 1 strike normal
-            daysWithoutDeathRacha = 0;  // Resetea la racha
+            totalPlanted = PlotsManager.Instance.GetTotalPlantedCount();
+        }
+
+        if (totalPlanted > 0)
+        {
+            daysWithoutDeathRacha++;
+            if (daysWithoutDeathRacha >= 5)
+            {
+                RemoveStrike();
+                daysWithoutDeathRacha = 0;
+                Debug.Log("[GameManager] ¡Strike retirado por 5 días sin muertes!");
+            }
+        }
+        else
+        {
+            daysWithoutDeathRacha = 0;
         }
 
         // racha de diversidad
         if (diversityBonusRacha >= 3)
         {
-            RemoveStrike();             // Quita 1 strike normal
-            diversityBonusRacha = 0;    // Resetea la racha
+            RemoveStrike();
+            diversityBonusRacha = 0;
+            Debug.Log("[GameManager] ¡Strike retirado por diversidad mantenida!");
         }
     }
 
@@ -556,7 +584,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("[GameManager] ¡BAILOUT APLICADO!");
 
-            AddStrike(true);
+            AddStrike(StrikeReason.Bankruptcy);
 
             CurrentMoney += 3;
 
@@ -566,7 +594,6 @@ public class GameManager : MonoBehaviour
 
     private bool CheckForGameOver()
     {
-        // condición de victoria (Strikes)
         if (currentBiodiversity >= winCondition)
         {
             Debug.Log("[GameManager] ¡VICTORIA! Biodiversidad alcanzada.");
@@ -574,7 +601,6 @@ public class GameManager : MonoBehaviour
             return true;
         }
 
-        // condición de derrota (Strikes)
         if (normalStrikes + permanentStrikes >= MAX_STRIKES)
         {
             Debug.LogError("[GameManager] GAME OVER: Límite de Strikes alcanzado.");
@@ -587,7 +613,6 @@ public class GameManager : MonoBehaviour
 
     private void EndGame(bool didWin)
     {
-        // Guardamos las estadísticas finales
         if (GameSessionStats.Instance != null)
         {
             GameSessionStats.Instance.daysSurvived = currentDay;
@@ -597,7 +622,6 @@ public class GameManager : MonoBehaviour
             GameSessionStats.Instance.didWinGame = didWin;
         }
 
-        // Cargamos la escena de fin de partida
         SceneManager.LoadScene("GameOverScene");
     }
 
@@ -606,6 +630,6 @@ public class GameManager : MonoBehaviour
     public void SetInputLocked(bool locked)
     {
         inputLocked = locked;
-        Time.timeScale = locked ? 0f : 1f; // pausa simulación también
+        Time.timeScale = locked ? 0f : 1f;
     }
 }

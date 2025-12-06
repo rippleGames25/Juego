@@ -176,11 +176,11 @@ public class HUDUI : MonoBehaviour
     public void LetterButton()
     {
         SFXManager.Instance?.PlayClick();
-        
+
         StartCoroutine(DayTransitionRoutine());
         letterPanel.SetActive(false);
     }
-    
+
     public void PauseButton()
     {
         if (GameManager.Instance.CurrentTool != ToolType.None)
@@ -349,14 +349,14 @@ public class HUDUI : MonoBehaviour
         plantTypeName.text = plantType.plantName;
 
         if (plantTypeScientificName != null)
-            plantTypeScientificName.text = plantType.scientificName; 
+            plantTypeScientificName.text = plantType.scientificName;
 
         if (plantTypeDescription != null)
-            plantTypeDescription.text = plantType.description; 
+            plantTypeDescription.text = plantType.description;
 
         if (plantTypePhoto != null && plantType.shopSprite != null)
         {
-            plantTypePhoto.sprite = plantType.shopSprite; 
+            plantTypePhoto.sprite = plantType.shopSprite;
         }
 
         if (plantTypeCategoryText != null)
@@ -488,7 +488,7 @@ public class HUDUI : MonoBehaviour
         // Necesidades
         waterDemand.text = $"{plant.plantData.waterDemand}";
         fertilizerDemand.text = $"{plant.plantData.fertilizerDemand}";
-        sunDemand.sprite = solarSprites[(int) plant.plantData.solarExposureDemand];
+        sunDemand.sprite = solarSprites[(int)plant.plantData.solarExposureDemand];
 
         plantInfoPanel.SetActive(true);
     }
@@ -520,16 +520,21 @@ public class HUDUI : MonoBehaviour
         }
     }
 
-    private void ShowStrikeWarning (bool isPermanent)
+    private void ShowStrikeWarning(StrikeReason reason)
     {
-        string msg ="";
+        string msg = "";
 
-        if (isPermanent)
+        switch (reason)
         {
-            msg = "STRIKE PERMANENTE \n Te has quedado sin petalos y sin plantas. Se te han otorgado 3 pétalos.";
-        } else
-        {
-            msg = "STRIKE \n Se te han muerto 3 plantas";
+            case StrikeReason.Bankruptcy:
+                msg = "STRIKE PERMANENTE \n Te has quedado sin pétalos y sin plantas. Se te han otorgado 3 pétalos.";
+                break;
+            case StrikeReason.PlantDeath:
+                msg = "STRIKE \n Se te han muerto 3 plantas";
+                break;
+            case StrikeReason.Inactivity:
+                msg = "STRIKE \n ¡Llevas 3 días sin plantar nada teniendo dinero!";
+                break;
         }
 
         StartCoroutine(StrikeWarning(msg));
@@ -537,7 +542,7 @@ public class HUDUI : MonoBehaviour
 
     private IEnumerator StrikeWarning(string text)
     {
-        yield return new WaitForSecondsRealtime(dayFadeDuration+dayHoldDuration); // Esperar a que se vaya el panel de paso de día
+        yield return new WaitForSecondsRealtime(dayFadeDuration + dayHoldDuration); // Esperar a que se vaya el panel de paso de día
 
         GameObject strikeWarningInstance = Instantiate(strikeWarningPrefab, HUDPanel.transform);
 
@@ -616,7 +621,7 @@ public class HUDUI : MonoBehaviour
             int idx = ((int)weather.type * WeatherManager.Instance.maxIntensity) + (weather.intensity - 1);
             currentWeather.sprite = forecastSprites[idx];
 
-            currentIntensity.sprite = intensitySprites[(int)weather.intensity-1];
+            currentIntensity.sprite = intensitySprites[(int)weather.intensity - 1];
         }
     }
 
