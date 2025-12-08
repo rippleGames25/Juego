@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1013605814272
-    m_Localized: Ajustes
+    m_Localized: AJUSTES
     m_Metadata:
       m_Items: []
   - m_Id: 1147353780224
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19391645044736
-    m_Localized: "Penalizaci\xF3n por Muerte de Plantas"
+    m_Localized: Muerte de Plantas
     m_Metadata:
       m_Items: []
   - m_Id: 19479326969856

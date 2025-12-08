@@ -493,7 +493,18 @@ public class HUDUI : MonoBehaviour
                 break;
 
         }
-        health.sprite = healthSprites[(int)plant.currentHealth];
+
+        if (plant.isDeath)
+        {
+            health.sprite = healthSprites[healthSprites.Count - 1];
+            plantInfoPanel.GetComponent<Image>().color = new Color32(191, 191, 191, 255);
+
+        } else
+        {
+            health.sprite = healthSprites[(int)plant.currentHealth];
+            plantInfoPanel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+            
 
         // Necesidades
         waterDemand.text = $"{plant.plantData.waterDemand}";

@@ -533,8 +533,20 @@ public class Plot : MonoBehaviour
         bool isPollinated = pollinatorSourceCount > 0;
 
         bool isDead = (isPlanted && currentPlant != null && currentPlant.isDeath);
-
         bool hasValidPlant = false;
+
+        if (isDead)
+        {
+            hasValidPlant = false;
+
+            if (currentPollinatorVisual != null)
+            {
+                Destroy(currentPollinatorVisual);
+            }
+
+            return;
+        }
+
         if (isPlanted && currentPlant != null && !isDead)
         {
             // Si es Productora, el visual es válido desde que brota

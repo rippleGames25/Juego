@@ -199,6 +199,8 @@ public class Plant : MonoBehaviour
             plagueVisualInstance.SetActive(false);
         }
 
+        parentPlot.UpdatePollinatorVisual();
+
         UpdatePlantSprite();
         UpdateEnvironmentEffect();
         SFXManager.Instance?.PlayMarchita();

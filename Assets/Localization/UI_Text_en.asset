@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1013605814272
-    m_Localized: Settings
+    m_Localized: SETTINGS
     m_Metadata:
       m_Items: []
   - m_Id: 1211736346624
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 19391645044736
-    m_Localized: Penalty for Plant Death
+    m_Localized: Plant Death
     m_Metadata:
       m_Items: []
   - m_Id: 19479326969856
