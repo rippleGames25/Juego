@@ -347,23 +347,23 @@ public class Plot : MonoBehaviour
     {
         switch (plantType)
         {
-            case PlantCategory.Polinizadores:
+            case PlantCategory.PollinatorAtractor:
                 // Atraer polinizadores a parcelas adyacentes
                 PlotsManager.Instance.GeneratePollination(this.gridCoordinates);
 
                 break;
 
-            case PlantCategory.Sombra:
+            case PlantCategory.ShadeProvider:
                 // Cambiar la exposicion solar de las parcelas adyacentes
                 PlotsManager.Instance.GenerateShade(this.gridCoordinates);
                 break;
 
-            case PlantCategory.Productor:
+            case PlantCategory.Producer:
                 // Empezar el ciclo de produccion
   
                 break;
 
-            case PlantCategory.RefugioFauna:
+            case PlantCategory.WildlifeRefuge:
                 // Instanciar fauna en parcelas adyacentes
                 PlotsManager.Instance.GenerateRefuge(this.gridCoordinates);
                 break;

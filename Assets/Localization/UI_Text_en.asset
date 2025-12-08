@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_Text_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 80b2892c602c2c44a940c25c666f909d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 506636095488
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 602085871616
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 741089300480
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1013605814272
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211736346624
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1147353780224
+    m_Localized: Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1346981679104
+    m_Localized: Sound Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1924164046848
+    m_Localized: 'Music: Mother Earth''s Plantasia - Mort Garson (1976)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1890244710400
+    m_Localized: 'Font: Delius (Commercial Use License)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1794987872256
+    m_Localized: UI Art, Marketing and Community
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1766055563264
+    m_Localized: Programming, Music and SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1723974111232
+    m_Localized: Game Design, Programming and Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1695595450368
+    m_Localized: Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1659675430912
+    m_Localized: 2D Art and Game Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11105155764224
+    m_Localized: Return To Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10997215350784
+    m_Localized: Play Again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11468453793792
+    m_Localized: The Sanctuary has triumphed!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11529254424576
+    m_Localized: You have lost the Sanctuary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12616061505536
+    m_Localized: 'Maximum Number of Mature Species: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12575099932672
+    m_Localized: 'Maximum Biodiversity: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12526680887296
+    m_Localized: 'Days of resistance: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18931882217472
+    m_Localized: DAY SUMMARY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19025947873280
+    m_Localized: Base income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19147909844992
+    m_Localized: Quantity Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19227727450112
+    m_Localized: Maturity Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19270928781312
+    m_Localized: Biodiversity Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19339782475776
+    m_Localized: Solar Exposure Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19391645044736
+    m_Localized: Penalty for Plant Death
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19479326969856
+    m_Localized: Total
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19511690219520
+    m_Localized: Water Income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19539582341120
+    m_Localized: Fertilizer Income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19607878193152
+    m_Localized: Serious warning! You will be given 3 petals for the following day.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25755100467200
+    m_Localized: Forecast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25878635302912
+    m_Localized: 'Day '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26021329719296
+    m_Localized: 'Plot '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26180545499136
+    m_Localized: Resources
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25693679079424
+    m_Localized: Pass day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26600437272576
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27034577096704
+    m_Localized: Pollinators
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27079695224832
+    m_Localized: Shade Provider
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27179981033472
+    m_Localized: Fauna Attractor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27202739326976
+    m_Localized: Producer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46169570758656
+    m_Localized: days
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46227250827264
+    m_Localized: 'Mature in: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50093774163968
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50153689796608
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50053685006336
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50872111157248
+    m_Localized: STRIKE \n You haven't planted anything in 3 days!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50538651406336
+    m_Localized: STRIKE \n Three of your plants have died.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50457160273920
+    m_Localized: PERMANENT STRIKE \n You have run out of petals and plants. You have
+      been awarded 3 petals.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54540734648320
+    m_Localized: 'Language: EN'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Localization;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI daysSurvivedText;
     [SerializeField] private TextMeshProUGUI maxBiodiversityText;
     [SerializeField] private TextMeshProUGUI maxMaturePlantsText;
+
+    [Header("Localizacion")]
+    [SerializeField] private LocalizedString win;
+    [SerializeField] private LocalizedString lose;
+    [SerializeField] private LocalizedString days;
+    [SerializeField] private LocalizedString biodiversity;
+    [SerializeField] private LocalizedString species;
 
     void Start()
     {
@@ -22,25 +30,25 @@ public class GameOverUI : MonoBehaviour
         {
             hasWon = GameSessionStats.Instance.didWinGame;
 
-            daysSurvivedText.text = $"Días de Resistencia: {GameSessionStats.Instance.daysSurvived}";
-            maxBiodiversityText.text = $"Biodiversidad Máxima: {GameSessionStats.Instance.maxBiodiversityAchieved}";
-            maxMaturePlantsText.text = $"Máx. Especies Maduras: {GameSessionStats.Instance.maxMaturePlantsAchieved}";
+            daysSurvivedText.text = days.GetLocalizedString() + GameSessionStats.Instance.daysSurvived;
+            maxBiodiversityText.text = biodiversity.GetLocalizedString() + GameSessionStats.Instance.maxBiodiversityAchieved;
+            maxMaturePlantsText.text = species.GetLocalizedString() + GameSessionStats.Instance.maxMaturePlantsAchieved;
         }
         else
         {
             // Fallback por si testeamos desde la escena de GameOver
-            daysSurvivedText.text = "Días de Resistencia: N/A";
-            maxBiodiversityText.text = "Biodiversidad Máxima: N/A";
-            maxMaturePlantsText.text = "Máx. Especies Maduras: N/A";
+            daysSurvivedText.text = days.GetLocalizedString() + " N/A";
+            maxBiodiversityText.text = biodiversity.GetLocalizedString() + " N/A";
+            maxMaturePlantsText.text = species.GetLocalizedString() + " N/A";
         }
 
         if (hasWon)
         {
-            titleText.text = "¡El Santuario ha triunfado!";
+            titleText.text = win.GetLocalizedString();
         }
         else
         {
-            titleText.text = "Has perdido el Santuario";
+            titleText.text = lose.GetLocalizedString();
         }
     }
 

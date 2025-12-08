@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -34,6 +35,28 @@ public class MainMenuUI : MonoBehaviour
     {
         SFXManager.Instance?.PlayClick();
         SceneManager.LoadScene("TutorialScene");
+    }
+
+    public void NextLanguage()
+    {
+        var idiomasDisponibles = LocalizationSettings.AvailableLocales.Locales;
+        var idiomaActual = LocalizationSettings.SelectedLocale;
+
+        int indiceActual = 0;
+
+        // Buscamos el índice del idioma actual en la lista
+        for (int i = 0; i < idiomasDisponibles.Count; i++)
+        {
+            if (idiomasDisponibles[i] == idiomaActual)
+            {
+                indiceActual = i;
+                break;
+            }
+        }
+
+        int siguienteIndice = (indiceActual + 1) % idiomasDisponibles.Count; // el operador % hace que si llega al final, vuelva al 0
+
+        LocalizationSettings.SelectedLocale = idiomasDisponibles[siguienteIndice];
     }
 
     public void Quit()

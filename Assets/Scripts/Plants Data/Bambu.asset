@@ -13,11 +13,25 @@ MonoBehaviour:
   m_Name: Bambu
   m_EditorClassIdentifier: 
   idx: 9
-  plantName: Bambu
+  plantName:
+    m_TableReference:
+      m_TableCollectionName: GUID:d7ca7665ccf10564db8653a4563f7a97
+    m_TableEntryReference:
+      m_KeyId: 922782355456
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   scientificName: Bambusoideae
-  description: "Planta de r\xE1pido crecimiento vertical. Su sombra amplia y su capacidad
-    para retener humedad lo convierten en una pieza clave para equilibrar zonas \xE1ridas
-    del jard\xEDn."
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:d7ca7665ccf10564db8653a4563f7a97
+    m_TableEntryReference:
+      m_KeyId: 969402044416
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   waterDemand: 3
   fertilizerDemand: 2
   solarExposureDemand: 0
@@ -25,7 +39,15 @@ MonoBehaviour:
   timeToGrow: 3
   timeToMature: 4
   category: 3
-  shadeSize: 0
+  categoryText:
+    m_TableReference:
+      m_TableCollectionName: GUID:80b2892c602c2c44a940c25c666f909d
+    m_TableEntryReference:
+      m_KeyId: 27179981033472
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   timeToProduce: 0
   price: 3
   shopSprite: {fileID: 21300000, guid: 2431602f87d2cd6458245a5fdd5b3509, type: 3}
@@ -42,3 +64,6 @@ MonoBehaviour:
   - {fileID: 1287872852, guid: 7bb3c961cb8cda447942d7e7e8325312, type: 3}
   deathSprite: {fileID: 21300000, guid: 858d3eea78e01114890a57e8a6049e03, type: 3}
   refugeVisualPrefab: {fileID: 5330657378168321581, guid: 1562f71f68787454387f09d26d51cfb6, type: 3}
+  references:
+    version: 2
+    RefIds: []

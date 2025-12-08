@@ -419,16 +419,16 @@ public class GameManager : MonoBehaviour
 
         switch (plantData.category)
         {
-            case PlantCategory.Productor:
+            case PlantCategory.Producer:
                 newPlant = newPlantGO.AddComponent<ProducerPlant>();
                 break;
-            case PlantCategory.Sombra:
+            case PlantCategory.ShadeProvider:
                 newPlant = newPlantGO.AddComponent<ShaderProviderPlant>();
                 break;
-            case PlantCategory.Polinizadores:
+            case PlantCategory.PollinatorAtractor:
                 newPlant = newPlantGO.AddComponent<PollinatorAttractorPlant>();
                 break;
-            case PlantCategory.RefugioFauna:
+            case PlantCategory.WildlifeRefuge:
                 newPlant = newPlantGO.AddComponent<WildlifeRefugePlant>();
                 break;
             default:

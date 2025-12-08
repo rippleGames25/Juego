@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Plants_Data_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d7ca7665ccf10564db8653a4563f7a97, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 383487135744
+    m_Localized: Abelia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 669597388800
+    m_Localized: Holly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 852498403328
+    m_Localized: Agave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 922782355456
+    m_Localized: Bamboo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 996082012160
+    m_Localized: Schefflera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1054093430784
+    m_Localized: 'Strawberry '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1111999991808
+    m_Localized: Bilberry cactus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1171936595968
+    m_Localized: Lavender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1224386367488
+    m_Localized: Lily
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1281307267072
+    m_Localized: Daisy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1690176409600
+    m_Localized: Orchid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1325569757184
+    m_Localized: Rose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1405546745856
+    m_Localized: Tomato plant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1471909023744
+    m_Localized: Wheat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1524522373120
+    m_Localized: Trumpet flower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1614012043264
+    m_Localized: Tulip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797066481664
+    m_Localized: The leaves of these and other holly species are used in the manufacture
+      of medicines. The berries are highly poisonous and should not be ingested.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455473975296
+    m_Localized: Does not tolerate frost very well. Hardy. Flowers during summer
+      and early autumn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887952855040
+    m_Localized: Drought-resistant succulent plant. It creates dense shade around
+      it, reducing soil evaporation and protecting sun-sensitive species.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 969402044416
+    m_Localized: Fast-growing vertical plant. Its ample shade and ability to retain
+      moisture make it a key element in balancing arid areas of the garden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1028441067520
+    m_Localized: A shrub with large, glossy leaves that creates a cool microclimate
+      beneath its canopy. It serves as a refuge for insects and small birds, stabilising
+      the humidity of the environment and improving the overall health of the garden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1078470725632
+    m_Localized: A small, fruit-bearing plant that grows in humid areas. It produces
+      sweet fruits that attract wildlife and provide a moderate income.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1140810665984
+    m_Localized: A tree-like cactus that provides light shade and blooms with small
+      flowers. Its edible fruit adds ecological and economic value.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1205713326080
+    m_Localized: Drought-resistant aromatic plant. Improves soil health and attracts
+      bees even in dry climates.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1258402172928
+    m_Localized: An elegant plant with balanced growth. Its white flowers enhance
+      the biodiversity of the garden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1283085651968
+    m_Localized: A simple, common plant that grows quickly. Perfect for beginners
+      and for stabilising dry soils.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1368427155456
+    m_Localized: A classic flower, medium growth and susceptible to pests. Its presence
+      increases overall pollination in the garden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1433468227584
+    m_Localized: Edible fruit plant. Requires constant watering and rich soil. When
+      ripe, it produces tomatoes that can be sold or used as a food source.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1503966089216
+    m_Localized: Low-maintenance staple cereal. Provides food, seeds and shelter
+      for small animals and insects. Promotes wildlife and soil stability.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1584752578560
+    m_Localized: Shrub with tubular flowers and clusters of intense red colour. A
+      very attractive and compact plant, prized in gardening for its long flowering
+      period and its ability to attract hummingbirds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647948156928
+    m_Localized: Seasonal plant with intense, short flowering period. Ideal for marking
+      the natural cycle of the garden and providing temporary colour.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1710309068800
+    m_Localized: An exotic plant that blooms slowly. It requires constant moisture
+      and rich soil.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

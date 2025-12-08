@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_Text_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 80b2892c602c2c44a940c25c666f909d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 506636095488
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 602085871616
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 741089300480
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1013605814272
+    m_Localized: Ajustes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1147353780224
+    m_Localized: "M\xE1ster"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211736346624
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1346981679104
+    m_Localized: Efectos de Sonido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1659675430912
+    m_Localized: Arte 2D y Game Design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1695595450368
+    m_Localized: "Programaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1723974111232
+    m_Localized: "Game Design, Programaci\xF3n y M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1766055563264
+    m_Localized: "Programaci\xF3n, M\xFAsica y SFX"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1794987872256
+    m_Localized: Arte UI, Marketing y Community
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1890244710400
+    m_Localized: 'Fuente: Delius (Licencia de uso comercial)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1924164046848
+    m_Localized: "M\xFAsica: Mother Earth's Plantasia - Mort Garson (1976)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10997215350784
+    m_Localized: Volver a Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11105155764224
+    m_Localized: "Volver al Men\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11529254424576
+    m_Localized: Has perdido el Santuario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11468453793792
+    m_Localized: "\xA1El Santuario ha triunfado!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12526680887296
+    m_Localized: "D\xEDas de resistencia: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12575099932672
+    m_Localized: "Biodiversidad M\xE1xima: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12616061505536
+    m_Localized: "M\xE1ximo de Especies Maduras: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18931882217472
+    m_Localized: "RESUMEN D\xCDA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19025947873280
+    m_Localized: Ingreso base
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19147909844992
+    m_Localized: Bono por Cantidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19227727450112
+    m_Localized: Bono de Madurez
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19270928781312
+    m_Localized: Bono de Biodiversidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19339782475776
+    m_Localized: "Bono de Exposici\xF3n Solar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19391645044736
+    m_Localized: "Penalizaci\xF3n por Muerte de Plantas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19479326969856
+    m_Localized: Total
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19511690219520
+    m_Localized: Ingreso de Agua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19539582341120
+    m_Localized: Ingreso de Abono
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19607878193152
+    m_Localized: "\xA1Aviso grave! Se te otorgar\xE1n 3 p\xE9talos para el siguiente
+      d\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25693679079424
+    m_Localized: "Pasar de d\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25755100467200
+    m_Localized: "Pron\xF3stico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25878635302912
+    m_Localized: "D\xEDa "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26021329719296
+    m_Localized: 'Parcela '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26180545499136
+    m_Localized: Recursos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26600437272576
+    m_Localized: Tienda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27034577096704
+    m_Localized: Polinizadores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27079695224832
+    m_Localized: Proveedor Sombra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27179981033472
+    m_Localized: Atractor Fauna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27202739326976
+    m_Localized: Productora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46169570758656
+    m_Localized: "d\xEDas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46227250827264
+    m_Localized: 'Madura en: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50053685006336
+    m_Localized: Pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50093774163968
+    m_Localized: Volver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50153689796608
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50457160273920
+    m_Localized: "STRIKE PERMANENTE \\n Te has quedado sin p\xE9talos y sin plantas.
+      Se te han otorgado 3 p\xE9talos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50538651406336
+    m_Localized: STRIKE \n Se te han muerto 3 plantas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50872111157248
+    m_Localized: "STRIKE \\n \xA1Llevas 3 d\xEDas sin plantar nada!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54540734648320
+    m_Localized: 'Idioma: ES'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

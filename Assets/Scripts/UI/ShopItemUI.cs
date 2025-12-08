@@ -26,8 +26,8 @@ public class ShopItemUI : MonoBehaviour
 
         if (plantData == null) return;
 
-        nameText.text = plantData.plantName;
-        typeText.text = plantData.category.ToString();
+        nameText.text = plantData.plantName.GetLocalizedString();
+        typeText.text = plantData.TypeToString();
         priceText.text = plantData.price.ToString();
         solarExposure.sprite = solarSprites[(int)plantData.solarExposureDemand];
 

@@ -13,10 +13,25 @@ MonoBehaviour:
   m_Name: Margarita
   m_EditorClassIdentifier: 
   idx: 0
-  plantName: Margarita
+  plantName:
+    m_TableReference:
+      m_TableCollectionName: GUID:d7ca7665ccf10564db8653a4563f7a97
+    m_TableEntryReference:
+      m_KeyId: 1281307267072
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   scientificName: Bellis perennis
-  description: "Planta simple y com\xFAn, de r\xE1pido crecimiento. Perfecta para
-    principiantes y para estabilizar suelos secos."
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:d7ca7665ccf10564db8653a4563f7a97
+    m_TableEntryReference:
+      m_KeyId: 1283085651968
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   waterDemand: 1
   fertilizerDemand: 1
   solarExposureDemand: 0
@@ -24,7 +39,15 @@ MonoBehaviour:
   timeToGrow: 2
   timeToMature: 4
   category: 0
-  shadeSize: 0
+  categoryText:
+    m_TableReference:
+      m_TableCollectionName: GUID:80b2892c602c2c44a940c25c666f909d
+    m_TableEntryReference:
+      m_KeyId: 27034577096704
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   timeToProduce: 0
   price: 1
   shopSprite: {fileID: 21300000, guid: c48e00b0a7ecccf47b9deb351b0aff10, type: 3}
@@ -41,3 +64,6 @@ MonoBehaviour:
   - {fileID: -3106765223704731922, guid: 678d9af5cc9aa7f488a72b1b2f372f94, type: 3}
   deathSprite: {fileID: 21300000, guid: 858d3eea78e01114890a57e8a6049e03, type: 3}
   refugeVisualPrefab: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []

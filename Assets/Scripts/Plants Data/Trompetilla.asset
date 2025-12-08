@@ -13,11 +13,25 @@ MonoBehaviour:
   m_Name: Trompetilla
   m_EditorClassIdentifier: 
   idx: 7
-  plantName: Trompetilla
+  plantName:
+    m_TableReference:
+      m_TableCollectionName: GUID:d7ca7665ccf10564db8653a4563f7a97
+    m_TableEntryReference:
+      m_KeyId: 1524522373120
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   scientificName: Bouvardia ternifolia
-  description: "Arbusto de flores tubulares y racimos de intenso color rojo. Planta
-    muy vistosa y compacta, apreciada en la jardiner\xEDa por su floraci\xF3n duradera
-    y su capacidad para atraer colibr\xEDes."
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:d7ca7665ccf10564db8653a4563f7a97
+    m_TableEntryReference:
+      m_KeyId: 1584752578560
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   waterDemand: 2
   fertilizerDemand: 3
   solarExposureDemand: 1
@@ -25,7 +39,15 @@ MonoBehaviour:
   timeToGrow: 2
   timeToMature: 3
   category: 0
-  shadeSize: 0
+  categoryText:
+    m_TableReference:
+      m_TableCollectionName: GUID:80b2892c602c2c44a940c25c666f909d
+    m_TableEntryReference:
+      m_KeyId: 27034577096704
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   timeToProduce: 0
   price: 2
   shopSprite: {fileID: 21300000, guid: 9598f0411663f71469e0a4553de01dfc, type: 3}
@@ -42,3 +64,6 @@ MonoBehaviour:
   - {fileID: 1299338496, guid: e874f197d5bfa8e4db663bcfbdbaa885, type: 3}
   deathSprite: {fileID: 21300000, guid: 858d3eea78e01114890a57e8a6049e03, type: 3}
   refugeVisualPrefab: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []

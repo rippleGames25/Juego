@@ -1,0 +1,156 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Plants_Data Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Plants_Data
+  m_TableCollectionNameGuidString: d7ca7665ccf10564db8653a4563f7a97
+  m_Entries:
+  - m_Id: 383487135744
+    m_Key: Abelia/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455473975296
+    m_Key: Abelia/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 669597388800
+    m_Key: Acebo/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797066481664
+    m_Key: Acebo/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 852498403328
+    m_Key: Agave/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887952855040
+    m_Key: Agave/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 922782355456
+    m_Key: Bambu/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 969402044416
+    m_Key: Bambu/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 996082012160
+    m_Key: Cheflera/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1028441067520
+    m_Key: Cheflera/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1054093430784
+    m_Key: Fresa/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1078470725632
+    m_Key: Fresa/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1111999991808
+    m_Key: Garambullo/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1140810665984
+    m_Key: Garambullo/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1171936595968
+    m_Key: Lavanda/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1205713326080
+    m_Key: Lavanda/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1224386367488
+    m_Key: Lirio/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1258402172928
+    m_Key: Lirio/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1281307267072
+    m_Key: Margarita/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1283085651968
+    m_Key: Margarita/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1690176409600
+    m_Key: Orquidea/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1710309068800
+    m_Key: Orquidea/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1325569757184
+    m_Key: Rosa/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1368427155456
+    m_Key: Rosa/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1405546745856
+    m_Key: Tomatera/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1433468227584
+    m_Key: Tomatera/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1471909023744
+    m_Key: Trigo/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1503966089216
+    m_Key: Trigo/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1524522373120
+    m_Key: Trompetilla/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1584752578560
+    m_Key: Trompetilla/description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1614012043264
+    m_Key: Tulipan/name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647948156928
+    m_Key: Tulipan/description
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5276409156923031799
+  references:
+    version: 2
+    RefIds:
+    - rid: 5276409156923031799
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1765192520875

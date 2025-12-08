@@ -1,0 +1,232 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UI_Text Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UI_Text
+  m_TableCollectionNameGuidString: 80b2892c602c2c44a940c25c666f909d
+  m_Entries:
+  - m_Id: 506636095488
+    m_Key: menu_play_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 602085871616
+    m_Key: menu_tutorial_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 741089300480
+    m_Key: menu_credits_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1013605814272
+    m_Key: settings_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1147353780224
+    m_Key: settings_master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1211736346624
+    m_Key: settings_music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1346981679104
+    m_Key: settings_sfx
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1659675430912
+    m_Key: credits_lauraB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1695595450368
+    m_Key: credits_victor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1723974111232
+    m_Key: credits_lauraM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1766055563264
+    m_Key: credits_alvaro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1794987872256
+    m_Key: credits_guillermo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1890244710400
+    m_Key: credits_font
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1924164046848
+    m_Key: credits_music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10997215350784
+    m_Key: gameover_replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11105155764224
+    m_Key: gameover_return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11468453793792
+    m_Key: gameover_win
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11529254424576
+    m_Key: gameover_lose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12526680887296
+    m_Key: gameover_days
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12575099932672
+    m_Key: gameover_biodiversity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12616061505536
+    m_Key: gameover_species
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18931882217472
+    m_Key: Game/DaySummary/title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19025947873280
+    m_Key: Game/DaySummary/base_income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19147909844992
+    m_Key: Game/DaySummary/quantity_bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19227727450112
+    m_Key: Game/DaySummary/maturity_bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19270928781312
+    m_Key: Game/DaySummary/diversity_bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19339782475776
+    m_Key: Game/DaySummary/solar_bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19391645044736
+    m_Key: Game/DaySummary/death_penalty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19479326969856
+    m_Key: Game/DaySummary/total
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19511690219520
+    m_Key: Game/DaySummary/water_income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19539582341120
+    m_Key: Game/DaySummary/fertilizer_income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19607878193152
+    m_Key: Game/DaySummary/bailout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25693679079424
+    m_Key: Game/HUD/passday
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25755100467200
+    m_Key: Game/HUD/forecast_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25878635302912
+    m_Key: Game/HUD/day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26021329719296
+    m_Key: Game/HUD/plot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26180545499136
+    m_Key: Game/HUD/resources
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26600437272576
+    m_Key: Game/HUD/shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27034577096704
+    m_Key: Game/PlantType/pollinator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27079695224832
+    m_Key: Game/PlantType/shade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27179981033472
+    m_Key: Game/PlantType/wildlife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27202739326976
+    m_Key: Game/PlantType/producer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46169570758656
+    m_Key: Game/HUD/days
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46227250827264
+    m_Key: Game/HUD/time_to_matura
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50053685006336
+    m_Key: Game/Pause/title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50093774163968
+    m_Key: Game/Pause/return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50153689796608
+    m_Key: Game/Pause/exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50457160273920
+    m_Key: Game/HUD/Strike/no_money
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50538651406336
+    m_Key: Game/HUD/Strike/plantdeath
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50872111157248
+    m_Key: Game/HUD/Strike/no_activity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54540734648320
+    m_Key: Menu/Language
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5276409156923031786
+  references:
+    version: 2
+    RefIds:
+    - rid: 5276409156923031786
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1765185345361

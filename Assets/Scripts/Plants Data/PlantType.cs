@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public enum PlantCategory
 {
-    Polinizadores,
-    Sombra,
-    Productor,
-    RefugioFauna
+    PollinatorAtractor,
+    ShadeProvider,
+    Producer,
+    WildlifeRefuge
 }
 
 [CreateAssetMenu(fileName = "NewPlantType", menuName = "Plant/Plant Type Config", order = 1)]
@@ -13,9 +14,9 @@ public class PlantType : ScriptableObject
 {
     [Header("Info")]
     public int idx = 0;
-    public string plantName = "Plantita";
-    public string scientificName = "Lorem Ipsum";
-    public string description = "Lorem Ipsum";
+    public LocalizedString plantName;
+    public string scientificName;
+    public LocalizedString description;
 
     [Header("Características")]
     public int waterDemand = 2;
@@ -28,12 +29,10 @@ public class PlantType : ScriptableObject
     public int timeToMature = 9;
 
     [Header("Categoria")]
-    public PlantCategory category = PlantCategory.Polinizadores;
+    public PlantCategory category = PlantCategory.PollinatorAtractor;
+    public LocalizedString categoryText;
 
     [Header("Características")]
-    // Proporcionan sombra
-    public int shadeSize = 0;
-
     // Productores
     public int timeToProduce = 0;
 
@@ -46,4 +45,9 @@ public class PlantType : ScriptableObject
     [SerializeField] public Sprite deathSprite;
 
     public GameObject refugeVisualPrefab;
+
+    public string TypeToString()
+    {
+        return categoryText.GetLocalizedString();
+    }
 }

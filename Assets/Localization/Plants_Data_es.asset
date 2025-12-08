@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Plants_Data_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: d7ca7665ccf10564db8653a4563f7a97, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 383487135744
+    m_Localized: Abelia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455473975296
+    m_Localized: "No aguanta muy bien las heladas. Resistente. Flores durante el
+      verano y principios de oto\xF1o."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 669597388800
+    m_Localized: Acebo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797066481664
+    m_Localized: "Las hojas de estas y otras especies de acebo se emplean en la elaboraci\xF3n
+      de medicamentos. Las bayas son muy venenosas y no deben ingerirse."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 852498403328
+    m_Localized: "\xC1gave"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887952855040
+    m_Localized: "Planta suculenta resistente a la sequ\xEDa. Genera sombra densa
+      a su alrededor, reduciendo la evaporaci\xF3n del suelo y protegiendo especies
+      sensibles al sol."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 922782355456
+    m_Localized: "Bamb\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 969402044416
+    m_Localized: "Planta de r\xE1pido crecimiento vertical. Su sombra amplia y su
+      capacidad para retener humedad lo convierten en una pieza clave para equilibrar
+      zonas \xE1ridas del jard\xEDn."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 996082012160
+    m_Localized: Cheflera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1028441067520
+    m_Localized: "Arbusto de hojas grandes y brillantes que crea un microclima fresco
+      bajo su copa. Sirve como refugio para insectos y aves peque\xF1as, estabilizando
+      la humedad del entorno y mejorando la salud general del jard\xEDn."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1054093430784
+    m_Localized: Fresa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1078470725632
+    m_Localized: "Planta peque\xF1a y frutal que crece en zonas h\xFAmedas. Produce
+      frutos dulces que atraen fauna y aportan ingresos moderados."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1111999991808
+    m_Localized: Garambullo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1140810665984
+    m_Localized: "Cactus arborescente que genera sombra ligera y florece con peque\xF1as
+      flores. Su fruto comestible a\xF1ade valor ecol\xF3gico y econ\xF3mico."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1171936595968
+    m_Localized: Lavanda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1205713326080
+    m_Localized: "Planta arom\xE1tica resistente a la sequ\xEDa. Mejora la salud
+      del suelo y atrae abejas incluso en climas secos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1224386367488
+    m_Localized: Lirio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1258402172928
+    m_Localized: "Planta elegante de crecimiento equilibrado. Sus flores blancas
+      mejoran la biodiversidad del jard\xEDn."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1281307267072
+    m_Localized: Margarita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1283085651968
+    m_Localized: "Planta simple y com\xFAn, de r\xE1pido crecimiento. Perfecta para
+      principiantes y para estabilizar suelos secos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1325569757184
+    m_Localized: Rosa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1368427155456
+    m_Localized: "Flor cl\xE1sica, de crecimiento medio y sensible a plagas. Su presencia
+      incrementa la polinizaci\xF3n general del jard\xEDn."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1405546745856
+    m_Localized: Tomatera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1433468227584
+    m_Localized: Planta de fruto comestible. Requiere riego constante y suelos ricos.
+      Al madurar, produce tomates que pueden venderse o usarse como recurso alimenticio.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1471909023744
+    m_Localized: Trigo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1503966089216
+    m_Localized: "Cereal b\xE1sico de bajo mantenimiento. Aporta alimento, semillas
+      y refugio para peque\xF1os animales e insectos. Favorece la fauna y la estabilidad
+      del suelo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1524522373120
+    m_Localized: Trompetilla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1584752578560
+    m_Localized: "Arbusto de flores tubulares y racimos de intenso color rojo. Planta
+      muy vistosa y compacta, apreciada en la jardiner\xEDa por su floraci\xF3n duradera
+      y su capacidad para atraer colibr\xEDes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1614012043264
+    m_Localized: "Tulip\xE1n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1647948156928
+    m_Localized: "Planta de temporada con floraci\xF3n intensa y breve. Ideal para
+      marcar el ciclo natural del jard\xEDn y dar color temporal."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1690176409600
+    m_Localized: "Orqu\xEDdea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1710309068800
+    m_Localized: "Planta ex\xF3tica que florece lentamente. Necesita humedad constante
+      y suelos ricos."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

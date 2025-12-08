@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;              // ← para las corutinas
+using System.Collections;              
 using System.Collections.Generic;
-using System;
-using System.Linq;
+using UnityEngine.Localization;
 
 public class HUDUI : MonoBehaviour
 {
@@ -32,6 +31,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI summaryTotalIncomeText;
     [SerializeField] private TextMeshProUGUI summaryWaterIncomeText;
     [SerializeField] private TextMeshProUGUI summaryFertilizerIncomeText;
+    [SerializeField] private LocalizedString bailout;
 
     // Sistema de Strikes
     [Header("Strikes")]
@@ -97,6 +97,16 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TMP_Text dayTransitionText;    // texto "Día X"
     [SerializeField] private float dayFadeDuration = 0.4f;  // tiempo de fade in/out
     [SerializeField] private float dayHoldDuration = 0.3f;  // tiempo en blanco
+    
+
+    [Header("Textos para localizacion")]
+    [SerializeField] private LocalizedString dayLS;
+    [SerializeField] private LocalizedString daysLS;
+    [SerializeField] private LocalizedString plotLS;
+    [SerializeField] private LocalizedString timeToMatureLS;
+    [SerializeField] private LocalizedString strikeNoMoneyLS;
+    [SerializeField] private LocalizedString strikePlantDeathLS;
+    [SerializeField] private LocalizedString strikeNoActivityLS;
 
     [SerializeField] GameObject toolsRoot;
     [SerializeField] GameObject plotsGrid;
@@ -295,25 +305,25 @@ public class HUDUI : MonoBehaviour
         bool bailoutIsPending = GameManager.Instance.IsBailoutPending;
 
         // Asignar textos
-        if (summaryBaseIncomeText) summaryBaseIncomeText.text = $"Ingreso base: +{baseIncome}";
-        if (summaryQuantityBonusText) summaryQuantityBonusText.text = $"Bono por Cantidad: +{plantBonus}";
-        if (summaryMaturityBonusText) summaryMaturityBonusText.text = $"Bono de Madurez: +{bonusData.madurityBonus}";
-        if (summaryDiversityBonusText) summaryDiversityBonusText.text = $"Bono de Biodiversidad: +{bonusData.diversityBonus}";
-        if (summarySolarBonusText) summarySolarBonusText.text = $"Bono Exposición Solar: +{bonusData.solarExposureBonus}";
-        if (summaryDeathPenaltyText) summaryDeathPenaltyText.text = $"Plantas Muertas: -{penalties}";
+        if (summaryBaseIncomeText) summaryBaseIncomeText.text = $"+{baseIncome}";
+        if (summaryQuantityBonusText) summaryQuantityBonusText.text = $"+{plantBonus}";
+        if (summaryMaturityBonusText) summaryMaturityBonusText.text = $"+{bonusData.madurityBonus}";
+        if (summaryDiversityBonusText) summaryDiversityBonusText.text = $"+{bonusData.diversityBonus}";
+        if (summarySolarBonusText) summarySolarBonusText.text = $"+{bonusData.solarExposureBonus}";
+        if (summaryDeathPenaltyText) summaryDeathPenaltyText.text = $"-{penalties}";
 
         // Calcular y asignar total
         int total = baseIncome + plantBonus + bonusData.madurityBonus + bonusData.diversityBonus + bonusData.solarExposureBonus - penalties;
 
-        if (summaryTotalIncomeText) summaryTotalIncomeText.text = $"Total: +{total}";
+        if (summaryTotalIncomeText) summaryTotalIncomeText.text = $"+{total}";
 
-        if (summaryWaterIncomeText) summaryWaterIncomeText.text = $"Agua Obtenida: {waterIncome}";
-        if (summaryFertilizerIncomeText) summaryFertilizerIncomeText.text = $"Abono Obtenido: {fertilizerIncome}";
+        if (summaryWaterIncomeText) summaryWaterIncomeText.text = $"+{waterIncome}";
+        if (summaryFertilizerIncomeText) summaryFertilizerIncomeText.text = $"+{fertilizerIncome}";
         if (summaryBailoutText)
         {
             if (bailoutIsPending)
             {
-                summaryBailoutText.text = "¡Aviso grave!\nSe te otorgarán 3 pétalos para el siguiente día";
+                summaryBailoutText.text = bailout.GetLocalizedString();
                 summaryBailoutText.gameObject.SetActive(true);
             }
             else
@@ -346,13 +356,13 @@ public class HUDUI : MonoBehaviour
         if (plantType == null) return;
         SFXManager.Instance?.PlayClick();
 
-        plantTypeName.text = plantType.plantName;
+        plantTypeName.text = plantType.plantName.GetLocalizedString();
 
         if (plantTypeScientificName != null)
             plantTypeScientificName.text = plantType.scientificName;
 
         if (plantTypeDescription != null)
-            plantTypeDescription.text = plantType.description;
+            plantTypeDescription.text = plantType.description.GetLocalizedString();
 
         if (plantTypePhoto != null && plantType.shopSprite != null)
         {
@@ -360,7 +370,7 @@ public class HUDUI : MonoBehaviour
         }
 
         if (plantTypeCategoryText != null)
-            plantTypeCategoryText.text = plantType.category.ToString();
+            plantTypeCategoryText.text = plantType.TypeToString();
 
         if (plantTypeWaterDemandText != null)
             plantTypeWaterDemandText.text = $"{plantType.waterDemand.ToString()}";
@@ -369,7 +379,7 @@ public class HUDUI : MonoBehaviour
             plantTypeFertilizerDemandText.text = $"{plantType.fertilizerDemand.ToString()}";
 
         if (plantTypeToMature != null)
-            plantTypeToMature.text = $"Madura en:\n {plantType.timeToMature.ToString()} días";
+            plantTypeToMature.text = $"{timeToMatureLS.GetLocalizedString()}:\n {plantType.timeToMature.ToString()} {daysLS.GetLocalizedString()}";
 
         if (plantTypeSolarDemandImage != null && solarSprites != null && solarSprites.Count > 0)
         {
@@ -449,7 +459,7 @@ public class HUDUI : MonoBehaviour
 
     private void ShowPlotInfoPanel(Plot plot)
     {
-        plotGridInfo.text = $"Parcela {plot.gridCoordinates}";
+        plotGridInfo.text = plotLS.GetLocalizedString() + $"{plot.gridCoordinates}";
         plotSolarInfo.sprite = solarSprites[(int)plot.currentSolarExposure];
         plotWaterInfo.text = $"{plot.currentWater}";
         plotFertilizerInfo.text = $"{plot.currentFertility}";
@@ -461,8 +471,8 @@ public class HUDUI : MonoBehaviour
         plantPhoto.sprite = plant.plantData.shopSprite;
 
         // Info
-        nameText.text = plant.plantData.plantName;
-        typeText.text = plant.plantData.category.ToString();
+        nameText.text = plant.plantData.plantName.GetLocalizedString();
+        typeText.text = plant.plantData.TypeToString();
 
         // Estado
         lifeDaysText.text = $"{plant.lifeDays}";
@@ -527,13 +537,13 @@ public class HUDUI : MonoBehaviour
         switch (reason)
         {
             case StrikeReason.Bankruptcy:
-                msg = "STRIKE PERMANENTE \n Te has quedado sin pétalos y sin plantas. Se te han otorgado 3 pétalos.";
+                msg = strikeNoMoneyLS.GetLocalizedString();
                 break;
             case StrikeReason.PlantDeath:
-                msg = "STRIKE \n Se te han muerto 3 plantas";
+                msg = strikePlantDeathLS.GetLocalizedString();
                 break;
             case StrikeReason.Inactivity:
-                msg = "STRIKE \n ¡Llevas 3 días sin plantar nada teniendo dinero!";
+                msg = strikeNoActivityLS.GetLocalizedString();
                 break;
         }
 
@@ -602,7 +612,7 @@ public class HUDUI : MonoBehaviour
 
         for (int i = 0; i < forecastText.Count; i++)
         {
-            forecastText[i].text = $"Día {currentDay + i + 1}";
+            forecastText[i].text = dayLS.GetLocalizedString() + $"{currentDay + i + 1}";
         }
 
         for (int i = 0; i < forecastArray.Length && i < forecastImages.Count; i++)
@@ -639,7 +649,7 @@ public class HUDUI : MonoBehaviour
     }
     private void UpdateDayText(int value)
     {
-        if (dayText != null) dayText.text = "Dia: " + value.ToString();
+        if (dayText != null) dayText.text = dayLS.GetLocalizedString() + value.ToString();
     }
     private void UpdateBiodiversityText(int value)
     {
@@ -664,7 +674,7 @@ public class HUDUI : MonoBehaviour
         if (dayTransitionText != null)
         {
             dayTransitionText.gameObject.SetActive(true);
-            dayTransitionText.text = $"Día {GameManager.Instance.CurrentDay}";
+            dayTransitionText.text = dayLS.GetLocalizedString() + GameManager.Instance.CurrentDay;
         }
 
         Color panelColor = dayTransitionPanel ? dayTransitionPanel.color : Color.white;
