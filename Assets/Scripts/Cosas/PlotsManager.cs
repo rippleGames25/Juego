@@ -97,7 +97,7 @@ public class PlotsManager : MonoBehaviour
 
         foreach (Plot plot in plotGrid)
         {
-            if (plot != null && plot.isPlanted)
+            if (plot != null && plot.isPlanted && !plot.currentPlant.isDeath)
             {
                 count++;
             }

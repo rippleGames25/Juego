@@ -46,6 +46,7 @@ public class Plot : MonoBehaviour
     [SerializeField] private GameObject changeCanvasPrefab;
     [SerializeField] private Sprite waterIcon;
     [SerializeField] private Sprite fertilizerIcon;
+    [SerializeField] private Sprite petalIcon;
 
     [Header("Visual Effects (Prefabs)")]
     [SerializeField] private GameObject pollinatorVisualPrefab;
@@ -221,6 +222,9 @@ public class Plot : MonoBehaviour
                 {
                     producerPlant.CollectProduct();
                     SFXManager.Instance?.PlayComprar();
+
+                    int price = currentPlant.plantData.price / 2;
+                    StartCoroutine(AnimateSingleTextChange($"+ {price}", 2, colorLlenoParcela));
                 }
                 else
                 {
@@ -298,6 +302,7 @@ public class Plot : MonoBehaviour
                 }
                 else
                 {
+                    SFXManager.Instance?.PlayDenegar();
                     Debug.Log($"Parcela {gridCoordinates} ocupada.");
                 }
                 break;
@@ -444,7 +449,7 @@ public class Plot : MonoBehaviour
     private IEnumerator AnimateSingleTextChange(string _text, int type, Color textColor)
     {
         // 1. Instanciar el prefab de la animación
-        GameObject canvasInstance = Instantiate(changeCanvasPrefab, transform.position + new Vector3(-0.5f,0,0), Quaternion.identity, transform.parent);
+        GameObject canvasInstance = Instantiate(changeCanvasPrefab, transform.position + new Vector3(-0.4f,0,0), Quaternion.identity, transform.parent);
         canvasInstance.SetActive(true);
 
         // 2. Obtener referencias de la nueva instancia
@@ -458,6 +463,8 @@ public class Plot : MonoBehaviour
             changeImage.sprite = waterIcon;
         else if (type == 1 && fertilizerIcon != null)
             changeImage.sprite = fertilizerIcon;
+        else if(type == 2 && petalIcon != null)
+            changeImage.sprite =petalIcon;
         else
             changeImage.gameObject.SetActive(false); // Ocultar si no hay icono
 

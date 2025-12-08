@@ -21,6 +21,13 @@ public enum StrikeReason
     Bankruptcy   // Por quedarse sin dinero y plantas
 }
 
+public enum StrikeRemovedReason
+{
+    ThreeBiodiversity,  // Sumar 3 de biodiversidad
+    FiveDaysNoDeath     // Estar 5 dias sin muertes de plantas
+}
+
+
 public class GameManager : MonoBehaviour
 {
     #region Propiedades
@@ -36,9 +43,9 @@ public class GameManager : MonoBehaviour
     public event Action<ToolType> OnToolChanged;
     public event Action<PlantType> OnPlantInfoClick;
     public event Action OnDayEnd;
-    public event Action<int, int> OnStrikesChanged;
 
-    public event Action<StrikeReason> OnNewStrike;
+    public event Action<int, int, StrikeReason> OnNewStrike;
+    public event Action<int, int, StrikeRemovedReason> OnStrikeRemoved;
 
     // Variables
     public int winCondition;
@@ -210,7 +217,8 @@ public class GameManager : MonoBehaviour
         PlotsManager.Instance.CreatePlots();
 
         GameSessionStats.Instance?.ResetStats();
-        OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
+        normalStrikes = 0;
+        permanentStrikes = 0;
 
         UpdateBiodiversityScore();
         HandleWeatherEvent();
@@ -353,8 +361,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning($"[GameManager] ¡Strike Normal añadido! Total: {normalStrikes} Normales, {permanentStrikes} Permanentes.");
         }
 
-        OnNewStrike?.Invoke(reason);
-        OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
+        OnNewStrike?.Invoke(normalStrikes, permanentStrikes, reason);
     }
 
     public void AddPenalty(int amount)
@@ -362,13 +369,14 @@ public class GameManager : MonoBehaviour
         penaltiesThisDay += amount;
     }
 
-    private void RemoveStrike()
+    private void RemoveStrike(StrikeRemovedReason reason)
     {
         if (normalStrikes > 0)
         {
             normalStrikes--;
             Debug.Log($"[GameManager] ¡Strike Normal ELIMINADO por buen comportamiento! Quedan: {normalStrikes} Normales, {permanentStrikes} Permanentes.");
-            OnStrikesChanged?.Invoke(normalStrikes, permanentStrikes);
+
+            OnStrikeRemoved?.Invoke(normalStrikes, permanentStrikes, reason);
         }
     }
 
@@ -559,7 +567,7 @@ public class GameManager : MonoBehaviour
             daysWithoutDeathRacha++;
             if (daysWithoutDeathRacha >= 5)
             {
-                RemoveStrike();
+                RemoveStrike(StrikeRemovedReason.FiveDaysNoDeath);
                 daysWithoutDeathRacha = 0;
                 Debug.Log("[GameManager] ¡Strike retirado por 5 días sin muertes!");
             }
@@ -572,7 +580,7 @@ public class GameManager : MonoBehaviour
         // racha de diversidad
         if (diversityBonusRacha >= 3)
         {
-            RemoveStrike();
+            RemoveStrike(StrikeRemovedReason.ThreeBiodiversity);
             diversityBonusRacha = 0;
             Debug.Log("[GameManager] ¡Strike retirado por diversidad mantenida!");
         }

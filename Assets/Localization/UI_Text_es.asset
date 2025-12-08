@@ -208,20 +208,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 50457160273920
-    m_Localized: "STRIKE PERMANENTE \\n Te has quedado sin p\xE9talos y sin plantas.
-      Se te han otorgado 3 p\xE9talos."
+    m_Localized: "\xA1STRIKE PERMANENTE! \\n Te has quedado sin p\xE9talos y sin
+      plantas. Se te han otorgado 3 p\xE9talos."
     m_Metadata:
       m_Items: []
   - m_Id: 50538651406336
-    m_Localized: STRIKE \n Se te han muerto 3 plantas.
+    m_Localized: "\xA1STRIKE! \\n Se te han muerto 3 plantas."
     m_Metadata:
       m_Items: []
   - m_Id: 50872111157248
-    m_Localized: "STRIKE \\n \xA1Llevas 3 d\xEDas sin plantar nada!"
+    m_Localized: "\xA1STRIKE! \\n \xA1Llevas 3 d\xEDas sin plantar nada!"
     m_Metadata:
       m_Items: []
   - m_Id: 54540734648320
     m_Localized: 'Idioma: ES'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103780395601920
+    m_Localized: "\xA1STRIKE ELIMINADO! \\n Pasaste 5 d\xEDas sin que ninguna planta
+      muriera"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103887098695680
+    m_Localized: "\xA1STRIKE ELIMINADO! \\n Conseguiste sumar 3 especies a la biodiversidad"
     m_Metadata:
       m_Items: []
   references:

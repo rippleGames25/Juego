@@ -207,20 +207,28 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 50872111157248
-    m_Localized: STRIKE \n You haven't planted anything in 3 days!
+    m_Localized: STRIKE! \n You haven't planted anything in 3 days!
     m_Metadata:
       m_Items: []
   - m_Id: 50538651406336
-    m_Localized: STRIKE \n Three of your plants have died.
+    m_Localized: STRIKE! \n Three of your plants have died.
     m_Metadata:
       m_Items: []
   - m_Id: 50457160273920
-    m_Localized: PERMANENT STRIKE \n You have run out of petals and plants. You have
-      been awarded 3 petals.
+    m_Localized: PERMANENT STRIKE! \n You have run out of petals and plants. You
+      have been awarded 3 petals.
     m_Metadata:
       m_Items: []
   - m_Id: 54540734648320
     m_Localized: 'Language: EN'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103780395601920
+    m_Localized: STRIKE REMOVED! \n You went 5 days without any plants dying.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103887098695680
+    m_Localized: STRIKE OUT! \n You managed to add 3 species to the biodiversity.
     m_Metadata:
       m_Items: []
   references:

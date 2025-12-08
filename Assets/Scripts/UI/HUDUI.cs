@@ -107,10 +107,15 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private LocalizedString strikeNoMoneyLS;
     [SerializeField] private LocalizedString strikePlantDeathLS;
     [SerializeField] private LocalizedString strikeNoActivityLS;
+    [SerializeField] private LocalizedString strikeRemovedNoDeathLS;
+    [SerializeField] private LocalizedString strikeRemoveBiodiversityLS;
 
     [SerializeField] GameObject toolsRoot;
     [SerializeField] GameObject plotsGrid;
+
+    // Variables privadas
     private Plot currentlySelectedPlot;
+    private bool nextButtonPressed = false;
     #endregion
 
     private void Start()
@@ -145,8 +150,8 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnDayEnd += ShowDaySummaryPanel;
 
             // Suscripción a Strikes
-            GameManager.Instance.OnStrikesChanged += UpdateStrikesVisuals;
-            GameManager.Instance.OnNewStrike += ShowStrikeWarning;
+            GameManager.Instance.OnStrikeRemoved += RemoveStrikeVisuals;
+            GameManager.Instance.OnNewStrike += PutStrikeVisuals;
         }
 
         if (PlotsManager.Instance != null)
@@ -234,6 +239,9 @@ public class HUDUI : MonoBehaviour
 
     public void PassDayButton()
     {
+
+        nextButtonPressed = false;
+
         if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
@@ -249,8 +257,12 @@ public class HUDUI : MonoBehaviour
     {
         SFXManager.Instance?.PlayClick();
 
+        nextButtonPressed = true;
+
         // Nuevo día
         GameManager.Instance.StartNewDay();
+        
+        Debug.Log($"nextButtonPressed = {nextButtonPressed}");
 
         StartCoroutine(DayTransitionRoutine());
     }
@@ -516,6 +528,46 @@ public class HUDUI : MonoBehaviour
     #endregion
 
     #region Strikes UI
+
+    private void RemoveStrikeVisuals(int normalStrikes, int permanentStrikes, StrikeRemovedReason reason)
+    {
+        string msg = "";
+
+        switch (reason)
+        {
+            case StrikeRemovedReason.ThreeBiodiversity:
+                msg = strikeRemoveBiodiversityLS.GetLocalizedString();
+                break;
+            case StrikeRemovedReason.FiveDaysNoDeath:
+                msg = strikeRemovedNoDeathLS.GetLocalizedString();
+                break;
+
+        }
+
+        StartCoroutine(StrikeWarning(normalStrikes, permanentStrikes, msg));
+    }
+
+    private void PutStrikeVisuals(int normalStrikes, int permanentStrikes, StrikeReason reason)
+    {
+        string msg = "";
+
+        switch (reason)
+        {
+            case StrikeReason.Bankruptcy:
+                msg = strikeNoMoneyLS.GetLocalizedString();
+                break;
+            case StrikeReason.PlantDeath:
+                msg = strikePlantDeathLS.GetLocalizedString();
+                break;
+            case StrikeReason.Inactivity:
+                msg = strikeNoActivityLS.GetLocalizedString();
+                break;
+        }
+
+        StartCoroutine(StrikeWarning(normalStrikes, permanentStrikes, msg));
+    }
+
+
     private void UpdateStrikesVisuals(int normalStrikes, int permanentStrikes)
     {
         if (strikeIcons == null) return;
@@ -541,29 +593,14 @@ public class HUDUI : MonoBehaviour
         }
     }
 
-    private void ShowStrikeWarning(StrikeReason reason)
+
+    private IEnumerator StrikeWarning(int normalStrikes, int permanentStrikes, string text)
     {
-        string msg = "";
+        yield return new WaitUntil(() => nextButtonPressed); // Esperar a que el jugador comience el dia
 
-        switch (reason)
-        {
-            case StrikeReason.Bankruptcy:
-                msg = strikeNoMoneyLS.GetLocalizedString();
-                break;
-            case StrikeReason.PlantDeath:
-                msg = strikePlantDeathLS.GetLocalizedString();
-                break;
-            case StrikeReason.Inactivity:
-                msg = strikeNoActivityLS.GetLocalizedString();
-                break;
-        }
-
-        StartCoroutine(StrikeWarning(msg));
-    }
-
-    private IEnumerator StrikeWarning(string text)
-    {
         yield return new WaitForSecondsRealtime(dayFadeDuration + dayHoldDuration); // Esperar a que se vaya el panel de paso de día
+
+        UpdateStrikesVisuals(normalStrikes, permanentStrikes);
 
         GameObject strikeWarningInstance = Instantiate(strikeWarningPrefab, HUDPanel.transform);
 
@@ -612,6 +649,8 @@ public class HUDUI : MonoBehaviour
 
         // DESTRUIR GAME OBJECT
         Destroy(strikeWarningInstance);
+
+        nextButtonPressed = false;
     }
 
     #endregion
@@ -792,8 +831,9 @@ public class HUDUI : MonoBehaviour
             GameManager.Instance.OnBiodiversityChanged -= UpdateBiodiversityText;
             GameManager.Instance.OnPlantInfoClick -= ShownPlantTypeInfoPanel;
             GameManager.Instance.OnDayEnd -= ShowDaySummaryPanel;
-            GameManager.Instance.OnStrikesChanged -= UpdateStrikesVisuals;
-            GameManager.Instance.OnNewStrike -= ShowStrikeWarning;
+
+            GameManager.Instance.OnStrikeRemoved -= RemoveStrikeVisuals;
+            GameManager.Instance.OnNewStrike -= PutStrikeVisuals;
         }
 
         if (PlotsManager.Instance != null)
