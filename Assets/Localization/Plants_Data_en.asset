@@ -164,6 +164,28 @@ MonoBehaviour:
       and rich soil.
     m_Metadata:
       m_Items: []
+  - m_Id: 498272550342656
+    m_Localized: Attract pollinators to the four adjacent plots.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498335653646336
+    m_Localized: 'If it is healthy and pollinated, it will produce fruit. Every time
+      you harvest its fruit, you will earn '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498539937222656
+    m_Localized: It provides partial shade to the four adjacent plots.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498693637492736
+    m_Localized: It attracts wildlife that protects the four adjacent plots from
+      pests.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498762164031488
+    m_Localized: ' petals.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

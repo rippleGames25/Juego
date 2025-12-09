@@ -167,6 +167,28 @@ MonoBehaviour:
       y suelos ricos."
     m_Metadata:
       m_Items: []
+  - m_Id: 498272550342656
+    m_Localized: Atrae polinizadores a las cuatro parcelas adyacentes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498335653646336
+    m_Localized: "Si esta sana y polinizada, producir\xE1 un fruto. Cada vez que
+      recolectes su fruto ganar\xE1s "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498539937222656
+    m_Localized: Provee semisombra a las cuatro parcelas adyacentes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498693637492736
+    m_Localized: Atrae fauna salvaje que protege de las plagas a las cuatro parcelas
+      adyacentes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498762164031488
+    m_Localized: " p\xE9talos."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

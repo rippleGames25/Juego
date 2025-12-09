@@ -18,6 +18,8 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject helpPanel;
     [SerializeField] private GameObject inputBlockerPanel;
+    [SerializeField] private Image letterImage;
+    [SerializeField] private Image helpImage;
 
 
     // Panel del Dia
@@ -80,6 +82,9 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private Image plotSolarInfo;
     [SerializeField] private TextMeshProUGUI plotWaterInfo;
     [SerializeField] private TextMeshProUGUI plotFertilizerInfo;
+    [SerializeField] private GameObject pollinatorInfo;
+    [SerializeField] private GameObject wildlifeInfo;
+
 
     [Header("Panel Tipo de planta")]
     [SerializeField] private GameObject plantTypeInfoPanel;
@@ -92,6 +97,8 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI plantTypeFertilizerDemandText;
     [SerializeField] private TextMeshProUGUI plantTypeToMature;
     [SerializeField] private Image plantTypeSolarDemandImage;
+    [SerializeField] private TextMeshProUGUI plantTypeInfo;
+
 
     [Header("Transición de Día")]
     [SerializeField] private Image dayTransitionPanel;      // panel blanco que tapa todo
@@ -113,6 +120,10 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private LocalizedString strikeNoActivityLS;
     [SerializeField] private LocalizedString strikeRemovedNoDeathLS;
     [SerializeField] private LocalizedString strikeRemoveBiodiversityLS;
+    [SerializeField] private LocalizedSprite letter;
+    [SerializeField] private LocalizedSprite guide;
+
+
 
     [Header("Botones HUD")]
     [SerializeField] private Button pauseButton;
@@ -134,6 +145,10 @@ public class HUDUI : MonoBehaviour
 
     private void Start()
     {
+        LoadSpriteLocalization(letter, letterImage);
+        LoadSpriteLocalization(guide, helpImage);
+
+
         // Ocultar paneles
         plantInfoPanel.SetActive(false);
         plotInfoPanel.SetActive(false);
@@ -209,6 +224,24 @@ public class HUDUI : MonoBehaviour
 
             // Desactivar botones si hay tutorial, activarlos si no
             SetHUDButtonsInteractable(!dialogActive);
+        }
+    }
+
+    private void LoadSpriteLocalization(LocalizedSprite sprite, Image imagen)
+    {
+        if (sprite != null)
+        {
+            // Solicitamos la carga del sprite localizado
+            var operacionCarga = sprite.LoadAssetAsync();
+
+            // Cuando la carga termine, asignamos el sprite a la imagen
+            operacionCarga.Completed += (handle) =>
+            {
+                if (imagen != null)
+                {
+                    imagen.sprite = handle.Result;
+                }
+            };
         }
     }
 
@@ -445,9 +478,11 @@ public class HUDUI : MonoBehaviour
             plantTypeDescription.text = plantType.description.GetLocalizedString();
 
         if (plantTypePhoto != null && plantType.shopSprite != null)
-        {
             plantTypePhoto.sprite = plantType.shopSprite;
-        }
+
+        if (plantTypeInfo != null)
+            plantTypeInfo.text = plantType.InfoToString();
+
 
         if (plantTypeCategoryText != null)
             plantTypeCategoryText.text = plantType.TypeToString();
@@ -549,6 +584,26 @@ public class HUDUI : MonoBehaviour
         plotSolarInfo.sprite = solarSprites[(int)plot.currentSolarExposure];
         plotWaterInfo.text = $"{plot.currentWater}";
         plotFertilizerInfo.text = $"{plot.currentFertility}";
+
+
+        if (plot.IsPollinated)
+        {
+            pollinatorInfo.SetActive(true);
+        }
+        else
+        {
+            pollinatorInfo.SetActive(false);
+        }
+
+        if (plot.IsProtected)
+        {
+            wildlifeInfo.SetActive(true);
+        }
+        else
+        {
+            wildlifeInfo.SetActive(false);
+        }
+
         plotInfoPanel.SetActive(true);
     }
 

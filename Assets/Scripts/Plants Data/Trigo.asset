@@ -32,6 +32,24 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  categoryInfo:
+    m_TableReference:
+      m_TableCollectionName: GUID:d7ca7665ccf10564db8653a4563f7a97
+    m_TableEntryReference:
+      m_KeyId: 498693637492736
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  petals:
+    m_TableReference:
+      m_TableCollectionName: GUID:d7ca7665ccf10564db8653a4563f7a97
+    m_TableEntryReference:
+      m_KeyId: 498762164031488
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   waterDemand: 2
   fertilizerDemand: 2
   solarExposureDemand: 0

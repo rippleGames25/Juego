@@ -143,6 +143,34 @@ MonoBehaviour:
     m_Key: Tulipan/description
     m_Metadata:
       m_Items: []
+  - m_Id: 498272550342656
+    m_Key: 'Pollinator/Text
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498335653646336
+    m_Key: 'Producer/Text
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498539937222656
+    m_Key: 'Shade/Text
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498693637492736
+    m_Key: 'WildLife/Text
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498762164031488
+    m_Key: Game/petals
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

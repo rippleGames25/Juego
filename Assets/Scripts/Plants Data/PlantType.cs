@@ -17,6 +17,9 @@ public class PlantType : ScriptableObject
     public LocalizedString plantName;
     public string scientificName;
     public LocalizedString description;
+    public LocalizedString categoryInfo;
+    public LocalizedString petals;
+
 
     [Header("Características")]
     public int waterDemand = 2;
@@ -50,4 +53,22 @@ public class PlantType : ScriptableObject
     {
         return categoryText.GetLocalizedString();
     }
+
+    public string InfoToString()
+    {
+        string msg = "";
+
+        if (category == PlantCategory.Producer)
+        {
+            int productPrice = price / 2;
+            msg = categoryInfo.GetLocalizedString() + productPrice + petals.GetLocalizedString();
+        }
+        else
+        {
+            msg = categoryInfo.GetLocalizedString();
+        }
+
+        return msg;
+    }
+
 }
