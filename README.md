@@ -13,34 +13,76 @@ Versión Final
 ## Índice
 - **[1. Introducción](#1-introducción)**
     - [1.1. Descripción breve del concepto](#11-descripción-breve-del-concepto-del-juego)
-    - [1.2. Historia y personajes](#12-descripción-breve-de-la-historia-y-personajes)
-    - [1.3. Propósito y público](#13-propósito-público-objetivo-y-plataformas)
+    - [1.2. Descripción breve de la historia y personajes](#12-descripción-breve-de-la-historia-y-personajes)
+    - [1.3. Propósito, público objetivo y plataformas](#13-propósito-público-objetivo-y-plataformas)
+
 - **[2. Monetización](#2-monetización)**
-    - [2.1. Visión Estratégica](#21-visión-estratégica-serious-game-de-impacto)
-    - [2.4. Tablas de productos y precios](#241-tablas-de-productos-y-precios)
-- **[3. Planificación y costes](#3-planificación-y-costes)**
-    - [3.2. Estimación temporal](#32-estimación-temporal-del-desarrollo)
-- **[4. Mecánicas y elementos de juego](#4-mecánicas-de-juego-y-elementos-de-juego)**
-    - [4.1. Concepto detallado](#41-descripción-detallada-del-concepto-del-juego)
-    - [4.2. Mecánicas (Recursos, Cultivo, Clima)](#42-descripción-detallada-de-las-mecánicas-del-juego)
+    - [2.1. Visión Estratégica: Serious Game de Impacto](#21-visión-estratégica-serious-game-de-impacto)
+    - [2.2. Financiación Institucional y Cultural](#22-financiación-institucional-y-cultural)
+    - [2.3. Patrocinio de marcas y Product Placement](#23-patrocinio-de-marcas-y-product-placement)
+    - [2.4. A futuro: Modelo de Temporadas, Retención y Cosméticos](#24-a-futuro-modelo-de-temporadas-retención-y-cosméticos)
+        - [2.4.1 Economía In-Game y Micropagos](#241-economía-in-game-y-micropagos)
+        - [2.4.1 Tablas de productos y precios](#241-tablas-de-productos-y-precios)
+    - [2.7. A futuro: Propuesta de valor añadido — Impacto real](#27-a-futuro-propuesta-de-valor-añadido-impacto-real)
+
+- **[3. Planificación y Costes](#3-planificación-y-costes)**
+    - [3.1. El equipo humano](#31-el-equipo-humano)
+    - [3.2. Estimación temporal del desarrollo](#32-estimación-temporal-del-desarrollo)
+    - [3.3. Costes asociados](#33-costes-asociados)
+
+- **[4. Mecánicas de Juego y Elementos de Juego](#4-mecánicas-de-juego-y-elementos-de-juego)**
+    - [4.1. Descripción detallada del concepto del juego](#41-descripción-detallada-del-concepto-del-juego)
+    - [4.2. Descripción detallada de las mecánicas del juego](#42-descripción-detallada-de-las-mecánicas-del-juego)
+        - [4.2.1. Gestión de Recursos](#421-gestión-de-recursos)
+        - [4.2.2. Cultivo y Planificación del Jardín](#422-cultivo-y-planificación-del-jardín)
+        - [4.2.3. Climas y Plagas](#423-climas-y-plagas)
+        - [4.2.4. Interacción con el entorno](#424-interacción-con-el-entorno)
+        - [4.2.5. Progresión y Objetivo](#425-progresión-y-objetivo)
     - [4.3. Controles](#43-controles)
     - [4.4. Niveles y misiones](#44-niveles-y-misiones)
-    - [4.5. Objetos (Lista de Plantas)](#45-objetos)
-    - [4.6. Sistema de Temporadas](#46-a-futuro-sistema-de-temporadas)
-- **[5. Trasfondo](#5-trasfondo)**
-    - [5.1. Historia y trama](#51-descripción-detallada-de-la-historia-y-la-trama)
-    - [5.2. Personajes (El Curador, Leo)](#52-personajes)
-    - [5.3. Entornos](#53-entornos-y-lugares)
-    - [5.4. Tutorial (Guión)](#54-tutorial)
+    - [4.5. Objetos](#45-objetos)
+    - [4.6. A futuro: Sistema de Temporadas](#46-a-futuro-sistema-de-temporadas)
+        - [4.6.1. Santuario Base](#461-santuario-base)
+        - [4.6.2. Funcionamiento del ciclo de temporada](#462-funcionamiento-del-ciclo-de-temporada)
+
+- **[5. Narrativa y Trasfondo](#5-trasfondo)**
+    - [5.1. Descripción detallada de la historia y la trama](#51-descripción-detallada-de-la-historia-y-la-trama)
+    - [5.2. Personajes](#52-personajes)
+    - [5.3. Entornos y lugares](#53-entornos-y-lugares)
+    - [5.4. Tutorial](#54-tutorial)
+        - [5.4.1. Mensajes iniciales (día 1)](#541-mensajes-iniciales-día-1)
+        - [5.4.2. Mensajes según acciones del jugador](#542-mensajes-según-acciones-del-jugador)
+            - [5.4.2.1. Primera planta plantada](#5421-primera-planta-plantada)
+            - [5.4.2.2. Seleccionar una parcela (primera vez)](#5422-seleccionar-una-parcela-primera-vez)
+            - [5.4.2.3. Primer riego y primer abonado: cuidados básicos completados](#5423-primer-riego-y-primer-abonado-cuidados-básicos-completados)
+            - [5.4.2.4. Mensajes según el tipo de planta plantada](#5424-mensajes-según-el-tipo-de-planta-plantada)
+        - [5.4.3. Tutoriales contextuales](#543-tutoriales-contextuales)
+            - [5.4.3.1. Resumen del día](#5431-resumen-del-día)
+            - [5.4.3.2. Clima](#5432-clima)
+            - [5.4.3.3. Plagas](#5433-plagas)
+            - [5.4.3.4. Strikes](#5434-strikes)
+
 - **[6. Arte](#6-arte)**
-    - [6.1. Estética general](#61-estética-general-del-videojuego)
+    - [6.1. Estética general del videojuego](#61-estética-general-del-videojuego)
     - [6.2. Apartado visual (Assets)](#62-apartado-visual)
-    - [6.3. Música y Sonido](#63-música)
+        - [6.2.1. Plantas y especies](#621-plantas-y-especies)
+        - [6.2.2. Fauna](#622-fauna)
+        - [6.2.3. Recursos y objetos](#623-recursos-y-objetos)
+        - [6.2.4. Escenario](#624-escenario)
+    - [6.3. Música](#63-música)
+    - [6.4. Ambiente sonoro](#64-ambiente-sonoro)
+    - [6.5. Referencias](#65-referencias)
+
 - **[7. Interfaz](#7-interfaz)**
     - [7.1. Diagrama de flujo](#71-diagrama-de-flujo)
-    - [7.2. Diseños de menús](#72-diseños-básicos-de-los-menús)
+    - [7.2. Diseños básicos de los menús](#72-diseños-básicos-de-los-menús)
+
 - **[8. Hoja de ruta de desarrollo](#8-hoja-de-ruta-de-desarrollo)**
+
 - **[9. Historial de Versiones y Cambios](#9-historial-de-versiones-y-cambios)**
+    - [9.1. Versión v.0.3 Gold Release (Diciembre 2025)](#91-versión-v03-gold-release-diciembre-2025)
+    - [9.2. Versión v.0.2 Beta (Octubre 2025)](#92-versión-v02-beta-octubre-2025)
+
 
 
 
@@ -762,105 +804,321 @@ Está compuesto por **parcelas de cultivo**, donde se plantan las semillas y que
 El entorno inmediato al jardín incluye la **casa de campo**, un edificio pequeño y acogedor donde se hospeda el jugador, que proyecta sombra sobre algunas parcelas, lo que debe ser tenido en cuenta en la planificación; y un **árbol perenne** grande en la frontera del terreno. Este árbol es un factor de rejugabilidad clave, ya que su posición se genera procedimentalmente en cada partida, impactando dónde caen las sombras e influyendo en la planificación inicial. 
 
 
-#### 5.4. Tutorial
-A continuación se muestra el guión del tutorial que aparecerá la primera vez que se juegue una partida:
+### 5.4. Tutorial
 
-Leo habla
-- _“¡Bienvenido, Curador! Soy Leo, guardián de este Santuario. La naturaleza aquí duerme… pero contigo puede volver a despertar.”_
-    - **PULSAR SIGUIENTE**
+El juego incorpora un tutorial interactivo y contextual que guía al jugador durante su primera partida.
 
-Leo habla
-- _"“Tu misión es restaurar este lugar hasta alcanzar la biodiversidad necesaria para que vuelva a ser un lugar lleno de vida. Cada especie cuenta.”_
-    - **PULSAR SIGUIENTE**
+Los mensajes aparecen en función de las acciones del jugador y de eventos del propio Santuario, como el clima, las plagas o la aparición de strikes.
 
-Leo habla y se enfatiza visualmente en el ciclo de Plantar → Regar → Abonar.
-- _“Plantar, regar, abonar y pasar el día. Ese es el ritmo del Santuario; así es como empieza todo.”_
-    - **PULSAR SIGUIENTE**
+Al comenzar una nueva partida, Leo pregunta al jugador si desea recibir ayuda.
 
-Leo habla y se enfatiza en una casilla vacía; cursor seleccionando "Tienda -> Semillas -> Margarita". Flecha al botón "Plantar".
-- _“Elige una semilla en la tienda y plántala en una parcela vacía. Cada planta es una nueva oportunidad.”_
-    - **PULSAR SIGUIENTE**
+- Si el jugador elige “Guíame, Leo”, el tutorial se activa.
+- Si el jugador elige “Me las apaño solo”, ningún mensaje tutorial aparecerá durante toda la partida.
 
-Leo habla y se enfatiza en la regadera en la barra de herramientas con área de riego señalada.
-- _“La regadera y el abono permiten que la planta crezca fuerte. Cada parcela guarda su propio nivel de agua y fertilidad… ¡cuídalas bien!”_
-    - **PULSAR SIGUIENTE**
+### 5.4.1. Mensajes iniciales (día 1)
 
-Leo habla
-- _“Una planta puede estar sana, regular o mala. Si le falta agua, abono, sombra… o si la atacan plagas, su salud caerá.”_
-    - **PULSAR SIGUIENTE**
+Estos mensajes aparecen automáticamente al iniciar el juego si el jugador acepta recibir ayuda. No dependen de ninguna acción del jugador.
 
-Leo habla y se enfatiza en el botón grande "Pasar día" en la esquina.
-- _“Al pasar de día, tus plantas consumen los recursos de su parcela. Si tienen lo que necesitan, crecerán… si no, se marchitarán.”_
-    - **PULSAR SIGUIENTE**
+**Mensaje 1 – Bienvenida**  
+Leo dice:  
+*“Buenos días, Curador.  
+Soy Leo, y estaré contigo para ayudarte a despertar este Santuario.”*
 
-Leo habla
-- _"El clima cambia cada día. Puede hacer sol, nublado, lluvia o incluso caer granizo.”_
-    - **PULSAR SIGUIENTE**
+**Mensaje 2 – La tienda**  
+Leo dice:  
+*“A tu izquierda tienes la tienda.  
+Aquí puedes elegir semillas para plantar.  
+También puedes comprar agua y abono, pero cuidado con no quedarte sin pétalos.”*
 
-Leo habla y se enfatiza en el panel meteorológico con iconos: sol intenso, lluvia, granizo. 
-- _“Cada clima tiene distintos niveles de intensidad. Cuanto más fuerte, más impacto tendrá en tus parcelas y plantas.”_
-    - **PULSAR SIGUIENTE**
+**Mensaje 3 – Pronóstico del clima**  
+Leo dice:  
+*“Ah, y no olvides mirar el pronóstico del clima, Curador.  
+Arriba a la derecha verás el tiempo de los próximos días.  
+El clima puede ayudarte… o sorprenderte, así que consúltalo a menudo.”*
 
-Leo habla
-- _“La lluvia restaura el agua del suelo. El sol lo seca. El nublado refresca. Y el granizo es peligroso para plantas debilitadas.”_
-    - **PULSAR SIGUIENTE**
+**Mensaje 4 – Biodiversidad**  
+Leo dice:  
+*“Curador… antes de seguir, hay algo importante.  
+La biodiversidad es la vida del Santuario.  
+Aumenta cada vez que logras hacer crecer distintas especies,  
+y baja si alguna planta muere.  
+Cuanta más biodiversidad tengas, más pétalos ganarás cada día…  
+y si alcanzas el objetivo, ¡restaurarás el Santuario!”*
 
-Leo habla y se enfatiza en las plantas.
-- _“Hay cuatro tipos de plantas, cada una con un papel esencial en el ecosistema.”_
-    - **PULSAR SIGUIENTE**
+### 5.4.2. Mensajes según acciones del jugador
 
-Leo habla y se enfatiza en las plantas productoras.
-- _“Las productoras dan frutos que puedes recoger… pero solo si están sanas, sin plaga y con polinizadores cerca.”_
-    - **PULSAR SIGUIENTE**
+Los siguientes mensajes aparecen cuando el jugador realiza acciones clave por primera vez.
 
-Leo habla y se enfatiza en las plantas atractoras de polinizadores.
-- _“Las plantas polinizadoras atraen polinizadores que ayudan a las productoras cercanas a producir.”_
-    - **PULSAR SIGUIENTE**
+#### 5.4.2.1. Primera planta plantada
 
-Leo habla y se enfatiza en las plantas refugios de fauna.
-- _“Las plantas refugio atraen pequeños animales que mantienen alejadas las plagas. Si hay fauna cerca, tus plantas estarán a salvo.”_
-    - **PULSAR SIGUIENTE**
+**Mensaje 1**  
+Leo dice:  
+*“¡Perfecto, Curador!  
+Has plantado tu primera especie en el Santuario.”*
 
-Leo habla y se enfatiza en las plantas de sombra.
-- _“Las plantas de sombra protegen del sol fuerte a las especies sensibles. Una buena sombra puede ser la diferencia entre crecer… o sufrir.”_
-    - **PULSAR SIGUIENTE**
+**Mensaje 2**  
+Leo dice:  
+*“Ahora toca cuidarla bien.  
+Usa la regadera para darle agua y el abono para enriquecer el suelo.  
+También puedes hacer uso de la pala para quitar plantas; recuperarás parte de la inversión.  
+Cuanto mejor atendida esté la parcela, más fuerte crecerá la planta.”*
 
-Leo habla y se enfatiza en dos casillas contiguas con Agave (sombra) + Margarita (sensible al sol) y un halo verde mostrando beneficios.
-- _“Combinar plantas sabiamente crea equilibrio: sombras para las delicadas, polinizadores para las productoras, refugios contra plagas… Cada especie ayuda a otra.”_
-    - **PULSAR SIGUIENTE**
+#### 5.4.2.2. Seleccionar una parcela (primera vez)
 
-Leo habla y se enfatiza en el ejemplo de plaga y mariquita.
-- _“Las plagas aparecen en plantas desprotegidas. Una planta con plaga no se cura… y si es productora, deja de producir. Si es atractora de polinizadores los espantará.”_
-    - **PULSAR SIGUIENTE**
+Leo dice:  
+*“Esta es la ficha de la parcela.  
+Aquí ves cuánta agua y abono tiene el suelo y qué exposición solar recibe.  
+Si hay una planta, también verás su estado y sus necesidades.”*
 
-Leo habla
-- _“Puedes ganar dinero recolectando frutos de productoras. Y si eliminas una planta con la pala, recuperas la mitad de lo que te costó.”_
-    - **PULSAR SIGUIENTE**
+#### 5.4.2.3. Primer riego y primer abonado: cuidados básicos completados
 
-Leo habla
-- _“Cada noche recibes ingresos por el trabajo del día. Ganarás dinero por tener muchas plantas, por tener plantas maduras, por la diversidad…  y si todas están en la exposición solar correcta, recibirás un pequeño premio extra.”_
-    - **PULSAR SIGUIENTE**
+Este mensaje aparece cuando el jugador ha regado al menos una vez y abonado al menos una vez.
 
-Leo habla
-- _“Las pérdidas también cuentan… Si una planta muere, perderás algo de dinero ese día.”_
-    - **PULSAR SIGUIENTE**
+Leo dice:  
+*“¡Vaya, Curador!  
+Veo que ya dominas los cuidados básicos de una planta.  
+Si alguna vez se te olvida algo, puedes consultar la guía rápida con el botón de la interrogación arriba.”*
 
-Leo habla
-- _“Cada tres plantas que mueren, recibes un strike. Si acumulas demasiados, el Santuario caerá en ruina… pero si pasas varios días sin muertes o madura una planta de cada categoría, podrás recuperar alguno. También recibirás un strike permanente si te quedas sin dinero y el jardín está vacío.”_
-    - **PULSAR CERRAR**
+#### 5.4.2.4. Mensajes según el tipo de planta plantada
 
-Leo habla
-- _“Desde aquí verás todo: tus recursos, el clima, el día, la biodiversidad… Y al seleccionar una parcela podrás ver la salud, necesidades y fase de cualquier planta.”_
-    - **PULSAR SIGUIENTE**
+##### A. Plantas productoras
 
-Leo habla
-- _“La tienda está a tu izquierda: agua, abono y semillas. Arriba podrás pausar, ajustar volúmenes o consultar esta guía rápida cuando puedas.”_
-    - **PULSAR SIGUIENTE**
+Leo dice:  
+*“Has plantado una productora, Curador.  
+Son las plantas que generan pétalos, pero necesitan un buen entorno para hacerlo.”*
 
-Leo habla
-- _“Eso es todo, Curador.  Escucha al clima, cuida cada parcela…  y deja que el Santuario vuelva a florecer contigo.”_
-    - **PULSAR SIGUIENTE**
+Leo dice:  
+*“Para producir frutos necesitan cumplir tres condiciones:  
+- Estar en buena o moderada salud.  
+- Estar libres de plagas.  
+- Tener polinizadores cerca (de una atractora sana).”*
 
+Leo dice:  
+*“Piensa en ellas como el corazón económico del Santuario.  
+Protégelas con refugios de fauna y sitúalas en la exposición solar adecuada  
+para que den lo mejor de sí.”*
+
+##### B. Plantas de sombra
+
+Leo dice:  
+*“Has plantado una planta de sombra.  
+Su función es modificar la luz de las parcelas cercanas cuando crece lo suficiente.”*
+
+Leo dice:  
+*“La sombra puede transformar una zona soleada en semisombra o sombra.  
+Esto ayuda a plantas que sufren con demasiado sol,  
+pero puede perjudicar a las que necesitan luz directa.”*
+
+Leo dice:  
+*“Si colocas varias plantas de sombra alrededor de una parcela,  
+la acumulación puede generar zonas muy umbrías.  
+Úsalas para ajustar la exposición solar al tipo exacto que cada especie necesita.”*
+
+##### C. Atractoras de polinizadores
+
+Leo dice:  
+*“Acabas de plantar una atractora de polinizadores.  
+Estas plantas atraen la vida necesaria para que tus productoras puedan dar frutos.”*
+
+Leo dice:  
+*“Las parcelas cercanas recibirán polinizadores.  
+Sin ellos, las productoras no generan pétalos aunque estén sanas.  
+Colócalas estratégicamente para alimentar varias productoras a la vez.”*
+
+Leo dice:  
+*“Recuerda: polinizadores + productoras sanas = economía fuerte.  
+Cuida también de las atractoras, porque si enferman o mueren,  
+las productoras dejarán de recibir polinizadores.”*
+
+##### D. Refugios de fauna
+
+Leo dice:  
+*“Has plantado un refugio de fauna.  
+Estas plantas atraen animales que protegen el Santuario.”*
+
+Leo dice:  
+*“La fauna evita que aparezcan plagas en las parcelas cercanas  
+y además puede llegar a curar plagas existentes con el paso de los días.”*
+
+Leo dice:  
+*“Son esenciales para que tus productoras y atractoras no queden inutilizadas.  
+Distribuye los refugios alrededor de las zonas importantes  
+para mantener a raya las plagas.”*
+
+### 5.4.3. Tutoriales contextuales
+
+Estos mensajes aparecen automáticamente la primera vez que ocurre cada evento en la partida.
+
+#### 5.4.3.1. Resumen del día
+
+Leo dice:  
+*“Este es el resumen del día, Curador.  
+Aquí ves cuántos pétalos has ganado, los bonos por tu jardín  
+y las pérdidas por plantas muertas o usar la pala.  
+También verás si recibes agua o abono extra.  
+Échale un vistazo cada noche para entender cómo evoluciona el Santuario.”*
+
+#### 5.4.3.2. Clima
+
+Los mensajes se disparan la primera vez que aparece cada tipo de clima (excepto el primer día).
+
+##### A. Día soleado
+
+Leo dice:  
+*“Vaya, Curador… hoy tenemos un día soleado.  
+El sol no riega el suelo, al contrario: poco a poco lo va secando.”*
+
+Leo dice:  
+*“Fíjate bien en el pronóstico de arriba a la derecha:  
+el sol puede aparecer con tres intensidades:  
+- Intensidad 1: a veces seca 1 punto de agua.  
+- Intensidad 2: puede secar 1 o 2 puntos.  
+- Intensidad 3: puede secar hasta 3 puntos de agua.”*
+
+Leo dice:  
+*“El sol por sí solo no mata plantas,  
+pero si dejas el suelo demasiado seco,  
+tus plantas sufrirán luego por falta de recursos.  
+Revisa el agua de tus parcelas y riega cuando lo necesiten.”*
+
+##### B. Cielo nublado
+
+Leo dice:  
+*“Hoy el cielo está cubierto, Curador.  
+Este clima es muy tranquilo: no riega ni seca el suelo,  
+da igual la intensidad.”*
+
+Leo dice:  
+*“Piensa en él como un respiro para el jardín:  
+puedes aprovechar para planificar, reorganizar tus plantas  
+y prepararte para días más duros.”*
+
+##### C. Día lluvioso
+
+Leo dice:  
+*“Vaya, Curador… hoy llueve en el Santuario.  
+La lluvia siempre aumenta el agua del suelo de todas las parcelas.”*
+
+Leo dice:  
+*“La lluvia también tiene tres intensidades:  
+- Intensidad 1: lluvia suave, +2 de agua.  
+- Intensidad 2: lluvia moderada, +4 de agua.  
+- Intensidad 3: lluvia torrencial, +6 de agua y riesgo para plantas débiles.”*
+
+Leo dice:  
+*“La lluvia suave y moderada son perfectas para recuperar parcelas secas.  
+Pero con lluvia torrencial, las plantas con mala salud pueden llegar a morir.  
+Si ves una lluvia muy fuerte acercarse en el pronóstico,  
+intenta que tus plantas estén lo más sanas posible antes de que llegue.”*
+
+##### D. Granizo
+
+Leo dice:  
+*“Vaya, Curador… hoy cae granizo.  
+Es uno de los climas más peligrosos para tu jardín.”*
+
+Leo dice:  
+*“El granizo puede caer con tres intensidades  
+y también añade agua al suelo:  
+- Intensidad 1: +1 de agua.  
+- Intensidad 2: +2 de agua.  
+- Intensidad 3: +3 de agua y un golpe muy duro.”*
+
+Leo dice:  
+*“Lo importante del granizo no es el agua, sino el daño:  
+puede matar plantas en mala salud, y cuanto más fuerte es,  
+más sufre incluso una planta moderada.  
+Si ves granizo en el pronóstico, procura que tus plantas  
+estén lo más sanas posible.”*
+
+#### 5.4.3.3. Plagas
+
+**Primera vez que aparece una plaga**
+
+Leo dice:  
+*“Curador… veo que una de tus plantas ha sido atacada por una plaga.  
+La reconocerás por el icono que aparece sobre ella.  
+No la mata al instante, pero es una mala señal para el Santuario.”*
+
+Leo dice:  
+*“Mientras tenga plaga, esa planta no podrá recuperar salud,  
+aunque la riegues y abones correctamente.  
+Y si es una productora, dejará de darte frutos  
+aunque tenga polinizadores cerca.”*
+
+Leo dice:  
+*“Para librarte de las plagas tienes dos caminos:  
+- Plantar refugios de fauna cerca: protegen parcelas adyacentes  
+  y con los días la fauna puede limpiar la plaga.  
+- Usar la pala sobre la planta infectada: eliminas la planta y la plaga,  
+  aunque perderás parte de lo invertido.  
+Combina refugios, productoras y polinizadores  
+para que tu jardín sea resistente.”*
+
+**Plaga curada por fauna**
+
+Leo dice:  
+*“¿Lo ves, Curador?  
+La fauna del refugio ha limpiado la plaga de esa planta.  
+Los refugios protegen las parcelas cercanas  
+y con el tiempo pueden curar plagas que haya en su área.”*
+
+Leo dice:  
+*“Si tienes productoras importantes, compensa rodearlas de refugios.  
+Así evitas nuevas plagas y, si aparece alguna,  
+la fauna tendrá donde vivir para poder limpiarla.”*
+
+**Planta infectada eliminada con pala**
+
+Leo dice:  
+*“Cuando usas la pala sobre una planta con plaga,  
+eliminas la planta y también la plaga de esa parcela.  
+Es una solución rápida cuando la infección está fuera de control,  
+pero perderás parte de los pétalos invertidos.  
+Úsala para cortar plagas difíciles mientras rediseñas el jardín  
+con más refugios de fauna alrededor.”*
+
+#### 5.4.3.4. Strikes
+
+**Strike normal**
+
+Leo dice:  
+*“Curador… acabas de recibir un strike.  
+Son avisos de que el Santuario está en peligro.  
+Si llegas a 5 strikes, el Santuario colapsará y perderás la partida.”*
+
+Leo dice:  
+*“Los strikes normales aparecen cuando descuidas el jardín:  
+- Cada 2 plantas que mueren suman un strike.  
+- También si pasas varios días sin plantar teniendo pétalos suficientes.”*
+
+Leo dice:  
+*“La parte buena es que los strikes normales se pueden quitar.  
+Si mantienes al menos 3 plantas vivas  
+y pasas 5 días seguidos sin que muera ninguna,  
+el Santuario perdonará uno de tus strikes.”*
+
+**Strike permanente**
+
+Leo dice:  
+*“Esta vez es más grave, Curador…  
+Te has quedado sin plantas y sin pétalos suficientes para volver a plantar.  
+El Santuario te ha dado algunos pétalos para ayudarte,  
+pero a cambio has recibido un strike permanente rojo.”*
+
+Leo dice:  
+*“Los strikes permanentes no se pueden limpiar nunca.  
+Cuentan igual para el límite de 5 strikes,  
+así que intenta no volver a quedarte sin jardín.”*
+
+**Strike eliminado**
+
+Leo dice:  
+*“¡Muy bien, Curador!  
+Has cuidado tan bien de tu jardín durante varios días  
+que el Santuario ha decidido perdonarte un strike normal.  
+Si sigues manteniendo tus plantas sanas,  
+podrás limpiar más avisos.”*
 
 ## 6. Arte
 Esta sección define la filosofía visual de _The Living Garden_, garantizando que la estética refuerce la jugabilidad de simulación y el trasfondo de esperanza ecológica. 
