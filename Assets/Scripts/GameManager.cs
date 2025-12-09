@@ -339,7 +339,7 @@ public class GameManager : MonoBehaviour
         daysWithoutDeathRacha = 0;
 
         plantDeathCounter++;
-        if (plantDeathCounter >= 3)
+        if (plantDeathCounter >= 2)
         {
             AddStrike(StrikeReason.PlantDeath);
             plantDeathCounter = 0;
@@ -582,7 +582,7 @@ public class GameManager : MonoBehaviour
             totalPlanted = PlotsManager.Instance.GetTotalPlantedCount();
         }
 
-        if (totalPlanted > 0)
+        if (totalPlanted > 2)
         {
             daysWithoutDeathRacha++;
             if (daysWithoutDeathRacha >= 5)
