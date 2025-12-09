@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;   
-
+using System.Collections;
 
 public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager Instance { get; private set; }
+
+    #region Campos y propiedades
 
     [Header("Estado Día 1")]
     public bool hasChosenAtStart = false;     // El jugador ya ha elegido si quiere ayuda
@@ -13,7 +14,7 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Estado runtime")]
     public bool isDialogActive = false;
-    public bool day1_IntroShown = false;      // Intro (los dos mensajes) ya mostrada
+    public bool day1_IntroShown = false;      
     public bool day1_FirstPlantPlaced = false;
     public bool day1_PlotInfoShown = false;
     public bool hasWateredOnce = false;
@@ -46,15 +47,16 @@ public class TutorialManager : MonoBehaviour
     public bool hasExplainedPollinator = false;
     public bool hasExplainedRefuge = false;
 
-
-
-
     [Header("UI")]
-    public LeoDialogUI leoDialogUI;           // Arrastra aquí el LeoDialogPanel
+    public LeoDialogUI leoDialogUI;           // Panel de diálogos de Leo
 
-    // Paso actual de la intro del Día 1 (0 = "Buenos días", 1 = tienda, >=2 = fin)
+    // Paso actual de la intro del Día 1 (0 = "Buenos días", 1 = tienda, etc.)
     private int day1IntroStep = 0;
     private int firstPlantStep = 0;
+
+    #endregion
+
+    #region Ciclo de vida Unity
 
     private void Start()
     {
@@ -74,7 +76,6 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -86,14 +87,27 @@ public class TutorialManager : MonoBehaviour
         Instance = this;
     }
 
-    // ---------- elección en la pantalla grande de Leo ----------
+    #endregion
+
+    #region Utilidades compartidas
+
+    private IEnumerator WaitUntilNoDialog()
+    {
+        while (isDialogActive)
+            yield return null;
+    }
+
+    #endregion
+
+    #region Día 1: elección inicial e introducción
 
     public void StartDay1Tutorial()
     {
         hasChosenAtStart = true;
         wantsDay1Tutorial = true;
 
-        initialTutorialActive = true; // ← ACTIVAR BLOQUE LINEAL
+        // Activa el bloque lineal del día 1
+        initialTutorialActive = true;
 
         Debug.Log("[Tutorial] Día 1: el jugador quiere tutorial.");
     }
@@ -103,19 +117,45 @@ public class TutorialManager : MonoBehaviour
         hasChosenAtStart = true;
         wantsDay1Tutorial = false;
 
-        initialTutorialActive = false; // ← NO ARRANCAR BLOQUE LINEAL
+        // Desactiva el bloque lineal del día 1
+        initialTutorialActive = false;
 
-        // Marcar flags para que no salten estos tutoriales nunca
+        // Día 1
         day1_IntroShown = true;
         day1_FirstPlantPlaced = true;
         day1_PlotInfoShown = true;
         hasWateredOnce = true;
         hasFertilizedOnce = true;
         shownBasicCareComplete = true;
+
+        // Resumen de día
+        hasSeenDaySummaryTutorial = true;
+
+        // Climas
+        hasSeenSunTutorial = true;
+        hasSeenCloudyTutorial = true;
+        hasSeenRainTutorial = true;
+        hasSeenHailTutorial = true;
+
+        // Strikes
+        hasShownNormalStrikeTutorial = true;
+        hasShownPermanentStrikeTutorial = true;
+        hasShownStrikeRemovedTutorial = true;
+
+        // Plagas
+        hasShownFirstPlagueTutorial = true;
+        hasShownPlagueCuredByFaunaTutorial = true;
+        hasShownPlaguedPlantRemovedWithShovelTutorial = true;
+
+        // Tipos de planta
+        hasExplainedProducer = true;
+        hasExplainedShadeProvider = true;
+        hasExplainedPollinator = true;
+        hasExplainedRefuge = true;
+
+        Debug.Log("[Tutorial] El jugador ha elegido jugar sin tutoriales. Todos los tutoriales quedan desactivados.");
     }
 
-
-    // ---------- INTRO DEL DÍA 1 (DOS MENSAJES) ----------
 
     public void ShowDay1Intro()
     {
@@ -152,14 +192,12 @@ public class TutorialManager : MonoBehaviour
 
         if (day1IntroStep == 0)
         {
-            // Primer mensaje
             text = "Buenos días, Curador.\n" +
                    "Soy Leo, y estaré contigo para ayudarte a despertar este santuario.";
             fontSize = 4f;
         }
         else if (day1IntroStep == 1)
         {
-            // Segundo mensaje: TIENDA
             text =
                 "A tu izquierda tienes la tienda.\n" +
                 "Aquí puedes elegir semillas para plantar.\n" +
@@ -168,7 +206,6 @@ public class TutorialManager : MonoBehaviour
         }
         else if (day1IntroStep == 2)
         {
-            // Tercer mensaje: PRONÓSTICO DEL CLIMA
             text =
                 "Ah, y no olvides mirar el pronóstico del clima, Curador.\n" +
                 "Arriba a la derecha verás el tiempo de los próximos días.\n" +
@@ -186,9 +223,8 @@ public class TutorialManager : MonoBehaviour
                 "y si alcanzas el objetivo, ¡restaurarás el Santuario!";
 
             fontSize = 2.5f;
-            emotion = LeoEmotion.Normal;   
+            emotion = LeoEmotion.Normal;
         }
-
         else
         {
             isDialogActive = false;
@@ -197,9 +233,6 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-
-
-        // DEBUG + forzar activación del panel
         if (leoDialogUI != null)
         {
             Debug.Log($"[Tutorial] ShowCurrentDay1IntroStep step={day1IntroStep}, " +
@@ -209,23 +242,19 @@ public class TutorialManager : MonoBehaviour
                 leoDialogUI.panelRoot.SetActive(true);
         }
 
-        // Mostramos el texto correspondiente al paso actual.
         leoDialogUI.Show(
             text,
             emotion,
-            OnDay1IntroContinueClicked,   
+            OnDay1IntroContinueClicked,
             fontSize
         );
     }
 
     private void OnDay1IntroContinueClicked()
     {
-        // Avanzamos al siguiente paso y mostramos el siguiente texto (o terminamos)
         day1IntroStep++;
         ShowCurrentDay1IntroStep();
     }
-
-    // ---------- PRIMERA PLANTA PLANTADA ----------
 
     public void NotifyFirstPlantPlaced(Plot plot)
     {
@@ -238,37 +267,6 @@ public class TutorialManager : MonoBehaviour
         isDialogActive = true;
 
         ShowFirstPlantStep();
-    }
-
-    // ---------- PRIMERA VEZ QUE SELECCIONA UNA PARCELA ----------
-
-    public void NotifyPlotSelectedDuringDay1(Plot plot)
-    {
-        if (day1_PlotInfoShown) return;
-        if (!wantsDay1Tutorial || !hasChosenAtStart) return;
-        if (plot == null) return;
-        if (leoDialogUI == null) return;
-
-        float fontSize = -1f;
-        day1_PlotInfoShown = true;
-        isDialogActive = true;
-
-        string text =
-            "Esta es la ficha de la parcela.\n" +
-            "Aquí ves cuánta agua y abono tiene el suelo y qué exposición solar recibe.\n" +
-            "Si hay una planta, también verás su estado y sus necesidades.";
-
-        fontSize = 3f;
-
-        // El 3f es por si quieres hacer la letra un poco más pequeña
-        leoDialogUI.Show(text, LeoEmotion.Normal, () =>
-        {
-            if (leoDialogUI != null)
-                leoDialogUI.Hide();
-
-            isDialogActive = false;
-            Debug.Log("[Tutorial] Paso 'info de parcela' completado.");
-        }, fontSize);
     }
 
     private void ShowFirstPlantStep()
@@ -284,7 +282,6 @@ public class TutorialManager : MonoBehaviour
                 "Has plantado tu primera especie en el Santuario.";
 
             emotion = LeoEmotion.Happy;
-
             fontSize = 5;
         }
         else if (firstPlantStep == 1)
@@ -296,12 +293,10 @@ public class TutorialManager : MonoBehaviour
                 "Cuanto mejor atendida esté la parcela, más fuerte crecerá la planta.";
 
             emotion = LeoEmotion.Normal;
-
             fontSize = 2.6f;
         }
         else
         {
-            // Final del bloque de “primera planta”
             isDialogActive = false;
             leoDialogUI.Hide();
             return;
@@ -320,6 +315,32 @@ public class TutorialManager : MonoBehaviour
         ShowFirstPlantStep();
     }
 
+    public void NotifyPlotSelectedDuringDay1(Plot plot)
+    {
+        if (day1_PlotInfoShown) return;
+        if (!wantsDay1Tutorial || !hasChosenAtStart) return;
+        if (plot == null) return;
+        if (leoDialogUI == null) return;
+
+        float fontSize = 3f;
+        day1_PlotInfoShown = true;
+        isDialogActive = true;
+
+        string text =
+            "Esta es la ficha de la parcela.\n" +
+            "Aquí ves cuánta agua y abono tiene el suelo y qué exposición solar recibe.\n" +
+            "Si hay una planta, también verás su estado y sus necesidades.";
+
+        leoDialogUI.Show(text, LeoEmotion.Normal, () =>
+        {
+            if (leoDialogUI != null)
+                leoDialogUI.Hide();
+
+            isDialogActive = false;
+            Debug.Log("[Tutorial] Paso 'info de parcela' completado.");
+        }, fontSize);
+    }
+
     public void CheckBasicCareCompleted()
     {
         if (!wantsDay1Tutorial || !hasChosenAtStart) return;
@@ -335,14 +356,12 @@ public class TutorialManager : MonoBehaviour
     private void ShowBasicCareCompletedDialog()
     {
         isDialogActive = true;
-        float fontSize;
+        float fontSize = 3f;
 
         string text =
             "¡Vaya, Curador!\n" +
             "Veo que ya dominas los cuidados básicos de una planta.\n" +
             "Si alguna vez se te olvida algo, puedes consultar la guía rápida con el botón de la interrogación arriba.";
-
-        fontSize = 3f;
 
         leoDialogUI.Show(text, LeoEmotion.Happy, () =>
         {
@@ -351,15 +370,17 @@ public class TutorialManager : MonoBehaviour
         }, fontSize);
     }
 
+    #endregion
+
+    #region Resumen de día y clima
+
     public void NotifyFirstDaySummaryShown()
     {
         float fontSize = 2.5f;
 
-        // Si el jugador no quiere tutoriales, no hacemos nada
         if (!wantsDay1Tutorial || !hasChosenAtStart)
             return;
 
-        // Solo lo mostramos una vez
         if (hasSeenDaySummaryTutorial)
             return;
 
@@ -384,7 +405,6 @@ public class TutorialManager : MonoBehaviour
             LeoEmotion.Normal,
             () =>
             {
-                // Al cerrar el diálogo, liberamos el bloqueo y ocultamos el bocadillo
                 if (leoDialogUI != null)
                     leoDialogUI.Hide();
 
@@ -395,30 +415,26 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator WaitAndShowWeatherTutorial(System.Action showCallback)
     {
-        // Esperar a que termine más o menos la transición de día
-        // (0.4 fade in + 0.3 hold + 0.4 fade out ≈ 1.1s)
+        // Espera aproximada a que termine la transición de día
         yield return new WaitForSecondsRealtime(1.2f);
 
-        // Si mientras tanto hay otro diálogo (intro, strikes, etc.),
-        // esperamos a que termine
+        // Espera a que no haya otro diálogo activo
         yield return new WaitUntil(() => !isDialogActive);
 
         showCallback?.Invoke();
     }
 
-
     public void NotifyDailyWeather(DailyWeather weather)
     {
-        // No queremos meter clima durante el Día 1 guiado
+        if (!wantsDay1Tutorial || !hasChosenAtStart)
+            return;
+
         if (GameManager.Instance != null && GameManager.Instance.CurrentDay <= 1)
             return;
 
-        // Si NO hay panel de Leo, no hacemos nada
         if (leoDialogUI == null)
             return;
 
-        // IMPORTANTE: aquí NO usamos isDialogActive para bloquear,
-        // porque con la corrutina ya vamos a esperar a que no haya diálogo activo.
         switch (weather.type)
         {
             case WeatherType.Soleado:
@@ -455,11 +471,8 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-
-
     private void ShowSunnyWeatherTutorial()
     {
-        
         isDialogActive = true;
 
         string t1 =
@@ -486,13 +499,11 @@ public class TutorialManager : MonoBehaviour
                 leoDialogUI.Show(t3, LeoEmotion.Normal, () =>
                 {
                     isDialogActive = false;
-                    leoDialogUI.Hide();   
+                    leoDialogUI.Hide();
                 }, 2.5f);
             }, 2.5f);
         }, 4f);
     }
-
-
 
     private void ShowCloudyWeatherTutorial()
     {
@@ -513,12 +524,10 @@ public class TutorialManager : MonoBehaviour
             leoDialogUI.Show(t2, LeoEmotion.Normal, () =>
             {
                 isDialogActive = false;
-                leoDialogUI.Hide();   // 👈 CERRAMOS PANEL
+                leoDialogUI.Hide();
             }, 3.5f);
         }, 3.5f);
     }
-
-
 
     private void ShowRainWeatherTutorial()
     {
@@ -549,14 +558,11 @@ public class TutorialManager : MonoBehaviour
                 leoDialogUI.Show(t3, LeoEmotion.Normal, () =>
                 {
                     isDialogActive = false;
-                    leoDialogUI.Hide();  
+                    leoDialogUI.Hide();
                 }, 2.5f);
             }, 2.5f);
         }, 4f);
     }
-
-
-
 
     private void ShowHailWeatherTutorial()
     {
@@ -587,19 +593,21 @@ public class TutorialManager : MonoBehaviour
                 leoDialogUI.Show(t3, LeoEmotion.Normal, () =>
                 {
                     isDialogActive = false;
-                    leoDialogUI.Hide();   // 👈 CERRAMOS PANEL
+                    leoDialogUI.Hide();
                 }, 2.3f);
             }, 2.5f);
         }, 4f);
     }
 
-    // ========== STRIKES – ENTRADA DESDE GAMEMANAGER ==========
+    #endregion
+
+    #region Strikes
 
     private void HandleNewStrikeTutorial(int normalStrikes, int permanentStrikes, StrikeReason reason)
     {
+        if (!wantsDay1Tutorial || !hasChosenAtStart) return;
         if (leoDialogUI == null) return;
 
-        // Strike permanente: bancarrota
         if (reason == StrikeReason.Bankruptcy)
         {
             if (hasShownPermanentStrikeTutorial) return;
@@ -608,7 +616,6 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            // Strike normal (muerte de plantas, inactividad…)
             if (hasShownNormalStrikeTutorial) return;
             hasShownNormalStrikeTutorial = true;
             StartCoroutine(ShowNormalStrikeTutorialCoroutine());
@@ -617,6 +624,7 @@ public class TutorialManager : MonoBehaviour
 
     private void HandleStrikeRemovedTutorial(int normalStrikes, int permanentStrikes, StrikeRemovedReason reason)
     {
+        if (!wantsDay1Tutorial || !hasChosenAtStart) return;
         if (leoDialogUI == null) return;
 
         if (hasShownStrikeRemovedTutorial) return;
@@ -625,23 +633,11 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(ShowStrikeRemovedTutorialCoroutine());
     }
 
-    // =========================================================
-    //               TUTORIALES DE STRIKES
-    // =========================================================
-
-    // Esperar a que no haya otro diálogo de Leo en pantalla
-    private IEnumerator WaitUntilNoDialog()
-    {
-        while (isDialogActive)
-            yield return null;
-    }
-
-    // Esperar a que empiece el siguiente día Y termine la transición,
+    // Espera a que empiece el siguiente día y termine la transición,
     // para sincronizar con el momento en que aparece el popup de strike.
     private IEnumerator WaitUntilStrikePopupMoment()
     {
-        // 1) Esperar a que cambie de día (el jugador pulsa "Siguiente día"
-        //    y GameManager.StartNewDay() incrementa CurrentDay)
+        // Esperar a que comience el siguiente día
         if (GameManager.Instance != null)
         {
             int dayWhenStrikeWasComputed = GameManager.Instance.CurrentDay;
@@ -651,32 +647,18 @@ public class TutorialManager : MonoBehaviour
                 GameManager.Instance.CurrentDay > dayWhenStrikeWasComputed);
         }
 
-        // 2) Ahora estamos ya en el nuevo día.
-        //    Esperar a que termine la transición de HUDUI (panel blanco Día X).
+        // Una vez en el nuevo día, esperar a que termine la transición de HUDUI
         HUDUI hud = FindObjectOfType<HUDUI>();
         if (hud != null)
         {
             float total = hud.DayFadeDuration + hud.DayHoldDuration + 0.05f;
             yield return new WaitForSecondsRealtime(total);
         }
-        else
-        {
-            // Si no encontramos HUD, no bloqueamos más.
-            yield break;
-        }
     }
-
-
-
-
-    // ---------- PRIMER STRIKE NORMAL ----------
 
     private IEnumerator ShowNormalStrikeTutorialCoroutine()
     {
-        // Los strikes son importantes incluso si el jugador saltó el tutorial del día 1
         yield return WaitUntilNoDialog();
-
-        // Esperar a que termine la transición de día y salga el popup de strike
         yield return WaitUntilStrikePopupMoment();
 
         if (leoDialogUI == null) yield break;
@@ -684,7 +666,6 @@ public class TutorialManager : MonoBehaviour
         isDialogActive = true;
         ShowNormalStrike_Step1();
     }
-
 
     private void ShowNormalStrike_Step1()
     {
@@ -741,14 +722,9 @@ public class TutorialManager : MonoBehaviour
             leoDialogUI.Hide();
     }
 
-    // ---------- PRIMER STRIKE PERMANENTE (BANCARROTA) ----------
-
     private IEnumerator ShowPermanentStrikeTutorialCoroutine()
     {
-        // Igual que con el normal: esperamos a no pisar otros diálogos
         yield return WaitUntilNoDialog();
-
-        // Sincronizar con el inicio del nuevo día / popup de strike
         yield return WaitUntilStrikePopupMoment();
 
         if (leoDialogUI == null) yield break;
@@ -756,7 +732,6 @@ public class TutorialManager : MonoBehaviour
         isDialogActive = true;
         ShowPermanentStrike_Step1();
     }
-
 
     private void ShowPermanentStrike_Step1()
     {
@@ -797,14 +772,9 @@ public class TutorialManager : MonoBehaviour
             leoDialogUI.Hide();
     }
 
-    // ---------- PRIMER STRIKE ELIMINADO ----------
-
     private IEnumerator ShowStrikeRemovedTutorialCoroutine()
     {
-        // Esperamos a que no haya otros diálogos en curso
         yield return WaitUntilNoDialog();
-
-        // (Opcional) sincronizar también con el inicio de día
         yield return WaitUntilStrikePopupMoment();
 
         if (leoDialogUI == null) yield break;
@@ -826,7 +796,6 @@ public class TutorialManager : MonoBehaviour
         );
     }
 
-
     private void OnStrikeRemovedTutorialFinished()
     {
         isDialogActive = false;
@@ -834,9 +803,13 @@ public class TutorialManager : MonoBehaviour
             leoDialogUI.Hide();
     }
 
-    // Llamado cuando UNA planta se infecta por primera vez
+    #endregion
+
+    #region Plagas
+
     public void NotifyPlantInfected(Plant plant)
     {
+        if (!wantsDay1Tutorial || !hasChosenAtStart) return;
         if (hasShownFirstPlagueTutorial) return;
         if (leoDialogUI == null) return;
 
@@ -844,9 +817,9 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(ShowFirstPlagueTutorialCoroutine());
     }
 
-    // Llamado cuando una plaga es limpiada por fauna (refugio)
     public void NotifyPlagueCuredByFauna(Plant plant)
     {
+        if (!wantsDay1Tutorial || !hasChosenAtStart) return;
         if (hasShownPlagueCuredByFaunaTutorial) return;
         if (leoDialogUI == null) return;
 
@@ -854,9 +827,9 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(ShowPlagueCuredByFaunaTutorialCoroutine());
     }
 
-    // Llamado cuando usas la pala sobre una planta que tenía plaga
     public void NotifyPlaguedPlantRemovedWithShovel(Plant plant)
     {
+        if (!wantsDay1Tutorial || !hasChosenAtStart) return;
         if (hasShownPlaguedPlantRemovedWithShovelTutorial) return;
         if (leoDialogUI == null) return;
 
@@ -866,7 +839,6 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator ShowFirstPlagueTutorialCoroutine()
     {
-        // Esperar a que no haya otro diálogo de Leo activo (intro, clima, strikes, etc.)
         yield return WaitUntilNoDialog();
 
         if (leoDialogUI == null) yield break;
@@ -925,7 +897,6 @@ public class TutorialManager : MonoBehaviour
         );
     }
 
-
     private void OnFirstPlagueTutorialFinished()
     {
         isDialogActive = false;
@@ -935,7 +906,6 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator ShowPlagueCuredByFaunaTutorialCoroutine()
     {
-        // Esperar a que no haya otros diálogos en curso
         yield return WaitUntilNoDialog();
 
         if (leoDialogUI == null) yield break;
@@ -977,7 +947,6 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator ShowPlaguedPlantRemovedWithShovelTutorialCoroutine()
     {
-        // Esperar a que no haya otros diálogos
         yield return WaitUntilNoDialog();
 
         if (leoDialogUI == null) yield break;
@@ -1005,8 +974,13 @@ public class TutorialManager : MonoBehaviour
         );
     }
 
+    #endregion
+
+    #region Tipos de planta
+
     public void NotifyPlantCategoryPlanted(PlantType plantType)
     {
+        if (!wantsDay1Tutorial || !hasChosenAtStart) return;
         if (plantType == null) return;
         if (leoDialogUI == null) return;
 
@@ -1141,7 +1115,6 @@ public class TutorialManager : MonoBehaviour
         }, 4f);
     }
 
-
     private IEnumerator ShowRefugeTutorialCoroutine()
     {
         yield return WaitUntilNoDialog();
@@ -1174,4 +1147,6 @@ public class TutorialManager : MonoBehaviour
             }, 4f);
         }, 4f);
     }
+
+    #endregion
 }
