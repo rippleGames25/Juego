@@ -1,29 +1,55 @@
 <img src="Recursos/Imágenes/Logo.PNG" alt="Logo" width="200">
 
-# Game Design Document (GDD) - The Living Garden
-Versión Alpha
+# Game Design Document - The Living Garden
+Versión Final
 
 **Autor:** Ripple Games
 
-**Fecha:** 19 de octubre de 2025
+**Fecha:** 09 de diciembre de 2025
 
-# Índice
-[1. Introducción](#1-introducción)   
-[2. Monetización](#2-monetización)   
-[3. Planificación y costes](#3-planificación-y-costes)   
-[4. Mecánicas de juego y elementos de juego](#4-mecánicas-de-juego-y-elementos-de-juego)   
-[5. Trasfondo](#5-trasfondo)   
-[6. Arte](#6-arte)   
-[7. Interfaz](#7-interfaz)   
-[8. Hoja de ruta de desarrollo](#8-hoja-de-ruta-de-desarrollo)   
+---
 
 
-# 1. Introducción
-## 1.1. Descripción breve del concepto del juego
+## Índice
+- **[1. Introducción](#1-introducción)**
+    - [1.1. Descripción breve del concepto](#11-descripción-breve-del-concepto-del-juego)
+    - [1.2. Historia y personajes](#12-descripción-breve-de-la-historia-y-personajes)
+    - [1.3. Propósito y público](#13-propósito-público-objetivo-y-plataformas)
+- **[2. Monetización](#2-monetización)**
+    - [2.1. Visión Estratégica](#21-visión-estratégica-serious-game-de-impacto)
+    - [2.4. Tablas de productos y precios](#241-tablas-de-productos-y-precios)
+- **[3. Planificación y costes](#3-planificación-y-costes)**
+    - [3.2. Estimación temporal](#32-estimación-temporal-del-desarrollo)
+- **[4. Mecánicas y elementos de juego](#4-mecánicas-de-juego-y-elementos-de-juego)**
+    - [4.1. Concepto detallado](#41-descripción-detallada-del-concepto-del-juego)
+    - [4.2. Mecánicas (Recursos, Cultivo, Clima)](#42-descripción-detallada-de-las-mecánicas-del-juego)
+    - [4.3. Controles](#43-controles)
+    - [4.4. Niveles y misiones](#44-niveles-y-misiones)
+    - [4.5. Objetos (Lista de Plantas)](#45-objetos)
+    - [4.6. Sistema de Temporadas](#46-a-futuro-sistema-de-temporadas)
+- **[5. Trasfondo](#5-trasfondo)**
+    - [5.1. Historia y trama](#51-descripción-detallada-de-la-historia-y-la-trama)
+    - [5.2. Personajes (El Curador, Leo)](#52-personajes)
+    - [5.3. Entornos](#53-entornos-y-lugares)
+    - [5.4. Tutorial (Guión)](#54-tutorial)
+- **[6. Arte](#6-arte)**
+    - [6.1. Estética general](#61-estética-general-del-videojuego)
+    - [6.2. Apartado visual (Assets)](#62-apartado-visual)
+    - [6.3. Música y Sonido](#63-música)
+- **[7. Interfaz](#7-interfaz)**
+    - [7.1. Diagrama de flujo](#71-diagrama-de-flujo)
+    - [7.2. Diseños de menús](#72-diseños-básicos-de-los-menús)
+- **[8. Hoja de ruta de desarrollo](#8-hoja-de-ruta-de-desarrollo)**
+- **[9. Historial de Versiones y Cambios](#9-historial-de-versiones-y-cambios)**
+
+
+
+## 1. Introducción
+### 1.1. Descripción breve del concepto del juego
 Es un videojuego de **simulación y gestión de recursos** con enfoque en la ecología de la supervivencia y en la interdependencia de especies ante el colapso climático. El jugador debe cultivar un jardín no como un simple _hobby_, sino como un **santuario vital**, gestionando recursos básicos como el agua y el abono, y creando **micro-ecosistemas de resistencia** donde la sombra que da una planta, los insectos que atrae y la salud del suelo interactúan de forma dinámica para mitigar los factores externos extremos. Cada partida será única, ya que las condiciones iniciales del terreno y los patrones climáticos se generan procedimentalmente, obligando a una adaptación constante. El objetivo final es alcanzar la máxima biodiversidad y autosuficiencia del jardín, asegurando la supervivencia de especies botánicas y de fauna raras que ya no pueden prosperar en el mundo exterior.
 
 
-## 1.2. Descripción breve de la historia y personajes
+### 1.2. Descripción breve de la historia y personajes
 En un futuro cercano, el lento pero constante deterioro climático ha transformado la civilización. La mayoría de la humanidad reside en ciudades autosuficientes y tecnológicamente avanzadas, dando la espalda a un mundo rural que se desmorona. Los ecosistemas naturales están en un declive acelerado, perdiendo especies de flora y fauna que ya no pueden sobrevivir fuera de los confines urbanos.
 
 El personaje principal es un joven idealista que rechaza la idea de una naturaleza confinada a los archivos digitales. Este se une al Programa de Santuarios Botánicos, una iniciativa financiada privadamente que se opone a la extinción biológica. Su misión es clara: habitar una parcela olvidada y crear un Jardín Santuario. Este refugio vital debe albergar, proteger y hacer prosperar especies vulnerables.
@@ -31,53 +57,46 @@ El personaje principal es un joven idealista que rechaza la idea de una naturale
 La historia es un viaje de resistencia ecológica. El objetivo es alcanzar y mantener la máxima biodiversidad y autosuficiencia, logrando el equilibrio crítico de un número determinado de especies (por ejemplo, 10 plantas y 5 especies de fauna). Al lograr este equilibrio, el santuario se convierte en un faro de esperanza biológica, demostrando que la naturaleza puede ser rescatada y regenerada con conocimiento y dedicación, generando un legado de esperanza biológica.
 
 
-## 1.3. Propósito, público objetivo y plataformas
+### 1.3. Propósito, público objetivo y plataformas
 El principal objetivo de _The Living Garden_ es ofrecer una experiencia de simulación ecológica y gestión de recursos que sea a la vez acogedora e inspiradora. El juego sirve como vehículo didáctico y reflexivo, logrando concienciar a los jugadores sobre los efectos del cambio climático y la vital importancia de la biodiversidad y regeneración en los ecosistemas. Además, la experiencia de juego está diseñada para ser gratificante y desestresante, fomentando la paciencia y la observación. El interés no solo se debe enfocar en la gestión precisa de recursos y planificación de microclimas, sino en la propia evolución biológica del santuario y el logro de su autosuficiencia.
 
 _The Living Garden_ está dirigido a jugadores de un amplio rango de edades entre jóvenes y adultos, especialmente aquellos que disfrutan de juegos de simulación y experiencias _cozy_. El diseño está pensado para ser una experiencia para un único jugador, centrándose en la inmersión personal y en la gestión ambiental.  
 
-En cuanto a las especificaciones operacionales, el lanzamiento se dirigirá a PC y Tablet, con una distribución optimizada para ser accesible vía Web. La fecha de lanzamiento objetivo está fijada para Diciembre de 2025. 
+En cuanto a las especificaciones operacionales, el lanzamiento se dirigirá a PC, Tablet y Móvil, con una distribución optimizada para ser accesible vía Web. La fecha de lanzamiento objetivo está fijada para Diciembre de 2025. 
 
-Finalmente, el modelo de monetización se basará en Ventas "In-Game", lo que puede incluir la venta de cosméticos, expansiones o contenido adicional, asegurando que el _core_ del juego sea accesible para todos los jugadores.
+## 2. Monetización
+### 2.1. Visión Estratégica: Serious Game de Impacto
+The Living Garden tiene el potencial para trascender el concepto tradicional de entretenimiento y posicionarse como un **Serious Game** con un fuerte componente educativo y de concienciación ecológica. Dado que el juego será accesible bajo un modelo **Free-to-Play**, la estrategia de sostenibilidad económica se aleja de la monetización agresiva para centrarse en tres pilares éticos: **la financiación institucional, el patrocinio de marcas integrado y la retención a largo plazo mediante contenido estacional.**
 
+### 2.2. Financiación Institucional y Cultural
+El juego se presenta como una herramienta digital de concienciación climática, alineada con los **Objetivos de Desarrollo Sostenible (ODS)**.
 
-# 2. Monetización
-## 2.1. Tipo de modelo de monetización
-The Living Garden será un juego Free-to-Play (F2P) con microtransacciones centradas en cosméticos, junto a publicidad no intrusiva (solo anuncios recompensados)  y al apoyo de marcas que patrocinen el proyecto..
+The Living Garden servirá como plataforma divulgativa sobre la flora y fauna, y los peligros de la crisis climática, justificando la inversión pública por su retorno social.
 
-El objetivo es mantener una experiencia relajada, coherente con la filosofía del juego, evitando modelos invasivos o de pago obligatorio. Los pagos se orientan a la personalización, la estética y la mejora de la experiencia, sin ofrecer ventajas competitivas de pay-to-win que afecten el equilibrio ecológico.
+Se buscará **subvenciones y ayudas** a través de convocatorias culturales y de medio ambiente (ej. Comunidad de Madrid, Ministerio de Cultura) destinadas a proyectos que fomenten la educación ambiental y la biodiversidad.
 
-### 2.1.1. Estructura del modelo
-**Moneda principal: Pétalos.**
+### 2.3. Patrocinio de marcas y Product Placement
+Para mantener la inmersión y la estética cozy, eliminamos los anuncios intrusivos en favor de una **integración orgánica de marcas (Product Placement)**.
 
-Se obtienen por juego normal (logros, hitos), por ver anuncios recompensados y mediante compra directa (IAP).
+Las herramientas dentro del juego reflejarán productos del mundo real. Por ejemplo, el jugador usará un Saco de Abono o una herramienta específica, de una **marca real de agricultura o jardinería sostenible**. Esta publicidad no interrumpe la partida, sino que aporta realismo y valida la calidad de los productos utilizados en el santuario virtual.
 
-Sirven para comprar packs de recursos (agua/abono/semillas) y “comodines” de conveniencia (ej. aceleradores de crecimiento).
+### 2.4. A futuro: Modelo de Temporadas, Retención y Cosméticos.
+Para asegurar la vida útil del juego y la retención de usuarios, implementamos un sistema de Temporadas Temáticas (ver 4.6). Cada temporada transportará al jugador a una nueva región climática del mundo real. Esto renueva el ciclo de juego con nuevas especies de flora y fauna para coleccionar.
 
-**Anuncios/estrategia:**
+Cada temporada traerá consigo una línea exclusiva de **elementos decorativos y skins** (para el escenario, la interfaz o la mascota Leo) que los jugadores podrán adquirir. Esto genera ingresos recurrentes sin afectar al equilibrio jugable.
 
-El juego incluirá una fuente de ingresos limitada a los **Vídeos Recompensados**. Estos anuncios son una opción siempre voluntaria que el jugador activa para recibir un beneficio inmediato, sin interrumpir la jugabilidad principal. Las recompensas consisten en pequeñas cantidades de **néctar** (la divisa premium para cosméticos) o recursos básicos. Estratégicamente se ofrecerán en puntos de bajo estrés (como al iniciar sesión o después de haber jugado un periodo), o para ayudar a paliar una pérdida importante. Este formato es el más valioso (alto eCPM) y aumenta la retención, siempre manteniendo el diseño no forzado y coherente con la filosofía _cozy_ del juego. 
-
-**Microtransacciones (IAP):**
-
-- Packs de Néctar (ver tabla).
-- Packs de recursos (pétalos/bolsas de abono/agua extra), para jugadores que quieran acelerar el progreso. 
-- Cosméticos y DLC tipo "Libro de arte" para público nicho y merchandising.
+#### 2.4.1. Economía In-Game y Micropagos
+Aunque los pilares anteriores sostienen la estructura, se mantiene una tienda interna para ofrecer flexibilidad y personalización al jugador.
+- **Moneda Premium (Néctar)**: Utilizada principalmente para adquirir los cosméticos de temporada y elementos decorativos exclusivos. Se obtienen por juego normal (logros, hitos) y mediante compra directa (IAP).
 
 **Política anti pay-to-win:**
+Ningún objeto que afecte de forma permanente la competencia, a la jugabilidad o desbloquee especies estará detrás de un paywall. Los objetos comprados serán simplemente cosméticos.
 
-Ningún objeto que afecte de forma permanente la competencia o desbloquee especies raras de forma instantánea estará detrás de un paywall. Estos recursos comprables aceleran o facilitan, pero siempre es posible lograr con todo con tiempo y buena gestión.
+### 2.4.1 Tablas de productos y precios
 
-**Patrocinadores:**
-
-Además, el proyecto será patrocinado por marcas de productos de agricultura como abono, fertilizantes y tratamientos antiplagas, que se verán beneficiados mediante el emplazamiento publicitario de sus marcas y productos en el videojuego. 
-
-
-## 2.2. Tablas de productos y precios
 **Tienda de néctar:**
 | Pack | Precio (€) | Néctar | €/1 de néctar |
 |-----------|-----------|-----------|-----------|
-| Ver 1 anuncio | Gratis | 1 de néctar | - |
 | Pack Pequeño | 1,99€ | 30 de néctar   | 0,066 €/1 de néctar |
 | Pack Medio | 2,99€ | 50 de néctar   | 0,059 €/1 de néctar |
 | Pack Grande | 4,99€ | 100 de néctar   | 0,049 €/1 de néctar |
@@ -85,7 +104,6 @@ Además, el proyecto será patrocinado por marcas de productos de agricultura co
 | Pack Súper | 19,99€ | 600 de néctar   | 0,033 €/1 de néctar |
 
 **Tienda de cosméticos:**
-- Cosméticos escenario:
   
 | Escenario | Néctar |
 |-----------|-----------|
@@ -93,59 +111,35 @@ Además, el proyecto será patrocinado por marcas de productos de agricultura co
 | Escenario moderno | 60 de néctar |
 | Escenario naturalista | 70 de néctar |
 
-- Sombreros para Leo:
-  
-| Sombrero | Néctar |
+| Sombrero Leo | Néctar |
 |-----------|-----------|
 | Sombrero de copa | 20 de néctar |
 | Sombrero de cumpleaños | 20 de néctar |
 | Gorra | 20 de néctar |
-
-- Interfaz:
   
 | Interfaz | Néctar |
 |-----------|-----------|
 | Interfaz rústica | 15 de néctar |
 | Interfaz moderna | 20 de néctar |
 | Interfaz naturalista | 25 de néctar |
-
-- Bundles (oferta):
   
-| Bundle | Néctar |
+| Bundle (oferta) | Néctar |
 |-----------|-----------|
 | Bundle “Inicio” (Interfaz rústica + Gorra + 20 de néctar) | 45 de néctar (pequeño descuento) |
 | Bundle “Decorador” (2 escenarios + 3 sombreros) | 140 de néctar (descuento frente a comprar por separado) |
 
-**Tienda de recursos (consumibles, comprables con néctar o pétalos):**
-- Pétalos (in-game currency usada para semillas básicas, ventas menores):
-  
-| Pétalos | Néctar |
-|-----------|-----------|
-| 500 pétalos | 5 de néctar |
-| 1.500 pétalos | 12 de néctar |
-| 4.000 pétalos | 30 de néctar |
-
-- Packs de recursos (para partidas rápidas):
-  
-| Pack | Néctar |
-|-----------|-----------|
-| Kit Riego (rellena regadera + 1 día extra de riego automático) | 10 de néctar |
-| Saco Abono (x3 abonos listos)| 12 de néctar |
-| Pack Semillas Mixto (3 semillas comunes + 1 rara) | 25 de néctar |
-
-- Ofertas y economía:
-    - **Introducir ofertas diarias/semana** (ej. “Oferta del mercader ambulante”): 1 planta rara por 40% menos de néctar), para incentivar compras repetidas.
-    - **Elasticidad**: ajustar precio/valor en función de datos reales (A/B tests).
+### 2.7. A futuro: Propuesta de valor añadido: Impacto real
+The Living Garden conecta el mundo digital con el físico. Planteamos retos comunitarios globales (ej. "Cultivar 1.000 Margaritas entre todos los jugadores"). Al cumplir estos hitos, una empresa patrocinadora se compromete a realizar una acción ecológica real, como la **plantación de árboles o la reforestación de una zona degradada**. El jugador siente que su tiempo de juego tiene un impacto positivo directo en el planeta, aumentando drásticamente la fidelización y el compromiso con la marca.
 
 
-# 3. Planificación y costes
-## 3.1. El equipo humano
+## 3. Planificación y costes
+### 3.1. El equipo humano
 El proyecto _The Living Garden_ será desarrollado por un equipo de 5 integrantes dentro del contexto académico.
 
 Cada miembro asume un rol principal, aunque todos colaboran de manera transversal en distintas áreas del diseño y la producción.
 
 
-## 3.2. Estimación temporal del desarrollo
+### 3.2. Estimación temporal del desarrollo
 El desarrollo del prototipo se estima en 3 meses, estructurado en 3 hitos principales:
 | Mes | Hito | Descripción |
 |-----------|-----------|-----------|
@@ -154,7 +148,7 @@ El desarrollo del prototipo se estima en 3 meses, estructurado en 3 hitos princi
 | 3 | Pulido y presentación final | Ajuste de balance, testeo, implementación de sonido y entrega del GDD. |
 
 
-## 3.3. Costes asociados
+### 3.3. Costes asociados
 Aunque el proyecto no implica gastos reales, se identifican los recursos y herramientas necesarias para el desarrollo:
 | Categoría | Descripción | Observación |
 |-----------|-----------|-----------|
@@ -168,8 +162,8 @@ Aunque el proyecto no implica gastos reales, se identifican los recursos y herra
 En un contexto profesional, el presupuesto rondaría entre 50.000 € y 70.000 €, considerando salarios, licencias y hardware, pero en el entorno académico solo se contabiliza el tiempo invertido y el aprendizaje del equipo.
 
 
-# 4. Mecánicas de juego y elementos de juego
-## 4.1. Descripción detallada del concepto del juego
+## 4. Mecánicas de juego y elementos de juego
+### 4.1. Descripción detallada del concepto del juego
 “The Living Garden” es un videojuego de simulación y gestión ecológica de recursos. El juego se centra en la creación, el mantenimiento y la prosperación de un Jardín Santuario, un micro-ecosistema diseñado para proteger y albergar especies de flora y fauna amenazadas por el colapso climático.
 
 El núcleo de la jugabilidad está en el equilibrio ecológico y la interdependencia de especies. El jugador no solo gestiona recursos básicos como el agua y el abono, sino que debe planificar la ubicación de las plantas para maximizar los efectos sinérgicos. Las condiciones iniciales del juego y los patrones climáticos extremos son procedimentales, lo que obliga a una adaptación constante y a una toma de decisiones estratégica.
@@ -177,8 +171,8 @@ El núcleo de la jugabilidad está en el equilibrio ecológico y la interdepende
 El objetivo final es alcanzar la máxima biodiversidad, midiendo el progreso por el número de especies y su salud. 
 
 
-## 4.2. Descripción detallada de las mecánicas del juego
-### 4.2.1. Gestión de recursos
+### 4.2. Descripción detallada de las mecánicas del juego
+#### 4.2.1. Gestión de recursos
 - **Gestión de recursos primarios:** El jugador debe gestionar el suministro limitado de **Agua** y **Abono**. Estos recursos son vitales para la salud de las plantas.
     - **Adquisición**: Los recursos básicos se reciben diariamente al inicio del día. Cuantas más especies tenga el jardín, mayor será la cantidad de recursos recibidos. También se pueden comprar en la tienda con recursos. La cantidad exacta de Agua y Abono recibida se calcula con la siguiente fórmula basada en la puntuación de Biodiversidad actual:
         - Si la Biodiversidad es 0: El jugador no recibe recursos.
@@ -198,7 +192,7 @@ El objetivo final es alcanzar la máxima biodiversidad, midiendo el progreso por
 Sin embargo el jugador puede obtener una penalización de -1 pétalo por cada 3 plantas que se mueran en el jardín, y se otorgará un strike no permanente.
 
 
-### 4.2.2. Cultivo y planificación del jardín
+#### 4.2.2. Cultivo y planificación del jardín
 - **Plantación**
     - **Plantación:** El jugador puede comprar semillas en la tienda y plantarlas en cualquiera de las parcelas disponibles, teniendo en cuenta los requerimientos de la semilla y lo que puede aportar a las parcelas adyacentes. Las especies de plantas tienen requerimientos específicos de sol, agua y atracción o repulsión de especies.
 
@@ -215,29 +209,30 @@ Sin embargo el jugador puede obtener una penalización de -1 pétalo por cada 3 
     - La proximidad de ciertas especies genera **efectos positivos (sinergias) o negativos**. Por ejemplo, una planta alta puede dar sombra a una planta vecina sensible al sol extremo, o una flor puede insectos polinizadores que beneficien a otra planta.
     - El éxito a largo plazo depende de la **creación de cadenas de interdependencia** que refuercen la salud general del jardín.
 
-### 4.2.3. Climas y plagas
-    - Existen diferentes tipos de clima de diferentes intensidades que pueden afectar al jardín de manera positiva o negativa.
-        - Nublado: No tiene efectos sobre el jardín.
-        - Soleado: Causa una sequía probabilística que resta agua de las parcelas. No añade agua.
-            - Intensidad 1: Cada parcela tiene un 70% de probabilidad de perder 1 de agua.
-            - Intensidad 2: Cada parcela tiene un 40% de probabilidad de perder 1 de agua y un 30% de probabilidad de perder 2 de agua.
-            - Intensidad 3: Cada parcela tiene un 33% de probabilidad de perder 1, 33% de perder 2, y 33% de perder 3 de agua.
-        - Lluvia:
-            - Efecto Positivo: Añade agua a todas las parcelas. La cantidad ganada es igual a la intensidad*2 (es decir, +2, +4, o +6 de agua).
-            - Efecto Negativo: Si la lluvia es de intensidad 3, existe la probabilidad de matar instantáneamente a las plantas que tengan salud moderada o mala. Las plantas con buena salud no corren peligro.
-        - Granizo
-            - Efecto Positivo: Añade una pequeña cantidad de agua a todas las parcelas. La cantidad ganada es igual a la intensidad (es decir, +1, +2, o +3 de agua).
-            - Efecto Negativo: Tiene una probabilidad de matar instantáneamente a las plantas que tengan salud moderada o mala. Las plantas con buena salud no corren peligro.
+#### 4.2.3. Climas y plagas
+Existen diferentes tipos de clima de diferentes intensidades que pueden afectar al jardín de manera positiva o negativa.
 
-    - Plagas: Cada día hay un 10% de probabilidad de que una plaga pueda aparecer en el jardín. Las plagas sólo afectan a las plantas que no están protegidas con fauna (son una especie atractora de fauna o están adyacentes a una). Una vez una planta está infectada no podrá curar su salud y si es productora o atractora de polinizadores anulará sus efectos. Además, las plagas se extienden si hay alguna planta de la misma especie adyacente y sin proteger. Una planta se puede desinfectar plantando una atractora de fauna en una parcela adyacente.
+- Nublado: No tiene efectos sobre el jardín.
+- Soleado: Causa una sequía probabilística que resta agua de las parcelas. No añade agua.
+    - Intensidad 1: Cada parcela tiene un 70% de probabilidad de perder 1 de agua.
+    - Intensidad 2: Cada parcela tiene un 40% de probabilidad de perder 1 de agua y un 30% de probabilidad de perder 2 de agua.
+    - Intensidad 3: Cada parcela tiene un 33% de probabilidad de perder 1, 33% de perder 2, y 33% de perder 3 de agua.
+- Lluvia:
+    - Efecto Positivo: Añade agua a todas las parcelas. La cantidad ganada es igual a la intensidad*2 (es decir, +2, +4, o +6 de agua).
+    - Efecto Negativo: Si la lluvia es de intensidad 3, existe la probabilidad de matar instantáneamente a las plantas que tengan salud moderada o mala. Las plantas con buena salud no corren peligro.
+- Granizo
+    - Efecto Positivo: Añade una pequeña cantidad de agua a todas las parcelas. La cantidad ganada es igual a la intensidad (es decir, +1, +2, o +3 de agua).
+    - Efecto Negativo: Tiene una probabilidad de matar instantáneamente a las plantas que tengan salud moderada o mala. Las plantas con buena salud no corren peligro.
+
+**Plagas**. Cada día hay un 10% de probabilidad de que una plaga pueda aparecer en el jardín. Las plagas sólo afectan a las plantas que no están protegidas con fauna (son una especie atractora de fauna o están adyacentes a una). Una vez una planta está infectada no podrá curar su salud y si es productora o atractora de polinizadores anulará sus efectos. Además, las plagas se extienden si hay alguna planta de la misma especie adyacente y sin proteger. Una planta se puede desinfectar plantando una atractora de fauna en una parcela adyacente.
 
 
-### 4.2.4. Interacción con el entorno
+#### 4.2.4. Interacción con el entorno
 - **Ciclo diario:** el juego opera con un ciclo temporal donde los eventos climáticos y el consumo de recursos de las plantas se simulan al inicio de cada día. El jugador puede pasar de día cuando decida que ha acabado de hacer sus tareas de ese día.
 - **Adaptación climática:** El jugador debe consultar la previsión meteorológica para tomar decisiones preventivas. Por ejemplo regar más antes de un sol muy intenso o plantar variedades resistentes.
 - **Eventos ecológicos (plagas y fauna):** El juego simula la aparición de plagas o la llegada de fauna beneficiosa. El jugador debe gestionar estos eventos, simulando una planificación ecológica para que la propia biodiversidad actúe como defensa natural.
 
-### 4.2.4. Progresión y objetivo
+#### 4.2.4. Progresión y objetivo
 - **Logro de biodiversidad:** El progreso se mide por la cantidad de especies y fauna crítica que el jardín logra albergar y mantener en equilibrio. El jugador ganará la partida cuando consiga aguantar 1 día con 10 o más de biodiversidad. 
 La puntuación total de Biodiversidad, que se comprueba al inicio de cada día para la condición de victoria, se calcula sumando los siguientes tres componentes:
     1. Plantas: El número total de especies de plantas únicas que estén plantadas en el jardín, siempre que hayan superado el estado de semilla (es decir, se cuentan desde el estado de brote en adelante).
@@ -247,12 +242,18 @@ La puntuación total de Biodiversidad, que se comprueba al inicio de cada día p
 - **Sistema de salud de la planta:** Cada planta tiene un estado de salud dinámico que se recalcula diariamente en función de si ha cubierto sus requerimientos de recursos y el clima. Mantener la salud de las especies es un reto constante.
 
 - **Strikes:** Se puede ganar o perder una partida en The Living Garden. Para perder, el jugador deberá obtener 5 strikes en total, que pueden ser otorgados por diferentes cuestiones:
-    - Strike amarillo (No permanente): Este tipo de strikes se otorgan cuando se mueren 3 plantas. Puedes ser removidos si el jugador logra estar 5 días sin que se haya muerto ninguna planta o por cada Bono de Diversidad.
-    - Strike rojo (Permanente): Este tipo de strikes se otorgan cuando el jugador se queda a 0 pétalos y tiene 0 plantas plantadas, lo que le invalida para progresar en el santuario. Tras otorgarle el strike, se le abonarán 3 pétalos para que pueda continuar su partida.
+    - **Strike amarillo (No permanente)**: Este tipo de strikes se otorgan:
+        - Si se mueren 2 o más plantas del jardín en el mismo día.
+        - Si el jugador pasa 3 veces de día sin plantas y sin realizar ninguna acción.
+    Puedes ser removidos si:
+        -  El jugador tiene un jardín con 3 o más plantas y logra estar  5 días sin que se haya muerto ninguna.
+        - Si el jugador consigue sumar tres puntos de biodiversidad, es decir, conseguir 3 especies nuevas.
+
+    - **Strike rojo (Permanente)**: Este tipo de strikes se otorgan cuando el jugador se queda a 0 pétalos y tiene 0 plantas plantadas, lo que le invalida para progresar en el santuario. Tras otorgarle el strike, se le abonarán 3 pétalos para que pueda continuar su partida.
 
 
 
-## 4.3. Controles
+### 4.3. Controles
 Dado que "The Living Garden" está diseñado para ser jugado en plataformas web (ordenador) y dispositivos táctiles (tablet y móvil), el esquema de control se basa exclusivamente en la interacción de un solo punto, es decir, **el clic izquierdo del ratón en escritorio y el toque o tap en pantallas táctiles**.
 
 Este enfoque garantiza una curva de aprendizaje mínima y una alta accesibilidad, eliminando la necesidad de gestos complejos o comandos de teclado.
@@ -260,7 +261,7 @@ Este enfoque garantiza una curva de aprendizaje mínima y una alta accesibilidad
 Las navegación de menús, la selección de elementos (parcelas, herramientas…), y el avance de día se harán a usando el clic izquierdo o haciendo tap en los dispositivos móviles. El uso de herramienta consta de dos pasos, hacer clic en el icono del recurso y hacer clic o tocar la parcela donde se aplica el recurso.
 
 
-## 4.4. Niveles y misiones
+### 4.4. Niveles y misiones
 El videojuego **no cuenta con niveles ni misiones tradicionales**, sino con una **partida continua y progresiva**, centrada en la evolución ecológica del Jardín Santuario.
 La progresión se define por el crecimiento del ecosistema y la capacidad del jugador para adaptarse a las condiciones cambiantes del entorno, más que por una estructura lineal de objetivos. 
 
@@ -274,7 +275,7 @@ La **curva de dificultad es orgánica y ambiental**. A medida que avanza la part
 El jugador deberá anticiparse a estos cambios mediante una planificación más precisa del jardín y una mejor gestión de recursos. La dificultad no se basa en penalizaciones directas, sino en la **complejidad del ecosistema**, que demanda cada vez más atención y equilibrio.
 
 
-## 4.5. Objetos
+### 4.5. Objetos
 - **Plantas:**
   
 <table>
@@ -311,26 +312,6 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
         </tr>
         <tr>
             <td>
-                <b>Nombre:</b> Gerbera<br>
-                <b>Nombre científico:</b> <i>Asteraceae gerbera</i><br>
-                <img src="Recursos/Imágenes/Gerbera.png" alt="Gerbera" width="100">
-            </td>
-            <td>Flor colorida y ornamental que aporta alegría al jardín. Su alto consumo de agua la hace ideal para zonas húmedas o bien regadas.</td>
-            <td>Atractor de Polinizadores</td>
-            <td>
-                <b>Necesidad de agua:</b> 3<br>
-                <b>Necesidad de abono:</b> 2<br>
-                <b>Exposición solar:</b> Sol directo
-            </td>
-            <td>
-                <b>Días hasta brotar:</b> 1<br>
-                <b>Días hasta crecer:</b> 2<br>
-                <b>Días hasta madurar:</b> 3
-            </td>
-            <td>3 pétalos</td>
-        </tr>
-        <tr>
-            <td>
                 <b>Nombre:</b> Margarita<br>
                 <b>Nombre científico:</b> <i>Bellis perennis</i><br>
                 <img src="Recursos/Imágenes/Margarita.png" alt="Margarita" width="100">
@@ -348,46 +329,6 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
                 <b>Días hasta madurar:</b> 2
             </td>
             <td>1 pétalo</td>
-        </tr>
-        <tr>
-            <td>
-                <b>Nombre:</b> Flor de Pascua<br>
-                <b>Nombre científico:</b> <i>Euphorbia pulcherrima</i><br>
-                <img src="Recursos/Imágenes/Flor_de_pascua.png" alt="Flor de Pascua" width="100">
-            </td>
-            <td>Planta ornamental delicada con hojas rojas características. Necesita suelos fértiles y ambientes estables.</td>
-            <td>Atractor de Polinizadores</td>
-            <td>
-                <b>Necesidad de agua:</b> 2<br>
-                <b>Necesidad de abono:</b> 3<br>
-                <b>Exposición solar:</b> Semisombra
-            </td>
-            <td>
-                <b>Días hasta brotar:</b> 1<br>
-                <b>Días hasta crecer:</b> 2<br>
-                <b>Días hasta madurar:</b> 4
-            </td>
-            <td>3 pétalos</td>
-        </tr>
-        <tr>
-            <td>
-                <b>Nombre:</b> Hibisco<br>
-                <b>Nombre científico:</b> <i>Hibiscus rosa-sinensis</i><br>
-                <img src="Recursos/Imágenes/Hibisco.png" alt="Hibisco" width="100">
-            </td>
-            <td>Flor tropical de gran tamaño y color intenso. Su alto consumo de agua se compensa con su capacidad para atraer fauna variada.</td>
-            <td>Atractor de Polinizadores</td>
-            <td>
-                <b>Necesidad de agua:</b> 3<br>
-                <b>Necesidad de abono:</b> 2<br>
-                <b>Exposición solar:</b> Sol directo
-            </td>
-            <td>
-                <b>Días hasta brotar:</b> 1<br>
-                <b>Días hasta crecer:</b> 2<br>
-                <b>Días hasta madurar:</b> 3
-            </td>
-            <td>3 pétalos</td>
         </tr>
         <tr>
             <td>
@@ -436,7 +377,7 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
                 <img src="Recursos/Imágenes/Adelfa.png" alt="Adelfa" width="100">
             </td>
             <td>Arbusto muy resistente al calor y suelos pobres. Florece incluso en condiciones difíciles, aunque es tóxica si se manipula mal.</td>
-            <td>Atractor de Polinizadores</td>
+            <td>Refugio de Fauna</td>
             <td>
                 <b>Necesidad de agua:</b> 1<br>
                 <b>Necesidad de abono:</b> 2<br>
@@ -469,25 +410,6 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
             </td>
             <td>3 pétalos</td>
         </tr>
-        <tr>
-            <td>
-                <b>Nombre:</b> Guayabo<br>
-                <b>Nombre científico:</b> <i>Psidium guajava</i><br>
-                <img src="Recursos/Imágenes/Guayabo.png" alt="Guayabo" width="100">
-            </td>
-            <td>Árbol frutal tropical que atrae fauna y mejora la fertilidad del suelo. Su mantenimiento es alto, pero sus frutos generan beneficios.</td>
-            <td>Atractor de Polinizadores</td>
-            <td>
-                <b>Necesidad de agua:</b> 3<br>
-                <b>Necesidad de abono:</b> 3<br>
-                <b>Exposición solar:</b> Sol directo
-            </td>
-            <td>
-                <b>Días hasta brotar:</b> 1<br>
-                <b>Días hasta crecer:</b> 3<br>
-                <b>Días hasta madurar:</b> 4
-            </td>
-            <td>3 pétalos</td>
         </tr>
         <tr>
             <td>
@@ -591,26 +513,6 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
         </tr>
         <tr>
             <td>
-                <b>Nombre:</b> Flor de papel<br>
-                <b>Nombre científico:</b> <i>Bougainvillea glabra</i><br>
-                <img src="Recursos/Imágenes/Flor_de_papel.webp" alt="Flor de papel" width="100">
-            </td>
-            <td>Planta trepadora de colores vivos. Su floración abundante aporta belleza y atrae insectos, además de poder usarse como materia prima decorativa o cosmética.</td>
-            <td>Productora</td>
-            <td>
-                <b>Necesidad de agua:</b> 2<br>
-                <b>Necesidad de abono:</b> 2<br>
-                <b>Exposición solar:</b> Sol directo
-            </td>
-            <td>
-                <b>Días hasta brotar:</b> 1<br>
-                <b>Días hasta crecer:</b> 2<br>
-                <b>Días hasta madurar:</b> 3
-            </td>
-            <td>2 pétalos</td>
-        </tr>
-        <tr>
-            <td>
                 <b>Nombre:</b> Trompetilla<br>
                 <b>Nombre científico:</b> <i>Bouvardia ternifolia</i><br>
                 <img src="Recursos/Imágenes/Trompetilla.jpeg" alt="Trompetilla" width="100">
@@ -671,21 +573,21 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
         </tr>
         <tr>
             <td>
-                <b>Nombre:</b> Cafeto arábico<br>
-                <b>Nombre científico:</b> <i>Coffea arabica</i><br>
+                <b>Nombre:</b> Acebo<br>
+                <b>Nombre científico:</b> <i>Ilex aquifolium</i><br>
                 <img src="Recursos/Imágenes/Cafeto_arabico.png" alt="Cafeto arábico" width="100">
             </td>
-            <td>Arbusto tropical de gran valor económico. Sus granos sirven como recurso avanzado. Exige condiciones estables de humedad y fertilidad.</td>
-            <td>Productora</td>
+            <td>Arbusto de clima templado, famoso por sus hojas espinosas y frutos rojos brillantes. Muy valorado como ornamento invernal y por su madera dura y blanca. Resistente al frío, pero de crecimiento lento.</td>
+            <td>Refugio de Fauna</td>
             <td>
-                <b>Necesidad de agua:</b> 3<br>
-                <b>Necesidad de abono:</b> 3<br>
-                <b>Exposición solar:</b> Semisombra
+                <b>Necesidad de agua:</b> 2<br>
+                <b>Necesidad de abono:</b> 1<br>
+                <b>Exposición solar:</b> Sombra
             </td>
             <td>
                 <b>Días hasta brotar:</b> 1<br>
-                <b>Días hasta crecer:</b> 3<br>
-                <b>Días hasta madurar:</b> 4
+                <b>Días hasta crecer:</b> 4<br>
+                <b>Días hasta madurar:</b> 3
             </td>
             <td>3 pétalos</td>
         </tr>
@@ -762,9 +664,26 @@ El jugador deberá anticiparse a estos cambios mediante una planificación más 
     </tbody>
 </table>
 
+### 4.6. A futuro: Sistema de Temporadas
+Para fomentar la retención a largo plazo y expandir el valor educativo del juego, The Living Garden operará bajo un sistema de **Temporadas Trimestrales**. Cada temporada será una **Expedición Ecológica** a una nueva región del mundo.
 
-# 5. Trasfondo
-## 5.1. Descripción detallada de la historia y la trama
+#### 4.6.1. Santuario Base
+Para complementar el ciclo de partidas cortas (runs) y dar sentido a la progresión a largo plazo, se introduce El Santuario Base. Este espacio actúa como el nexo central de la experiencia y justifica la narrativa del Programa de Santuarios Botánicos (PSB).
+
+El Santuario Base será un invernadero o jardín seguro que el jugador conserva para siempre. Aquí las plantas no mueren, no hay plagas y no requieren gasto de recursos (agua/abono) para sobrevivir, solo para crecer o cambiar. Es el lugar donde se visualizan los logros.
+
+Ganando partidas, el jugador conseguirá semillas que podrá plantar aquí. Así, el Santuario se irá llenando poco a poco de todas las especies que el jugador ha logrado dominar en sus partidas, convirtiéndose en una **"Colección de Trofeos" viva**. Dado que el Santuario Base es permanente, es el espacio ideal para la personalización.
+
+#### 4.6.2. Funcionamiento del ciclo de temporada:
+ - **Nuevos Biomas (Escenarios)**:  Cada temporada desbloquea temporalmente una nueva parcela en una ubicación geográfica distinta (ej. "La Selva Amazónica", "La Tundra Ártica", "El Mediterráneo Seco").
+ - **Modificadores Climáticos Específicos**: Al cambiar de región, las reglas del clima (ver 4.2.3) se adaptan a la realidad de ese bioma, obligando al jugador a aprender nuevas estrategias:
+    - Ejemplo - Temporada Monzónica: Lluvias constantes (riesgo de hongos por exceso de humedad), pero necesidad de gestionar drenaje en lugar de riego.
+    - Ejemplo - Temporada Desértica: Calor extremo (evaporación rápida), necesidad de plantas de sombra y cactus.
+ - **Flora y Fauna Exclusiva:** Cada temporada introduce una **"Colección de Temporada"**, introduciendo nuevas plantas y fauna que el jugador debe descubrir y catalogar.
+
+
+## 5. Trasfondo
+### 5.1. Descripción detallada de la historia y la trama
 El marco narrativo de _The Living Garden_ se sitúa en un futuro cercano, marcado por la inevitable consecuencia del colapso climático. No ha sido un evento cataclísmico, sino un lento y constante deterioro que ha alterado drásticamente los patrones estacionales y la estabilidad de los ecosistemas:
 
 - Las estaciones se han vuelto erráticas. Los veranos son brutalmente secos e intensos; los inviernos, impredecibles con nevadas tardías o sequías. Esta variabilidad climática extrema ha desequilibrado la flora y la fauna, volviendo inhabitables vastas extensiones de tierra. 
@@ -775,16 +694,16 @@ El marco narrativo de _The Living Garden_ se sitúa en un futuro cercano, marcad
 
 En medio de esta resignación global, surge una iniciativa de esperanza, financiada por fundaciones y biólogos disidentes que rechazan la idea de que la única solución sea rendirse al control tecnológico total.
 
-### 5.1.1. La iniciativa
+#### 5.1.1. La iniciativa
 El Programa de Santuarios Botánicos (PSB) es una red descentralizada de micro-reservas dispersas por el mundo rural. Su filosofía es simple: la supervivencia de la vida silvestre no puede depender de los archivos digitales, sino de la creación de focos de resistencia ecológica _in situ_.
 
-### 5.1.2. El rol del jugador
+#### 5.1.2. El rol del jugador
 El jugador encarna a un joven idealista que ha rechazado la comodidad y el confinamiento de las Neo-Ciudades y que, motivado por un profundo respeto por la biología y la interconexión de la vida, se une al PSB como “Curador de Santuario”.
 
-### 5.1.3. La tarea inicial
+#### 5.1.3. La tarea inicial
 El PSB asigna al jugador una parcela estéril. Esta parcela es el lienzo inicial, un entorno desafiante pero con el potencial de convertirse en una micro-Arca de Noé biológica. El programa facilita una asignación diaria de recursos básicos (pétalos, agua, abono) para compensar las condiciones extremas y los desafíos iniciales.
 
-### 5.1.4. La trama
+#### 5.1.4. La trama
 La trama no es lineal ni cinemática, sino ecológica y de propósito. Se centra en el proceso de curación y la lucha constante contra un entorno hostil. 
 
 El **objetivo principal** es transformar la parcela olvidada en un Jardín Santuario que no solo sobreviva a los adversos eventos climáticos, sino que prospere, logrando la máxima biodiversidad y autosuficiencia ecológica. 
@@ -798,7 +717,7 @@ El **clímax** de la partida es alcanzar y mantener el **equilibrio crítico**, 
 
 Al alcanzar el objetivo, el Santuario se valida como un “Laboratorio de resistencia”. El PSB lo utiliza como una prueba tangible de que la ecología puede restablecerse con cuidado y conocimiento, ofreciendo un legado de esperanza biológica, en un mundo que ha optado por la seguridad tecnológica. El jardín del jugador se convierte en un modelo crucial para futuras iniciativas de reforestación y conservación. 
 
-### 5.1.5. El conflicto
+#### 5.1.5. El conflicto
 El principal conflicto no proviene de un antagonista humano, sino del entorno hostil y la mala gestión.
 
 El enemigo principal es la variabilidad climática y los eventos extremos (sequías intensas, lluvias torrenciales, plagas súbitas). Estos se generan procedimentalmente, garantizando que el jugador deba adaptarse constantemente.
@@ -806,10 +725,10 @@ El enemigo principal es la variabilidad climática y los eventos extremos (sequ�
 Este lucha contra la interdependencia y la escasez de recursos. Un error de cálculo (demasiada sombra, escasez de agua, falta de abono) puede provocar un efecto dominó que afecte a todo el ecosistema del jardín. 
 
 
-### 5.2. Personajes
+#### 5.2. Personajes
 El juego es íntimo y centrado en la simulación, por lo que los personajes se limitarán a figuras clave que apoyan la jugabilidad y la narrativa del PSB (Programa de Santuarios Botánicos). El protagonista es el personaje central del jugador.
 
-### 5.2.1. El curador (Protagonista - Jugador)
+#### 5.2.1. El curador (Protagonista - Jugador)
 Es el guardián del santuario, la voz de la acción, la paciencia y el conocimiento ecológico. Un joven idealista que ha rechazado el aislamiento tecnológico de las Neo-Ciudades. 
 
 Su motivación no es la riqueza, sino el profundo convencimiento de que la vida silvestre debe ser protegida in situ, no solo archivada digitalmente. 
@@ -818,12 +737,12 @@ No tiene un modelo de personaje visible en pantalla. Su presencia se manifiesta 
 
 Es el agente del Core Loop. El jugador interactúa directamente con el jardín: regando, plantando, comprando, investigando y observando el ecosistema. Su éxito se mide por la salud y biodiversidad de la parcela. 
 
-### 5.2.2. El contacto del PSB
+#### 5.2.2. El contacto del PSB
 Es el asesor y administrador de recursos. Es la única conexión directa y regular del curador con el mundo exterior y el Programa de Santuarios Botánicos. Esta figura tampoco aparece nunca físicamente, solo a través de mensajes o notas. Es la fuente de la recompensa diaria (pétalos, agua y abono) y el receptor de la producción del jardín. 
 
 Gestiona la venta de la producción excedente del jardín a cambio de pétalos para la investigación y la compra de semillas raras y envía informes de progreso y reconocimiento al alcanzar hitos de biodiversidad. 
 
-### 5.2.3. Leo (El loro guía/mascota)
+#### 5.2.3. Leo (El loro guía/mascota)
 Leo es un pequeño loro que lucha por sobrevivir en el exterior. Fue rescatado y asignado al Curador por el PSB para guiarle y acompañarle en su misión. Es inteligente y vocal, y simboliza el éxito inicial de la conservación. 
 
 Dado que no hay un avatar visible del jugador, Leo ofrece una presencia emocional en la pantalla.
@@ -833,7 +752,7 @@ Su función es guiar al jugador a través de los primeros pasos, explicando el C
 Con Leo, la experiencia se vuelve más personal y el tutorial se integra de forma orgánica con la estética del juego. 
 
 
-### 5.3. Entornos y lugares
+#### 5.3. Entornos y lugares
 El juego opera con una perspectiva top-down inclinada y se enfoca en un solo espacio jugable altamente detallado, rodeado de un entorno de fondo ilustrativo. 
 
 El **Jardín Santuario**, es el espacio jugable primario, el foco de toda la simulación y gestión. Un terreno rectangular dividido en una cuadrícula de parcelas. La vista cenital inclinada permite una lectura clara de la cuadrícula para la planificación, mientras que el ángulo frontal sutil mantiene la expresividad de los elementos, como las plantas o los alrededores del jardín. 
@@ -843,7 +762,7 @@ Está compuesto por **parcelas de cultivo**, donde se plantan las semillas y que
 El entorno inmediato al jardín incluye la **casa de campo**, un edificio pequeño y acogedor donde se hospeda el jugador, que proyecta sombra sobre algunas parcelas, lo que debe ser tenido en cuenta en la planificación; y un **árbol perenne** grande en la frontera del terreno. Este árbol es un factor de rejugabilidad clave, ya que su posición se genera procedimentalmente en cada partida, impactando dónde caen las sombras e influyendo en la planificación inicial. 
 
 
-### 5.4. Tutorial
+#### 5.4. Tutorial
 A continuación se muestra el guión del tutorial que aparecerá la primera vez que se juegue una partida:
 
 Leo habla
@@ -943,41 +862,41 @@ Leo habla
     - **PULSAR SIGUIENTE**
 
 
-# 6. Arte
+## 6. Arte
 Esta sección define la filosofía visual de _The Living Garden_, garantizando que la estética refuerce la jugabilidad de simulación y el trasfondo de esperanza ecológica. 
 
-## 6.1. Estética general del videojuego
+### 6.1. Estética general del videojuego
 La estética visual se centra en tres pilares fundamentales:
 
 * **Cozy (calidez y cercanía):** El juego debe generar una sensación de refugio y confort. Esto se logra mediante colores suaves, animaciones fluidas y la representación de materiales con una textura amable. La meta es que el jardín se sienta como un santuario vital y personal, un lugar de calma frente al caos del exterior. 
 * **Minimalista (claridad y legibilidad):** Puesto que es un juego de gestión y planificación, la claridad visual es primordial. El diseño evita el detalle excesivo y el desorden vital. Los elementos clave deben ser iconográficos y fácilmente legibles a simple vista. 
 * **Armónica (paleta controlada):** La paleta de colores será restringida y muy cuidada para asegurar que el conjunto sea visualmente agradable. El contraste se utiliza para dirigir la atención del jugador, no para crear tensión visual.
 
-### 6.1.1. Paleta de color y tono
+#### 6.1.1. Paleta de color y tono
 Predominio de tonos pasteles, verdes suaves, terrosos claros y colores primarios atenuados. Los colores vivos (como el rojo de una flor) se reservarán para destacar los elementos de la biodiversidad y las recompensas visuales, manteniendo el resto del entorno en calma. 
 
 Los eventos climáticos extremos se comunicarán principalmente a través de la iluminación y los efectos de filtro sobre el entorno en lugar de colores agresivos. Las alertas de plaga o de salud baja de una planta se señalizarán con un halo suave y diferenciado que no rompa la armonía visual.
 
-### 6.1.2. Estilo de ilustración
+#### 6.1.2. Estilo de ilustración
 El estilo de arte se basa en la ilustración 2D pintada digitalmente con una sutil aplicación de textura para dar personalidad y calidez, similar a un papel o tela. Esto evita que el arte se sienta demasiado plano o digital, reforzando la sensación cozy y manual del jardinero. 
 
 El contorno es muy suave, primando las formas y los bloques de color para definir los objetos.  
 
 La fauna (Leo y otros) tiene diseños expresivos y adorables. Las animaciones de los insectos y pájaros son suaves y centradas en el movimiento, no en la velocidad o la agresividad. 
 
-### 6.1.3. Perspectiva
+#### 6.1.3. Perspectiva
 La perspectiva (vista cenital inclinada), mantiene el equilibrio entre la claridad de gestión y la expresividad visual. Permite ver el diseño de la cuadrícula de parcelas y facilita la planificación de la sombra, a la vez que el ligero ángulo frontal permite apreciar la altura de las plantas, la textura de la fachada de la Casa de Campo y la tridimensionalidad de los elementos, como se ve en juegos cozy con vista isométrica.
 
-### 6.1.4. Interfaz de usuario (UI)
+#### 6.1.4. Interfaz de usuario (UI)
 La interfaz es una extensión de la estética cozy y minimalista. La iconografía es plana, clara y coherente con la paleta de colores suaves. Se prioriza la legibilidad y el uso de símbolos e ilustraciones sencillas sobre el texto siempre que sea posible. 
 
 Las transiciones de los menús son suaves y fluidas para mantener la sensación de tranquilidad. Los medidores de recursos son también minimalistas y ocupan un espacio discreto en la pantalla. 
 
 
-## 6.2. Apartado visual
+### 6.2. Apartado visual
 En este apartado se incluyen las descripciones detalladas de los elementos visuales del videojuego.
 
-### 6.2.1. Plantas y especies
+#### 6.2.1. Plantas y especies
 Cada planta sigue un proceso de crecimiento y putrefacción que se observa también visualmente. 
 
 Empezando por la semilla, continuando con un brote pequeño, uno un poco más grande y, por último, la planta madura. Esta última etapa es distinta para cada especie.
@@ -1035,7 +954,7 @@ Trompetilla
 ![Diseño trompetilla](Recursos/Imágenes/trompetilla.png)
 
 
-### 6.2.2. Fauna
+#### 6.2.2. Fauna
 La fauna se diseñará para ser expresiva, adorable y funcionalmente clara, manteniendo el estilo de ilustración 2D y la paleta de colores suaves. 
 
 - **El guía y mascota Leo:** Como personaje constante y guía del jugador, Leo requiere un diseño que equilibre adorabilidad con claridad funcional en la UI. Utiliza colores primarios y brillantes pero suavizados, para que destaque sin romper la armonía general. 
@@ -1078,7 +997,7 @@ La fauna se diseñará para ser expresiva, adorable y funcionalmente clara, mant
     </tbody>
 </table>
 
-### 6.2.3. Recursos y objetos
+#### 6.2.3. Recursos y objetos
 <table>
     <tbody>
         <tr>
@@ -1108,7 +1027,7 @@ La fauna se diseñará para ser expresiva, adorable y funcionalmente clara, mant
     </tbody>
 </table>
 
-### 6.2.4. Escenario
+#### 6.2.4. Escenario
 El escenario consiste en una vista cenital inclinada del Jardín santuario, que combina la claridad de la cuadrícula con la calidez del estilo cozy. El espacio jugable se centra en una cuadrícula central de parcelas de tierra rodeada de césped de textura suave. En el borde superior, la Casa de campo y un árbol perenne proyectan sombras suaves sobre las parcelas, un factor de diseño clave. Los tonos son armónicos, enfatizando que este espacio es un refugio de vida y calma frente al mundo exterior. 
 
 El color de las parcelas de tierra cambia visualmente en función de si están fértiles, abonados o secos, es decir, en función del agua y el abono que tengan. 
@@ -1117,7 +1036,7 @@ El color de las parcelas de tierra cambia visualmente en función de si están f
 ![Ejemplo de crecimiento](Recursos/Imágenes/Ejemplo_crecimiento.png)
 
 
-## 6.3. Música
+### 6.3. Música
 La música de _The Living Garden_ busca transmitir serenidad y sensación de refugio emocional. Algunas de las influencias más grandes que se han tenido ha sido el álbum de Mort Garson ***Mother Earth’s Plantasia***, ***Minecraft*** de C418 y ***Ambient 1*** de Brian Eno. Esto implica ciertas técnicas en el sonido que se quiere buscar: Sintetizadores cálidos, acústica suave y textura ambiental para dar vida al movimiento de las plantas.
 
 El enfoque musical se estructura por capas ambientales que evolucionan con el jardín:
@@ -1127,7 +1046,7 @@ El enfoque musical se estructura por capas ambientales que evolucionan con el ja
 - **Eventos climáticos:** variaciones dinámicas (sonidos más densos en sequías, ecos metálicos en tormentas…) para  expresar la tensión del evento natural.
 
 
-## 6.4. Ambiente sonoro
+### 6.4. Ambiente sonoro
 El diseño sonoro refuerza la idea de un ecosistema íntimo, respirando y respondiendo a las acciones del jugador. El objetivo es crear una **atmósfera viva y reactiva**, donde los sonidos contribuyan a la sensación de cuidado y evolución. El ambiente sonoro tendrá las siguientes caracteristicas:
 - **Interactividad ecológica:** cada acción del jugador tiene respuesta sensorial, por ejemplo, regar produce un goteo claro y relajante, abonar genera un sonido terroso y húmedo, las plantas al crecer emiten pequeños “suspiros” o brotes armónicos.
 - **Fauna y vida:** Leo (el loro) aporta calidez y personalidad mediante silbidos y sonidos suaves. Otros sonidos naturales (abejas, ranas, viento, lluvia sobre hojas) aparecen gradualmente a medida que el ecosistema prospera.
@@ -1135,7 +1054,7 @@ El diseño sonoro refuerza la idea de un ecosistema íntimo, respirando y respon
 - **Silencio expresivo:** en los momentos críticos (muerte de una planta, sequía extrema), el paisaje sonoro se apaga parcialmente, reforzando el impacto emocional.
 
 
-## 6.5. Referencias
+### 6.5. Referencias
 Los principales videojuegos que se han tomado de referencia para _The Living Garden_ son el “Animal Crossing” y el “Stardew Valley”, que comparten esa estética cozy, la gestión de cultivos y el ciclo temporal.
 Estas son algunas de las referencias visuales para el diseño del juego:
 <table>
@@ -1155,14 +1074,14 @@ Estas son algunas de las referencias visuales para el diseño del juego:
 </table>
 
 
-# 7. Interfaz
+## 7. Interfaz
 En esta sección se detallarán las pantallas clave que componen la experiencia de _The Living Garden_ manteniendo siempre un diseño que fomente la calma, la claridad y el foco en el entorno natural (acorde con la filosofía _Cozy Game_). Se especificarán las transiciones entre las vistas principales, así como la utilidad y el posicionamiento de cada elemento de la Interfaz Gráfica de Usuario (GUI).
 
-## 7.1. Diagrama de flujo
+### 7.1. Diagrama de flujo
 El siguiente diagrama de flujo muestra las pantallas a lo largo del juego y las transiciones entre ellas:
 ![Diagrama de flujo](Recursos/Imágenes/Diagrama_de_flujo.png)
 
-## 7.2. Diseños básicos de los menús
+### 7.2. Diseños básicos de los menús
 A continuación, se muestran unos bocetos de cómo serían las diferentes pantallas a lo largo del juego y sus botones.
 
 **Menú principal:**
@@ -1191,7 +1110,7 @@ A continuación, se muestran unos bocetos de cómo serían las diferentes pantal
 <img src="Recursos/Imágenes/Guia_rapida.png" alt="Pantalla de guía rápida" width="500">
 
 
-# 8. Hoja de ruta de desarrollo
+## 8. Hoja de ruta de desarrollo
 | Hito | Descripción | Fecha |
 |-----------|-----------|-----------|
 | 1 | GDD | 19/10/25 |
@@ -1199,15 +1118,44 @@ A continuación, se muestran unos bocetos de cómo serían las diferentes pantal
 | 3 | Integración estética | 16/11/25 |
 | 4 | Mecánicas completas | 16/11/25 |
 | 5 | Contenido final y narrativa | 16/11/25 |
-| 6 | Pulido completo | - |
-| 7 | Día de lanzamiento | 12/25 |
+| 6 | Pulido completo | 09/12/2025 |
+| 7 | Día de lanzamiento | 10/10/25 |
 
 
-# 9. Cambios
+## 9. Historial de Versiones y Cambios
 
-Este apartado detalla la evolución del proyecto desde la entrega inicial del GDD (v1) a la presente versión (v2 - Alpha). Los cambios reflejan una definición más profunda de las mecánicas centrales, la implementación de los recursos artísticos finales y el ajuste de la lógica del juego basada en el prototipado.
+### 9.1. Versión v.0.3 Gold Release (Diciembre 2025)
+Esta revisión se centra en la redefinición del modelo de negocio hacia un enfoque social y en la implementación de mecánicas de retención a largo plazo.
 
-## 9.1. Mecánicas de Juego (Core Gameplay)
+#### Modelo de Negocio (Sección 2)
+- **Enfoque "Serious Game"**: Se reorienta el proyecto para optar a financiación institucional y subvenciones culturales/medioambientales, priorizando el valor educativo sobre la monetización agresiva.
+
+- **Publicidad Nativa (Product Placement)**: Se sustituye la publicidad intrusiva por la integración de marcas reales en las herramientas y consumibles del juego (ej. sacos de abono de marca real).
+
+- **Monetización In-Game**: Se han eliminado las ventas de objetos que afectan a la jugabilidad, dejando en la tienda solo objetos cosméticos.
+
+- **Impacto Real**: Se introduce la mecánica de "Retos Comunitarios" donde los logros en el juego se traducen en acciones físicas (plantación de árboles reales) patrocinadas por marcas.
+
+#### Strikes (Sección 4.2.5)
+Se han modificado ligeramente los motivos de los strikes, ya que se ha detectado que esta mecánica era bastante fácil de evadir.
+- **Strike normal**: Cambio de 3 a solo 2 plantas muertas.
+- **Nuevo strike**: Si pasas de día muchas veces sin plantas.
+- **Quitar strike**: Se ha cambiado a que tengas que estar 5 días sin muertes con al menos 3 plantas en el jardín.
+
+#### Plantas (Sección 4.5)
+Se ha ajustado la economía para hacer el juego más interesante, por lo que se han modificado los valores de las diferentes especies. Además se han eliminado las especies que finalmente se ha decidido que no van a estar en el juego.
+
+#### Sistema de temporadas (Sección 4.6)
+- **Sistema de Temporadas**: Para mejorar la retención de usuario se ha incluido, como proyecto para implementar en el futuro, las "Temporadas Trimestrales". Cada temporada desbloquea nuevos biomas globales y colecciones de flora/fauna específicas para mantener la frescura del juego.
+- **Santuario Base**: Se mantiene el gameplay original, pero se añade un entorno persistente y seguro que no se resetea. Aquí el jugador conserva y colecciona las especies "rescatadas" en las expediciones, permitiendo la personalización y la venta de cosméticos.
+
+#### Tutorial (Sección 5.4)
+El tutorial era demasiado pesado y no se entendía, por lo que además de modificar su implementación, se ha modificado su guión.
+
+
+### 9.2. Versión v.0.2 Beta (Octubre 2025) 
+
+#### Mecánicas de Juego (Core Gameplay)
 
 El cambio más significativo se encuentra en la profundización y definición de las mecánicas de juego, que han pasado de ser conceptos generales a reglas de sistema específicas:
 
@@ -1225,13 +1173,13 @@ Ingreso Base (+1 pétalo, solo si se tienen plantas).
 * Adquisición de Recursos (Agua/Abono) (Sección 4.2.1): Se ha establecido la fórmula de adquisición diaria de recursos: 0 si no hay biodiversidad, o 1 + Biodiversidad Actual si hay más de 0.
 * Definición de Victoria y Biodiversidad (Sección 4.2.5): Se ha establecido el objetivo de victoria en 10 puntos de Biodiversidad. Se ha definido la fórmula de cálculo de biodiversidad: (Nº de especies únicas en estado 'Brote' o superior) + (1 si hay Polinizadores) + (1 si hay Fauna de Refugio).
 
-## 9.2. Interfaz y Arte (UI/UX y Assets)
+#### Interfaz y Arte (UI/UX y Assets)
 
 El GDD v1 presentaba bocetos y arte conceptual. La v2 integra los recursos finales:
 * Implementación de la Interfaz Final (Sección 7.2): Se han reemplazado todos los bocetos dibujados a mano por los diseños y capturas de la interfaz (UI) finales del juego, incluyendo la Pantalla de Juego, Menú Principal, Ajustes y Créditos.
 * Integración de Recursos Artísticos (Assets) (Sección 6.2): Todos los placeholders han sido reemplazados por los sprites 2D finales de las plantas (mostrando sus 3 estados de salud) , los personajes (Leo) , los objetos (herramientas, monedas) y el escenario de juego.
 
-## 9.3. Narrativa y Documentación
+#### Narrativa y Documentación
 
 * Guión Completo del Tutorial (Sección 5.4): Se ha redactado el guión completo y detallado del tutorial, guiado por el personaje Leo. El guión ahora explica todas las mecánicas principales implementadas (ciclo de día, categorías de plantas, clima, plagas, strikes) .
 * Detalle de Objetos (Sección 4.5): La lista de plantas se ha formalizado en una tabla detallada que especifica todos sus atributos de gameplay (coste, tiempos de crecimiento, demandas de agua/abono/sol, categoría).
