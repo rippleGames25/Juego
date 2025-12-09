@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,6 +36,11 @@ public class ResourceShopItem : MonoBehaviour
 
     public void BuyItem()
     {
+        if (TutorialManager.Instance != null && TutorialManager.Instance.isDialogActive)
+        {
+            return;
+        }
+
         if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
@@ -43,13 +48,14 @@ public class ResourceShopItem : MonoBehaviour
         }
 
         SFXManager.Instance?.PlayClick();
-        
-        if(resource == "agua")
+
+        if (resource == "agua")
         {
             ++GameManager.Instance.CurrentWater;
             --GameManager.Instance.CurrentMoney;
             Debug.Log($"Compra de {resource} realizada.");
-        } else if (resource == "abono")
+        }
+        else if (resource == "abono")
         {
             ++GameManager.Instance.CurrentFertilizer;
             --GameManager.Instance.CurrentMoney;

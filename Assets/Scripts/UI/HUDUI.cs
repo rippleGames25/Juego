@@ -19,6 +19,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private GameObject helpPanel;
     [SerializeField] private GameObject inputBlockerPanel;
 
+
     // Panel del Dia
     [Header("Resumen Día")]
     [SerializeField] private TextMeshProUGUI summaryBaseIncomeText;
@@ -97,7 +98,10 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TMP_Text dayTransitionText;    // texto "Día X"
     [SerializeField] private float dayFadeDuration = 0.4f;  // tiempo de fade in/out
     [SerializeField] private float dayHoldDuration = 0.3f;  // tiempo en blanco
-    
+    public float DayFadeDuration => dayFadeDuration;
+    public float DayHoldDuration => dayHoldDuration;
+
+
 
     [Header("Textos para localizacion")]
     [SerializeField] private LocalizedString dayLS;
@@ -110,8 +114,18 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private LocalizedString strikeRemovedNoDeathLS;
     [SerializeField] private LocalizedString strikeRemoveBiodiversityLS;
 
+    [Header("Botones HUD")]
+    [SerializeField] private Button pauseButton;
+    [SerializeField] private Button settingsButton;
+    [SerializeField] private Button helpButton;
+    [SerializeField] private Button passDayButton;
+    [SerializeField] private List<Button> extraHUDButtons; 
+
+
     [SerializeField] GameObject toolsRoot;
     [SerializeField] GameObject plotsGrid;
+
+    public LeoIntroUI leoIntroUI;
 
     // Variables privadas
     private Plot currentlySelectedPlot;
@@ -187,17 +201,48 @@ public class HUDUI : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (TutorialManager.Instance != null)
+        {
+            bool dialogActive = TutorialManager.Instance.isDialogActive;
+
+            // Desactivar botones si hay tutorial, activarlos si no
+            SetHUDButtonsInteractable(!dialogActive);
+        }
+    }
+
+
     #region Metodos para botones
+    private bool IsTutorialDialogActive()
+    {
+        return TutorialManager.Instance != null && TutorialManager.Instance.isDialogActive;
+    }
     public void LetterButton()
     {
         SFXManager.Instance?.PlayClick();
 
-        StartCoroutine(DayTransitionRoutine());
         letterPanel.SetActive(false);
+
+        if (leoIntroUI != null)
+        {
+            leoIntroUI.Show();
+        }
+        else
+        {
+            Debug.LogWarning("[HUDUI] LeoIntroUI no asignado, arrancando juego directamente.");
+            StartCoroutine(DayTransitionRoutine());
+        }
     }
 
     public void PauseButton()
     {
+        if (IsTutorialDialogActive())
+        {
+            Debug.Log("[HUDUI] Ignorando pausa: hay un diálogo de tutorial activo.");
+            return;
+        }
+
         if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
@@ -213,6 +258,12 @@ public class HUDUI : MonoBehaviour
 
     public void SettingsButton()
     {
+        if (IsTutorialDialogActive())
+        {
+            Debug.Log("[HUDUI] Ignorando ajustes: hay un diálogo de tutorial activo.");
+            return;
+        }
+
         if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
@@ -239,6 +290,12 @@ public class HUDUI : MonoBehaviour
 
     public void PassDayButton()
     {
+
+        if (IsTutorialDialogActive())
+        {
+            Debug.Log("[HUDUI] Ignorando pasar día: hay un diálogo de tutorial activo.");
+            return;
+        }
 
         nextButtonPressed = false;
 
@@ -269,6 +326,12 @@ public class HUDUI : MonoBehaviour
 
     public void HelpButton()
     {
+        if (IsTutorialDialogActive())
+        {
+            Debug.Log("[HUDUI] Ignorando ayuda: hay un diálogo de tutorial activo.");
+            return;
+        }
+
         if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
@@ -346,6 +409,11 @@ public class HUDUI : MonoBehaviour
         }
 
         summaryPanel.SetActive(true);
+
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.NotifyFirstDaySummaryShown();
+        }
     }
 
     public void OnDynamicInfoPanel_InfoButtonClick()
@@ -428,6 +496,12 @@ public class HUDUI : MonoBehaviour
 
     private void ShowInfoPanel(Plot plot)
     {
+
+        if (TutorialManager.Instance != null && TutorialManager.Instance.isDialogActive)
+        {
+            return;
+        }
+
         if (currentlySelectedPlot != null)
         {
             currentlySelectedPlot.OnPlotDataUpdated -= UpdatePlotInfoPanelText;
@@ -816,6 +890,16 @@ public class HUDUI : MonoBehaviour
             dayTransitionText.color = textColor;
             dayTransitionText.gameObject.SetActive(false);
         }
+
+        if (TutorialManager.Instance != null &&
+                GameManager.Instance != null &&
+                GameManager.Instance.CurrentDay == 1 &&
+                TutorialManager.Instance.wantsDay1Tutorial &&
+                TutorialManager.Instance.hasChosenAtStart)
+        {
+            Debug.Log("[HUDUI] Lanzando ShowDay1Intro desde DayTransitionRoutine");
+            TutorialManager.Instance.ShowDay1Intro();
+        }
     }
     #endregion
 
@@ -853,4 +937,35 @@ public class HUDUI : MonoBehaviour
             currentlySelectedPlot.OnPlotDataUpdated -= UpdatePlotInfoPanelText;
         }
     }
+
+    public void StartGameAfterLeoIntro()
+    {
+        StartCoroutine(DayTransitionRoutine());
+    }
+
+    private void SetHUDButtonsInteractable(bool interactable)
+    {
+        SetButtonState(pauseButton, interactable);
+        SetButtonState(settingsButton, interactable);
+        SetButtonState(helpButton, interactable);
+        SetButtonState(passDayButton, interactable);
+
+        foreach (var btn in extraHUDButtons)
+            SetButtonState(btn, interactable);
+    }
+
+    private void SetButtonState(Button btn, bool interactable)
+    {
+        if (btn == null) return;
+
+        btn.interactable = interactable;
+
+        // Ajustar alpha visual
+        CanvasGroup cg = btn.GetComponent<CanvasGroup>();
+        if (cg == null) cg = btn.gameObject.AddComponent<CanvasGroup>();
+
+        cg.alpha = interactable ? 1f : 0.4f;
+    }
+
+
 }

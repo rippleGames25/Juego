@@ -222,6 +222,12 @@ public class Plant : MonoBehaviour
         UpdateEnvironmentEffect();
 
         Debug.Log($"La planta {plantData.plantName} ha sido infectada por una plaga");
+
+        // Avisar al tutorial (primera plaga)
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.NotifyPlantInfected(this);
+        }
     }
 
     public void CurePlague()

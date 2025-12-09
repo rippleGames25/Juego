@@ -444,7 +444,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-
         newPlant.InitializePlant(plantData, plot);
 
         plot.currentPlant = newPlant;
@@ -452,13 +451,29 @@ public class GameManager : MonoBehaviour
 
         plot.UpdatePollinatorVisual();
 
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.NotifyFirstPlantPlaced(plot);          
+            TutorialManager.Instance.NotifyPlantCategoryPlanted(plantData); 
+        }
+
         CurrentTool = ToolType.None;
         SFXManager.Instance?.PlayPlantar();
 
         Debug.Log($"Semilla de {plantData.plantName} plantada en la parcela {plot.gridCoordinates}");
 
         UpdateBiodiversityScore();
+
+        // Avisar al tutorial (solo interesa en el Día 1 y si el jugador quiso ayuda)
+        if (TutorialManager.Instance != null &&
+            TutorialManager.Instance.wantsDay1Tutorial &&
+            TutorialManager.Instance.hasChosenAtStart &&
+            CurrentDay == 1)
+        {
+            TutorialManager.Instance.NotifyFirstPlantPlaced(plot);
+        }
     }
+
 
     public void ShowPlantTypePanel(PlantType plantType)
     {
@@ -536,6 +551,11 @@ public class GameManager : MonoBehaviour
     private void HandleWeatherEvent()
     {
         currentWeather = WeatherManager.Instance.PassDay();
+
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.NotifyDailyWeather(currentWeather);
+        }
     }
 
     private void ApplyDailyResourcesAndPenalties()

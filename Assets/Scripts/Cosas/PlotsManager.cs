@@ -225,19 +225,26 @@ public class PlotsManager : MonoBehaviour
     public void PlotSelected(Plot _plot)
     {
         // Si hace click en la parcela ya seleccionada
-        if(currentSelectedPlot!= null && currentSelectedPlot == _plot)
+        if (currentSelectedPlot != null && currentSelectedPlot == _plot)
         {
             PlotUnselected(currentSelectedPlot);
             return;
         }
 
         // Si hace click en una parcela que no esta seleccionada
-        if(currentSelectedPlot!=null) PlotUnselected(currentSelectedPlot);
+        if (currentSelectedPlot != null) PlotUnselected(currentSelectedPlot);
         currentSelectedPlot = _plot;
         currentSelectedPlot.selectionBorder.SetActive(true);
 
-        OnPlotSelected?.Invoke(currentSelectedPlot); 
+        OnPlotSelected?.Invoke(currentSelectedPlot);
+
+        // Avisar al tutorial (para el paso de "haz clic en la parcela")
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.NotifyPlotSelectedDuringDay1(currentSelectedPlot);
+        }
     }
+
 
     public void PlotUnselected(Plot plot)
     {
@@ -458,16 +465,26 @@ public class PlotsManager : MonoBehaviour
     #region Plague Methods
     public void DailyPlagueUpdate()
     {
-        // 1. Vemos si alguna planta se
+        // 1. Intentar curar plagas en plantas protegidas por fauna
         foreach (Plot plot in plotGrid)
         {
             if (!plot.isPlanted || plot.currentPlant == null) continue;
 
             if (plot.IsProtected && plot.currentPlant.isPlagued)
             {
-                plot.currentPlant.CurePlague();
+                // Guardar referencia antes de curar (por claridad)
+                Plant p = plot.currentPlant;
+
+                p.CurePlague();
+
+                // Avisar al tutorial (primera vez que ves una plaga limpiada por fauna)
+                if (TutorialManager.Instance != null)
+                {
+                    TutorialManager.Instance.NotifyPlagueCuredByFauna(p);
+                }
             }
         }
+
 
         // 2. Extender plagas existentes
         HashSet<Plant> plantsToInfect = new HashSet<Plant>();

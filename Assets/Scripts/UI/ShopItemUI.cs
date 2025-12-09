@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
@@ -58,6 +58,11 @@ public class ShopItemUI : MonoBehaviour
 
     public void SelectItem()
     {
+        if (TutorialManager.Instance != null && TutorialManager.Instance.isDialogActive)
+        {
+            return;
+        }
+
         if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
@@ -72,8 +77,14 @@ public class ShopItemUI : MonoBehaviour
         }
     }
 
+
     public void ShowInfoPanel()
     {
+        if (TutorialManager.Instance != null && TutorialManager.Instance.isDialogActive)
+        {
+            return;
+        }
+
         if (GameManager.Instance.CurrentTool != ToolType.None)
         {
             GameManager.Instance.CurrentTool = ToolType.None;
@@ -86,4 +97,5 @@ public class ShopItemUI : MonoBehaviour
             GameManager.Instance.ShowPlantTypePanel(plantData);
         }
     }
+
 }

@@ -246,6 +246,15 @@ public class Plot : MonoBehaviour
 
                     SFXManager.Instance?.PlayRegar();
 
+                    // Notificar al tutorial
+                    if (TutorialManager.Instance != null &&
+                        TutorialManager.Instance.initialTutorialActive)
+                    {
+                        TutorialManager.Instance.hasWateredOnce = true;
+                        TutorialManager.Instance.CheckBasicCareCompleted();
+                    }
+
+
                     OnPlotDataUpdated?.Invoke(this);
 
                     Debug.Log($"Parcela {this.gridCoordinates} regada -> {currentWater} de agua");
@@ -274,6 +283,15 @@ public class Plot : MonoBehaviour
                     this.UpdatePlotFertilizerVisuals();
 
                     SFXManager.Instance?.PlayAbonar();
+
+                    // Notificar al tutorial
+                    if (TutorialManager.Instance != null &&
+                        TutorialManager.Instance.initialTutorialActive)
+                    {
+                        TutorialManager.Instance.hasFertilizedOnce = true;
+                        TutorialManager.Instance.CheckBasicCareCompleted();
+                    }
+
 
                     OnPlotDataUpdated?.Invoke(this);
 
@@ -306,17 +324,29 @@ public class Plot : MonoBehaviour
                     Debug.Log($"Parcela {gridCoordinates} ocupada.");
                 }
                 break;
+
             case ToolType.Shovel:
                 if (this.isPlanted)
                 {
+                    bool hadPlague = (currentPlant != null && currentPlant.isPlagued);
+
                     SFXManager.Instance?.PlayDesplantar();
+
+                    // Avisar al tutorial SI la planta tenía plaga
+                    if (hadPlague && TutorialManager.Instance != null)
+                    {
+                        TutorialManager.Instance.NotifyPlaguedPlantRemovedWithShovel(currentPlant);
+                    }
+
                     RemovePlant();
-                } else
+                }
+                else
                 {
                     SFXManager.Instance?.PlayDenegar();
                     Debug.Log($"En la parcela {gridCoordinates} no hay ninguna planta.");
                 }
                 break;
+
         }
     }
 
