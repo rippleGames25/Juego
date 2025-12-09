@@ -47,7 +47,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1924164046848
-    m_Localized: 'Music: Mother Earth''s Plantasia - Mort Garson (1976)'
+    m_Localized: 'Gameplay Music: Garden/Home - Zef Parisoto (2014)'
     m_Metadata:
       m_Items: []
   - m_Id: 1890244710400
@@ -59,11 +59,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1766055563264
-    m_Localized: Programming, Music and SFX
+    m_Localized: Programming and SFX
     m_Metadata:
       m_Items: []
   - m_Id: 1723974111232
-    m_Localized: Game Design, Programming and Music
+    m_Localized: Game Design and Programming
     m_Metadata:
       m_Items: []
   - m_Id: 1695595450368
@@ -229,6 +229,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 103887098695680
     m_Localized: STRIKE OUT! \n You managed to add 3 species to the biodiversity.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 548089217503232
+    m_Localized: 'Menu Music: Garden Harmony - Developi Penelope (2025)'
     m_Metadata:
       m_Items: []
   references:

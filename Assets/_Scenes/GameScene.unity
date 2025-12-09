@@ -4876,7 +4876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116, y: 194}
+  m_AnchoredPosition: {x: 116, y: 290}
   m_SizeDelta: {x: 76, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &464141728
@@ -13109,7 +13109,6 @@ MonoBehaviour:
   summaryDiversityBonusText: {fileID: 512920974}
   summarySolarBonusText: {fileID: 804833576}
   summaryDeathPenaltyText: {fileID: 216762461}
-  summaryBailoutText: {fileID: 1546319245}
   summaryTotalIncomeText: {fileID: 249879604}
   summaryWaterIncomeText: {fileID: 1116400275}
   summaryFertilizerIncomeText: {fileID: 464141729}
@@ -13128,8 +13127,8 @@ MonoBehaviour:
   - {fileID: 3289568641860738439}
   - {fileID: 6766356052296172397}
   - {fileID: 9147654639109364168}
-  strikeColor_Normal: {r: 0.7254902, g: 0.5176471, b: 0.050980393, a: 1}
-  strikeColor_Permanent: {r: 0.9019608, g: 0.19215687, b: 0.21960784, a: 1}
+  strikeColor_Normal: {r: 0.80754715, g: 0.7810375, b: 0.5363332, a: 1}
+  strikeColor_Permanent: {r: 0.5660378, g: 0.32680672, b: 0.33768085, a: 1}
   strikeWarningPrefab: {fileID: 7112562739806245997, guid: cc7c699bf7a67014d9a7c9aec00be2df, type: 3}
   currentWeatherText: {fileID: 1336006280}
   forecastText:

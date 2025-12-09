@@ -30,7 +30,6 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI summaryDiversityBonusText;
     [SerializeField] private TextMeshProUGUI summarySolarBonusText;
     [SerializeField] private TextMeshProUGUI summaryDeathPenaltyText;
-    [SerializeField] private TextMeshProUGUI summaryBailoutText;
     [SerializeField] private TextMeshProUGUI summaryTotalIncomeText;
     [SerializeField] private TextMeshProUGUI summaryWaterIncomeText;
     [SerializeField] private TextMeshProUGUI summaryFertilizerIncomeText;
@@ -427,19 +426,6 @@ public class HUDUI : MonoBehaviour
 
         if (summaryWaterIncomeText) summaryWaterIncomeText.text = $"+{waterIncome}";
         if (summaryFertilizerIncomeText) summaryFertilizerIncomeText.text = $"+{fertilizerIncome}";
-        if (summaryBailoutText)
-        {
-            if (bailoutIsPending)
-            {
-                summaryBailoutText.text = bailout.GetLocalizedString();
-                summaryBailoutText.gameObject.SetActive(true);
-            }
-            else
-            {
-                summaryBailoutText.text = "";
-                summaryBailoutText.gameObject.SetActive(false);
-            }
-        }
 
         summaryPanel.SetActive(true);
 
@@ -494,7 +480,7 @@ public class HUDUI : MonoBehaviour
             plantTypeFertilizerDemandText.text = $"{plantType.fertilizerDemand.ToString()}";
 
         if (plantTypeToMature != null)
-            plantTypeToMature.text = $"{timeToMatureLS.GetLocalizedString()}:\n {plantType.timeToMature.ToString()} {daysLS.GetLocalizedString()}";
+            plantTypeToMature.text = $"{timeToMatureLS.GetLocalizedString()}\n {plantType.timeToMature.ToString()} {daysLS.GetLocalizedString()}";
 
         if (plantTypeSolarDemandImage != null && solarSprites != null && solarSprites.Count > 0)
         {
