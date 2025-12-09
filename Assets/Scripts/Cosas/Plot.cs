@@ -332,7 +332,7 @@ public class Plot : MonoBehaviour
 
                     SFXManager.Instance?.PlayDesplantar();
 
-                    // Avisar al tutorial SI la planta tenía plaga
+                    // Avisar al tutorial
                     if (hadPlague && TutorialManager.Instance != null)
                     {
                         TutorialManager.Instance.NotifyPlaguedPlantRemovedWithShovel(currentPlant);

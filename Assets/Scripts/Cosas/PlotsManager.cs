@@ -238,7 +238,7 @@ public class PlotsManager : MonoBehaviour
 
         OnPlotSelected?.Invoke(currentSelectedPlot);
 
-        // Avisar al tutorial (para el paso de "haz clic en la parcela")
+        // Avisar al tutorial
         if (TutorialManager.Instance != null)
         {
             TutorialManager.Instance.NotifyPlotSelectedDuringDay1(currentSelectedPlot);
@@ -477,7 +477,7 @@ public class PlotsManager : MonoBehaviour
 
                 p.CurePlague();
 
-                // Avisar al tutorial (primera vez que ves una plaga limpiada por fauna)
+                // Avisar al tutorial
                 if (TutorialManager.Instance != null)
                 {
                     TutorialManager.Instance.NotifyPlagueCuredByFauna(p);
