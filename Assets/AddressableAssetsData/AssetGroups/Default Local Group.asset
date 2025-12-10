@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 0559edf8b9435f245a341c9f0345d81f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: c41005c129ba4d66911b75229fd70b45
+    m_Address: Sprite Assets/EmojiOne
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cbb2b52e75aaba9419e264a58358bb41, type: 2}
   m_SchemaSet:

@@ -4,6 +4,7 @@ using TMPro;
 using System.Linq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class ShopItemUI : MonoBehaviour
 {
@@ -23,21 +24,54 @@ public class ShopItemUI : MonoBehaviour
     public void Setup(PlantType dataToSetup)
     {
         plantData = dataToSetup;
-
         if (plantData == null) return;
 
-        nameText.text = plantData.plantName.GetLocalizedString();
-        typeText.text = plantData.TypeToString();
+        nameText.text = "...";
+
+        var nameOperation = plantData.plantName.GetLocalizedStringAsync();
+
+        if (nameOperation.IsDone)
+        {
+            nameText.text = nameOperation.Result;
+        }
+        else
+        {
+            nameOperation.Completed += (AsyncOperationHandle<string> obj) =>
+            {
+                if (this != null && obj.Status == AsyncOperationStatus.Succeeded)
+                {
+                    nameText.text = obj.Result;
+                }
+            };
+        }
+
+        try
+        {
+            typeText.text = plantData.TypeToString();
+        }
+        catch
+        {
+            typeText.text = "Type Error";
+        }
+
         priceText.text = plantData.price.ToString();
-        solarExposure.sprite = solarSprites[(int)plantData.solarExposureDemand];
 
-        plantImage.sprite = plantData.shopSprite;
-        
+        if (plantData.solarExposureDemand >= 0 && (int)plantData.solarExposureDemand < solarSprites.Count)
+        {
+            solarExposure.sprite = solarSprites[(int)plantData.solarExposureDemand];
+        }
 
+        if (plantData.shopSprite != null)
+        {
+            plantImage.sprite = plantData.shopSprite;
+        }
+
+        // Lógica del botón
+        GameManager.Instance.OnMoneyChanged -= UpdateItemAvailability; // Prevenir duplicados
         GameManager.Instance.OnMoneyChanged += UpdateItemAvailability;
-
         UpdateItemAvailability(GameManager.Instance.CurrentMoney);
 
+        buyButton.onClick.RemoveAllListeners();
         buyButton.onClick.AddListener(SelectItem);
     }
 
