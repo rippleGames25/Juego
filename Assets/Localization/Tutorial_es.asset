@@ -1,0 +1,306 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tutorial_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 726c634dc02dbea4e96bad08be5823fa, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 10823225344
+    m_Localized: "Buenos d\xEDas, Curador.\\nSoy Leo, y estar\xE9 contigo para ayudarte
+      a despertar este santuario."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 240109047808
+    m_Localized: "A tu izquierda tienes la tienda.\\nAqu\xED puedes elegir semillas
+      para plantar.\\nTambi\xE9n puedes comprar agua y abono, pero cuidado con no
+      quedarte sin p\xE9talos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256873680896
+    m_Localized: "Ah, y no olvides mirar el pron\xF3stico del clima, Curador.\\nArriba
+      a la derecha ver\xE1s el tiempo de los pr\xF3ximos d\xEDas.\\nEl clima puede
+      ayudarte\u2026 o sorprenderte, as\xED que cons\xFAltalo a menudo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270651969536
+    m_Localized: "Curador\u2026 antes de seguir, hay algo importante.\\nLa biodiversidad
+      es la vida del Santuario.\\nAumenta cada vez que logras hacer crecer distintas
+      especies,\\ny baja si alguna planta muere.\\nCuanta m\xE1s biodiversidad tengas,
+      m\xE1s p\xE9talos ganar\xE1s cada d\xEDa\u2026\\ny si alcanzas el objetivo,
+      \xA1restaurar\xE1s el Santuario!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310036484096
+    m_Localized: "\xA1Perfecto, Curador!\\nHas plantado tu primera especie en el
+      Santuario."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327434457088
+    m_Localized: "Ahora toca cuidarla bien.\\nUsa la regadera para darle agua y el
+      abono para enriquecer el suelo.\\nTambi\xE9n puedes hacer uso de la pala para
+      quitar plantas, recuperar\xE1s parte de la inversi\xF3n.\\nCuanto mejor atendida
+      est\xE9 la parcela, m\xE1s fuerte crecer\xE1 la planta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 360934363136
+    m_Localized: "Esta es la ficha de la parcela.\\nAqu\xED ves cu\xE1nta agua y
+      abono tiene el suelo y qu\xE9 exposici\xF3n solar recibe.\\nSi hay una planta,
+      tambi\xE9n ver\xE1s su estado y sus necesidades."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 379183779840
+    m_Localized: "\xA1Vaya, Curador!\\nVeo que ya dominas los cuidados b\xE1sicos
+      de una planta.\\nSi alguna vez se te olvida algo, puedes consultar la gu\xEDa
+      r\xE1pida con el bot\xF3n de la interrogaci\xF3n arriba"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386020495360
+    m_Localized: "Este es el resumen del d\xEDa, Curador.\\nAqu\xED ves cu\xE1ntos
+      p\xE9talos has ganado, los bonos por tu jard\xEDn\\ny las p\xE9rdidas por plantas
+      muertas o usar la pala.\\n\\nTambi\xE9n ver\xE1s si recibes agua o abono extra.\\n\xC9chale
+      un vistazo cada noche para entender c\xF3mo evoluciona el Santuario."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 406518059008
+    m_Localized: "Vaya, Curador\u2026 hoy tenemos un d\xEDa soleado.\\nEl sol no
+      riega el suelo, al contrario: poco a poco lo va secando."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429381210112
+    m_Localized: "F\xEDjate bien en el pron\xF3stico de arriba a la derecha:\\nel
+      sol puede aparecer con tres intensidades.\\n\u2022 Intensidad 1: a veces seca
+      1 punto de agua de las parcelas.\\n\u2022 Intensidad 2: puede secar 1 o 2 puntos.\\n\u2022
+      Intensidad 3: puede llegar a secar hasta 3 puntos de agua."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445046935552
+    m_Localized: "El sol por s\xED solo no mata plantas,\\npero si dejas el suelo
+      demasiado seco, tus plantas sufrir\xE1n luego\\npor falta de recursos.\\nVe
+      revisando el agua de tus parcelas y riega cuando lo necesiten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459987046400
+    m_Localized: "Hoy el cielo est\xE1 cubierto, Curador.\\nEste clima es muy tranquilo:
+      no riega ni seca el suelo, da igual la intensidad."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 494560694272
+    m_Localized: "Piensa en \xE9l como un respiro para el jard\xEDn:\\npuedes aprovechar
+      para planificar, reorganizar tus plantas\\ny prepararte para d\xEDas m\xE1s
+      duros."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 514034847744
+    m_Localized: "Vaya, Curador\u2026 hoy llueve en el Santuario.\\nLa lluvia siempre
+      aumenta el agua del suelo de todas las parcelas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 532028411904
+    m_Localized: "F\xEDjate bien en el pron\xF3stico, porque la lluvia tambi\xE9n
+      tiene tres intensidades:\\n\u2022 Intensidad 1: lluvia suave, a\xF1ade +2 de
+      agua.\\n\u2022 Intensidad 2: lluvia moderada, a\xF1ade +4 de agua.\\n\u2022
+      Intensidad 3: lluvia torrencial, a\xF1ade +6 de agua y puede poner en peligro
+      a las plantas d\xE9biles."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 548642050048
+    m_Localized: "La lluvia suave y moderada son perfectas para recuperar parcelas
+      secas.\\nPero con lluvia torrencial, las plantas con mala salud pueden llegar
+      a morir.\\nSi ves una lluvia muy fuerte acercarse en el pron\xF3stico,\\nintenta
+      que tus plantas est\xE9n lo m\xE1s sanas posible antes de que llegue."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 565972914176
+    m_Localized: "Vaya, Curador\u2026 hoy cae granizo.\\nEs uno de los climas m\xE1s
+      peligrosos para tu jard\xEDn."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 580728475648
+    m_Localized: "Al igual que la lluvia, el granizo puede caer con tres intensidades\\ny
+      tambi\xE9n a\xF1ade algo de agua al suelo:\\n\u2022 Intensidad 1: granizo ligero,
+      +1 de agua.\\n\u2022 Intensidad 2: granizo moderado, +2 de agua.\\n\u2022 Intensidad
+      3: granizo fuerte, +3 de agua y un golpe muy duro."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 597744766976
+    m_Localized: "Lo importante del granizo no es el agua, sino el da\xF1o:\\nen
+      cualquiera de sus intensidades puede matar plantas que est\xE9n en mala salud,\\ny
+      cuanto m\xE1s fuerte es, m\xE1s sufren incluso las que est\xE1n s\xF3lo moderadas.\\nSi
+      en el pron\xF3stico ves granizo acercarse,\\nintenta que tus plantas lleguen
+      a ese d\xEDa lo m\xE1s sanas posible."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 616304562176
+    m_Localized: "Curador\u2026 acabas de recibir un strike.\\nSon avisos de que
+      el Santuario est\xE1 en peligro.\\nSi llegas a 5 strikes (amarillos o rojos),\\nel
+      Santuario colapsar\xE1 y perder\xE1s la partida."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 632662347776
+    m_Localized: "Los strikes normales aparecen cuando descuidas el jard\xEDn:\\n\u2022
+      Cada 2 plantas que mueren suma 1 strike.\\n\u2022 Y tambi\xE9n si pasas varios
+      d\xEDas sin plantar\\n teniendo p\xE9talos suficientes para hacerlo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647162056704
+    m_Localized: "La parte buena es que los strikes normales se pueden quitar.\\nSi
+      mantienes al menos 3 plantas vivas\\ny pasas 5 d\xEDas seguidos sin que muera
+      ninguna,\\nel Santuario perdonar\xE1 uno de tus strikes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 661791789056
+    m_Localized: "Esta vez es m\xE1s grave, Curador\u2026\\nTe has quedado sin plantas
+      y sin p\xE9talos suficientes\\npara volver a plantar.\\n\\nEl Santuario te
+      ha dado algunos p\xE9talos para ayudarte,\\npero a cambio has recibido un strike
+      permanente rojo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 676891283456
+    m_Localized: "Los strikes permanentes no se pueden limpiar nunca.\\nCuentan igual
+      para el l\xEDmite de 5 strikes,\\nas\xED que intenta no volver a quedarte sin
+      jard\xEDn."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693374898176
+    m_Localized: "\xA1Muy bien, Curador!\\nHas cuidado tan bien de tu jard\xEDn durante
+      varios d\xEDas\\nque el Santuario ha decidido perdonarte un strike normal.\\nSi
+      sigues manteniendo tus plantas sanas,\\npodr\xE1s limpiar m\xE1s avisos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 709200007168
+    m_Localized: "Curador\u2026 veo que una de tus plantas ha sido atacada por una
+      plaga.\\nLa reconocer\xE1s por el icono que aparece sobre ella.\\nNo la mata
+      al instante, pero es una mala se\xF1al para el Santuario."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 724324667392
+    m_Localized: "Mientras tenga plaga, esa planta no podr\xE1 recuperar salud,\\naunque
+      la riegues y abones correctamente.\\nY si es una productora, dejar\xE1 de darte
+      frutos\\naunque tenga polinizadores cerca."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743429722112
+    m_Localized: "Para librarte de las plagas tienes dos caminos:\\n\u2022 Plantar
+      refugios de fauna cerca: protegen las parcelas adyacentes\\n y con los d\xEDas
+      la fauna puede limpiar la plaga.\\n\u2022 Usar la pala sobre la planta infectada:
+      eliminas la planta\\n y tambi\xE9n la plaga de esa parcela, pero pierdes parte
+      de lo invertido.\\nCombina refugios, productoras y polinizadores para que tu
+      jard\xEDn\\nsea resistente a futuras plagas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761666555904
+    m_Localized: "\xBFLo ves, Curador?\\nLa fauna del refugio ha limpiado la plaga
+      de esa planta.\\nLas plantas de refugio protegen las parcelas cercanas\\ny
+      con el tiempo pueden curar las plagas que haya en su \xE1rea."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 779160997888
+    m_Localized: "Si tienes muchas productoras importantes,\\ncompensa rodearlas
+      de refugios de fauna.\\nAs\xED evitas nuevas plagas y, si aparece alguna,\\nla
+      fauna tendr\xE1 d\xF3nde vivir para poder limpiarla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 794914803712
+    m_Localized: "Cuando usas la pala sobre una planta con plaga,\\neliminas la planta
+      y tambi\xE9n la plaga de esa parcela.\\nEs una soluci\xF3n r\xE1pida cuando
+      la infecci\xF3n est\xE1 fuera de control,\\npero perder\xE1s parte de los p\xE9talos
+      que invertiste.\\n\xDAsala para cortar plagas dif\xEDciles mientras redise\xF1as
+      el jard\xEDn\\ncon m\xE1s refugios de fauna alrededor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810333065216
+    m_Localized: "Has plantado una productora, Curador.\\nSon las plantas que generan
+      p\xE9talos, pero necesitan un buen entorno para hacerlo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825214455808
+    m_Localized: "Para producir frutos necesitan cumplir tres condiciones:\\n\u2022
+      Estar en buena o moderada salud.\\n\u2022 Estar libres de plagas.\\n\u2022
+      Tener polinizadores cerca (de una atractora sana)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 838325850112
+    m_Localized: "Piensa en ellas como el coraz\xF3n econ\xF3mico del Santuario.\\nProt\xE9gelas
+      con refugios de fauna y sit\xFAalas en la exposici\xF3n solar adecuada\\npara
+      que den lo mejor de s\xED."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 855128231936
+    m_Localized: "Has plantado una planta de sombra.\\nSu funci\xF3n es modificar
+      la luz de las parcelas cercanas cuando crece lo suficiente."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 869820878848
+    m_Localized: La sombra puede transformar una zona soleada en semisombra o sombra.\nEsto
+      ayuda a plantas que sufren con demasiado sol,\npero puede perjudicar a las
+      que necesitan luz directa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 880763817984
+    m_Localized: "Si colocas varias plantas de sombra alrededor de una parcela,\\nla
+      acumulaci\xF3n puede generar zonas muy umbr\xEDas.\\n\xDAsalas para ajustar
+      la exposici\xF3n solar al tipo exacto que cada especie necesita."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 900678373376
+    m_Localized: Acabas de plantar una atractora de polinizadores.\nEstas plantas
+      atraen la vida necesaria para que tus productoras puedan dar frutos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933423304704
+    m_Localized: "Las parcelas cercanas recibir\xE1n polinizadores.\\nSin ellos,
+      las productoras no generan p\xE9talos aunque est\xE9n sanas.\\nCol\xF3calas
+      estrat\xE9gicamente para alimentar varias productoras a la vez."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 954843615232
+    m_Localized: "Recuerda: polinizadores + productoras sanas = econom\xEDa fuerte.\\nCuida
+      tambi\xE9n de las atractoras, porque si enferman o mueren,\\nlas productoras
+      dejar\xE1n de recibir polinizadores."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977618685952
+    m_Localized: Has plantado un refugio de fauna.\nEstas plantas atraen animales
+      que protegen el Santuario.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 995645804544
+    m_Localized: "La fauna evita que aparezcan plagas en las parcelas cercanas\\ny
+      adem\xE1s puede llegar a curar plagas existentes con el paso de los d\xEDas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1012976668672
+    m_Localized: Son esenciales para que tus productoras y atractoras no queden inutilizadas.\nDistribuye
+      los refugios alrededor de las zonas importantes\npara mantener a raya las plagas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36219884752896
+    m_Localized: "Ya me las apa\xF1o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36192206540800
+    m_Localized: "Gu\xEDame, Leo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36095959846912
+    m_Localized: "\xA1Buenos d\xEDas, Curador!\n\nNo me suena tu cara\u2026 \xBFes
+      tu primer d\xEDa aqu\xED?\nSoy Leo, tu compa\xF1ero en este santuario.\n\xBFQuieres
+      que te ayude con tus primeros pasos?"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

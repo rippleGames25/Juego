@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.Localization.Settings;
 
 public enum ToolType
 {

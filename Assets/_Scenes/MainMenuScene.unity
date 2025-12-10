@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: " Game Design, Programaci\xF3n y M\xFAsica"
+  m_text: " Game Design, Programaci\xF3n "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b626bea2fb7dd745b66d689d9d563c3, type: 2}
   m_sharedMaterial: {fileID: 4546141632955884259, guid: 8b626bea2fb7dd745b66d689d9d563c3, type: 2}
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -137.14021, y: 0, z: -138.4314, w: -27.065338}
+  m_margin: {x: -137.14021, y: 0, z: -138.4314, w: -9.42263}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1865,9 +1865,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4641d4671c518c54a83670e7516852ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuClip: {fileID: 0}
-  gameClip: {fileID: 0}
-  useDifferentClips: 0
+  mainMenuClip: {fileID: 8300000, guid: ff90e6c3da6d36946aebf375b3d2c077, type: 3}
+  gameClip: {fileID: 8300000, guid: 7998d58dc21cf744aad725435376f1d2, type: 3}
+  useDifferentClips: 1
 --- !u!82 &700408996
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1883,7 +1883,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2000,7 +2000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -631, y: 55}
+  m_AnchoredPosition: {x: -631, y: 33}
   m_SizeDelta: {x: 540, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737739076
@@ -4098,8 +4098,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -631, y: -99}
-  m_SizeDelta: {x: 540, y: 144.8465}
+  m_AnchoredPosition: {x: -631, y: -109}
+  m_SizeDelta: {x: 540, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1879765845
 MonoBehaviour:
@@ -4516,7 +4516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -631, y: 195}
+  m_AnchoredPosition: {x: -631, y: 176}
   m_SizeDelta: {x: 540, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2002685620
@@ -4715,7 +4715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.999939, y: 32.92328}
+  m_AnchoredPosition: {x: -2.999939, y: 25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2088260427
@@ -4905,6 +4905,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2708011512383384698, guid: 20e127b1508e77e4c917b8b5822d4378, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -950995902634109938, guid: 81a5f17600eb9e049b8550a18ce95d97, type: 3}
     - target: {fileID: 4405929759121106736, guid: 20e127b1508e77e4c917b8b5822d4378, type: 3}
       propertyPath: m_SizeDelta.x
       value: 64
@@ -4917,6 +4921,18 @@ PrefabInstance:
       propertyPath: seedCursor
       value: 
       objectReference: {fileID: 21300000, guid: 97469fe0c17327b4abf701137f85d859, type: 3}
+    - target: {fileID: 6480773999467194545, guid: 20e127b1508e77e4c917b8b5822d4378, type: 3}
+      propertyPath: shovelCursor
+      value: 
+      objectReference: {fileID: 21300000, guid: dd6e6485268f86a4db9d1345f072e8c1, type: 3}
+    - target: {fileID: 6480773999467194545, guid: 20e127b1508e77e4c917b8b5822d4378, type: 3}
+      propertyPath: wateringCanCursor
+      value: 
+      objectReference: {fileID: 21300000, guid: fcf8baf23212213459b803c1b8428510, type: 3}
+    - target: {fileID: 6480773999467194545, guid: 20e127b1508e77e4c917b8b5822d4378, type: 3}
+      propertyPath: fertilizerBagCursor
+      value: 
+      objectReference: {fileID: 21300000, guid: 030718564eb51a141a098e164decaf54, type: 3}
     - target: {fileID: 7649063241584501110, guid: 20e127b1508e77e4c917b8b5822d4378, type: 3}
       propertyPath: m_Name
       value: CursorCanvas

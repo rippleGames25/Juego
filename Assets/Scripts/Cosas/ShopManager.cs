@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+using System.Collections;              
+using UnityEngine.Localization.Settings;
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager Instance; 
@@ -23,13 +24,17 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void Start()
+    IEnumerator Start()
     {
         if (shopItemPrefab == null)
         {
             Debug.LogError("ShopManager: No has asignado el Prefab del item de la tienda");
-            return;
+            yield break;
         }
+
+        yield return LocalizationSettings.InitializationOperation;
+
+        yield return null;
 
         PopulateShop();
     }
@@ -50,6 +55,14 @@ public class ShopManager : MonoBehaviour
                 itemScript.Setup(plant);
             }
         }
+
+        StartCoroutine(UpdateLayoutParams());
+    }
+
+    IEnumerator UpdateLayoutParams()
+    {
+        yield return new WaitForEndOfFrame();
+        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(contentGO.GetComponent<RectTransform>());
     }
 
     // Metodo para equipar el tipo de planta

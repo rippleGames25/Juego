@@ -1,0 +1,310 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tutorial_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 726c634dc02dbea4e96bad08be5823fa, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 10823225344
+    m_Localized: Good morning, Curator.\n I'm Leo, and I'll be with you to help you
+      awaken this sanctuary.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 240109047808
+    m_Localized: On your left is the shop. Here you can choose seeds to plant. You
+      can also buy water and fertiliser, but be careful not to run out of petals.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256873680896
+    m_Localized: Oh, and don't forget to check the weather forecast, Curator. At
+      the top right, you'll see the weather for the next few days. The weather can
+      help you... or surprise you, so check it often.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270651969536
+    m_Localized: Curator... before we continue, there is something important to note.
+      Biodiversity is the lifeblood of the Sanctuary. It increases every time you
+      successfully grow different species, and decreases if any plants die. The more
+      biodiversity you have, the more petals you will earn each day... and if you
+      reach the goal, you will restore the Sanctuary!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 310036484096
+    m_Localized: Well done, Curator! You have planted your first species in the Sanctuary.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 327434457088
+    m_Localized: Now it's time to take good care of it. Use the watering can to water
+      it and the fertiliser to enrich the soil. You can also use the spade to remove
+      plants, which will help you recoup some of your investment. The better you
+      look after the plot, the stronger the plant will grow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 360934363136
+    m_Localized: This is the plot information sheet. Here you can see how much water
+      and fertiliser the soil has and how much sun exposure it receives. If there
+      is a plant, you will also see its condition and needs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 379183779840
+    m_Localized: Wow, Curator! I see you've already mastered the basics of plant
+      care. If you ever forget something, you can consult the quick guide by clicking
+      on the question mark button above.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386020495360
+    m_Localized: This is the summary of the day, Curator. Here you can see how many
+      petals you have earned, the bonuses for your garden, and the losses for dead
+      plants or using the spade. You will also see if you receive extra water or
+      fertiliser. Take a look every night to understand how the Sanctuary is evolving.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 406518059008
+    m_Localized: Well, Curator... today we have a sunny day. The sun does not water
+      the ground; on the contrary, it gradually dries it out.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429381210112
+    m_Localized: "Take a close look at the forecast in the top right corner: the
+      sun can appear with three different intensities. \u2022 Intensity 1: sometimes
+      dries 1 point of water from the plots. \u2022 Intensity 2: can dry 1 or 2 points.
+      \u2022 Intensity 3: can dry up to 3 points of water."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445046935552
+    m_Localized: The sun alone does not kill plants, but if you let the soil get
+      too dry, your plants will suffer from a lack of resources. Keep an eye on the
+      water in your plots and water them when they need it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459987046400
+    m_Localized: 'Today the sky is overcast, Curator. This weather is very calm:
+      it neither waters nor dries the soil, regardless of its intensity.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 494560694272
+    m_Localized: 'Think of it as a breather for the garden: you can take advantage
+      of this time to plan, rearrange your plants, and prepare for tougher days ahead.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 514034847744
+    m_Localized: Oh dear, Curator... it's raining at the Sanctuary today. Rain always
+      increases the water content of the soil in all the plots.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 532028411904
+    m_Localized: "Pay close attention to the forecast, because rain also has three
+      intensities:\\n\u2022 Intensity 1: light rain, adds +2 water.\\n\u2022 Intensity
+      2: moderate rain, adds +4 water.\\n\u2022 Intensity 3: heavy rain, adds +6
+      water and can endanger weak plants."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 548642050048
+    m_Localized: Light to moderate rain is perfect for reviving dry patches. But
+      heavy rain can kill plants that are already in poor health. If you see heavy
+      rain coming in the forecast, try to get your plants as healthy as possible
+      before it arrives.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 565972914176
+    m_Localized: Oh dear, Curator... it's hailing today. It's one of the most dangerous
+      weather conditions for your garden.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 580728475648
+    m_Localized: "Like rain, hail can fall with three intensities and also adds some
+      water to the ground:\\n\u2022 Intensity 1: light hail, +1 water.\\n\u2022 Intensity
+      2: moderate hail, +2 water.\\n\u2022 Intensity 3: heavy hail, +3 water and
+      a very hard blow."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 597744766976
+    m_Localized: The important thing about hail is not the water, but the damage
+      it causes:\nAt any intensity, it can kill plants that are in poor health,\nand
+      the stronger it is, the more even those that are only moderately healthy will
+      suffer.\nIf you see hail coming in the forecast,\ntry to get your plants as
+      healthy as possible before that day arrives.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 616304562176
+    m_Localized: Curator... you have just received a strike. These are warnings that
+      the Sanctuary is in danger. If you reach 5 strikes (yellow or red), the Sanctuary
+      will collapse and you will lose the game.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 632662347776
+    m_Localized: "Normal strikes appear when you neglect the garden:\\n\u2022 Every
+      2 plants that die add up to 1 strike.\\n\u2022 And also if you go several days
+      without planting\\n even though you have enough petals to do so."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 647162056704
+    m_Localized: The good news is that normal strikes can be removed. If you keep
+      at least three plants alive and go five days in a row without any dying, the
+      Sanctuary will forgive one of your strikes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 661791789056
+    m_Localized: This time it's more serious, Curator...\nYou've run out of plants
+      and petals\nto replant.\n\nThe Sanctuary has given you some petals to help
+      you,\nbut in return you've received a permanent red strike.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 676891283456
+    m_Localized: Permanent strikes can never be cleared. They still count towards
+      the 5-strike limit, so try not to run out of garden space again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693374898176
+    m_Localized: Well done, Curator! You have taken such good care of your garden
+      for several days that the Sanctuary has decided to forgive you one normal strike.
+      If you continue to keep your plants healthy, you will be able to clear more
+      warnings.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 709200007168
+    m_Localized: Curator... I see that one of your plants has been attacked by a
+      pest. You will recognise it by the icon that appears above it. It does not
+      kill it instantly, but it is a bad sign for the Sanctuary.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 724324667392
+    m_Localized: As long as it has pests, that plant will not be able to recover
+      its health, even if you water and fertilise it correctly. And if it is a fruit-bearing
+      plant, it will stop bearing fruit even if it has pollinators nearby.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743429722112
+    m_Localized: "There are two ways to get rid of pests:\\n\u2022 Plant wildlife
+      refuges nearby: they protect adjacent plots\\n and, over time, wildlife can
+      clear the pest.\\n\u2022 Use your spade on the infected plant: you eliminate
+      the plant and also the pest from that plot, but you lose part of your investment.
+      Combine shelters, producers and pollinators to make your garden resistant to
+      future pests."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761666555904
+    m_Localized: See, Curator? The wildlife in the shelter has cleared the pest from
+      that plant. Shelter plants protect nearby plots and, over time, can cure pests
+      in their area.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 779160997888
+    m_Localized: If you have many important production facilities, it is worth surrounding
+      them with wildlife refuges. This will prevent new pests from appearing, and
+      if any do appear, the wildlife will have somewhere to live so that it can clean
+      them up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 794914803712
+    m_Localized: When you use the shovel on a plant with pests, you eliminate the
+      plant and also the pests from that plot. It's a quick solution when the infestation
+      is out of control, but you'll lose some of the petals you invested. Use it
+      to cut down on stubborn pests while redesigning the garden with more wildlife
+      shelters around.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 810333065216
+    m_Localized: You have planted a production company, Curator. It is the plants
+      that generate petals, but they need a good environment to do so.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825214455808
+    m_Localized: "To produce fruit, they need to meet three conditions:\\n\u2022
+      Be in good or moderate health.\\n\u2022 Be free of pests.\\n\u2022 Have pollinators
+      nearby (from a healthy attractor)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 838325850112
+    m_Localized: Think of them as the economic heart of the Sanctuary. Protect them
+      with wildlife shelters and place them in adequate sunlight so that they can
+      give their best.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 855128231936
+    m_Localized: You have planted a shade plant. Its function is to modify the light
+      in nearby plots when it grows sufficiently.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 869820878848
+    m_Localized: Shade can transform a sunny area into partial shade or full shade.
+      This helps plants that suffer from too much sun, but can harm those that need
+      direct light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 880763817984
+    m_Localized: If you place several shade plants around a plot, the accumulation
+      can create very shady areas. Use them to adjust the sun exposure to the exact
+      type that each species needs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 900678373376
+    m_Localized: You have just planted a pollinator attractor. These plants attract
+      the life necessary for your fruit trees to bear fruit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 933423304704
+    m_Localized: Nearby plots will receive pollinators. Without them, producers will
+      not generate petals even if they are healthy. Place them strategically to feed
+      several producers at once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 954843615232
+    m_Localized: 'Remember: pollinators + healthy producers = strong economy. Also
+      take care of attractors, because if they become ill or die, producers will
+      no longer receive pollinators.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 977618685952
+    m_Localized: You have planted a wildlife refuge. These plants attract animals
+      that protect the Sanctuary.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 995645804544
+    m_Localized: Wildlife prevents pests from appearing in nearby plots and can even
+      cure existing pests over time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1012976668672
+    m_Localized: They are essential to ensure that your producers and attractors
+      are not rendered useless. Distribute shelters around important areas to keep
+      pests at bay.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36095959846912
+    m_Localized: 'Good morning, Curator!
+
+
+      Your face looks unfamiliar... Is
+      this your first day here?
+
+      I''m Leo, your colleague at this sanctuary.
+
+      Would
+      you like me to help you get started?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36192206540800
+    m_Localized: Guide me, Leo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36219884752896
+    m_Localized: I'll manage
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
