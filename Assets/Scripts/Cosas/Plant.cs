@@ -1,6 +1,7 @@
 using NUnit.Framework.Constraints;
 using System.Linq;
 using UnityEngine;
+using System;
 
 public enum GrowthState
 {
@@ -29,6 +30,8 @@ public class Plant : MonoBehaviour
     public bool isDeath = false;
 
     protected Plot parentPlot;
+
+    public event Action OnBiodiversityMayHaveChanged;
 
     [Header("Plantas productoras")]
     [SerializeField] protected int produceDays = 0;
@@ -131,6 +134,8 @@ public class Plant : MonoBehaviour
             UpdatePlantSprite();
             UpdateEnvironmentEffect();
             parentPlot.UpdatePollinatorVisual();
+
+            OnBiodiversityMayHaveChanged?.Invoke(); // Avisar de que puede haber cambiado la biodiversidad
             return true; // La planta ha muerto
         }
 
@@ -152,7 +157,9 @@ public class Plant : MonoBehaviour
         else if (currentGrowth == GrowthState.semilla && lifeDays >= plantData.timeToSprout) 
         {
             currentGrowth++; // Brotar
-            GameManager.Instance.UpdateBiodiversityScore();
+
+            OnBiodiversityMayHaveChanged?.Invoke();
+
             SFXManager.Instance?.PlayCrece();
             Debug.Log($"La planta {plantData.plantName} ha brotado.");
 

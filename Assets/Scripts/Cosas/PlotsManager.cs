@@ -4,6 +4,7 @@ using System;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Linq;
+using System.Diagnostics.Tracing;
 
 public struct DailyBonusData
 {
@@ -21,7 +22,8 @@ public class PlotsManager : MonoBehaviour
     [SerializeField] private GameObject plotPrefab;
     [SerializeField] private int rows = 6;
     [SerializeField] private int columns = 5;
-    [SerializeField] private float spacing = 0.5f; 
+    [SerializeField] private float spacing = 0.5f;
+    [SerializeField] private int penalty = 1;
     
     [Header("Plagas")]
     [SerializeField] [Range(0f, 1f)] private float dailyPlagueOutbreakChance = 0.1f; // 10% de probabilidad de un brote nuevo cada día
@@ -30,9 +32,12 @@ public class PlotsManager : MonoBehaviour
     private Plot[,] plotGrid;
     [NonSerialized] public Plot currentSelectedPlot;
 
+    public event Action<int> OnBiodiversityChange;
+
     // Eventos
     public event Action<Plot> OnPlotSelected;
     public event Action OnPlotUnselected;
+    public event Action<int> OnPlantDied;
 
     void Awake()
     {
@@ -69,6 +74,8 @@ public class PlotsManager : MonoBehaviour
                 {
                     plot.InitializePlot(x,y);
                     plotGrid[x,y] = plot;
+
+                    plot.OnBiodiversityMayHaveChanged += CalculateCurrentBiodiversity;
                 }
             }
         }
@@ -104,13 +111,13 @@ public class PlotsManager : MonoBehaviour
         }
         return count;
     }
-    public int CalculateCurrentBiodiversity()
+    public void CalculateCurrentBiodiversity()
     {
         HashSet<PlantType> uniquePlantSpecies = new HashSet<PlantType>();
         bool hasPollinators = false;
         bool hasWildlife = false;
 
-        if (plotGrid == null) return 0;
+        if (plotGrid == null) return;
 
         foreach (Plot plot in plotGrid)
         {
@@ -150,7 +157,7 @@ public class PlotsManager : MonoBehaviour
             Debug.Log("Biodiversidad: +1 por Refugio de Fauna");
         }
 
-        return biodiversityScore;
+        OnBiodiversityChange?.Invoke(biodiversityScore); 
     }
 
     private List<Plot> GetNeighborPlots(Vector2Int coords)
@@ -192,12 +199,9 @@ public class PlotsManager : MonoBehaviour
         if (plotToDeath.currentPlant.plantData.category == PlantCategory.PollinatorAtractor) RemovePollination(plotToDeath.gridCoordinates);
         if (plotToDeath.currentPlant.plantData.category == PlantCategory.WildlifeRefuge) RemoveRefuge(plotToDeath.gridCoordinates);
 
-        GameManager.Instance.AddPenalty(1);
-        Debug.Log("Se ha restado 1 pétalo de tu economía total");
+        CalculateCurrentBiodiversity();
 
-        GameManager.Instance.ReportPlantDeath();
-
-        GameManager.Instance.UpdateBiodiversityScore();
+        OnPlantDied?.Invoke(penalty);
     }
 
     public void RemovePlant(Plot plotToRemove)
@@ -205,11 +209,7 @@ public class PlotsManager : MonoBehaviour
         Plant plant = plotToRemove.currentPlant;
 
         // Economía
-        if (plant.isDeath)
-        {
-            // Restar Economia
-        }
-        else
+        if (!plant.isDeath)
         {
             GameManager.Instance.CurrentMoney += (plant.plantData.price) / 2;   // Gana la mitad de lo que vale la planta
         }
@@ -218,8 +218,8 @@ public class PlotsManager : MonoBehaviour
         GameManager.Instance.CurrentBiodiversity--;
 
         // Variables parcela
-        plotToRemove.currentPlant = null;
-        plotToRemove.isPlanted = false;
+
+        plotToRemove.RemovePlant();
     }
 
     public void PlotSelected(Plot _plot)
@@ -553,24 +553,32 @@ public class PlotsManager : MonoBehaviour
     {
         List<Coroutine> consumptionAnimations = new List<Coroutine>();
 
-        // 1. Iterar e INICIAR la Coroutine de animación y consumo en cada parcela plantada
+        // 1. Aplicamos la lógica de consumo
+        foreach(Plot plot in plotGrid)
+        {
+            if (plot.isPlanted && plot.currentPlant != null && !plot.currentPlant.isDeath)
+            {
+                plot.ApplyDailyConsumption();
+            }
+        }
+        // 2. Iterar e iniciar la Coroutine de animación y consumo en cada parcela plantada
         foreach (Plot plot in plotGrid)
         {
             if (plot.isPlanted && plot.currentPlant != null && !plot.currentPlant.isDeath)
             {
                 // Iniciamos la Coroutine y la guardamos para esperar
-                Coroutine animation = StartCoroutine(plot.AnimateDailyConsumptionAndChange());
+                Coroutine animation = StartCoroutine(plot.AnimateDailyConsumption());
                 consumptionAnimations.Add(animation);
             }
         }
 
-        // 2. Esperar a que todas las Coroutines terminen
+        // 3. Esperar a que todas las Coroutines terminen
         foreach (Coroutine anim in consumptionAnimations)
         {
             yield return anim;
         }
 
-        // 3. Actualizar Visuales de Parcela (Agua/Abono) después del consumo
+        // 4. Actualizar Visuales de Parcela (Agua/Abono) después del consumo
         foreach (Plot plot in plotGrid)
         {
             if (plot.isPlanted)

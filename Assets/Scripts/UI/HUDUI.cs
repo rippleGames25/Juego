@@ -159,8 +159,8 @@ public class HUDUI : MonoBehaviour
         letterPanel.SetActive(true);
 
         // Actualizar UI
-        UpdateMoneyText(GameManager.Instance.CurrentMoney);
-        UpdateWaterText(GameManager.Instance.CurrentWater);
+        UpdateMoneyText(GameManager.Instance.GlobalWaterTank.GetCurrentWater());
+        UpdateWaterText(GameManager.Instance.GlobalFertilizerTank.GetFertilizer());
         UpdateFertilizerText(GameManager.Instance.CurrentFertilizer);
         UpdateDayText(GameManager.Instance.CurrentDay);
         UpdateBiodiversityText(GameManager.Instance.currentBiodiversity);

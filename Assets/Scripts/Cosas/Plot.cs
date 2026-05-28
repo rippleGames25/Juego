@@ -1,9 +1,9 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public enum SolarExposure
 {
@@ -26,7 +26,7 @@ public class Plot : MonoBehaviour
     [SerializeField] public bool isPlanted;
 
     private SpriteRenderer sr; // SpriteRenderer de la Parcela
-    private const int PLOT_LIMIT = 5; // Limite de agua y abono
+    public const int PLOT_LIMIT = 5; // Limite de agua y abono
 
     [Header("Gestion de la sombra")]
 
@@ -54,6 +54,7 @@ public class Plot : MonoBehaviour
 
     // Evento para actualizar información de parcela estando abierta
     public event Action<Plot> OnPlotDataUpdated;
+    public event Action OnBiodiversityMayHaveChanged;
 
     // Colores
     private Color colorFullWaterFullFertility;
@@ -107,6 +108,47 @@ public class Plot : MonoBehaviour
         currentSolarExposure = (SolarExposure)UnityEngine.Random.Range(0, 1); //Exposicion solar random
         isPlanted = false;      // Se inicializa vacia
         currentPlant = null;    // No hay planta
+    }
+
+    public void AddWater(int amount)
+    {
+        this.currentWater+=amount;
+
+        StartCoroutine(AnimateSingleTextChange($"+{amount}", 0, colorSumaParcela));
+        this.UpdatePlotWaterVisuals();
+
+        OnPlotDataUpdated?.Invoke(this); // Para actualizar la interfaz
+    }
+
+    public void AddFertilizer(int amount)
+    {
+        this.currentFertility += amount;
+
+        ChangePlotAnimation($"+{amount}", 0, false);
+        this.UpdatePlotFertilizerVisuals();
+
+        OnPlotDataUpdated?.Invoke(this); // Para actualizar la interfaz
+    }
+
+    public void AddPlant(Plant plant)
+    {
+        currentPlant = plant;
+        isPlanted = true;
+
+        UpdatePollinatorVisual();
+
+        // Suscribimos a evento
+        currentPlant.OnBiodiversityMayHaveChanged += () =>
+        {
+            OnBiodiversityMayHaveChanged?.Invoke();
+        };
+    }
+
+    public void ChangePlotAnimation(string animationText, int type, bool isFull)
+    {
+        Color color = isFull? colorLlenoParcela : colorSumaParcela;
+
+        StartCoroutine(AnimateSingleTextChange(animationText, type, color));
     }
 
 
@@ -182,7 +224,8 @@ public class Plot : MonoBehaviour
     {
         pollinatorSourceCount++;
         UpdatePollinatorVisual();
-        GameManager.Instance?.UpdateBiodiversityScore();
+
+        OnBiodiversityMayHaveChanged?.Invoke();
     }
 
     public void RemovePollinatorSource()
@@ -192,13 +235,15 @@ public class Plot : MonoBehaviour
             pollinatorSourceCount--;
         }
         UpdatePollinatorVisual();
-        GameManager.Instance?.UpdateBiodiversityScore();
+
+        OnBiodiversityMayHaveChanged?.Invoke();
     }
 
     public void AddRefugeSource()
     {
         refugeSourceCount++;
-        GameManager.Instance?.UpdateBiodiversityScore();
+
+        OnBiodiversityMayHaveChanged?.Invoke();
     }
 
     public void RemoveRefugeSource()
@@ -207,148 +252,12 @@ public class Plot : MonoBehaviour
         {
             refugeSourceCount--;
         }
-        GameManager.Instance?.UpdateBiodiversityScore();
+
+        OnBiodiversityMayHaveChanged?.Invoke();
     }
 
     #endregion
 
-    // Metodo que define que accion se realiza sobre la parcela según la herramienta equipada
-    public void SelectPlot()
-    {
-        switch (GameManager.Instance.CurrentTool)
-        {
-            case ToolType.None:
-                if (currentPlant!=null && currentPlant.hasProduct && currentPlant is ProducerPlant producerPlant)
-                {
-                    producerPlant.CollectProduct();
-                    SFXManager.Instance?.PlayComprar();
-
-                    int price = currentPlant.plantData.price / 2;
-                    StartCoroutine(AnimateSingleTextChange($"+ {price}", 2, colorLlenoParcela));
-                }
-                else
-                {
-                    PlotsManager.Instance.PlotSelected(this);
-                    SFXManager.Instance?.PlayClick();
-                    Debug.Log($"Parcela {this.gridCoordinates} seleccionada.");
-                }
-                break;
-
-            case ToolType.WateringCan:
-               
-                if (GameManager.Instance.CurrentWater > 0 && currentWater < PLOT_LIMIT) // Tiene agua y la parcela no esta llena
-                {
-                    GameManager.Instance.CurrentWater--;                                // Cosume agua del deposito
-                    this.currentWater++;
-
-                    StartCoroutine(AnimateSingleTextChange("+1", 0, colorSumaParcela));
-                    this.UpdatePlotWaterVisuals();
-
-                    SFXManager.Instance?.PlayRegar();
-
-                    // Notificar al tutorial
-                    if (TutorialManager.Instance != null &&
-                        TutorialManager.Instance.initialTutorialActive)
-                    {
-                        TutorialManager.Instance.hasWateredOnce = true;
-                        TutorialManager.Instance.CheckBasicCareCompleted();
-                    }
-
-
-                    OnPlotDataUpdated?.Invoke(this);
-
-                    Debug.Log($"Parcela {this.gridCoordinates} regada -> {currentWater} de agua");
-                }
-                else if (GameManager.Instance.CurrentWater > 0 && currentWater >= PLOT_LIMIT)   // Tiene agua pero la parcela está llena
-                {
-                    StartCoroutine(AnimateSingleTextChange("Lleno", 0, colorLlenoParcela));
-                    SFXManager.Instance?.PlayDenegar();
-                    Debug.Log($"No se puede regar, la parcela {gridCoordinates} está al máximo de agua.");
-                }
-                else // No queda agua
-                {
-                    SFXManager.Instance?.PlayDenegar();
-                    Debug.Log("No te queda agua.");
-                }
-                break;
-
-            case ToolType.FertilizerBag:
-
-                if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility < PLOT_LIMIT)    // Tiene abono y la parcela no esta llena
-                {
-                    GameManager.Instance.CurrentFertilizer--;                                       // Consume abono del deposito
-                    this.currentFertility++;
-
-                    StartCoroutine(AnimateSingleTextChange("+1", 1, colorSumaParcela));
-                    this.UpdatePlotFertilizerVisuals();
-
-                    SFXManager.Instance?.PlayAbonar();
-
-                    // Notificar al tutorial
-                    if (TutorialManager.Instance != null &&
-                        TutorialManager.Instance.initialTutorialActive)
-                    {
-                        TutorialManager.Instance.hasFertilizedOnce = true;
-                        TutorialManager.Instance.CheckBasicCareCompleted();
-                    }
-
-
-                    OnPlotDataUpdated?.Invoke(this);
-
-                    Debug.Log($"Parcela {this.gridCoordinates} abonada -> {currentFertility} de abono");
-
-                }
-                else if (GameManager.Instance.CurrentFertilizer > 0 && currentFertility >= PLOT_LIMIT) // Tiene abono pero la parcela está llena
-                {
-                    StartCoroutine(AnimateSingleTextChange("Lleno", 1, colorLlenoParcela));
-                    SFXManager.Instance?.PlayDenegar();
-                    Debug.Log($"No se puede abonar, la parcela {gridCoordinates} está al máximo de abono.");
-                }
-                else // No queda abono
-                {
-                    SFXManager.Instance?.PlayDenegar();
-                    Debug.Log("No te queda abono");
-                }
-                break;
-
-            case ToolType.Plant:
-
-                if (!this.isPlanted)
-                {
-                    int plantType = ShopManager.Instance.selectedPlantType.idx;
-                    GameManager.Instance.PlantSeed(this, plantType);
-                }
-                else
-                {
-                    SFXManager.Instance?.PlayDenegar();
-                    Debug.Log($"Parcela {gridCoordinates} ocupada.");
-                }
-                break;
-
-            case ToolType.Shovel:
-                if (this.isPlanted)
-                {
-                    bool hadPlague = (currentPlant != null && currentPlant.isPlagued);
-
-                    SFXManager.Instance?.PlayDesplantar();
-
-                    // Avisar al tutorial
-                    if (hadPlague && TutorialManager.Instance != null)
-                    {
-                        TutorialManager.Instance.NotifyPlaguedPlantRemovedWithShovel(currentPlant);
-                    }
-
-                    RemovePlant();
-                }
-                else
-                {
-                    SFXManager.Instance?.PlayDenegar();
-                    Debug.Log($"En la parcela {gridCoordinates} no hay ninguna planta.");
-                }
-                break;
-
-        }
-    }
 
     public void RemovePlant()
     {
@@ -375,7 +284,7 @@ public class Plot : MonoBehaviour
 
         UpdatePollinatorVisual();
 
-        GameManager.Instance.UpdateBiodiversityScore();
+        OnBiodiversityMayHaveChanged?.Invoke();
     }
 
     public void UpdateEnviroment(PlantCategory plantType)
@@ -430,7 +339,7 @@ public class Plot : MonoBehaviour
         sr.color = finalColor;
     }
 
-    public IEnumerator AnimateDailyConsumptionAndChange()
+    public IEnumerator AnimateDailyConsumption()
     {
         if (!isPlanted || currentPlant == null || currentPlant.isDeath)
         {
@@ -455,9 +364,14 @@ public class Plot : MonoBehaviour
             // Iniciar y esperar la animación del abono
             yield return StartCoroutine(AnimateSingleTextChange(text, 1, colorSumaParcela)); 
         }
+        
+    }
 
+    public void ApplyDailyConsumption()
+    {
+        int waterDemand = currentPlant.GetWaterDemand();
+        int fertilizerDemand = currentPlant.GetFertilizerDemand();
 
-        // 3. Consumo real de recursos
         ChangeWaterFromConsumption(-waterDemand);
         ChangeFertility(-fertilizerDemand);
     }
@@ -474,52 +388,7 @@ public class Plot : MonoBehaviour
         this.currentFertility += fertilityChange;
         this.currentFertility = Mathf.Clamp(this.currentFertility, 0, PLOT_LIMIT); // Mantener el limite de la parcela
     }
-
-
-    private IEnumerator AnimateSingleTextChange(string _text, int type, Color textColor)
-    {
-        // 1. Instanciar el prefab de la animación
-        GameObject canvasInstance = Instantiate(changeCanvasPrefab, transform.position + new Vector3(-0.4f,0,0), Quaternion.identity, transform.parent);
-        canvasInstance.SetActive(true);
-
-        // 2. Obtener referencias de la nueva instancia
-        Image changeImage = canvasInstance.GetComponentInChildren<Image>();
-        TextMeshProUGUI changeText = canvasInstance.GetComponentInChildren<TextMeshProUGUI>();
-        Transform textTransform = canvasInstance.transform; 
-        Vector3 initialPosition = textTransform.localPosition;
-
-        // 3. Configurar el texto y el icono
-        if (type == 0 && waterIcon != null)
-            changeImage.sprite = waterIcon;
-        else if (type == 1 && fertilizerIcon != null)
-            changeImage.sprite = fertilizerIcon;
-        else if(type == 2 && petalIcon != null)
-            changeImage.sprite =petalIcon;
-        else
-            changeImage.gameObject.SetActive(false); // Ocultar si no hay icono
-
-        changeText.text = _text;
-        changeText.color = textColor;
-
-
-        // 4. Lógica de movimiento
-        float duration = 1f;
-        float distance = 0.6f;
-
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            float t = elapsed / duration;
-            Vector3 targetPosition = initialPosition + Vector3.up * distance;
-            textTransform.localPosition = Vector3.Lerp(initialPosition, targetPosition, t);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        // 5. Autodestruir la instancia de la animación
-        Destroy(canvasInstance);
-    }
+   
 
     public void UpdatePlantDaily()
     {
@@ -615,6 +484,51 @@ public class Plot : MonoBehaviour
             }
         }
     }
+
+     private IEnumerator AnimateSingleTextChange(string _text, int type, Color textColor)
+        {
+            // 1. Instanciar el prefab de la animación
+            GameObject canvasInstance = Instantiate(changeCanvasPrefab, transform.position + new Vector3(-0.4f,0,0), Quaternion.identity, transform.parent);
+            canvasInstance.SetActive(true);
+
+            // 2. Obtener referencias de la nueva instancia
+            Image changeImage = canvasInstance.GetComponentInChildren<Image>();
+            TextMeshProUGUI changeText = canvasInstance.GetComponentInChildren<TextMeshProUGUI>();
+            Transform textTransform = canvasInstance.transform; 
+            Vector3 initialPosition = textTransform.localPosition;
+
+            // 3. Configurar el texto y el icono
+            if (type == 0 && waterIcon != null)
+                changeImage.sprite = waterIcon;
+            else if (type == 1 && fertilizerIcon != null)
+                changeImage.sprite = fertilizerIcon;
+            else if(type == 2 && petalIcon != null)
+                changeImage.sprite =petalIcon;
+            else
+                changeImage.gameObject.SetActive(false); // Ocultar si no hay icono
+
+            changeText.text = _text;
+            changeText.color = textColor;
+
+
+            // 4. Lógica de movimiento
+            float duration = 1f;
+            float distance = 0.6f;
+
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                float t = elapsed / duration;
+                Vector3 targetPosition = initialPosition + Vector3.up * distance;
+                textTransform.localPosition = Vector3.Lerp(initialPosition, targetPosition, t);
+
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            // 5. Autodestruir la instancia de la animación
+            Destroy(canvasInstance);
+        }
 
     public override string ToString()
     {

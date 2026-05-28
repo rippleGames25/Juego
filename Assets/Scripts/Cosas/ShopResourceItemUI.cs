@@ -51,14 +51,20 @@ public class ResourceShopItem : MonoBehaviour
 
         if (resource == "agua")
         {
-            ++GameManager.Instance.CurrentWater;
             --GameManager.Instance.CurrentMoney;
+
+            
+            GameManager.Instance.GlobalWaterTank.RefillWater(1);
+
             Debug.Log($"Compra de {resource} realizada.");
         }
         else if (resource == "abono")
         {
-            ++GameManager.Instance.CurrentFertilizer;
             --GameManager.Instance.CurrentMoney;
+
+            GameManager.Instance.GlobalFertilizerTank.RefillFertilizer(1);
+
+
             Debug.Log($"Compra de {resource} realizada.");
         }
     }

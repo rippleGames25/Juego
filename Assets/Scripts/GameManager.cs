@@ -50,7 +50,9 @@ public class GameManager : MonoBehaviour
 
     // Variables
     public int winCondition;
-    private ToolType currentTool;
+    private ToolType currentToolEnum;
+    private ITool currentActiveToolObject;
+
     private int currentDay = 1;
     public int currentBiodiversity = 0;
     private DailyWeather currentWeather;
@@ -58,8 +60,6 @@ public class GameManager : MonoBehaviour
 
     // Resources
     private int currentMoney = 5;
-    private int currentWater = 8;
-    private int currentFertilizer = 8;
     private const int BASE_INCOME = 1;
     private const int AMOUNT_PER_PLANT = 1;
     [SerializeField] private int cheapestPlantPrice = 1;
@@ -80,6 +80,17 @@ public class GameManager : MonoBehaviour
     private int maxMaturePlantsAchieved = 0;
 
     private int penaltiesThisDay = 0;
+
+    // Tanques
+    public WaterTank GlobalWaterTank { get; private set; }
+    public FertilizerTank GlobalFertilizerTank { get; private set; }
+
+    // Herramientas
+    private Dictionary<ToolType, ITool> toolsDictionary;
+
+    private int INITIAL_WATER = 8;
+    private int INITIAL_FERTILIZER = 8;
+
 
     // Para panel de final del dia
     public DailyBonusData lastDayBonusData { get; private set; }
@@ -122,29 +133,17 @@ public class GameManager : MonoBehaviour
 
     public int CurrentWater
     {
-        get { return currentWater; }
-        set
-        {
-            if (currentWater != value)
-            {
-                currentWater = value;
-                OnWaterChanged?.Invoke(currentWater);
-            }
-        }
+        // Ahora le preguntamos al tanque, no a una variable local
+        get { return GlobalWaterTank != null ? GlobalWaterTank.GetCurrentWater() : 0; }
     }
 
     public int CurrentFertilizer
     {
-        get { return currentFertilizer; }
-        set
-        {
-            if (currentFertilizer != value)
-            {
-                currentFertilizer = value;
-                OnFertilizerChanged?.Invoke(currentFertilizer);
-            }
-        }
+        // Ahora le preguntamos al tanque, no a una variable local
+        get { return GlobalFertilizerTank != null ? GlobalFertilizerTank.GetFertilizer() : 0; }
     }
+
+
 
     public int CurrentDay
     {
@@ -161,15 +160,21 @@ public class GameManager : MonoBehaviour
 
     public ToolType CurrentTool
     {
-        get { return currentTool; }
+        get { return currentToolEnum; }
         set
         {
-            if (currentTool != value)
+            currentToolEnum = value;
+
+            if (toolsDictionary.ContainsKey(value))
             {
-                currentTool = value;
-                OnToolChanged?.Invoke(currentTool);
-                Debug.Log("Herramienta cambiada a: " + currentTool);
+                currentActiveToolObject = toolsDictionary[value];
+                Debug.Log("Herramienta equipada: " + currentToolEnum);
+            } else
+            {
+                currentActiveToolObject = null;
             }
+
+            OnToolChanged?.Invoke(currentToolEnum);
         }
     }
 
@@ -206,6 +211,22 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Inicializacion Tanques
+        GlobalWaterTank = new WaterTank(INITIAL_WATER);
+        GlobalFertilizerTank = new FertilizerTank(INITIAL_FERTILIZER);
+
+        GlobalWaterTank.OnWaterChanged += (newValue) => {
+            OnWaterChanged?.Invoke(newValue);
+        };
+
+        GlobalFertilizerTank.OnFertilizerChanged += (newValue) => {
+            OnFertilizerChanged?.Invoke(newValue);
+        };
+
+        InitializeTools();
+
+        currentActiveToolObject = null;
+
         GenerateWinCondition();
     }
 
@@ -213,7 +234,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        currentTool = ToolType.None;
+        currentToolEnum = ToolType.None;
 
         PlotsManager.Instance.CreatePlots();
 
@@ -221,16 +242,38 @@ public class GameManager : MonoBehaviour
         normalStrikes = 0;
         permanentStrikes = 0;
 
-        UpdateBiodiversityScore();
+        UpdateBiodiversityScore(0);
         HandleWeatherEvent();
+
+        // Subsripción a eventos
+
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.OnPlotClicked += HandlePlotClick;
+            InputManager.Instance.OnToolClicked += HandleToolClick;
+            InputManager.Instance.OnBackgroundClicked += HandleBackgroundClick;
+        }
+
+        if (PlotsManager.Instance != null)
+        {
+            PlotsManager.Instance.OnPlantDied += PlantDied;
+            PlotsManager.Instance.OnBiodiversityChange += UpdateBiodiversityScore;
+        }
+    }
+
+    private void InitializeTools()
+    {
+        toolsDictionary = new Dictionary<ToolType, ITool>();
+
+        toolsDictionary.Add(ToolType.WateringCan, new WateringCan(GlobalWaterTank));
+        toolsDictionary.Add(ToolType.FertilizerBag, new FertilizerBag(GlobalFertilizerTank));
+        toolsDictionary.Add(ToolType.Shovel, new Shovel());
+        toolsDictionary.Add(ToolType.Plant, new Seed());
     }
 
     void Update()
     {
         if (inputLocked || isDayTransitioning) return;
-
-        if (Input.GetMouseButtonDown(0))
-            HandleInput();
     }
 
     public void EndDay()
@@ -310,8 +353,6 @@ public class GameManager : MonoBehaviour
         PlotsManager.Instance.DailyUpdatePlantsGrowthAndEffects();
         PlotsManager.Instance.DailyPlagueUpdate();
 
-        UpdateBiodiversityScore();
-
         if (CheckForGameOver())
         {
             return;
@@ -327,15 +368,14 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Inicio del día {CurrentDay}. Previsión : {currentWeather} nivel {currentWeather.intensity}");
     }
 
-    public void UpdateBiodiversityScore()
+    public void UpdateBiodiversityScore( int _biodiversity)
     {
-        if (PlotsManager.Instance != null)
-        {
-            CurrentBiodiversity = PlotsManager.Instance.CalculateCurrentBiodiversity();
-        }
+
+        CurrentBiodiversity = _biodiversity;
+
     }
 
-    public void ReportPlantDeath()
+    private void ReportPlantDeath()
     {
         daysWithoutDeathRacha = 0;
 
@@ -365,7 +405,13 @@ public class GameManager : MonoBehaviour
         OnNewStrike?.Invoke(normalStrikes, permanentStrikes, reason);
     }
 
-    public void AddPenalty(int amount)
+    public void PlantDied(int penalty)
+    {
+        AddPenalty(penalty);
+        Debug.Log($"Se ha restado {penalty} pétalo de tu economía total");
+        ReportPlantDeath();
+    }
+    private void AddPenalty(int amount)
     {
         penaltiesThisDay += amount;
     }
@@ -447,10 +493,8 @@ public class GameManager : MonoBehaviour
 
         newPlant.InitializePlant(plantData, plot);
 
-        plot.currentPlant = newPlant;
-        plot.isPlanted = true;
+        plot.AddPlant(newPlant);
 
-        plot.UpdatePollinatorVisual();
 
         if (TutorialManager.Instance != null)
         {
@@ -462,8 +506,6 @@ public class GameManager : MonoBehaviour
         SFXManager.Instance?.PlayPlantar();
 
         Debug.Log($"Semilla de {plantData.plantName} plantada en la parcela {plot.gridCoordinates}");
-
-        UpdateBiodiversityScore();
 
         // Avisar al tutorial (solo interesa en el Día 1 y si el jugador quiso ayuda)
         if (TutorialManager.Instance != null &&
@@ -484,53 +526,60 @@ public class GameManager : MonoBehaviour
     private void GenerateWinCondition()
     {
         winCondition = 10;
-    }
+    } 
 
-    private void HandleInput()
+    private void HandlePlotClick(Plot plotClicked)
     {
-        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
-        bool isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
-
-        if (hit.collider != null)
+        if (currentActiveToolObject != null)
         {
-            GameObject hitObject = hit.collider.gameObject;
-
-            if (hitObject.CompareTag("Tool"))
-            {
-                ToolItem tool = hitObject.GetComponent<ToolItem>();
-
-                if (CurrentTool == tool.type)
-                {
-                    CurrentTool = ToolType.None;
-                }
-                else
-                {
-                    CurrentTool = tool.type;
-                }
-
-                SFXManager.Instance?.PlayClick();
-            }
-            else if (hitObject.CompareTag("Plot"))
-            {
-                Plot plot = hitObject.GetComponent<Plot>();
-
-                plot.SelectPlot();
-            }
+            currentActiveToolObject.Usar(plotClicked); // Usar herramienta equipada
 
         }
         else
         {
-            if (!isPointerOverUI)
-            {
-                Plot _currentSelectedPlot = PlotsManager.Instance.currentSelectedPlot;
-                this.CurrentTool = ToolType.None;
+            SelectPlot(plotClicked);
+        }
 
-                if (_currentSelectedPlot != null)
-                {
-                    PlotsManager.Instance.PlotUnselected(_currentSelectedPlot);
-                }
-            }
+    }
+
+    private void HandleToolClick(ToolItem toolClicked)
+    {
+        if (CurrentTool == toolClicked.type)
+        {
+            CurrentTool = ToolType.None;
+        }
+        else
+        {
+            CurrentTool = toolClicked.type;
+        }
+
+        SFXManager.Instance?.PlayClick();
+    }
+
+    private void HandleBackgroundClick()
+    {
+        if (PlotsManager.Instance.currentSelectedPlot != null)
+        {
+            PlotsManager.Instance.PlotUnselected(PlotsManager.Instance.currentSelectedPlot);
+        }
+    }
+
+    public void SelectPlot(Plot plot)
+    {
+        if (plot.currentPlant != null && plot.currentPlant.hasProduct && plot.currentPlant is ProducerPlant producerPlant)
+        {
+            producerPlant.CollectProduct();
+            SFXManager.Instance?.PlayComprar();
+
+            int price = plot.currentPlant.plantData.price / 2;
+
+            plot.ChangePlotAnimation($"+ {price}", 2, false);
+        }
+        else
+        {
+            PlotsManager.Instance.PlotSelected(plot);
+            SFXManager.Instance?.PlayClick();
+            Debug.Log($"Parcela {plot.gridCoordinates} seleccionada.");
         }
 
     }
@@ -561,8 +610,8 @@ public class GameManager : MonoBehaviour
 
     private void ApplyDailyResourcesAndPenalties()
     {
-        CurrentWater += lastDayWaterIncome;
-        CurrentFertilizer += lastDayFertilizerIncome;
+        GlobalWaterTank.RefillWater(lastDayWaterIncome);
+        GlobalFertilizerTank.RefillFertilizer(lastDayFertilizerIncome);
 
         int totalIncome = lastDayBaseIncome + lastDayPlantBonus + lastDayBonusData.madurityBonus + lastDayBonusData.diversityBonus + lastDayBonusData.solarExposureBonus;
         CurrentMoney += totalIncome;
@@ -660,5 +709,21 @@ public class GameManager : MonoBehaviour
     {
         inputLocked = locked;
         Time.timeScale = locked ? 0f : 1f;
+    }
+
+    void OnDestroy()
+    {
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.OnPlotClicked -= HandlePlotClick;
+            InputManager.Instance.OnToolClicked -= HandleToolClick;
+            InputManager.Instance.OnBackgroundClicked -= HandleBackgroundClick;
+        }
+
+        if (PlotsManager.Instance != null)
+        {
+            PlotsManager.Instance.OnPlantDied -= PlantDied;
+            PlotsManager.Instance.OnBiodiversityChange -= UpdateBiodiversityScore;
+        }
     }
 }
